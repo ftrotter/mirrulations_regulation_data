@@ -113,7 +113,7 @@ Under the text-<docket id> directory, the following directories exist:
 
 Sometimes a picture is worth a thousand words: 
 
-
+![mirrulations_ocr_folder_diagram.png](mirrulations_ocr_folder_diagram.png)
         
 
 
