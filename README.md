@@ -79,7 +79,7 @@ In order to download the data, you will need to get your own AWS keys, and then 
 
 Most Amazon S3 clients do not support the requestor pays feature. However, [rclone](https://rclone.org/) does [support this](https://rclone.org/s3/#s3-requester-pays). We intend to support rclone for downloading purposes. 
 
-## Understanding the Mirrulations folder structure
+### Understanding the Mirrulations folder structure
 
 The Mirrulations project [documents the directory structure used in the S3 bucket](https://github.com/MoravianUniversity/mirrulations/blob/main/docs/structure.md).
 
@@ -111,10 +111,34 @@ Under the text-<docket id> directory, the following directories exist:
 * documents - For JSON files representing the documents that the government published inside the docket. 
 * documents_extracted_text - for the text files that are the results of the OCR on the documents. 
 
-Sometimes a picture is worth a thousand words: 
+here is a thousand words on the topic: 
 
 ![mirrulations_ocr_folder_diagram.png](mirrulations_ocr_folder_diagram.png)
         
 
-
+### using rclone to download portions of the data
+     
+#### Downloading only the text corpus
+     
+[rclone has advanced filtering capacity](https://rclone.org/filtering/) to download only portions of the data. Using that, you can use the following command to mirror all of the text contained in mirrulations (NOTE: this can be expensive!!):
+     
+```
+rclone --s3-requester-pays copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "*.txt" --include "*.json" --include "*.htm"
+```
+ 
+#### Download any agency     
+To download every DEA regulation: 
+ 
+```
+rclone --s3-requester-pays copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "/DEA/**/*.txt" --include "/DEA/**/*.json" --include "/DEA/**/*.htm"
+```
+     
+Replace 'DEA' with your agency of interest to get more information     
+     
+#### Download any year     
+The docket number of a regulation generally contains the year that the regulation was published. Thus, to download every regulation from 2022 we write:  
+```
+rclone --s3-requester-pays copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "/*/*2022*/**/*.txt" --include "/*/*2022*/**/*.json" --include "/*/*2022*/**/*.htm"
+```     
+     
 
