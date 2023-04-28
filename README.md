@@ -81,7 +81,40 @@ Most Amazon S3 clients do not support the requestor pays feature. However, [rclo
 
 ## Understanding the Mirrulations folder structure
 
+The Mirrulations project [documents the directory structure used in the S3 bucket](https://github.com/MoravianUniversity/mirrulations/blob/main/docs/structure.md).
 
+Generally, the structure looks like this: 
+
+```
+data
+└── <agency> (like DEA, CMS, etc)
+    └── <docket id> (like DEA-2016-0015) 
+        ├── binary-<docket id> (like 'binary-DEA-2016-0015')
+        └── text-<docket id> (like 'text-DEA-2016-0015')
+```        
+
+Generally, the "binary" folder contains a mirror of the pdfs and word documents that people submit for comments to Federal regulations.
+More rarely, these directories can contain jpgs, png and other image files that are submitted as comments. 
+
+You are free to download these binary files, but the whole point of the Mirrulations project is to make the text contained in these pdf's available
+as raw text. So if you look under the 'text' directory, you will find the OCRed versions of these resources. 
+
+Mirrulations, by default, uses the [pikepdf](https://pypi.org/project/pikepdf/) tool to conduct OCR on the various documents. 
+In the future, for PDFs that pikepdf does not cleanly OCR, other OCR tools will be used. This is the reason that under the OCR directories
+there is a "tool" subdirectory, so that you can know what tool did the conversion between the binary file and the text file. 
+
+Under the text-<docket id> directory, the following directories exist: 
+
+* comments - for JSON files for comments submitted as raw text through regulations.gov
+* comments_extracted_text - for the text results of the OCR process for pdfs/word/other files submitted as comments
+* docket - for JSON files regarding the docket itself
+* documents - For JSON files representing the documents that the government published inside the docket. 
+* documents_extracted_text - for the text files that are the results of the OCR on the documents. 
+
+Sometimes a picture is worth a thousand words: 
+
+
+        
 
 
 
