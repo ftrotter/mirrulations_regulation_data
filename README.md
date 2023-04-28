@@ -41,6 +41,7 @@ Indeed mirrulations uses the Regulations.gov Data API but is neither endorsed no
 ## Warnings
 
 There are unique risks associated with this public dataset, please read these warnings carefully.
+There is a reason that the warnings come before the instructions in this ReadMe.
 
 ### Data Reliability Warning
 The public domain status of this information means that you are free to use this data in any way that you would like. 
@@ -70,6 +71,16 @@ The authors of Mirrulations cannot afford to subsidize the download of regulatio
 the [Requestor Pays Bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html) feature of Amazon AWS S3 product. 
 
 If you download the S3 bucket in its entiretly this will result in an Amazon AWS bill of several hundreds of dollars. Even downloading just the text portion can be expensive. To save costs, please download only the portions of the text corpus that you need. 
+
+
+## Downloading the data
+
+In order to download the data, you will need to get your own AWS keys, and then [follow the directions for downloading requestor pays S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ObjectsinRequesterPaysBuckets.html). 
+
+Most Amazon S3 clients do not support the requestor pays feature. However, [rclone](https://rclone.org/) does [support this](https://rclone.org/s3/#s3-requester-pays). We intend to support rclone for downloading purposes. 
+
+## Understanding the Mirrulations folder structure
+
 
 
 
