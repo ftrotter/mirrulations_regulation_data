@@ -119,6 +119,15 @@ here is a thousand words on the topic:
 
 ### using rclone to download portions of the data
      
+#### Downloading only a specific docket
+
+This command will download both the binary files and the text files associated with docket id [DEA-2016-0015](https://www.regulations.gov/docket/DEA-2016-0015)
+
+```
+rclone --s3-requester-pays copy s3:mirrulations/DEA/DEA-2016-0015/ /path/to/your/local/mirrulations/directory/DEA-2016-0015
+```
+
+
 #### Downloading only the text corpus
      
 [rclone has advanced filtering capacity](https://rclone.org/filtering/) to download only portions of the data. Using that, you can use the following command to mirror all of the text contained in mirrulations (NOTE: this can be expensive!!):
