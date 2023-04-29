@@ -97,11 +97,12 @@ Generally, the "binary" folder contains a mirror of the pdfs and word documents 
 More rarely, these directories can contain jpgs, png and other image files that are submitted as comments. 
 
 You are free to download these binary files, but the whole point of the Mirrulations project is to make the text contained in these pdf's available
-as raw text. So if you look under the 'text' directory, you will find the OCRed versions of these resources. 
+as raw text. So if you look under the 'text' directory, you will find the text-extracted versions of these resources. 
 
-Mirrulations, by default, uses the [pikepdf](https://pypi.org/project/pikepdf/) tool to conduct OCR on the various documents. 
-In the future, for PDFs that pikepdf does not cleanly OCR, other OCR tools will be used. This is the reason that under the OCR directories
-there is a "tool" subdirectory, so that you can know what tool did the conversion between the binary file and the text file. 
+Mirrulations, by default, uses the [pikepdf](https://pypi.org/project/pikepdf/) tool to conduct text extraction on the various documents. 
+In the future, for PDFs that pikepdf does not cleanly extract, other extract tools, including OCR tools, will likely be used. 
+This is the reason that under the OCR directories
+there is a "<tool>" subdirectory, so that you can know what tool did the conversion between the binary file and the text file. 
 
 Under the text-<docket id> directory, the following directories exist: 
 
@@ -113,7 +114,7 @@ Under the text-<docket id> directory, the following directories exist:
 
 here is a thousand words on the topic: 
 
-![mirrulations_ocr_folder_diagram.png](mirrulations_ocr_folder_diagram.png)
+![mirrulations_extract_folder_diagram.png](mirrulations_extract_folder_diagram.png)
         
 
 ### using rclone to download portions of the data
