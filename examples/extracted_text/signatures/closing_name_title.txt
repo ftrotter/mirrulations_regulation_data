@@ -1,0 +1,537 @@
+Incyte Corporation 
+1801 Augustine Cut-Off  
+Wilmington, DE 19803 
+Tel: 302.498.6700 
+Web: www.incyte.com 
+
+March 27, 2023 
+
+SUBMITTED ELECTRONICALLY VIA http://www.regulations.gov  
+
+William N. Parham, III   
+Director, Paperwork Reduction Staff 
+Office of Strategic Operations and Regulatory Affairs 
+Division of Regulations Development  
+Centers for Medicare & Medicaid Services  
+Room C4-26-05 
+7500 Security Boulevard  
+Baltimore, MD 21244-1850  
+
+Re:  Agency Information Collection Activities: Proposed Collection; Comment Request [CMS-10844] 
+
+Dear Mr. Parham:  
+
+Incyte appreciates the opportunity to submit comments in response to the Centers for Medicare and Medicaid 
+Services’ (CMS’s) Information Collection Request (ICR) regarding the Small Biotech Exception from the Medicare 
+Drug Price Negotiation Program (Program).1 Incyte is a U.S.-based biopharmaceutical company founded on the 
+premise that investment in strong science and the relentless pursuit of research and development (R&D) 
+excellence can translate into new solutions that can positively affect patients’ lives.  
+
+Incyte recognizes that CMS has a significant task ahead to implement the provisions of the Inflation Reduction Act 
+(IRA). We appreciate that this ICR to identify small biotech drugs is one of the Agency’s first public actions. Incyte 
+intends to submit information on Jakafi® in order to qualify for the Small Biotech Exception.  
+
+Incyte’s R&D team in Wilmington, Delaware discovered and developed Jakafi® (ruxolitinib) (“Jakafi”). Jakafi is an 
+oral tablet drug that is FDA-approved in 5mg, 10mg, 15mg, 20mg, and 25mg dosage strengths for the treatment 
+of: (1) “intermediate or high-risk myelofibrosis (MF), including primary MF, post-polycythemia vera MF and post-
+essential thrombocythemia MF in adults”; (2) “polycythemia vera in adults who have had an inadequate response 
+to or are intolerant of hydroxyurea”; (3) “steroid-refractory acute graft-versus-host disease in adult and pediatric 
+patients 12 years and older”; and (4) “chronic graft-versus-host disease (cGVHD) after failure of one or two lines 
+of systemic therapy in adult and pediatric patients 12 years and older.” See Jakafi Prescribing Information.2  With 
+respect to the first three of these indications, Jakafi was the first FDA-approved branded pharmaceutical 
+treatment for patients having these serious diseases.   
+
+In 2022 alone, Incyte invested $1.6 billion on R&D, representing nearly 47% of the company’s total net revenues 
+during that time. Revenue from sales of our approved products, chiefly Jakafi, fuel Incyte’s clinical development 
+program of 25 investigational medicines intended to transform the treatment of cancer and inflammatory and 
+
+1 88 Fed. Reg. 4184 (Jan. 24, 2023).  
+2 https://www.jakafi.com/pdf/prescribing-information.pdf 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                 
+autoimmune conditions.3    
+
+Incyte’s marketed products now include Opzelura™ (ruxolitinib) cream and Pemazyre® (pemigatinib), which also 
+were discovered and developed in-house at Incyte’s R&D headquarters in Delaware and represent first-in-class 
+treatments for patients suffering from nonsegmental vitiligo, cholangiocarcinoma, and myeloid/lymphoid 
+neoplasms (MLNs). We are purposeful in focusing our science in areas where we believe we can have a significant 
+impact, regardless of the disease or size of the patient population. We are proud that this approach has resulted 
+in a strong heritage of Incyte-discovered, first-in-class medicines for patients.  
+
+Jakafi meets the statutory definitions for the Small Biotech Exception as outlined in the IRA. Incyte’s comments to 
+CMS include the following recommendations:    
+
+I. 
+II. 
+
+III. 
+IV. 
+
+Publish a List of Part D Drugs that Qualify for the Small Biotech Exception in 2026 
+Provide Flexibility for Manufacturers When Submitting the Small Biotech Exception Information Collection 
+Request Form  
+Clarify the “New Formulations” Provision of the Small Biotech Exception 
+Clarify Data Elements Included on the Small Biotech Form 
+
+a.  Define if Manufacturers Need to Submit NDC-11s Only for the Small Biotech Drug, or If the 
+
+Submission Should Include NDC-11s for All “Qualified Single Source Drugs”, as Determined By 
+CMS (Question 2) 
+
+b.  Specify that Manufacturers Should Submit Controlled Group Information Only for Those Entities 
+
+Which Had a Coverage Gap Discount Program Agreement with CMS (Question 4) 
+
+c.  Limit the Scope of the Certification to the Drug Price Negotiation Program  
+
+****** 
+
+I. 
+
+CMS Should Publish a List of Part D Drugs that Qualify for the Small Biotech Exception in 2026 
+
+The ICR proposes to collect information from manufacturers to determine if any of the manufacturer’s products 
+meets the Small Biotech Exception with respect to initial price applicability year 2026.4 After manufacturers 
+request this exemption, Incyte encourages CMS to publish a complete list of Part D drugs that qualify for the Small 
+Biotech Exception for price applicability period 2026. A published list will provide Incyte and other qualifying 
+manufacturers with much-needed certainty about whether their products qualify for the Small Biotech Exception 
+and will give Incyte the confidence to continue reinvesting nearly 50% of our revenue in R&D, which we believe is 
+consistent with Congressional intent.  
+
+Congress’ intention for the small biotech provisions of the IRA were referenced in the principles released by the 
+Senate Finance Committee Chair Ron Wyden (D-OR) in June 2021.5 The document recognizes that 
+“groundbreaking new treatments” targeted at unmet need “can largely be traced back to small biotechnology 
+companies that take on a disproportionate share of the risk of R&D” and references the committee’s intent to 
+“protect [small biotechnology companies’] ability to innovate.”6  Publishing the list of qualifying exempted drugs is 
+
+3 Incyte Corporation Pharmaceutical Portfolio, https://www.incyte.com/what-we-do/pharmaceutical-portfolio (last visited 
+March 6, 2023). 
+4 Small Biotech ICR Form (CMS 10844, OMB 0938-NEW) at 1.  
+5 Senate Finance Committee (2021, June 22). Principles for Drug Pricing Reform. finance.senate.gov. Retrieved March 3, 2023, 
+from https://www.finance.senate.gov/imo/media/doc/062221%20SFC%20Drug%20Pricing%20Principles.pdf 
+6 Id. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                 
+ 
+ 
+consistent with congressional intent because it will provide Incyte and similar companies with the continued 
+confidence to invest in the next generation of treatments. 
+
+Incyte believes that publication of the Small Biotech Exceptions list creates minimal additional burden for CMS 
+since the Agency will already have collected and analyzed the data to establish this list internally prior to 
+publishing the selected drug list,7 and it would be an appropriate complement to HHS’s publication of the Part D 
+drugs selected for Medicare negotiation in 2026. As further evidence of the minimal burden, the Agency estimates 
+that the number of Part D drugs that qualify for the small biotech exception in 2026 to be 10, the same number of 
+drugs that the agency will publicize as part of its statutorily-set selection of 10 Part D drugs for negotiation.8  
+
+Subsequent to the publication of the ICR, CMS issued a separate guidance on the Medicare Drug Price Negotiation 
+Program that includes additional considerations for Small Biotech Drugs. 9 In the March 15 guidance, CMS states 
+that “The Submitting Manufacturer must resubmit a request for the drug to be considered for the exception for 
+the initial price applicability years 2027 and 2028.” As such, Incyte encourages the Agency to publish updated lists 
+of excepted drugs in subsequent years.  
+
+II. 
+
+CMS Should Provide Flexibility for Manufacturers When Submitting the Small Biotech Exception 
+Information Collection Request Form  
+
+CMS states its intent to “develop an automated tool within an existing information technology system, the Health 
+Plan Management System (HPMS), for manufacturers to submit the Small Biotech Exception Information 
+Collection Request Form.”10 Although CMS intends to launch this new automated tool by “mid-2023,” if the tool is 
+not developed in time, “CMS will accept responses to this ICR by mail . . . using a mailing address that CMS will 
+provide in program instruction.”11 
+
+CMS’s proposal to require manufacturers to submit Small Biotech Exception requests through the HPMS system 
+could cause unwanted complications and delays for the agency and the manufacturers submitting the Exception 
+request. The Small Biotech Exception is intended for smaller manufacturers, many of whom may not have 
+experience navigating the HPMS system. Further, we are concerned that the tool may be rigid in nature, and we 
+advocate that CMS allow for a flexible approach. Finally, we share CMS’s concern that the new automated tool 
+may be delayed, and believe that such a delay will limit the amount of time that manufacturers have to familiarize 
+themselves with the HPMS system before the Small Biotech Exception request is due.  
+
+Therefore, Incyte recommends that this new tool should be available to manufacturers at least 30 days before the 
+Small Biotech Exception submission deadline. This will give smaller manufacturers an opportunity to become 
+familiar with the HPMS system and the new automated tool. It also will give CMS and manufacturers an 
+opportunity to resolve any questions or technical issues before Small Biotech Exception requests are due. We also 
+request that CMS provide manufacturers with a specified point of contact at the agency who has been trained on 
+the new tool and can help manufacturers navigate the submission process.   
+Additionally, we request that CMS provide manufacturers with the option to submit a Small Biotech Exception 
+request by mail—regardless of whether the automated tool is delayed. This flexibility would reduce burdens on 
+
+7 88 Fed. Reg. 4184-4185 (“The Information Collection Request Form for the Small Biotech Exception must be submitted to 
+CMS before CMS establishes the selected drug list of initial price applicability year 2026”). 
+8 Small Biotech Exception Information Collection Request, Supporting Statement – Part A, at 3 “A Submitting Manufacturer is 
+expected to submit the information only once for each drug for which the Submitting Manufacturer seeks the Small Biotech 
+Exception”); id. at 5 (CMS estimates “10 total respondents in 2023”).  
+9 Medicare Drug Price Negotiation Program: Initial Memorandum, Implementation of Sections 1191 – 1198 of the Social 
+Security Act for Initial Price Applicability Year 2026, and Solicitation of Comments, Section 30.2.1 
+10 Small Biotech Exception Information Collection Request (CMS-10844, OMB 0938-NEW), Supporting Statement – A, at 2.  
+11 Id.  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                 
+smaller manufacturers, who may not have direct experience navigating the HPMS system. Because CMS expects 
+only 10 respondents in 2023, we do not anticipate that receiving paper submissions would significantly increase 
+CMS’ administrative burden.  
+
+III. 
+
+CMS Should Clarify the “New Formulations” Provision of the Small Biotech Exception  
+
+Under the IRA, a “small biotech drug” is a “qualifying single source drug” that meets certain criteria generally 
+related to Medicare total expenditures.12 The IRA further specifies that “[a] new formulation, such as an extended 
+release formulation, of a qualifying single source drug shall not be considered a [small biotech drug].”13 However, 
+neither the Medicare Drug Price Negotiation Program guidance nor this Small Biotech Exception ICR address how 
+CMS interprets the “new formulation” provision with respect to the Small Biotech Exception.  
+
+Contrary to the statute,14 the Medicare Drug Price Negotiation Program guidance adopts an expansive 
+interpretation of a “qualifying single source drug.” For a drug approved under a new drug application (NDA),15 the 
+guidance states, in relevant part, that a “qualifying single source drug” includes “all dosage forms and strengths 
+with the same active moiety and the same holder of a [NDA], inclusive of products that are marketed pursuant to 
+different NDAs.”16 To determine whether a drug meets the seven year threshold, CMS “intends to use the earliest 
+date of approval . . . of the initial FDA application number assigned to the [NDA] holder for the [active moiety] . . . 
+.”17 Therefore, under CMS’s interpretation, it appears that as long as one NDA was approved at least seven years 
+before the selected drug publication date, approvals under any NDA would be part of the same “qualifying single 
+source drug,” as long as each product has the same active moiety and NDA holder. Incyte strongly disagrees with 
+CMS’s interpretation of a qualifying single source drug, which goes beyond extended-release formulations. We 
+also are concerned that CMS is not accepting comments on the “qualifying single source drug” definition, the 
+Small Biotech Exception, and other foundational issues in Section 30 of the Medicare Drug Price Negotiation 
+Program guidance related to how CMS will identify drugs for selection. 
+
+As Incyte has previously communicated with CMS, ruxolitinib is the active pharmaceutical ingredient in two 
+separate drugs that are marketed by Incyte, Jakafi and Opzelura™ (ruxolitinib) cream. Opzelura has no 
+overlapping approved indications in common with Jakafi in whole or in part.  Opzelura is FDA-approved for these 
+two indications: (1) “the topical short-term and non-continuous chronic treatment of mild to moderate atopic 
+dermatitis in non-immunocompromised adult and pediatric patients 12 years of age and older whose disease is 
+not adequately controlled with topical prescription therapies or when those therapies are not advisable”; and (2) 
+“the topical treatment of nonsegmental vitiligo in adult and pediatric patients 12 years of age and older.” See 
+Opzelura Prescribing Information. 
+
+For a number of reasons, including those listed below, Incyte believes that Opzelura is not a “new formulation” of 
+Jakafi.  Opzelura, compared to Jakafi, is:  
+
+12 Specifically, a Part D drug is a “small biotech drug” if in 2021, the “total expenditures for the qualifying single source drug” 
+were: (a) equal to or less than one percent of total expenditures under Part D for all covered Part D drugs; and (b) equal to at 
+least 80 percent of total expenditures for all of the manufacturer’s covered Part D drugs. SSA 1192(d)(2)(A). 
+13 SSA 1192(d)(2)(C). 
+14 The statute limits a “qualifying single source drug” to approvals under a single new drug application (NDA) or biologics 
+license application (BLA). In relevant part for a drug approved under a NDA, the IRA defines a “qualifying single source drug” 
+as a drug “that is approved under section 505(c) of the Federal Food, Drug, and Cosmetic Act” and “for which, as of the 
+selected drug publication date . . . at least 7 years will have elapsed since the date of such approval.”14 SSA § 1192(e)(1)(A) 
+(emphasis added). 
+15 CMS adopts a similar definition of a “qualifying single source drug” for biological products. 
+16 Medicare Drug Price Negotiation Program: Initial Memorandum, Implementation of Sections 1191 – 1198 of the Social 
+Security Act for Initial Price Applicability Year 2026, and Solicitation of Comments, Section 30.1.  
+17 Id.  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                 
+ 
+
+indicated to treat entirely different conditions in a different therapeutic area—dermatological vs. 
+antineoplastic indications—with no overlap;  
+ 
+supported by different safety and efficacy data developed specifically in relation to the new topical drug; 
+  not interchangeable—oral tablet Jakafi cannot be used to treat eczema, and topical Opzelura cannot be 
+
+used to treat any of Jakafi’s oncological indications;  
+
+  an entirely different dosage form—topical cream applied to the skin compared to an oral tablet; 
+ 
+
+the subject of a separate New Drug Application (NDA) (not a supplemental NDA) supported by an array of 
+human studies, including multiple, large Phase III clinical studies;  
+sold under its own trade name and standalone labeling; and covered by new patents that Incyte obtained 
+based on its innovation in creating new treatments in an entirely different therapeutic area. 
+
+ 
+
+If CMS nonetheless retains this interpretation of a “qualifying single source drug,” we recommend that CMS clarify 
+how the “new formulations” provision of the Small Biotech Exception fits within its broader interpretive 
+framework. The Medicare Drug Price Negotiation Program guidance is premised on the idea that all dosage forms, 
+strengths, and formulations of a qualifying single source drug will be treated in the same manner at every stage of 
+the Program—including “applying the exception for small biotech drugs”18—as well as selection, determining the 
+maximum fair price, and removal from the selected drug list.  Consistent with the broader statutory text (and 
+aligning with CMS’s current interpretation of “qualifying single source drug”), we believe the best reading of the 
+new formulations provision is that it serves as a clarification that a new formulation on its own may not meet the 
+definition of a “small biotech drug.”  Rather, it must be aggregated with any other formulations that satisfy the 
+“qualifying single source drug” definition.  An alternative read—that new formulations must be carved out of a 
+”qualifying single source drug” that meets the “small biotech drug” definition—would be in direct conflict with the 
+Use of Data provision19 applicable to the small biotech drug determination and impractical to implement.  For 
+example, it is unclear how CMS would treat a qualifying single source drug, if one portion of the qualifying single 
+source drug was subject to the Small Biotech Exception, while another portion (i.e., new formulation(s)) were not 
+subject to the Small Biotech Exception. 
+
+Incyte requests that CMS issue draft guidance clarifying how the Agency interprets the new formulations 
+provision of the Small Biotech Exception. CMS should solicit public comments on the draft guidance before 
+issuing final guidance on the new formulations provision.  
+
+IV. 
+
+CMS Should Clarify Data Elements Included on the Small Biotech Form 
+
+a.  Question 2 – Clarification on Scope of 11-digit National Drug Codes that Manufacturers Must 
+
+Submit for Small Biotech Exception  
+
+As noted above, the IRA’s exception for small biotech drugs excludes certain “qualifying single source drug[s]” 
+(QSSDs) from being considered a “negotiation-eligible drug” in 2026, 2027, and 2028.20  
+
+The Small Biotech Exception Information Collection Request Form requires manufacturers to submit NDCs to CMS 
+as a part of the small biotech exception determination process.  Specifically, the form states: 
+
+18 Medicare Drug Price Negotiation Program: Initial Memorandum, Implementation of Sections 1191 – 1198 of the Social 
+Security Act for Initial Price Applicability Year 2026, and Solicitation of Comments, Section 30.1. 
+19 The Use of Data provision states that “[i]n determining whether a qualifying single source drug satisfies the criteria [for 
+negotiation-eligible drugs] or [the Small Biotech Exception], the Secretary shall use data that is aggregated across dosage 
+forms and strengths of the drug, including new formulations of the drug, such as an extended release formulation, and not 
+based on the specific formulation or package size or package type.” SSA 1192(d)(3)(B).  
+20 [1192(d)(2)] 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                 
+Question 2: Please list all 11-digit National Drug Codes (NDCs) either (A) sold or marketed during 2021 or 
+(B) end-dated prior to December 31, 2021 for the covered Part D drug for which the Submitting 
+Manufacturer seeks the Small Biotech Exception. 
+
+In CMS’s March 15 guidance on the Medicare Price Negotiation Program,21 CMS defines a QSSD as, “… all dosage 
+forms and strengths of drugs with the same active moiety and the same holder of New Drug Application…even if 
+those different drug products are marketed under different NDAs….”  
+
+Given CMS’s definition of QSSD in the March 15 guidance, Incyte seeks clarity as to the scope of NDC-11s that 
+CMS requires that manufacturers submit on question 2 of the Small Biotech Exception Information Collection 
+Request Form.  
+
+Incyte is reviewing the March 15 guidance, including the implications of CMS’s definition of QSSD and how, when 
+Jakafi qualifies as a small biotech drug, Opzelura may be impacted. Based on this review, Incyte may provide 
+additional comments to the Agency. In the meantime, Incyte asks CMS to confirm that we will only need to submit 
+NDC-11s only for Jakafi on the Small Biotech Exception Information Collection Request Form and will not need to 
+submit NDC-11s for Opzelura in order for our small biotech exception submission to be considered complete by 
+the Agency.  
+
+b.  Question 4—Specify that Manufacturers Should Submit Controlled Group Information Only for 
+
+Those Entities Which Had a Coverage Gap Discount Program Agreement with CMS 
+
+The Small Biotech Exception statute includes an “Aggregation Rule,” which states that “[a]ll persons treated as a 
+single employer under section (a) or (b) of section 52 of the Internal Revenue Code of 1986 shall be treated as one 
+manufacturer” for purposes of determining whether the Small Biotech Exception applies (all persons are treated 
+as part of the same “controlled group”).22 The ICR proposes the following questions to collect information from 
+the relevant members of a controlled group treated as one “manufacturer” of a prospective small biotech drug, 
+under the Aggregation Rule:  
+
+Question  4:  Did  the  entity  that  had  a  Coverage  Gap  Discount  Program  agreement  effective  on 
+December 31, 2021, for the covered Part D drug for which the Submitting Manufacturer seeks the 
+Small  Biotech  Exception  (i.e.,  either  the  Submitting  Manufacturer  or  the  entity  identified  in 
+Question 3b, as applicable) have other members in its controlled group as of December 31, 2021? 
+For the purpose of this information collection request, “controlled group” means all corporations 
+or partnerships, proprietorships and other entities treated as a single employer under 26 U.S. Code 
+section 52(a) or (b). 
+Yes [] 
+No []. 
+
+Question  4a:  If  yes,  provide  the  following  information  as  of  December  31,  2021,  for  each  such 
+member  of  the  controlled  group  of  the  entity  that  had  the  Coverage  Gap  Discount  Program 
+agreement  effective  on  December  31,  2021,  for  the  covered  Part  D  drug  which  the  Submitting 
+Manufacturer seeks the Small Biotech Exception.  
+
+21 Medicare Drug Price Negotiation Program: Initial Memorandum, Implementation of Sections 1191 – 1198 of the Social 
+Security Act for Initial Price Applicability Year 2026, and Solicitation of Comments 
+22 SSA 1192(d)(2)(B)(i).  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                 
+For each member of the entity’s controlled group, the ICR proposes that the Submitting Manufacturer would be 
+required to report the following data elements: (a) entity name; (b) employer identification number(s) (EIN(s)); (c) 
+address; (d) unique identifier assigned by CMS (P-number); and (e) labeler code(s).   
+
+Incyte recommends that CMS revise Question 4a to remove ambiguity, as that question could be subject to 
+multiple interpretations. In particular, it is unclear whether the clause “that had the Coverage Gap Discount 
+Agreement effective on December 31, 2021” modifies: (a) “the entity”; or (b) “each such member of the 
+controlled group.” We believe that CMS’s intent is the latter such that a Submitting Manufacturer would be 
+required to report the requested data elements only for members of the controlled group that had a Coverage 
+Gap Discount Agreement effective on December 31, 2021. This interpretation is consistent with the statutory 
+criteria for a small biotech drug, which is based on the total Medicare expenditures of a manufacturer in 2021. It 
+is also consistent with the requirement to report the P-number for each member of the entity’s controlled group, 
+because only members with Coverage Gap Discount Agreements would have a P-number. Generally, if a member 
+of the controlled group did not have a Coverage Gap Discount Agreement effective December 31, 2021, it would 
+not have had any Part D expenditures in 2021. Alternatively, however, we believe that Question 4a could be read 
+to require a Submitting Manufacturer to report on all members of the controlled group, even those that did not 
+have a Coverage Gap Discount Agreement effective on December 31, 2021. Such alternative reading would 
+increase burdens for manufacturers, who would be required to report information that is not relevant to eligibility 
+for the Small Biotech Exception. The inclusion of such irrelevant information also would increase the 
+administrative burden of reviewing Small Biotech Exception requests. Finally, we are concerned that this 
+ambiguity could lead a manufacturer to submit information the Agency considers incomplete. As outlined in 
+Section 30.2.1 of the Medicare Drug Price Negotiation Program guidance, CMS states that it “does not plan to 
+consider incomplete submissions.”23 
+
+Therefore, we recommend that CMS revise question 4a to make clear that a Submitting Manufacturer is only 
+required to report information on members of the controlled group if the member had a Coverage Gap Discount 
+Program agreement effective on December 31, 2021. Specifically, Incyte recommends that CMS align the 
+language in question 4a with the corresponding question from the Medicare Part D Manufacturer Discount 
+Program Agreement ICR (Part D Discount Program ICR).24  The Small Biotech Exception and the Part D Discount 
+Program’s protections for “specified small manufacturers”25 include nearly identical Aggregation Rules. However, 
+the proposed Small Biotech Exception ICR and the proposed Part D Discount Program ICR do not include the same 
+question(s) to collect information relevant to the each program’s Aggregation Rule. Incyte believes that the 
+phrasing in the Part D Discount Program ICR’s question on the Aggregation Rule more clearly articulates that the 
+Submitting Manufacturer is only required to report information on members of the controlled group that had a 
+Coverage Gap Discount Program agreement effective on December 31, 2021. In relevant part, the Part D Discount 
+Program ICR states:  
+
+Did the submitting Manufacturer have a Coverage Gap Discount Program Agreement under 42 USC 
+§  1395w-114a  effective  on  December  31,  2021  AND  have  any  other  corporation  or  business 
+(whether or not incorporated) in its controlled group, as of December 31, 2021, that had a Coverage 
+Gap Discount Program Agreement under 42 USC § 1395w-114a effective on December 31, 2021? 
+For the purpose of this information collection request, “controlled group” means all corporations 
+
+23 Medicare Drug Price Negotiation Program: Initial Memorandum, Implementation of Sections 1191 – 1198 of the Social 
+Security Act for Initial Price Applicability Year 2026, and Solicitation of Comments, Section 30.2.1 
+24 88 Fed. Reg. 7976 (Feb. 7, 2023).  
+25 SSA 1860D-14B(g)(4)(C)(ii)(II)(bb) (“All persons treated as a single employer under subsection (a) or (b) of section 52 of the 
+Internal Revenue Code of 1986 shall be treated as one manufacturer for purposes of this subparagraph. For purposes of 
+making a determination pursuant to the previous sentence, an agreement under this section shall require that a 
+manufacturer provide and attest to such information as specified by the Secretary as necessary.”).  
+
+ 
+ 
+ 
+ 
+ 
+ 
+                                                 
+or partnerships, proprietorships and other entities treated as a single employer under 26 U.S. Code 
+sehction 52(a) or (b). Y/N26 
+
+For each member of the entity’s controlled group, the Part D Discount Program’s ICR proposes that the 
+Submitting Manufacturer would be required to report the same data elements as the Small Biotech Exception ICR: 
+(a) entity name; (b) employer identification number(s) (EIN(s)); (c) address; (d) unique identifier assigned by CMS 
+(P-number); and (e) labeler code(s).   
+
+Therefore, to improve clarity, remove ambiguity, and align both ICRs, Incyte requests that CMS replace question 4 
+and question 4a on the Small Biotech Exception ICR with the above question from the proposed Part D Discount 
+Program ICR.  
+
+c.  Limit the Certification to the Intended Use of this ICR— Eligibility for the Small Biotech 
+
+Exception under the Program  
+
+In the section justifying the “Need and Legal Basis” for this ICR, CMS states that “[t]his information is required in 
+order for CMS to accurately identify whether a given drug meets the criteria for the Small Biotech Exception in 
+accordance with section 1192(d)(2) of the Act.”27 The certification that the Submitting Manufacturer is required to 
+complete, however, is much broader than CMS’s stated need for this ICR. In relevant part, the certification states 
+the following:  
+
+I understand the information contained in this submission is being provided to and will be relied 
+upon by CMS for Medicare reimbursement purposes, including to determine whether the covered 
+Part D drug of the Submitting Manufacturer qualifies for the Small Biotech Exception, as described 
+in section 1192(d)(2) of the Social Security Act.28  
+
+First, the certification states that the information will be used “for Medicare reimbursement purposes,” even 
+though the Small Biotech Exception is only relevant under the Program—not Medicare, more broadly. 29 
+Additionally, the use of the word “including” could be interpreted to permit CMS to use information collected 
+under this ICR for purposes other than eligibility for the Small Biotech Exception. Incyte believes that CMS should 
+closely align the certification with the Agency’s stated need for this ICR. Therefore, we recommend revising the 
+ICR’s certification to read as follows:  
+
+I understand the information contained in this submission is being provided to and will be relied 
+upon by CMS for Medicare reimbursement purposes of the program under part E of Title XI of the 
+Social Security Act,;  including specifically, for CMS to determine whether the covered Part D drug 
+of the Submitting Manufacturer qualifies for the Small Biotech Exception, as described in section 
+1192(d)(2) of the Social Security Act.  
+
+We believe this proposed revision reflects the ICR’s justification—to determine whether a drug qualifies for the 
+Small Biotech Exception under the Program.  
+
+****** 
+
+26 Medicare Part D Manufacturer Discount Program Agreement; Appendix A, Proposed Part D Manufacturer Discount 
+Program (MDP) Data Entry Fields in HPMS at 4.  
+27 Small Biotech ICR Form (CMS 10844, OMB 0938-NEW) at 2. 
+28 Id. at 4 (emphasis added).  
+29 Id.  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                 
+Incyte appreciates the opportunity to comment on this Information Collection Request on the Small Biotech 
+Exception. We hope that CMS consider the suggestions and clarifications outlined above. We would welcome the 
+opportunity to meet with you or answer any questions CMS may have about our comments, at your request. 
+Thank you.  
+
+Sincerely,  
+
+Barry Flannelly 
+Executive Vice President & General Manager 
+North America

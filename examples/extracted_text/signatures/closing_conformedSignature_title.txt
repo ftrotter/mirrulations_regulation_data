@@ -1,0 +1,249 @@
+February 13, 2023 
+
+The Honorable Chiquita Brooks-LaSure 
+Administrator  
+Centers for Medicare & Medicaid Services 
+Hubert H. Humphrey Building 
+200 Independence Avenue, S.W., Room 445-G 
+Washington, DC 20201 
+
+Re: CMS–855A, Agency Information Collection: Medicare Enrollment Application 
+for Institutional Providers (Vol. 87, No. 240), December 15, 2022. 
+
+Dear Administrator Brooks-LaSure: 
+
+On behalf of our nearly 5,000 member hospitals, health systems and other health care 
+organizations, our clinician partners — including more than 270,000 affiliated 
+physicians, 2 million nurses and other caregivers — and the 43,000 health care leaders 
+who belong to our professional membership groups, the American Hospital Association 
+(AHA) appreciates the opportunity to comment on the Centers for Medicare & Medicaid 
+Services’ (CMS) information collection request regarding the revision of the Medicare 
+Enrollment Application for Institutional Providers (CMS-855A).  
+
+There are several areas of proposed changes to the enrollment application with which 
+the AHA has concerns. These include: 
+
+•  Section 2A’s proposed elimination of the physician-owned hospital (POH) 
+
+question;  
+
+•  Section 4A regarding whether practice locations are provider-based, and if so, 
+
+the type of provider-based department (PBD); 
+
+•  Section 4C2 about the electronic storage of patient medical records; and 
+•  Section 5A asking whether an organization is itself owned by any other 
+
+organization or individual. 
+
+Section 2A: Physician-owned Hospitals  
+
+The AHA opposes CMS’ proposal to eliminate POH reporting in the CMS-855A. 
+We urge the agency to maintain use of question 2A3, which captures whether an 
+organization is a POH. This information is necessary to track these organizations and 
+capture statutorily required data elements. Additionally, we urge the agency to issue 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The Honorable Chiquita Brooks-LaSure  
+February 13, 2023 
+Page 2 of 5 
+
+additional forms and/or questions regarding POHs to comply with the reporting 
+requirements mandated in the Affordable Care Act (ACA).  
+
+Indeed, for more than two decades, community hospitals, policymakers, the business 
+community and governmental advisory bodies have grappled with overutilization and 
+higher health care costs caused by self-referral to POHs. Conflicts of interest are 
+inherent in these arrangements, whereby physicians refer their patients to hospitals in 
+which they have an ownership interest.  
+
+In 2010, after a decade of studies and congressional hearings showing the adverse 
+impact of these arrangements, Congress acted to protect the Medicare and Medicaid 
+programs, and the taxpayers who fund them, by imposing a ban on self-referral to new 
+POHs. Section 6001 of the ACA prohibited the creation of new POHs that can bill 
+Medicare and Medicaid, and generally prohibited expansion of POH facility capacity 
+unless certain exception criteria are met for community needs or high Medicaid 
+services. Existing POHs could continue operating and admitting Medicare and Medicaid 
+patients. 
+
+Legislation also required the reporting of physician ownership information on an annual 
+basis. Therefore, in 2011, CMS added an attachment to the CMS-855A to capture 
+ownership and investment information. This was removed from the form in 2013 under 
+the pretense the agency would create a separate CMS-855POH form to be completed 
+on an annual basis. The CMS-855POH was approved by the Office of Management and 
+Budget in 2013; however, CMS announced in 2015 that reporting using the CMS-
+855POH and Attachment 1 would be suspended until further notice citing concerns 
+about data accuracy. Eight years later, the agency is still not in compliance with Section 
+6001 requirements.  
+
+This means that the current question in the CMS Form 855A is the only way to 
+identify POHs. If it is eliminated, it is unclear how POHs will be identified and tracked, 
+and as such, how compliance would be assured for requirements set forth in section 
+6001 of the ACA. For these reasons, the AHA requests continued use of question 
+2A3 and updates on the status of implementation for the 855POH. 
+
+Section 4A: Provider-based Practice Locations 
+
+The AHA urges CMS not to finalize its proposed provider-based practice location 
+questions on the Form 855A, as they are redundant with data already available to 
+the agency. If CMS declines to do so, we recommend that the agency significantly 
+increase the burden estimates included in its Paperwork Reduction Act (PRA) 
+submission to indicate a more realistic time estimate for providing this 
+information.   
+
+Specifically, CMS proposes several additions to Section 4A: Practice Location 
+Information, including a question about the date the first Medicare patient was/will be 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The Honorable Chiquita Brooks-LaSure  
+February 13, 2023 
+Page 3 of 5 
+
+seen at a practice location and new check boxes to indicate whether the location being 
+changed, added or removed is provider-based and what type of PBD it is. It is clear 
+from the substance of the questions, the agency’s supporting statement for the PRA 
+submission and the CMS-855A application revisions justifications1 that the intention is to 
+assist CMS in identifying PBDs that are subject to the site-neutral payment reductions 
+under Sec. 603 of the Bipartisan Budget Act of 2015.  
+
+However, the AHA is concerned that these changes will significantly increase 
+provider burden, far more than the 15 minutes per provider estimated in the 
+agency’s PRA submission. First, this is not merely a matter of entering a date and 
+checking boxes; it will require that providers carefully research the various sections of 
+the regulations cited in the form and also likely would require review of CMS interpretive 
+guidance to ensure that the questions are correctly answered. Further, for providers 
+with more than one off-campus practice location, this new section will necessitate that 
+they review and, as appropriate, change/add/remove such data for each of these 
+practice locations. Such an endeavor could take multiple hours as many individuals may 
+need to research the regulations, which are complex.  
+
+Moreover, CMS already has ready access to information about which PBDs are 
+excepted or non-excepted. For several years the agency has required that hospitals 
+with off-campus PBDs attach the “PO” modifier (required on services furnished in an 
+excepted off-campus PBD) and the “PN” modifier (required on services furnished in a 
+non-excepted off-campus PBD) to indicate the status of each service on a claim. The 
+use of these modifiers has been widely operationalized by the hospitals and health 
+systems and can be relied upon to indicate the status of each service and PBD. Further, 
+the location in which a service is furnished is available because the hospital claim form 
+reports the address of the specific location in which the service took place (e.g., on the 
+paper UB-04 form, this would be the FL01 field).  
+
+For these reasons, the AHA urges CMS not to finalize these burdensome, and 
+redundant, additions to the 855A form.  
+
+Section 4C2: Medicare Beneficiary Medical Records Storage Address – Electronic 
+Storage 
+
+In Section 4C2, CMS proposes to add a new section regarding whether beneficiary 
+medical records are stored electronically and, if so, where/how these records are 
+stored. The new section notes that “This must be an electronic storage site that can be 
+accessed by CMS or its designees if necessary.” We are concerned about this question 
+given the increased targeting of hospitals and health systems by cyber adversaries. 
+
+1 “Section 603 of the Bipartisan Budget Act of 2015 (Pub. L. 114-74), enacted on November 2, 2015, amended 
+section 1833(t) of the Act and relates to payment for certain items and services furnished by off-campus provider-
+based departments of a hospital. Requires that we correctly identify off-campus providers and those excepted. New 
+practice location choice added. Reduces provider burden of having to explain this circumstance in section 4D3 
+(Comments/Special Circumstances).” 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The Honorable Chiquita Brooks-LaSure  
+February 13, 2023 
+Page 4 of 5 
+
+Indeed, hospitals are obligated to defend against and remain vigilant about the security 
+of their networks and electronic health information to prevent attempts to steal patient 
+data and disrupt health care delivery.  
+
+We do not understand the circumstances under which the electronic location of 
+these records would be accessed by CMS, which “designees” would have access 
+to this information, and, if access is granted, how the location and the electronic 
+data would be protected against breaches. Due to the sensitive nature of the 
+proposed question 4C2 itself, and until the agency can provide an explanation of 
+how it intends to protect access to and use this provider enrollment information, 
+we urge CMS not to finalize these changes. Finally, we strongly recommend that 
+CMS review these plans with the Department of Homeland Security and the 
+Federal Bureau of Investigation, which have been working closely with hospitals 
+and health systems to defend against cyber intrusion and protect the 
+confidentiality of our patients’ data. 
+
+Section 5A: Organizations with Ownership Interest and/or Managing Control —
+Identification Information  
+
+In Section 5A, for all ownership roles listed, CMS adds the question, “Is this 
+organization itself owned by any other organization or by any individual?” The agency 
+notes that this was added at the request of the Department of Health and Human 
+Services Assistant Secretary for Planning and Evaluation “to identify organizations, 
+such as SNFs or hospitals, with the same ultimate parent,” and would facilitate 
+investigating whether a program integrity issue found in one provider was prevalent in 
+other providers under the same ultimate parent. 
+
+The AHA strongly supports efforts to reduce fraud and abuse in the Medicare program. 
+However, we are concerned about this question simply being a precursor to additional 
+administratively burdensome disclosures. Specifically, it would enable implementation of 
+a 2019 CMS final rule on program integrity enhancements to the provider enrollment 
+process about which we expressed deep concerns. This 2019 final rule contained overly 
+burdensome and unworkable provisions that will set providers up for failure and 
+possible enforcement actions.  
+
+Therefore, we urge the agency to postpone adoption of this question until it can 
+better assess the ability of providers and suppliers to comply with it, as well as 
+with the 2019 rule. At the very least, the agency should expressly state why it is adding 
+this question and demonstrate that it is not connected with the flawed 2019 rule. We 
+recommend that CMS implement a more reasonable and less burdensome approach to 
+enhance program integrity. 
+
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+The Honorable Chiquita Brooks-LaSure  
+February 13, 2023 
+Page 5 of 5 
+
+The AHA appreciates the opportunity to comment on this information collection. If you 
+have any questions concerning our comments, please feel free to contact Roslyne 
+Schulman, AHA’s director for policy, at (202) 626-2273 or rschulman@aha.org. 
+
+Sincerely, 
+
+/s/ 
+
+Ashley B. Thompson 
+Senior Vice President 
+Public Policy Analysis and Development
