@@ -1,0 +1,492 @@
+August 13, 2019 
+
+Centers for Medicare & Medicaid Services 
+U.S. Department of Health and Human Services 
+Submitted electronically at: https://www.regulations.gov/comment?D=CMS-2019-0090-0001 
+
+Attention: Public Comment Medicare Program: Secure Electronic Prior Authorization for Medicare Part 
+D Proposed Rule 
+
+Centers for Medicare & Medicaid Services: 
+
+Thank you for the opportunity to provide input on Medicare Program: Secure Electronic Prior 
+Authorization for Medicare Part D Proposed Rule. The Minnesota e-Health Initiative (Initiative) is 
+pleased to submit comments as a public-private collaborative focused on advancing the adoption and 
+use of electronic health records and other health information technology, including health information 
+exchange. A legislatively authorized 25-member Advisory Committee guides the Initiative (see Appendix 
+A). The Minnesota Department of Health, Office of Health Information Technology, coordinates 
+activities of the Initiative. 
+
+The Advisory Committee recognizes the need to implement electronic prior authorization to support 
+clinical best practices and improved patient experiences. We support requiring use of a single standard, 
+the NCPDP SCRIPT Standard Version 2017071 electronic prior authorization (ePA) transactions, for Part 
+D-covered products prescribed to Part-D eligible individuals. This proposed rule is consistent with 
+Minnesota’s statutory requirements, and with our 2017 recommendations to the Governor of 
+Minnesota to support full-implementation of all e-prescribing related transactions in the nationally 
+recognized National Council for Prescription Drug Programs Standards (NCPDP), including electronic 
+prior authorization and Formulary and Benefits (see Appendix B).
+
+However, we even more strongly support adopting the standard for patients of all types of insurance 
+coverage and for all products covered under the pharmacy benefit. The use of two different standards 
+would be overly burdensome for the prescribers, creating dual workflows and new inefficiencies. 
+
+We are concerned about the negative impact on Minnesota’s small and/or specialty organizations that 
+use an array of EHR systems and have fewer resources to manage technical upgrades. Minnesota’s 
+health care and technology landscape has a wide variety EHR and other systems in use, including:  
+
+•
+•
+•
+
+129 non-federal acute care hospitals using 8 different EHR systems.
+1,500 primary and specialty care clinics using more than 40 different EHR systems.
+7 local commercial health plans, multiple national commercial health plans, 3 county-based
+purchasing organizations, and 1 state-based purchaser.
+
+• Up to 18 different pharmacy benefit managers serving the Minnesota market.
+
+We are also concerned that the use of two different standards will have a negative impact on patients. 
+Prescribers would need to follow a different, less efficient, prior authorization workflow for patients 
+who are not Part D beneficiaries. Further, patients who utilize multiple sources of payment may 
+experience delays in authorization for their non-Part D medications. 
+
+Finally, we recommend extending the implementation timeframe to at least 24 months from the date of 
+the final rule to allow for technical and workflow implementation. We believe this to be consistent with 
+industry recommended best practices. 
+
+M I N N E S O T A   E - H E A L T H   IN I T I A T I V E   C O O R D I N A T E D   R E S P O N S E   T O  E L E C T R O N I C  
+P R I O R   A U T H O R I Z A T I O N   P R O P O S E D   R U L E  
+
+Please consider these comments and recommendations related to the Medicare Program: Secure 
+Electronic Prior Authorization for Medicare Part D Proposed Rule. They are developed from input from 
+across Minnesota and work of the Initiative. Contact Karen Soderberg, Supervisor, e-Health and Health 
+Information Exchange, Office of Health Information Technology, Minnesota Department of Health at 
+karen.soderberg@state.mn.use with any questions. 
+
+Sincerely, 
+
+Jennifer Fritz 
+Director, Office of Health Information Technology 
+Minnesota Department of Health 
+
+Peter Schuna 
+Advisory Committee Co-Chair 
+Minnesota e-Health Advisory Committee 
+Chief Executive Officer 
+Pathway Health 
+
+Sonja Short MD, FAAP, FACP  
+Advisory Committee Co-Chair 
+Minnesota e-Health Advisory Committee 
+Associate CMIO Ambulatory and Population Health 
+Fairview Health System 
+
+2 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+M I N N E S O T A   E - H E A L T H   IN I T I A T I V E   C O O R D I N A T E D   R E S P O N S E   T O  E L E C T R O N I C  
+P R I O R   A U T H O R I Z A T I O N   P R O P O S E D   R U L E  
+
+Appendices 
+
+Appendix A: Minnesota e-Health Advisory Committee 2018-
+2019 
+
+Members 
+Alan Abramson, PhD, Advisory Committee Co-Chair, Senior Vice President, IS&T and Chief Information 
+Officer, HealthPartners Medical Group and Clinics 
+Representing: Health System CIOs 
+
+Sonja Short, MD, Advisory Committee Co-Chair, Associate CMIO, Fairview Health Systems 
+Representing: Physicians  
+
+Sunny Ainley, Associate Dean, Center for Applied Learning, Normandale Community College 
+Representing: HIT Education and Training 
+
+Constantin Aliferis, MD, MS, PhD, FACMI, Chief Research Informatics Officer, University of Minnesota 
+Academic Health Center  
+Representing: Academics and Clinical Research 
+
+Karl Anderson, Global Digital Health Senior Manager, Medtronic  
+Representing: Vendors  
+
+Laurie Beyer-Kropuenske, JD, Director, Community Services Division 
+Representing: Minnesota Department of Administration 
+
+Jennifer Fritz, MPH, Director, Office of Health Information Technology  
+Representing: Minnesota Department of Health 
+
+Cathy Gagne, RN, BSN, PHN, St. Paul-Ramsey Department of Public Health  
+Representing: Local Public Health  
+
+Mark Jurkovich, DDS, MBA, Dentist, Gateway North Family Dental  
+Representing: Dentists 
+
+Jennifer Lundblad, PhD, President and Chief Executive Officer,   Stratis Health 
+Representing: Quality Improvement 
+
+Bobbie McAdam, Vice President, Information Technology, Medica 
+Representing: Health Plans 
+
+Jeyn Monkman, MA, BSN, NE-BC, Institute of Clinical Systems Improvement 
+Representing: Clinical Guideline Development 
+
+Lisa Moon, PhD, RN, CEO Advocate Consulting  
+
+3 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+M I N N E S O T A   E - H E A L T H   IN I T I A T I V E   C O O R D I N A T E D   R E S P O N S E   T O  E L E C T R O N I C  
+P R I O R   A U T H O R I Z A T I O N   P R O P O S E D   R U L E  
+
+Representing: Nurses 
+
+Heather Petermann, Division Director, Health Care Research & Quality, Minnesota Department of 
+Human Services 
+Representing: Minnesota Department of Human Services 
+
+James Roeder, Vice President of IT, Lakewood Health System 
+Representing: Small and Critical Access Hospitals 
+
+Peter Schuna, Chief Executive Officer, Pathway Health Services 
+Representing: Long Term Care 
+Co-Chair: Health Information Exchange Task Force  
+
+Jonathan Shoemaker, Chief Information Officer, Allina Health 
+Representing: Large Hospitals 
+
+Steve Simenson, BPharm, FAPhA, President and Managing Partner Goodrich Pharmacy 
+Representing: Pharmacists 
+
+Adam Stone, Chief Privacy Officer, Secure Digital Solutions  
+Representing: Expert in HIT 
+
+Meyrick Vaz, Vice President - Strategic Market Partnerships, UnitedHealthcare Office of the CIO 
+Representing: Health Plans 
+
+Donna Watz, JD, Deputy General Counsel, Minnesota Department of Commerce   
+Representing: Minnesota Department of Commerce 
+
+Ann Warner, Manager, Data Engineering, HealthEast 
+Representing: Health Care Administrators 
+
+John Whitington, Chief Information Officer, South Country Health Alliance 
+Representing: Health Care Purchasers and Employers 
+
+Ken Zaiken, Consumer Advocate, AARP Minnesota  
+Representing: Consumers 
+
+Sandy Zutz-Wiczek, Chief Operating Officer, FirstLight Health System 
+Representing: Community Clinics and FQHCs 
+
+Designated Alternates 
+George Klauser, Executive Director, Altair-ACO, Lutheran Social Services 
+Alternate Representing: Social Services 
+Co-Chair: Health Information Exchange Task Force  
+
+Paul Kleeberg, MD, Medical Director, Aledade 
+Alternate Representing: Physicians 
+
+4 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+M I N N E S O T A   E - H E A L T H   IN I T I A T I V E   C O O R D I N A T E D   R E S P O N S E   T O  E L E C T R O N I C  
+P R I O R   A U T H O R I Z A T I O N   P R O P O S E D   R U L E  
+
+Rochelle Olson, MPH, Systems Management Supervisor, Dakota County Public Health  
+Alternate Representing: Local Public Health  
+
+Charles Peterson, President and CEO, The Koble Group 
+Alternate Representing: Vendors  
+
+Mark Sonneborn, Vice President, Information Services, Minnesota Hospital Association  
+Alternate Representing: Hospitals 
+
+Susan Severson, CPEHR, CPHIT, Vice President, Health Information Technology, Stratis Health 
+Alternate Representing: Quality Improvement 
+
+5 
+
+ 
+ 
+ 
+ 
+ 
+M I N N E S O T A   E - H E A L T H   IN I T I A T I V E   C O O R D I N A T E D   R E S P O N S E   T O  E L E C T R O N I C  
+P R I O R   A U T H O R I Z A T I O N   P R O P O S E D   R U L E  
+
+Appendix B: Opioid and e-Heath Report: Summary of the 2017 
+Minnesota e-Health Advisory Committee’s Opioids and e-Health 
+Recommendations 
+
+Introduction 
+In response to the opioid epidemic, Governor Dayton requested the Minnesota e-Health Advisory 
+Committee provide a set of recommendations for using e-health to prevent and respond to opioid 
+misuse and overdose. The advisory committee, with input from the Opioids and e-Health Steering Team 
+and Minnesota Department of Health, Office of Health Information Technology (OHIT), developed seven 
+recommendations. The advisory committee believes implementation of the recommendations can have 
+a significant impact on mitigating the opioid epidemic. OHIT developed this report to summarize the 
+approach, recommendations and next steps of the advisory committee’s work on opioids and e-health.  
+
+Approach 
+The approach initially focused on the collection, use, and sharing of information necessary for the 
+electronic prescribing of controlled substances (Figure 1) as requested by the advisory committee. With 
+the request from Governor Dayton and input from the community, the scope was broadened to include 
+additional uses of e-health to prevent and respond to opioid misuse and overdose. The following 
+activities were critical to the development of the recommendations and building greater understanding 
+of using e-health to prevent and respond to the opioid epidemic.   
+
+Minnesota Environmental Scan 
+
+Prescribers, payers, pharmacies and state agencies provided information and perspectives regarding the 
+electronic health care information needed to address the opioid epidemic. The interviews focused on 
+two areas including: 
+
+1.  Whether and how such information is or could be exchanged via the types of data exchange subject 
+
+to MN 62J.536 and 62J.495-4982; and 
+
+2.  Any possible issues or constraints associated with the standard, electronic exchange or use of 
+
+information needed to address the epidemic and how they might be addressed. 
+
+Engaging Partners and Collecting Input during the Minnesota e-Health Summit 
+
+During the 2017 Minnesota e-Health Summit’s, ‘Leveraging e-Health to Prevent and Respond to Opioid 
+Misuse and Overdose’ session approximately 30 participants from across the care continuum shared 
+feedback on:  
+
+Preferred/recommended data sources; 
+How information can best be provided/communicated via standard, electronic health business 
+transactions and electronic health records; 
+How electronic health data can be leveraged to help address the opioid epidemic; 
+Key obstacles/challenges to providing/communicating the needed information; and 
+Changes/solutions needed to address the challenges/obstacles. 
+
+▪ 
+▪ 
+
+▪ 
+▪ 
+▪ 
+
+6 
+
+ 
+M I N N E S O T A   E - H E A L T H   IN I T I A T I V E   C O O R D I N A T E D   R E S P O N S E   T O  E L E C T R O N I C  
+P R I O R   A U T H O R I Z A T I O N   P R O P O S E D   R U L E  
+
+7 
+
+ 
+ 
+ 
+ 
+M I N N E S O T A   E - H E A L T H   IN I T I A T I V E   C O O R D I N A T E D   R E S P O N S E   T O  E L E C T R O N I C  
+P R I O R   A U T H O R I Z A T I O N   P R O P O S E D   R U L E  
+
+Nationwide Scan of Strategies Implemented by States to Address Opioid 
+Epidemic 
+
+The scan obtained information about other states’ legislative and policy strategies for addressing the 
+epidemic. Key words used in the review included: “opioids,” “EPCS” (electronic prescribing of controlled 
+substances), “prescription monitoring program/prescription drug monitoring program,” (PMP/PDMP) 
+“medical cannabis,” and “individual/patient education.”  
+
+Opioids and e-Health Steering Team 
+
+The Opioids and e-Health Steering Team provided input to the Advisory Committee on 
+recommendations and strategies for using e-health to prevent and respond to opioid misuse and 
+overdose. The participants of the Steering Team included experts in prescribing and dispensing 
+controlled substances, e-prescribing controlled substances, and the Minnesota Prescription Monitoring 
+Program. The Steering Team met twice and shared their perspectives and experiences during numerous 
+advisory committee and public meetings.  
+
+Recommendations  
+The advisory committee believes implementation of the following recommendations can have a 
+significant impact on mitigating the opioid epidemic. 
+
+The advisory committee recommends that:  
+
+1.  By July 2018, the Minnesota Legislature should provide resources to fully implement and ensure 
+compliance with Minnesota Statutes Section 62J.497 including a focus on increasing the rate of 
+e-prescribing of controlled substances from approximately 20 percent (Surescripts 2016 
+National Progress Report) to over 80 percent by 2020. Implementation of this recommendation 
+should occur with input from the Minnesota e-Health Advisory Committee to: 
+
+a.  Provide or ensure statewide education and technical assistance on electronic 
+
+prescribing (e-prescribing) of controlled substances. 
+
+b.  Support full-implementation of all e-prescribing related transactions in the nationally 
+recognized National Council for Prescription Drug Programs Standards (NCPDP), 
+including electronic prior authorization and Formulary and Benefits.  
+
+c.  Provide grants to increase the rate of e-prescribing of controlled substances. Grantees 
+include, but are not limited to, prescribers that serve rural or underserved populations; 
+prescribers that have small, independent practices; and other providers needing support 
+such as dentists. 
+
+d.  Support the use of evidence-based clinical guidelines and clinical decision support.  
+e.  Monitor the status of e-prescribing, specifically for controlled substances, and assess the 
+
+barriers to e-prescribing of controlled substances. 
+
+f.  Develop and implement policy options including rulemaking and enforcement for non-
+
+compliance of e-prescribing as needed, if goals are not met. 
+
+2.  By January 2019, the Minnesota Board of Pharmacy, with input from the Minnesota e-Health 
+Advisory Committee, health and health care provider associations, and other stakeholders, 
+should develop requirements and an implementation plan to improve the Prescription 
+
+8 
+
+ 
+M I N N E S O T A   E - H E A L T H   IN I T I A T I V E   C O O R D I N A T E D   R E S P O N S E   T O  E L E C T R O N I C  
+P R I O R   A U T H O R I Z A T I O N   P R O P O S E D   R U L E  
+
+Monitoring Program (PMP). The requirements and implementation plan should include use 
+cases and policies for the required use of the PMP. The implementation plan should:  
+a.  Address affordable, effective and seamless use of the PMP by prescribers and 
+
+b. 
+
+dispensers through the EHR, other HIT, and integration into Minnesota’s HIE and include 
+full implementation of clinical guidelines and clinical decision support and access to 
+other states’ PMP information.  
+Improve stakeholder input and oversight, representative governance, regulatory 
+authority, and funding of the PMP to support alignment with state and federal 
+requirements and standards, improve data quality and usability, support patient 
+consent and privacy, and meet workforce-training needs. 
+
+The Governor and Legislature should appropriate funds for the development and 
+implementation of the requirements and implementation plan to improve the PMP.  
+
+3.  By July 2018, the Minnesota Legislature should amend Minnesota Statutes, Section 152.126 to 
+expand the permitted uses of Prescription Monitoring Program data. The updated language 
+should ensure that state and federal agencies, tribal governments, academia, local public health, 
+payers, and other partners are able to appropriately access and analyze information for 
+improved prevention, response, and care while safeguarding patient privacy in accordance with 
+state and federal law. Transparent processes and principles developed by the Board of 
+Pharmacy with input from the Minnesota e-Health Advisory Committee and other stakeholders 
+should guide access to the Prescription Monitoring Program data. Potential data uses should 
+include, but are not limited to: 
+
+a. 
+
+Identify geographic areas and populations showing indicators of misuse and abuse to 
+better target resources for prevention, response, and coordinated care, treatment, and 
+services. 
+
+b.  Ensure more timely and accurate responses to misuse and overdoses by leveraging 
+other data sources such as overdose, toxicology, and drug seizure reports; medical 
+examiner/coroner data; payer claims; poison control reports; and birth and death 
+records. 
+
+c.  Support the development and use of advanced clinical decision support and clinical 
+
+guidelines to flag suspicious behavior and/or patterns and identify individuals at risk for 
+opioid misuse at the point of care and beyond.  
+Identify critical needs for training and best practices for prescribers, dispensers and 
+other providers such as emergency medical services and local public health. 
+
+d. 
+
+The Governor and Legislature should appropriate funds to support the expanded uses of the 
+Prescription Monitoring Programs data, and develop and implement the transparent processes 
+and principles to guide access to data.  
+
+4.  State agencies and associations should, by September 2018, review, update, and provide 
+
+education on e-health and opioids policies and guidelines to ensure dispensers, prescribers, 
+payers, and other providers, including the care team, have appropriate and timely access to 
+health information, can subsequently share information, and understand their scope of action 
+
+9 
+
+ 
+ 
+ 
+ 
+M I N N E S O T A   E - H E A L T H   IN I T I A T I V E   C O O R D I N A T E D   R E S P O N S E   T O  E L E C T R O N I C  
+P R I O R   A U T H O R I Z A T I O N   P R O P O S E D   R U L E  
+
+related to the information. Use cases should include, but are not limited to, instances when 
+prescribing and dispensing practices are outside nationally recognized clinical guidelines, such as 
+those published by the Centers for Disease Control and Prevention and the U.S. Food and Drug 
+Administration, and individuals are at-risk for misuse and abuse. 
+
+5.  The Governor, by July 2018, should ensure access and coverage for all Minnesotans and 
+providers, and provide resources for grants and technical assistance, to expand access to 
+services and care enabled by telehealth, telemedicine and other forms of virtual technology to 
+fill access gaps in opioid tapering and withdrawal, chemical dependency, mental health, and 
+alternative pain treatment and services. 
+
+6.  The Governor should support state agencies and stakeholders in participating in statewide 
+coordinated HIE services. The support should be consistent with the findings of Minnesota 
+Health Information Exchange Study, which will be submitted to the Legislature in February of 
+2018, align with input from the Minnesota e-Health Advisory Committee, ensure providers and 
+public health have access to information to support individual and community health services, 
+and support: 
+
+a.  Alerts for emergency services, urgent care, and other medical visits relating to 
+
+substance misuse and overdose. 
+
+b.  Referrals to substance abuse treatment and community services. 
+c.  Access to patient health history including medication lists.  
+
+7.  The Minnesota Department of Health, by December 2018, should submit to the Governor and 
+
+the Legislature an update to their informatics profile that assesses the gaps in current 
+information and information systems used to prevent and respond to substance misuse and 
+overdose and identify resources needed to fill those gaps. The Governor and Legislature should 
+appropriate funds to ensure those needs are met. 
+
+The advisory committee also recognized that mitigating the opioid epidemic goes beyond e-health. 
+There is a need for better access to and coverage for health services, specifically opioid tapering and 
+withdrawal, chemical dependency, mental health and alternative pain treatment and services. 
+Therefore, they also recommend the Governor work to ensure all Minnesotans have access to the 
+treatment and services needed to achieve health and wellbeing.  
+
+Next Steps 
+The advisory committee and its stakeholders will continue to prioritize work to mitigate the opioid 
+epidemic. In the coming months, it will move forward with the findings of the legislatively mandated 
+study on HIE, which improves the seamless flow of information to prescribers and dispensers. It will 
+continue to monitor and provide input into state and national activities regarding e-prescribing of 
+controlled substances, Prescription Monitoring Program, and related issues. 
+
+10

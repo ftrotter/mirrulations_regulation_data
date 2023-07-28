@@ -1,0 +1,162 @@
+Page 1 of 3 
+
+August 16, 2019 
+
+Centers for Medicare & Medicaid Services 
+Department of Health and Human Services 
+Attention: CMS–4189–P 
+P.O. Box 8013 
+Baltimore, MD 21244–8013 
+
+Submitted electronically at: https://www.regulations.gov/comment?D=CMS-2019-0090-0001  
+
+Re: Secure Electronic Prior Authorization for Medicare Part D proposed rule (CMS–4189–P) 
+
+Dear Administrator Verma: 
+
+Thank you for this opportunity to comment on the Secure Electronic Prior Authorization for Medicare 
+Part D proposed rule (CMS–4189–P). 
+
+Epic is an electronic health records (EHR) developer based in Verona, Wisconsin.  Epic makes software 
+for mid-size and large medical groups, hospitals and integrated healthcare organizations – working with 
+customers that include community hospitals, academic facilities, children's organizations, safety net 
+providers and multi-hospital systems. Epic participates in industry standards development including 
+standards organizations that impact medication communication such as the National Council for 
+Prescription Drug Programs (NCPDP), Health Level 7 (HL7), and X12.  Our integrated software supports 
+both inpatient and outpatient providers and pharmacists, giving us valuable experience with the 
+prescribing process for both physicians and pharmacists.  Through the use of Epic software, over 130 
+healthcare organizations submit electronic prior authorization requests within their EHR workflow for 
+prescriptions today. 
+
+Our e-prescribing experience, as well as our broad general experience developing a sophisticated EHR 
+and supporting the healthcare organizations that use it, inform the suggestions we make attached to 
+this letter.  
+
+Thank you for your consideration. 
+
+Sincerely, 
+
+Cameron Szychlinski 
+
+Epic  1979 Milky Way  Verona WI 53593  (608) 271-9000  FAX (608) 271-7237  www.epic.com 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Page 2 of 3 
+
+Avoid Implementation of Two Different Electronic Prior Authorization Standards for 
+Medications 
+The proposed rule states that CMS’s purview in this proposal is limited to electronic prior authorization 
+for Part D medications.  The expectation is that prior authorization for Part D covered prescriptions are 
+transmitted according to the NCPDP SCRIPT 2017071 standard whereas other prescriptions are 
+transmitted according to the standards incorporated by HIPAA (X12 278 messages).   
+
+Expecting two different standards to be used for the same workflow depending on payer selection will 
+cause unnecessary burden.  Each messaging standard has its own requirements and pieces of 
+functionality that change the workflow for the medical staff processing prescription prior authorizations.  
+For example, the NPRM specifically discusses some of the limitations that the X12 278 standard has for 
+workflow compared to the benefits of NCPDP SCRIPT 2017071.  Users should not need to understand 
+that their prior authorizations will be handled different depending on whether this prescription is being 
+covered under Part D or not.  Needing to understand these differences would be necessary if 
+prescription prior authorization is completed according to two different messaging standards. 
+
+We suggest the adoption of NCPDP SCRIPT 20170171 for electronic prior authorization signal the 
+expectation of the use of that standard for all electronic prescription prior authorization transactions, 
+regardless of payer or inclusion in Part D. 
+
+Considerations when Adopting NCPDP SCRIPT 2017071 for Electronic Prior 
+Authorization 
+We agree that NCPDP SCRIPT 2017071 should be used for all electronic prescription prior authorizations.  
+Real-time processing and approvals of prior authorizations speeds up the availability of a medication to 
+the patient, which in turns increases the likelihood of a patient adhering to the prescription written by 
+their physician.  Likewise, with the industry currently moving to NCPDP SCRIPT 2017071 for other e-
+prescribing transactions on January 1, 2020, we agree that using NCPDP SCRIPT 2017071 for electronic 
+prior authorization allows for consistency across participants. 
+
+However, as we plan to move the industry to NCPDP SCRIPT 2017071 for electronic prior authorization, 
+please consider the following recommendations to adopt efficiently:  
+
+Incorrect Assumption Regarding Prescribing System Readiness for Electronic Prior Authorization via 
+NCPDP SCRIPT 2017071 
+The proposed rule assumes that a provider’s electronic prescribing software already has support for all 
+NCPDP SCRIPT transactions, which is incorrect.  While electronic prescribing software developers are 
+updating their systems to support NCPDP SCRIPT 2017071 for electronic prescribing, this support is likely 
+limited to the transactions that were required by the developer’s users or by regulation.   
+
+Since the existing CMS regulation does not name NCPDP SCRIPT 2017071 as a transaction, it is unlikely 
+there is support from vendors for the electronic prior authorization messages according to NCPDP 
+SCRIPT 2017071.  Finalizing this rule will require development by electronic prescribing software 
+developers and rollout of these updates by health systems. Sufficient time for development and rollout 
+of new transactions must be allowed. 
+
+Epic  1979 Milky Way  Verona WI 53593  (608) 271-9000  FAX (608) 271-7237  www.epic.com 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Page 3 of 3 
+
+Allow 24 Months for Adoption 
+The proposed rule requires adoption of NCPDP SCRIPT 2017071 for electronic prior authorization on 
+January 1, 2021. We suggest that an implementation timeline of 24 months and a deadline of January 1, 
+2022 would place less burden on the industry.   
+
+In addition to development by the Part D pharmacy benefit managers, development will be required of 
+electronic prescribing system developers to support NCPDP SCRIPT 2017071.   
+
+Even if an electronic prescription system already supports electronic prior authorization, adopting 
+NCPDP SCRIPT 2017071 will require significant additional development by vendors across multiple 
+versions of their software.  This development competes for development resources with migration to 
+NCPDP SCRIPT 2017071 for other e-prescribing transactions and development required by the ONC 21st 
+Century Cures Act NPRM. 
+
+As stated in this NPRM, when NCPDP recommended the adoption of NCPDP SCRIPT 2017071 for 
+electronic prior authorization, it was recommended that the industry be given a 24 month 
+implementation window “due to the extensive coding required by Electronic Health Records (EHRs) and 
+Part D plans to implement the change”.  We agree and feel a 24 month window for this development 
+and implementation is more appropriate than the currently proposed mandate of January 1, 2021, 
+which would only allow approximately one year for development and implementation. 
+
+Determining if Prior Authorization is Needed 
+The background section of this proposal states incorrectly that “An ePA transaction standard would 
+allow a prescriber using an electronic prescribing (eRx) system or an electronic health record (EHR) with 
+eRx capability to determine whether the beneficiary's plan requires a PA for a given medication”.  The 
+electronic prior authorization standard produced by NCPDP is not designed to determine whether prior 
+authorization is required for a particular medication.  Determination of whether a prior authorization 
+should be accomplished through review of a patient’s formulary (such as through NCPDP Formulary & 
+Benefit files) or through the use of Real-Time Prescription Benefit tools. 
+
+Clarification of Usage 
+In the proposed regulatory language, the wording references “between prescribers and dispensers”.  
+The electronic prior authorization messages are not between prescribers and dispensers; they are 
+between prescribers and pharmacy benefit managers.  We recommend updating the language as 
+follows: 
+
+ (7) Electronic prior authorization. Beginning January 1, 2021, Part D sponsors and prescribers must comply with the 
+National Council for Prescription Drug Programs SCRIPT standard, Implementation Guide Version 2017071 
+approved July 28, 2017 (incorporated by reference in paragraph (c)(1)(vii) of this section), to provide for the 
+communication of a prescription or related prescription-related information between prescribers and dispensers 
+Part D sponsors for the following transactions: 
+(i) PAInitiationRequest and PAInitiationResponse 
+(ii) PARequest and PAResponse 
+(iii) PAAppealRequest and PAAppealResponse 
+(iv) PACancelRequest and PACancelResponse 
+
+Epic  1979 Milky Way  Verona WI 53593  (608) 271-9000  FAX (608) 271-7237  www.epic.com
