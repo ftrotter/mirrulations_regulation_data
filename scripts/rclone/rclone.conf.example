@@ -1,12 +1,10 @@
-[AWS for mirrulations]
+[myconfig]
 type = s3
 provider = AWS
 requester_pays = true
 env_auth = false
-region = US
-acl = private
-server_side_encryption = AES256
 storage_class = STANDARD
-access_key_id = YOUR_ACCESS_KEY_ID 
-secret_access_key = YOUR_SECRET_ACCESS_KEY
+access_key_id = YOUR_ACCESS_KEY 
+secret_access_key = YOUR_SECRET_KEY
+acl = private
 
