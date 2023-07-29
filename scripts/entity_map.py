@@ -16,12 +16,12 @@ entity_map.csv will be written to the directory specified.
 
 from csv import DictWriter
 import os
+import re
 import sys
 import spacy
 from collections import Counter
 
-spacy.load("en_core_web_sm")
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_trf")
 
 
 def process(root, file):
@@ -46,17 +46,25 @@ def get_ids(dirs, file):
     return org, docket, comment_id
 
 
+def load_sections(path):
+    with open(path, "r") as f:
+        sections = re.split('\n\n|\x0C', f.read())
+    return sections
+
+
 def extract_entities(path):
-    doc = nlp(open(path, "r").read())
     entities = []
-    for ent in doc.ents:
-        # replace multiple whitespace characters with single space
-        entities.append((' '.join(ent.text.split()), ent.label_))
+    for section in load_sections(path):
+        doc = nlp(section)
+        for ent in doc.ents:
+            # replace multiple whitespace characters with single space
+            entities.append((' '.join(ent.text.split()), ent.label_))
+
     return entities
 
 
 def count_entities(entities):
-    names = [name for name, etype in entities if etype == "PERSON"]
+    names = [name for name, etype in entities if etype == "PERSON" or etype == "ORG"]
     counts = Counter(names)
     return counts
 
