@@ -65,7 +65,7 @@ def run_command(agency_list, year_list, textonly, all):
     #print("Textonly: ", textonly)
     #print("All: ", all)
 
-    always_flags = " --s3-requester-pays --progress --checkers 20 --transfers 10"
+    always_flags = " --s3-requester-pays --progress --checkers 200 --transfers 100"
 
 
     if all:
