@@ -1,9 +1,10 @@
 import os
 from dotenv import load_dotenv
 import click
+import time
+import datetime
 
 load_dotenv() #So we can get our passwords from the .env file
-
 
 
 #print(f"Saving data to: {dest_dir} \nUsing rclone configuration file {rclone_config_file}")
@@ -64,6 +65,7 @@ def run_command(agency_list, year_list, textonly, all):
     #print("Year(s): ", year_list)
     #print("Textonly: ", textonly)
     #print("All: ", all)
+    start_time = time.time()
 
     always_flags = " --s3-requester-pays --progress --checkers 100 --transfers 50"
 
@@ -87,6 +89,7 @@ def run_command(agency_list, year_list, textonly, all):
 
     if not is_enough:
         print("If you want to download everything.. pass in the --all paramater and go to lunch!! \nOtherwise add the --help for a full list of options")
+        exit()
     
     if not textonly:
         included_file_types = ['*']
@@ -146,7 +149,16 @@ def run_command(agency_list, year_list, textonly, all):
     command_array = [ this_command ]
     print_and_run_command_array(command_array)
 
+    end_time = time.time()
 
+    elapsed_time = round(end_time - start_time)
+    printable_elapsed_time = str(datetime.timedelta(seconds = elapsed_time))
+
+    print(f"""
+Process finished!
+    Took {printable_elapsed_time} to finish ( {elapsed_time} seconds )
+
+            """)
 
 
 if __name__ == "__main__":
