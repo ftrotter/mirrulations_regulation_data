@@ -69,8 +69,12 @@ def run_command(agency_list, year_list, textonly, getall, transfers):
     #Will use on any future command
     transfers_to_use = 50
     if transfers:
-        transfers_to_use = transfers
-    checkers_to_use = transfers_to_use * 2
+        if(transfers.isnumeric()):
+            transfers_to_use = transfers
+        else:
+            print("Non numeric value for transfers argument. confusion. exiting")
+            exit()
+    checkers_to_use = int(transfers_to_use) * 2
 
     #these are the rclone commands that we always use
     always_flags = f" --s3-requester-pays --progress --checkers {checkers_to_use} --transfers {transfers_to_use}"
