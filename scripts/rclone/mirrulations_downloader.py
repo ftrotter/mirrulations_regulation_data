@@ -47,9 +47,10 @@ def print_and_run_command_array(command_array):
 @click.option('--agency', '-a', default='', help="Agency name(s) separated by commas.")
 @click.option('--year', '-y', default='', help="Year(s) or range(s) of years separated by commas or dash (e.g., 2010-2015).")
 @click.option('--textonly', is_flag=True, help="Flag to indicate if textonly should be True.")
-@click.option('--all', is_flag=True, help="Download all agencies, all years. (WARNING: this could cost a few hundred dollars...)")
+@click.option('--getall', is_flag=True, help="Download all agencies, all years. (WARNING: this could cost a few hundred dollars...)")
+@click.option('--transfers', is_flag=True, help="How many rclone connections to run at the same time (default is 50)")
 
-def main(agency, year, textonly, all ):
+def main(agency, year, textonly, getall, transfers ):
     agency_list = [agency.strip() for agency in agency.split(',') if agency.strip()]
     
     if year:
@@ -57,9 +58,9 @@ def main(agency, year, textonly, all ):
     else:
         year_list = []
 
-    run_command(agency_list, year_list, textonly, all)
+    run_command(agency_list, year_list, textonly, getall, transfers)
 
-def run_command(agency_list, year_list, textonly, all):
+def run_command(agency_list, year_list, textonly, getall, transfers):
     """A command to generate and run the rclone commands needed to download regulations data from the mirrulations project!"""
     #print("Agency: ", agency_list)
     #print("Year(s): ", year_list)
@@ -67,34 +68,43 @@ def run_command(agency_list, year_list, textonly, all):
     #print("All: ", all)
     start_time = time.time()
 
-    always_flags = " --s3-requester-pays --progress --checkers 100 --transfers 50"
+    transfers_to_use = 50
+    if transfers:
+        transfers_to_use = transfers
+    checkers_to_use = transfers_to_use * 2
 
+
+    always_flags = f" --s3-requester-pays --progress --checkers {checkers_to_use} --transfers {transfers_to_use}"
+
+    is_limited = False
 
     if all:
         is_enough = True
     else:
         is_enough = False
 
-    inlude_statements = []
-
     if len(agency_list) > 0:
         is_enough = True
+        is_limited = True
     else:
         agency_list = [ '*' ]
 
     if len(year_list) > 0:
         is_enough = True
+        is_limited = True
     else:
         year_list = [ '*' ]
 
     if not is_enough:
-        print("If you want to download everything.. pass in the --all paramater and go to lunch!! \nOtherwise add the --help for a full list of options")
+        print("If you want to download everything.. pass in the --getall paramater and go to lunch!! \nOtherwise add the --help for a full list of options")
         exit()
     
     if not textonly:
         included_file_types = ['*']
+        is_enough = True
     else:
         included_file_types = ['*.txt','*.json','*.htm']
+        is_limited = True
 
 
     dest_dir = os.getenv('MIRRULATIONS_DATA_PATH')
@@ -114,40 +124,32 @@ def run_command(agency_list, year_list, textonly, all):
         print("Crashing due to errors")
         exit()
 
+    base_rclone_command = f"rclone copy myconfig:mirrulations/ {dest_dir} --config {rclone_config_file} {always_flags}"
+
     if all:
-        commands_to_run = [ f"rclone copy myconfig:mirrulations/ {dest_dir} --config {rclone_config_file} {always_flags}" ]
-        print_and_run_command_array(commands_to_run)
+        if is_limited:
+            print(f"You have entered --getall and a filter at the same time. I dont know what to do... so I am not going to do anything. Try --help")
+            exit()
+        else:    
+            commands_to_run = [ base_rclone_command ]
+            print_and_run_command_array(commands_to_run)
+    else:
+        commands_to_run = []
 
-    commands_to_run = []
-
-    if False:
-    #if is_filter_agency and is_filter_year and textonly:
         include_these = []
         for this_agency in agency_list:
-            #For each agency make the directory for that agency 
-            commands_to_run.append(f"mkdir -p {dest_dir}/{this_agency}")
             for this_year in year_list:
-                for this_file_type in text_file_types:
-                    include_these.append(f"/{this_agency}/*{this_year}*/**/*.{this_file_type}")
-                    
-        this_command = f"rclone copy myconfig:mirrulations/ {dest_dir} --config {rclone_config_file} {always_flags} "
+                if this_year != '*':
+                    this_year = f"*{this_year}*"
+                for this_file_type in included_file_types:
+                    include_these.append(f"/{this_agency}/{this_year}/**/{this_file_type}")
+
+        this_command = base_rclone_command
         for include_string in include_these:
-            this_command += f"--include \"{include_string}\""
+            this_command += f" --include \"{include_string}\" "
 
-    include_these = []
-    for this_agency in agency_list:
-        for this_year in year_list:
-            if this_year != '*':
-                this_year = f"*{this_year}*"
-            for this_file_type in included_file_types:
-                include_these.append(f"/{this_agency}/{this_year}/**/{this_file_type}")
-
-    this_command = f"rclone copy myconfig:mirrulations/ {dest_dir} --config {rclone_config_file} {always_flags}"
-    for include_string in include_these:
-        this_command += f" --include \"{include_string}\" "
-
-    command_array = [ this_command ]
-    print_and_run_command_array(command_array)
+        command_array = [ this_command ]
+        print_and_run_command_array(command_array)
 
     end_time = time.time()
 
