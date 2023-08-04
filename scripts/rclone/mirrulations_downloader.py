@@ -48,7 +48,7 @@ def print_and_run_command_array(command_array):
 @click.option('--year', '-y', default='', help="Year(s) or range(s) of years separated by commas or dash (e.g., 2010-2015).")
 @click.option('--textonly', is_flag=True, help="Flag to indicate if textonly should be True.")
 @click.option('--getall', is_flag=True, help="Download all agencies, all years. (WARNING: this could cost a few hundred dollars...)")
-@click.option('--transfers', is_flag=True, help="How many rclone connections to run at the same time (default is 50)")
+@click.option('--transfers', default='', help="How many rclone connections to run at the same time (default is 50)")
 
 def main(agency, year, textonly, getall, transfers ):
     agency_list = [agency.strip() for agency in agency.split(',') if agency.strip()]
@@ -95,20 +95,21 @@ def run_command(agency_list, year_list, textonly, getall, transfers):
     else:
         year_list = [ '*' ]
 
-    #we either need --getall or we need some other limitation
+    #All 'text only' means is that we are not doing the word documents, pdfs, etc etc.. we just want to the raw text files
+    #these come in three flavors... 
+    if not textonly:
+        included_file_types = ['*']
+    else:
+        included_file_types = ['*.txt','*.json','*.htm']
+        is_limited = True
+        is_enough = True
+
+#we either need --getall or we need some other limitation
     #we are not just going to download everything without some indication that we should...
     if not is_enough:
         print("If you want to download everything.. pass in the --getall paramater and go to lunch!! \nOtherwise add the --help for a full list of options")
         exit()
     
-    #All 'text only' means is that we are not doing the word documents, pdfs, etc etc.. we just want to the raw text files
-    #these come in three flavors... 
-    if not textonly:
-        included_file_types = ['*']
-        is_enough = True
-    else:
-        included_file_types = ['*.txt','*.json','*.htm']
-        is_limited = True
 
     #A substantial part of our configuration is contained in rclone configuration file 
     #We need to make sure these exist! 
