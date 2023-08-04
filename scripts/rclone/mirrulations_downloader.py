@@ -62,23 +62,23 @@ def main(agency, year, textonly, getall, transfers ):
 
 def run_command(agency_list, year_list, textonly, getall, transfers):
     """A command to generate and run the rclone commands needed to download regulations data from the mirrulations project!"""
-    #print("Agency: ", agency_list)
-    #print("Year(s): ", year_list)
-    #print("Textonly: ", textonly)
-    #print("All: ", all)
+
     start_time = time.time()
 
+    #How many rclone transfers should we use? We need to figure it out before we build the arguments to rclone that we 
+    #Will use on any future command
     transfers_to_use = 50
     if transfers:
         transfers_to_use = transfers
     checkers_to_use = transfers_to_use * 2
 
-
+    #these are the rclone commands that we always use
     always_flags = f" --s3-requester-pays --progress --checkers {checkers_to_use} --transfers {transfers_to_use}"
 
+    #tracks whether there is a limitation argument
     is_limited = False
 
-    if all:
+    if getall:
         is_enough = True
     else:
         is_enough = False
@@ -95,10 +95,14 @@ def run_command(agency_list, year_list, textonly, getall, transfers):
     else:
         year_list = [ '*' ]
 
+    #we either need --getall or we need some other limitation
+    #we are not just going to download everything without some indication that we should...
     if not is_enough:
         print("If you want to download everything.. pass in the --getall paramater and go to lunch!! \nOtherwise add the --help for a full list of options")
         exit()
     
+    #All 'text only' means is that we are not doing the word documents, pdfs, etc etc.. we just want to the raw text files
+    #these come in three flavors... 
     if not textonly:
         included_file_types = ['*']
         is_enough = True
@@ -106,7 +110,8 @@ def run_command(agency_list, year_list, textonly, getall, transfers):
         included_file_types = ['*.txt','*.json','*.htm']
         is_limited = True
 
-
+    #A substantial part of our configuration is contained in rclone configuration file 
+    #We need to make sure these exist! 
     dest_dir = os.getenv('MIRRULATIONS_DATA_PATH')
     rclone_config_file = os.getenv('RCLONE_CONFIG_FILE')
 
@@ -124,16 +129,22 @@ def run_command(agency_list, year_list, textonly, getall, transfers):
         print("Crashing due to errors")
         exit()
 
+    #If we get here then we have the files we need to proceed.
+    #I is possible that junk in the rclone.conf file would keep this from working...
+    #This will be the command.. or the prefix for the commands that we try to build later
     base_rclone_command = f"rclone copy myconfig:mirrulations/ {dest_dir} --config {rclone_config_file} {always_flags}"
 
-    if all:
+    if getall:
         if is_limited:
             print(f"You have entered --getall and a filter at the same time. I dont know what to do... so I am not going to do anything. Try --help")
             exit()
-        else:    
+        else:
+            #If we get here, then shoudl simply download everything.
+            #we just run the command with no modification with --include statements
             commands_to_run = [ base_rclone_command ]
             print_and_run_command_array(commands_to_run)
     else:
+        #Here we are downloading some subset of the data.. which we will express with one or more --include statements to the rclone command
         commands_to_run = []
 
         include_these = []
@@ -151,6 +162,8 @@ def run_command(agency_list, year_list, textonly, getall, transfers):
         command_array = [ this_command ]
         print_and_run_command_array(command_array)
 
+    #No matter if we are downloading a portion or everything..
+    #We print out how long it took to run.
     end_time = time.time()
 
     elapsed_time = round(end_time - start_time)
