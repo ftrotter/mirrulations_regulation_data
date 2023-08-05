@@ -77,7 +77,7 @@ def run_command(agency_list, year_list, textonly, getall, transfers):
     checkers_to_use = int(transfers_to_use) * 2
 
     #these are the rclone commands that we always use
-    always_flags = f" --s3-requester-pays --progress --checkers {checkers_to_use} --transfers {transfers_to_use}"
+    always_flags = f" --s3-requester-pays --checkers {checkers_to_use} --transfers {transfers_to_use} --log-file 'rclone.log'"
 
     #tracks whether there is a limitation argument
     is_limited = False
