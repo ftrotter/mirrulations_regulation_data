@@ -10,6 +10,12 @@ s3://mirrulations
 
 Mirrulations uses 
 
+## How to download
+The simplest way to download the data, is to use rclone. 
+We have written [some helper scripts that will help automate the rclone commands](/scripts/rclone/README.md). 
+
+Using the script it is simple to download data by year, by Federal agency, and to decide to download the raw text only, or to download both the raw text and the originals (generally pdfs and word documents).
+
 
 ## Data License
 
