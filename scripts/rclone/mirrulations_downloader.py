@@ -175,8 +175,14 @@ def run_command(agency_list, year_list, docket_list, textonly, getall, transfers
             include_these = []
 
         for this_docket in docket_list:
+            # To really have any speed-up.. we also need to narrow by agency. Otherwise.. we will ahve to search for every agency 
+            # for the matching docket id.
+            # dockets take the form AGENCY-YEAR-ID like the soon to be famous DEA-2024-0059
+            docket_string_list = this_docket.split('-')
+            agency = docket_string_list.pop(0) # get the first segment.
+
             for this_file_type in included_file_types:    
-                include_these.append(f"/**/{this_docket}/**/{this_file_type}")
+                include_these.append(f"/{agency}/{this_docket}/**/{this_file_type}")
 
         this_command = base_rclone_command
         for include_string in include_these:
