@@ -49,18 +49,21 @@ def print_and_run_command_array(command_array):
 @click.option('--textonly', is_flag=True, help="Flag to indicate if textonly should be True.")
 @click.option('--getall', is_flag=True, help="Download all agencies, all years. (WARNING: this could cost a few hundred dollars...)")
 @click.option('--transfers', default='', help="How many rclone connections to run at the same time (default is 50)")
+@click.option('--docket','-d', default='', help="Download a specific docket id")
 
-def main(agency, year, textonly, getall, transfers ):
+def main(agency, year, docket, textonly, getall, transfers ):
     agency_list = [agency.strip() for agency in agency.split(',') if agency.strip()]
+    docket_list =  [docket.strip() for docket in docket.split(',') if docket.strip()]
     
     if year:
         year_list = parse_years(year)
     else:
         year_list = []
 
-    run_command(agency_list, year_list, textonly, getall, transfers)
 
-def run_command(agency_list, year_list, textonly, getall, transfers):
+    run_command(agency_list, year_list, docket_list, textonly, getall, transfers)
+
+def run_command(agency_list, year_list, docket_list, textonly, getall, transfers):
     """A command to generate and run the rclone commands needed to download regulations data from the mirrulations project!"""
 
     start_time = time.time()
@@ -77,7 +80,7 @@ def run_command(agency_list, year_list, textonly, getall, transfers):
     checkers_to_use = int(transfers_to_use) * 2
 
     #these are the rclone commands that we always use
-    always_flags = f" --s3-requester-pays --checkers {checkers_to_use} --transfers {transfers_to_use} --log-file 'rclone.log'"
+    always_flags = f" --s3-requester-pays --checkers {checkers_to_use} --transfers {transfers_to_use} --log-file 'rclone.log' -P "
 
     #tracks whether there is a limitation argument
     is_limited = False
@@ -98,6 +101,13 @@ def run_command(agency_list, year_list, textonly, getall, transfers):
         is_limited = True
     else:
         year_list = [ '*' ]
+
+    if len(docket_list) > 0:
+        is_enough = True
+        is_limited = True
+    else:
+        docket_list = []
+
 
     #All 'text only' means is that we are not doing the word documents, pdfs, etc etc.. we just want to the raw text files
     #these come in three flavors... 
@@ -159,6 +169,14 @@ def run_command(agency_list, year_list, textonly, getall, transfers):
                     this_year = f"*{this_year}*"
                 for this_file_type in included_file_types:
                     include_these.append(f"/{this_agency}/{this_year}/**/{this_file_type}")
+
+        # if we are doing dockets.. that is all we are doing
+        if len(docket_list) > 0:
+            include_these = []
+
+        for this_docket in docket_list:
+            for this_file_type in included_file_types:    
+                include_these.append(f"/**/{this_docket}/**/{this_file_type}")
 
         this_command = base_rclone_command
         for include_string in include_these:
