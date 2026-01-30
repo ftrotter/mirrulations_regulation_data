@@ -1,10 +1,5 @@
-[myconfig]
+[anons3]
 type = s3
 provider = AWS
-requester_pays = true
-env_auth = false
-storage_class = STANDARD
-access_key_id = YOUR_ACCESS_KEY 
-secret_access_key = YOUR_SECRET_KEY
-acl = private
+
 
