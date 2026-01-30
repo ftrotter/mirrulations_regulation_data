@@ -73,37 +73,54 @@ but we emplor you to use your best judgement when using this data.
 
 ### S3 download costs
 
-The authors of Mirrulations cannot afford to subsidize the download of regulation data. Therefore, Mirrulations is published using 
-the [Requestor Pays Bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html) feature of Amazon AWS S3 product. 
-
-If you download the S3 bucket in its entiretly this will result in an Amazon AWS bill of several hundreds of dollars. Even downloading just the text portion can be expensive. To save costs, please download only the portions of the text corpus that you need. 
+Mirrulations has been sponsored by the AWS Open Data service. This means that AWS itself bears the costs of hosting the mirrulations data. 
 
 
-## Downloading the data
-
-In order to download the data, you will need to get your own AWS keys, and then [follow the directions for downloading requestor pays S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ObjectsinRequesterPaysBuckets.html). 
-
-Most Amazon S3 clients do not support the requestor pays feature. However, [rclone](https://rclone.org/) does [support this](https://rclone.org/s3/#s3-requester-pays). We intend to support rclone for downloading purposes. 
 
 ### Understanding the Mirrulations folder structure
 
-The Mirrulations project [documents the directory structure used in the S3 bucket](https://github.com/MoravianUniversity/mirrulations/blob/main/docs/structure.md).
+The Mirrulations project [documents the directory structure used in the S3 bucket](https://github.com/mirrulations/mirrulations/blob/main/docs/structure.md).
+You might find this documentation out of date, so make sure you look there!! 
 
 Generally, the structure looks like this: 
 
 ```
-data
-└── <agency> (like DEA, CMS, etc)
-    └── <docket id> (like DEA-2016-0015) 
-        ├── binary-<docket id> (like 'binary-DEA-2016-0015')
-        └── text-<docket id> (like 'text-DEA-2016-0015')
-```        
+s3://mirrulations
+     ├── raw-data
+     │   └── <agency>
+     │       └── <docket id>
+     │           ├── text-<docket id>
+     │           │   ├── comments
+     │           │   │   ├── <comment id>.json
+     │           │   │   └── ...
+     │           │   ├── docket
+     │           │   │   ├── <docket id>.json
+     │           │   │   └── ...
+     │           │   └── documents
+     │           │       ├── <document id>.json
+     │           │       ├── <document id>_content.htm
+     │           │       └── ...
+     │           └── binary-<docket id>
+     │               └── comments_attachments
+     │                   ├── <comment id>_attachement_<counter>.<extension>
+     │                   └── ...
+     └── derived-data
+         └── <agency>
+             └── <docket id>
+                 └── <organization>
+                     └── <project name>
+                         └── <file type>
+                             └── <data file>
+```
 
+Anything under raw-data is a perfect copy of what you get from regulations.gov
+This is further divided into text and binary folders so that you can quickly download just the raw text, without the pdf attachments (etc) which are much larger. 
+      
 Generally, the "binary" folder contains a mirror of the pdfs and word documents that people submit for comments to Federal regulations.
 More rarely, these directories can contain jpgs, png and other image files that are submitted as comments. 
 
 You are free to download these binary files, but the whole point of the Mirrulations project is to make the text contained in these pdf's available
-as raw text. So if you look under the 'text' directory, you will find the text-extracted versions of these resources. 
+as raw text. So if you look under the 'derived-data' directory, you will find the text-extracted versions of these resources. 
 
 Mirrulations, by default, uses the [pikepdf](https://pypi.org/project/pikepdf/) tool to conduct text extraction on the various documents. 
 In the future, for PDFs that pikepdf does not cleanly extract, other extract tools, including OCR tools, will likely be used. 
@@ -130,7 +147,7 @@ here is a thousand words on the topic:
 This command will download both the binary files and the text files associated with docket id [DEA-2016-0015](https://www.regulations.gov/docket/DEA-2016-0015)
 
 ```
-rclone --s3-requester-pays copy s3:mirrulations/DEA/DEA-2016-0015/ /path/to/your/local/mirrulations/directory/DEA-2016-0015
+rclone copy s3:mirrulations/raw-data/DEA/DEA-2016-0015/ /path/to/your/local/mirrulations/directory/DEA-2016-0015
 ```
 
 
@@ -139,14 +156,14 @@ rclone --s3-requester-pays copy s3:mirrulations/DEA/DEA-2016-0015/ /path/to/your
 [rclone has advanced filtering capacity](https://rclone.org/filtering/) to download only portions of the data. Using that, you can use the following command to mirror all of the text contained in mirrulations (NOTE: this can be expensive!!):
      
 ```
-rclone --s3-requester-pays copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "*.txt" --include "*.json" --include "*.htm"
+rclone copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "*.txt" --include "*.json" --include "*.htm"
 ```
  
 #### Download any agency     
 To download every DEA regulation: 
  
 ```
-rclone --s3-requester-pays copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "/DEA/**/*.txt" --include "/DEA/**/*.json" --include "/DEA/**/*.htm"
+rclone copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "/*/DEA/**/*.txt" --include "/*/DEA/**/*.json" ---include "/*/DEA/**/*.htm"
 ```
      
 Replace 'DEA' with your agency of interest to get more information     
@@ -154,7 +171,7 @@ Replace 'DEA' with your agency of interest to get more information
 #### Download any year     
 The docket number of a regulation generally contains the year that the regulation was published. Thus, to download every regulation from 2022 we write:  
 ```
-rclone --s3-requester-pays copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "/*/*2022*/**/*.txt" --include "/*/*2022*/**/*.json" --include "/*/*2022*/**/*.htm"
+rclone copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "/*/*/*2022*/**/*.txt" --include "/*/*/*2022*/**/*.json" --include "/*/*/*2022*/**/*.htm"
 ```     
      
 
