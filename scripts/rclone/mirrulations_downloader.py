@@ -168,7 +168,8 @@ def run_command(agency_list, year_list, docket_list, textonly, getall, transfers
                 if this_year != '*':
                     this_year = f"*{this_year}*"
                 for this_file_type in included_file_types:
-                    include_these.append(f"/{this_agency}/{this_year}/**/{this_file_type}")
+                    # Updated pattern to match new directory structure with raw-data/ and derived-data/
+                    include_these.append(f"/*/{this_agency}/{this_year}/**/{this_file_type}")
 
         # if we are doing dockets.. that is all we are doing
         if len(docket_list) > 0:
@@ -181,8 +182,9 @@ def run_command(agency_list, year_list, docket_list, textonly, getall, transfers
             docket_string_list = this_docket.split('-')
             agency = docket_string_list.pop(0) # get the first segment.
 
-            for this_file_type in included_file_types:    
-                include_these.append(f"/{agency}/{this_docket}/**/{this_file_type}")
+            for this_file_type in included_file_types:
+                # Updated pattern to match new directory structure (both raw-data/ and derived-data/)
+                include_these.append(f"/*/{agency}/{this_docket}/**/{this_file_type}")
 
         this_command = base_rclone_command
         for include_string in include_these:
