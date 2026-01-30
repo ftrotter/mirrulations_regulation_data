@@ -165,7 +165,7 @@ provider = AWS
 This command will download both the binary files and the text files associated with docket id [DEA-2016-0015](https://www.regulations.gov/docket/DEA-2016-0015)
 
 ```
-rclone --config ./rclone.cnf copy anons3:mirrulations/raw-data/DEA/DEA-2016-0015/ /path/to/your/local/mirrulations/directory/DEA-2016-0015
+rclone --config ./rclone.cnf copy anons3:mirrulations/raw-data/DEA/DEA-2016-0015/ /CHANGEME/path/to/your/local/mirrulations/directory/DEA-2016-0015
 ```
 
 
@@ -174,14 +174,14 @@ rclone --config ./rclone.cnf copy anons3:mirrulations/raw-data/DEA/DEA-2016-0015
 [rclone has advanced filtering capacity](https://rclone.org/filtering/) to download only portions of the data. Using that, you can use the following command to mirror all of the text contained in mirrulations (NOTE: this can be expensive!!):
      
 ```
-rclone --config ./rclone.cnf copy anons3:mirrulations /path/to/your/local/mirrulations/directory/ --include "*.txt" --include "*.json" --include "*.htm"
+rclone --config ./rclone.cnf copy anons3:mirrulations /CHANGEME/path/to/your/local/mirrulations/directory/ --include "*.txt" --include "*.json" --include "*.htm"
 ```
  
 #### Download any agency     
 To download every DEA regulation: 
  
 ```
-rclone --config ./rclone.cnf copy anons3:mirrulations /path/to/your/local/mirrulations/directory/ --include "/*/DEA/**/*.txt" --include "/*/DEA/**/*.json" ---include "/*/DEA/**/*.htm"
+rclone --config ./rclone.cnf copy anons3:mirrulations /CHANGEME/path/to/your/local/mirrulations/directory/ --include "/*/DEA/**/*.txt" --include "/*/DEA/**/*.json" ---include "/*/DEA/**/*.htm"
 ```
      
 Replace 'DEA' with your agency of interest to get more information     
@@ -189,7 +189,7 @@ Replace 'DEA' with your agency of interest to get more information
 #### Download any year     
 The docket number of a regulation generally contains the year that the regulation was published. Thus, to download every regulation from 2022 we write:  
 ```
-rclone copy anons3:mirrulations /path/to/your/local/mirrulations/directory/ --include "/*/*/*2022*/**/*.txt" --include "/*/*/*2022*/**/*.json" --include "/*/*/*2022*/**/*.htm"
+rclone copy anons3:mirrulations /CHANGEME/path/to/your/local/mirrulations/directory/ --include "/*/*/*2022*/**/*.txt" --include "/*/*/*2022*/**/*.json" --include "/*/*/*2022*/**/*.htm"
 ```     
      
 
