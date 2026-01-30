@@ -141,13 +141,31 @@ here is a thousand words on the topic:
         
 
 ### using rclone to download portions of the data
+
+#### First setup rclone to download from s3 anoymously 
+
+Install rclone using brew or whatever you use to get command line programs to work. 
+
+```
+brew install rclone
+```
+
+Here is the [rclone instructions](https://rclone.org/s3/#anonymous-access)
+
+Create a file called rclone.cnf in the same directory you will be cloning your data. It should look like this: 
+
+```
+[anons3]
+type = s3
+provider = AWS
+```
      
 #### Downloading only a specific docket
 
 This command will download both the binary files and the text files associated with docket id [DEA-2016-0015](https://www.regulations.gov/docket/DEA-2016-0015)
 
 ```
-rclone copy s3:mirrulations/raw-data/DEA/DEA-2016-0015/ /path/to/your/local/mirrulations/directory/DEA-2016-0015
+rclone --config ./rclone.cnf copy s3:mirrulations/raw-data/DEA/DEA-2016-0015/ /path/to/your/local/mirrulations/directory/DEA-2016-0015
 ```
 
 
@@ -156,14 +174,14 @@ rclone copy s3:mirrulations/raw-data/DEA/DEA-2016-0015/ /path/to/your/local/mirr
 [rclone has advanced filtering capacity](https://rclone.org/filtering/) to download only portions of the data. Using that, you can use the following command to mirror all of the text contained in mirrulations (NOTE: this can be expensive!!):
      
 ```
-rclone copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "*.txt" --include "*.json" --include "*.htm"
+rclone --config ./rclone.cnf copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "*.txt" --include "*.json" --include "*.htm"
 ```
  
 #### Download any agency     
 To download every DEA regulation: 
  
 ```
-rclone copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "/*/DEA/**/*.txt" --include "/*/DEA/**/*.json" ---include "/*/DEA/**/*.htm"
+rclone --config ./rclone.cnf copy s3:mirrulations /path/to/your/local/mirrulations/directory/ --include "/*/DEA/**/*.txt" --include "/*/DEA/**/*.json" ---include "/*/DEA/**/*.htm"
 ```
      
 Replace 'DEA' with your agency of interest to get more information     
