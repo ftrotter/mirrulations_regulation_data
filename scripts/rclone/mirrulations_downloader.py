@@ -19,7 +19,7 @@ load_dotenv(env_file_path) #So we can get our passwords from the .env file
 
 #print(f"Saving data to: {dest_dir} \nUsing rclone configuration file {rclone_config_file}")
 
-#my_command = f"rclone copy myconfig:mirrulations/ {dest_dir} --config {rclone_config_file} --s3-requester-pays"
+#my_command = f"rclone copy myconfig:mirrulations/ {dest_dir} --config {rclone_config_file}"
 
 #print(f"Running: \n\t{my_command}")
 #os.system(my_command)
@@ -90,7 +90,7 @@ def run_command(agency_list, year_list, docket_list, textonly, getall, transfers
     checkers_to_use = int(transfers_to_use) * 2
 
     #these are the rclone commands that we always use
-    always_flags = f" --s3-requester-pays --checkers {checkers_to_use} --transfers {transfers_to_use} --log-file 'rclone.log' -P "
+    always_flags = f" --checkers {checkers_to_use} --transfers {transfers_to_use} --log-file 'rclone.log' -P "
 
     #tracks whether there is a limitation argument
     is_limited = False

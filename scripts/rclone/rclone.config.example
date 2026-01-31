@@ -1,4 +1,4 @@
-[anons3]
+[myconfig]
 type = s3
 provider = AWS
 
