@@ -3,8 +3,18 @@ from dotenv import load_dotenv
 import click
 import time
 import datetime
+import sys
 
-load_dotenv() #So we can get our passwords from the .env file
+# Check for .env file before attempting to load it
+env_file_path = os.path.join(os.path.dirname(__file__), '.env')
+if not os.path.isfile(env_file_path):
+    print(f"Error: .env file not found at {env_file_path}")
+    print("Please create a .env file by copying example.env and configuring the required variables:")
+    print("  MIRRULATIONS_DESTINATION_PATH")
+    print("  RCLONE_CONFIG_FILE")
+    sys.exit(1)
+
+load_dotenv(env_file_path) #So we can get our passwords from the .env file
 
 
 #print(f"Saving data to: {dest_dir} \nUsing rclone configuration file {rclone_config_file}")
@@ -127,16 +137,22 @@ def run_command(agency_list, year_list, docket_list, textonly, getall, transfers
 
     #A substantial part of our configuration is contained in rclone configuration file 
     #We need to make sure these exist! 
-    dest_dir = os.getenv('MIRRULATIONS_DATA_PATH')
+    dest_dir = os.getenv('MIRRULATIONS_DESTINATION_PATH')
     rclone_config_file = os.getenv('RCLONE_CONFIG_FILE')
 
     has_error = False
 
-    if not os.path.exists(dest_dir):
+    if dest_dir is None:
+        print(f"Error: MIRRULATIONS_DESTINATION_PATH environment variable is not set. Please set it in your .env file")
+        has_error = True
+    elif not os.path.exists(dest_dir):
         print(f"Error: {dest_dir} does not exist ")
         has_error = True
 
-    if not os.path.isfile(rclone_config_file):
+    if rclone_config_file is None:
+        print(f"Error: RCLONE_CONFIG_FILE environment variable is not set. Please set it in your .env file")
+        has_error = True
+    elif not os.path.isfile(rclone_config_file):
         print(f"Error: {rclone_config_file} is not found")
         has_error = True
 
