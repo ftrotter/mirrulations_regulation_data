@@ -1,0 +1,229 @@
+Charles N. Kahn III 
+President and CEO 
+
+February 13, 2022 
+
+The Honorable Chiquita Brooks-LaSure 
+Administrator 
+Centers for Medicare & Medicaid Services 
+Department of Health and Human Services 
+Hubert H. Humphrey Building 
+200 Independence Avenue, SW Room 445-G 
+Washington, DC 20201 
+
+RE:   CMS–10527, CMS–10260, CMS–10836 and CMS–855A. Agency Information 
+
+Collection Activities: Proposed Collection; Comment Request; December 15, 2022 
+
+Dear Administrator Brooks-LaSure: 
+
+The Federation of American Hospitals (FAH) is the national representative of more than 
+
+1,000 investor-owned or managed community hospitals and health systems throughout the 
+United States.  Our members include teaching and non-teaching hospitals in urban and rural parts 
+of America, as well as inpatient rehabilitation, psychiatric, long-term acute care, and cancer 
+hospitals.  The FAH appreciates the opportunity to comment to the Centers for Medicare & 
+Medicaid Services (CMS) on proposed revisions to the Medicare Enrollment Application - 
+Institutional Providers (Form CMS 855A) following CMS’s Notice of Agency Information 
+Collection Activities: Proposed Collection, published in the Federal Register on December 17, 
+2022 (87 Fed. Reg. 76,626). 
+
+The FAH supports many of the changes proposed, including the revisions designed to 
+
+correct errors, create a uniform standard across the enrollment applications, improve instructions, 
+and minimize burden.  The FAH, however, believes that three of the proposed changes are 
+inappropriate and should not be finalized: (1) the removal of reporting on physician ownership 
+from Section 2A(4), (2) the addition of new outpatient provider-based department information in 
+Section 4A, and (3) the collection of new ownership information focused on private equity and 
+real estate investment trusts (REITs) in Sections 5 and 6. 
+
+750 9th Street, NW, Suite 600, Washington, DC  20001 • 202-624-1500 • FAX 202-737-6462 • www.fah.org 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Section 2A(4)—Removal of Physician-Owned Hospital Information.  The FAH 
+
+strongly opposes the proposed removal of section 2A(4), which currently collects minimal 
+information on physician-owned hospitals (POHs).  Instead, the FAH urges CMS to (1) retain 
+this question on Form CMS 855A, taking the necessary steps to include responses as a data point 
+in the Provider Enrollment, Chain, and Ownership System (PECOS) ownership dataset, and 
+(2) finally require that POHs submit the annual reports mandated by Congress by completing 
+Form CMS 855POH.  Congress recognized the critical risks associated with POHs with the 
+adoption of the Affordable Care Act (ACA), which, inter alia, prohibits the enrollment of new 
+POHs, limits the expansion of existing POHs, and imposes certain POH transparency 
+requirements.  Transparency, in particular, is critical to ensure that regulators and potential 
+patients are aware of physician ownership, which carries unique risks with respect to physician 
+conflicts of interest and high-cost, low-value care.1 
+
+The cited justification for eliminating the POH “Yes/No” question from Section 2A is 
+
+that “Physician owned hospital reporting is no longer required via the CMS-855 applications.”  
+But no supporting rationale for eliminating POH reporting via Form CMS 855A is provided.  
+This unexplained erosion of transparency measures for POHs should not be finalized.  Rather, 
+the FAH urges CMS to retain this question, include responses in the ownership dataset, and 
+expand information collection for POHs.  With respect to the ownership dataset, at present, 
+responses in section 2A(4) do not appear in the PECOS ownership dataset.  This dataset, which 
+is updated monthly, provides valuable information and transparency around ownership, but it is 
+not populated with information from Section 2A of the Form CMS 855A.  Therefore, we urge 
+CMS to either move the POH “Yes/No” question from Section 2A to Sections 5 and 6 or to 
+revise the data sources for the ownership dataset to include responses to the POH question in 
+section 2A(4). 
+
+Beyond adding POH data to the ownership dataset, the FAH believes that further delays 
+
+in POHs’ annual reporting on ownership and investment interests are unwarranted.  At present, it 
+appears that despite the statutory requirement that POHs submit to the Secretary an annual report 
+reporting on ownership and investment interests (42 U.S.C. § 1395nn(i)(C)(i)) and the adoption 
+of an implementing regulation (42 C.F.R. § 411.362(b)(3)(i)), POHs have not been submitting 
+this information.  Rather, POHs have been instructed that they are not required to submit a 
+completed Form CMS-855POH or a completed Attachment 1 of the Form CMS-855A since 
+March 12, 2015.2  Thus, the FAH strongly urges CMS to not only retain the POH question in 
+Section 2A but also provide final instructions commencing annual reporting of POH ownership 
+and investment in accordance with express requirements of 42 U.S.C. § 1395nn(i)(C)(i). 
+
+1 These issues were given prominence in Atul Gawande’s seminal article highlighting the extraordinary 
+cost of care at Doctors Hospital at Renaissance (DHR).  The Cost Conundrum—What a Texas Town Can 
+Teach Us about Health Care, NEW YORKER (June 1, 2009), available at 
+https://www.newyorker.com/magazine/2009/06/01/the-cost-conundrum.  CMS recently granted DHR’s 
+request to add a total of 551 operating rooms, procedure rooms, and beds at a new facility more than 50 
+miles away from the main hospital and in another county.  87 Fed. Reg. 77,844 (Dec. 20, 2022). 
+
+2 Physician-Owned Hospitals, CMS (Dec. 16, 2022, 4:22 PM), https://www.cms.gov/medicare/fraud-and-
+abuse/physicianselfreferral/physician_owned_hospitals; Medicare Program Integrity Manual, Chapter 10, 
+section 10.2.1.8.B.4.    
+
+2 
+
+ 
+ 
+Section 4A—Additional reporting requirements in Section 4.  The FAH opposes the 
+proposed revisions to Form CMS 855A because they are unnecessary and inappropriate.  The 
+proposed revisions would compel the provider to attest that the facility “satisfies applicable 
+requirements at 42 CFR 413.65,” but provider attestations of compliance with the requirements 
+of 42 C.F.R. § 413.65 have been voluntary since the 2003 Inpatient Prospective Payment System 
+Final Rule.3  Under long-standing CMS policy and regulations, only a provider “seek[ing] a 
+determination of provider-based status” would submit an attestation stating that the facility meets 
+the applicable provider-based criteria.4  The justification for this change does not provide any 
+rationale from deviating from this practice, and at a minimum, the language indicating that the 
+provider “satisfies applicable requirements at 42 CFR 413.65” should be stricken. 
+
+The FAH is also concerned that the eight categories of provider-based departments are 
+
+unclear and contradictory.  By way of example, it is unclear whether the “remote location” 
+checkbox should be used for the inpatient facility that is the remote location because this 
+checkbox is within the category of “Outpatient Provider-Based Department (PBD) Site” and the 
+remote location is not an outpatient provider-based department.  Likewise, it is unclear which 
+boxes should be checked for an off-campus dedicated emergency department (ED).  Such a 
+facility would be a “dedicated emergency department (ED)” (the third checkbox for outpatient 
+PBD sites), but it would also be an outpatient PBD that is “off-campus” of the main provider (the 
+fourth checkbox) and an outpatient PBD that is “excepted off-campus” pursuant to 42 C.F.R. 
+§ 419.48(b).  Far from reducing provider burden, this proposed revisions to section 4A would 
+create confusion.  Moreover, this language is unnecessary to the implementation of Section 603 
+of the Bipartisan Budget Act of 2015 (Pub. L. 114-74) as CMS has required providers to use the 
+“PO” and “PN” modifiers on claim forms to report excepted and non-excepted off-campus PBDs 
+since January 1, 2017. 
+
+Section 4C(2)—Additional Reporting Requirements for Disclosure of Electronic 
+Record Storage.  The FAH has significant concerns with the proposed addition to question 4C(2) 
+regarding electronic storage sites as public disclosure of the requested information could create 
+significant cybersecurity risks for providers, and urges CMS to eliminate or modify this addition.  
+As proposed, providers that store patient medical records electronically would be required to 
+“identify where/how these records are stored.”  The instructions for this proposed question 
+further specify: “This can be website, URL, in-house software program, online service, vendor, 
+etc.  This must be an electronic storage site that can be accessed by CMS or its designees if 
+necessary.”  To the extent that this question is seeking disclosure of a link that can be accessed 
+by CMS or its designees directly, such a disclosure would be inconsistent with security 
+standards.  If that is not what is being requested, the wording of the question should be 
+appropriately revised to reference a site “to which CMS or its designees can be provided access 
+if necessary.”   
+
+Hospitals and health systems have been the targets of significantly disruptive 
+cybersecurity attacks in recent years, and any question on the Form CMS 855A regarding the 
+storage of electronic medical records ought to be narrowly tailored to keep the request as 
+
+3 67 Fed. Reg. 49982, 50,084-88 (Aug. 1, 2002) (finalizing 42 C.F.R. 413.65(b)(3)). 
+
+4 42. C.F.R. § 413.65(b)(3) 
+
+3 
+
+ 
+ 
+targeted as possible and minimize the creation of new risks.  To this end, it would not appear that 
+there is a need to solicit any details regarding the location of electronically stored patient medical 
+records on the Form CMS 855A.  Rather, the FAH believes CMS’s interests could be met by a 
+question that asks whether or not the provider has a record retention policy that addresses 
+electronically stored patient medical records.  Such a question would be similar to current 
+question 3 in Section 2A regarding the hospital compliance plan. 
+
+Lastly, we note that the proposed wording of the instructions for this question would 
+
+create uncertainty among providers.  It is unclear whether the question is soliciting information 
+regarding the location of the electronic data (e.g., local servers, the cloud) or the software 
+platform used to store the data, and how a provider would complete this question if the “where” 
+and “how” involve different vendors and in-house solutions.  And it is also unclear how a 
+hospital would complete this question if it has multiple storage sites for these records.  In any 
+case, because disclosure of even limited information regarding the storage of these electronic 
+records may pose a security risk (and imposes an undue burden if a provider would be required 
+to update its enrollment with every change to a URL), the FAH urges CMS to eliminate the 
+request for information regarding “where/how these records are stored” and instead focus on a 
+targeted question confirming the existence of a record retention policy that addresses these 
+records. 
+
+Sections 5A & 6A—The FAH opposes the proposed addition of the “Yes/No” question 
+
+on ownership of each entity with an ownership role.  The proposed question asks, “Is this 
+organization itself owned by any other organization or by any individual?”  The FAH is 
+concerned that Form CMS 855A is being expanded with questions that do little or nothing to 
+improve the gatekeeping functions of the provider enrollment process, creating unwarranted 
+administrative burdens for providers. 
+
+Sections 5B & 6B—Private Equity and REITs.  Lastly, the FAH is concerned that the 
+
+justification presented for adding private equity and REITs to Section 5 (organizational 
+ownership) and Section 6 (individual ownership) inappropriately disparages private equity 
+owners.  The supporting justification for this change states: “[t]he data collection provides 
+greater transparency regarding the owners and managers for Part A facilities, given concerns 
+about the credentials and commitment to high-quality patient care of certain types of nursing 
+home ownership, including private equity firms.”  This sweeping statement impugns the 
+credibility and commitment of certain owner types, without providing any supporting basis or 
+rationale for the accusation.  It is particularly important to use considered judgment when adding 
+to sections 5 and 6 of the Form CMS 855A because information reported in these sections are 
+made public, including through the PECOS ownership dataset.  Any concerns regarding nursing 
+home ownership do not support additional reporting requirements and public disclosures for the 
+many other Part A providers that are required to complete Form CMS 855A.  The FAH therefore 
+urges CMS to decline to adopt these proposed changes.  The FAH is particularly concerned that 
+this justification prioritizes transparency regarding private equity and REIT ownership at the 
+same time that transparency is being eroded for POHs despite the statutory mandate for annual 
+reporting on POH ownership and investment. 
+
+4 
+
+ 
+ 
+* * * * * * 
+
+Thank you for the opportunity to comment on the proposed revisions to the Medicare 
+
+Enrollment Application.  If you have any questions, please contact me or a member of my staff 
+at 202-624-1534.  
+
+Sincerely, 
+
+5
