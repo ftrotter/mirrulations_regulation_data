@@ -5,6 +5,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
@@ -61,7 +62,9 @@ class ConversionTest(unittest.TestCase):
 
 class VerificationTest(unittest.TestCase):
     def test_builds_text_only_docket_patterns(self):
-        patterns = docket_include_patterns(docket_id="CMS-2026-1255")
+        patterns = docket_include_patterns(
+            docket_id="CMS-2026-1255", text_only=True
+        )
         self.assertEqual(8, len(patterns))
         self.assertIn(
             "/raw-data/CMS/CMS-2026-1255/**/*.htm", patterns
@@ -71,6 +74,15 @@ class VerificationTest(unittest.TestCase):
         )
         self.assertIn(
             "/raw-data/CMS/CMS-2026-1255/**/*.html", patterns
+        )
+
+    def test_full_docket_patterns_include_all_objects(self):
+        self.assertEqual(
+            [
+                "/raw-data/CMS/CMS-2026-1255/**/*",
+                "/derived-data/CMS/CMS-2026-1255/**/*",
+            ],
+            docket_include_patterns(docket_id="CMS-2026-1255"),
         )
 
     def test_parses_missing_differing_and_unexpected_objects(self):
@@ -96,6 +108,7 @@ class VerificationTest(unittest.TestCase):
                 json.dumps(
                     {
                         "verified": True,
+                        "text_only": False,
                         "source_root": str(source_root.resolve()),
                         "docket_id": "CMS-2026-1255",
                         "source_inventory_fingerprint": (
@@ -123,6 +136,7 @@ class VerificationTest(unittest.TestCase):
                 json.dumps(
                     {
                         "verified": False,
+                        "text_only": False,
                         "source_root": str(source_root),
                         "docket_id": "CMS-2026-1255",
                     }
@@ -146,6 +160,7 @@ class VerificationTest(unittest.TestCase):
                 json.dumps(
                     {
                         "verified": True,
+                        "text_only": False,
                         "source_root": str(source_root.resolve()),
                         "docket_id": "CMS-2026-1255",
                     }
@@ -218,6 +233,60 @@ class PipelineTest(unittest.TestCase):
                 )
             )
             self.assertEqual(1, len(inventory["assets"]))
+            self.assertEqual("not-applicable", inventory["assets"][0]["structure_status"])
+
+    @mock.patch("mirrulations_markdown.pipeline.extract_pdf_structure")
+    def test_pdf_pairing_renders_multiple_canonical_blocks(self, extract_structure):
+        extract_structure.return_value = {
+            "parser": "pypdf",
+            "parser_version": "test",
+            "page_count": 1,
+            "pages": [
+                {
+                    "page_number": 1,
+                    "paragraphs": [
+                        {"text": "I. Heading", "line_count": 1},
+                        {"text": "First paragraph.", "line_count": 2},
+                        {"text": "Second paragraph.", "line_count": 1},
+                    ],
+                }
+            ],
+        }
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            temporary_root = Path(temporary_directory)
+            source_root = temporary_root / "source"
+            markdown_db_path = temporary_root / "markdown"
+            canonical_path = (
+                source_root / "derived-data/CMS/CMS-2026-1255/tool/"
+                "comments_extracted_text/pypdf/"
+                "CMS-2026-1255-0002_attachment_1_extracted.txt"
+            )
+            pdf_path = (
+                source_root / "raw-data/CMS/CMS-2026-1255/binary/"
+                "comments_attachments/CMS-2026-1255-0002_attachment_1.pdf"
+            )
+            canonical_path.parent.mkdir(parents=True)
+            pdf_path.parent.mkdir(parents=True)
+            canonical_path.write_text(
+                "I. Heading  First paragraph.  Second paragraph.", encoding="utf-8"
+            )
+            pdf_path.write_bytes(b"synthetic structural source")
+            status = MarkdownPipeline.run(
+                source_root=source_root,
+                markdown_db_path=markdown_db_path,
+                docket_id="CMS-2026-1255",
+            )
+            output_path = (
+                markdown_db_path / STAGE_1
+                / canonical_path.relative_to(source_root).with_name(
+                    f"{canonical_path.name}.md"
+                )
+            )
+            output = output_path.read_text(encoding="utf-8")
+            self.assertEqual(0, status["failed_asset_count"])
+            self.assertIn("## I. Heading", output)
+            self.assertIn('<a id="p-0003"></a>', output)
+            self.assertIn("structural_source_object_key:", output)
 
 
 if __name__ == "__main__":

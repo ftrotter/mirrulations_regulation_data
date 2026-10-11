@@ -3,6 +3,7 @@
 import hashlib
 import json
 from pathlib import Path
+from collections import Counter
 
 from .pipeline import STAGE_1, STAGE_2
 
@@ -79,6 +80,24 @@ def corpus_summary(*, markdown_db_path, primary_source_object_key=None):
             1 for _ in (markdown_db_path / STAGE_2).rglob("*.md")
         ),
     }
+    pairings_path = markdown_db_path / "metadata" / "manifests" / "source_pairings.json"
+    if pairings_path.is_file():
+        pairings = json.loads(pairings_path.read_text(encoding="utf-8"))["pairings"]
+        summary["pairing_statuses"] = dict(
+            sorted(Counter(pairing["status"] for pairing in pairings).items())
+        )
+    inventory_path = markdown_db_path / "metadata" / "manifests" / "source_inventory.json"
+    if inventory_path.is_file():
+        assets = json.loads(inventory_path.read_text(encoding="utf-8"))["assets"]
+        summary["structure_source_statuses"] = dict(
+            sorted(
+                Counter(
+                    asset["structure_status"]
+                    for asset in assets
+                    if asset["source_role"] == "structural-source"
+                ).items()
+            )
+        )
     if primary_source_object_key:
         metadata_name = hashlib.sha256(
             primary_source_object_key.encode("utf-8")

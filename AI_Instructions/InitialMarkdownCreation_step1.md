@@ -7,7 +7,7 @@ Status: proposed implementation specification, version 0.1.
 The first end-to-end development run has three user-visible operations:
 
 1. download a bounded Mirrulations selection with the existing `rclone`
-   helper and its `--textonly` option;
+   helper, including original files used as structural evidence;
 2. create an initial Markdown version of every selected, applicable HTM, HTML,
    JSON, and TXT asset; and
 3. create a second Markdown version that adds resolved legal citations as
@@ -18,10 +18,11 @@ rendering are one user-facing Markdown enrichment operation. They may remain
 separate internal modules and sidecars so failures, provenance, and intermediate
 decisions stay inspectable.
 
-PDFs and other binary attachments are outside this milestone. Do not download
-them for this workflow, parse them, or add new OCR. Published text extraction
-under the selected Mirrulations `derived-data/` paths remains eligible because
-it is copied unchanged by `rclone --textonly`.
+Original files are immutable structural evidence. For PDF-backed extracted TXT,
+use pypdf to recover page, line, and paragraph evidence while preserving the
+published Mirrulations extracted text as canonical wording. Record both source
+objects and hashes. Do not add new OCR. DOCX and image structure recovery is
+deferred and must receive an explicit structure-pending status.
 
 ## Purpose and scope
 
@@ -163,13 +164,12 @@ public bucket. AWS credentials are not required.
 ### Acquisition scope
 
 Select and record an explicit scope. Prefer one or more docket IDs with
-`--docket`. Agency and year filters are also available. This milestone always
-uses `--textonly`.
+`--docket`. Agency and year filters are also available. This milestone requires
+the complete bounded selection and does not use `--textonly`.
 
-The `--textonly` option defines a deliberately restricted mirror containing
-the selected TXT, JSON, HTM, and HTML objects exactly as published. Omit
-`--textonly` only for a different, future workflow that explicitly includes
-original attachments; doing so is outside this milestone.
+The `--textonly` option remains available for other downloader uses, but its
+restricted mirror is insufficient for Markdown structure recovery and must not
+be used for this milestone.
 
 Do not describe a filtered selection as a mirror of the entire bucket. Do not
 use `--getall` for routine bounded runs.
@@ -544,10 +544,9 @@ or modify it.
 
 ### Initial acceptance criteria
 
-1. The selected bounded scope is copied with the existing `rclone` helper and
-   `--textonly` into a clean, dedicated, ignored source-mirror path. No
-   application-specific downloader is used, and PDFs or other binaries are not
-   part of this workflow.
+1. The selected bounded scope is copied with the existing `rclone` helper into
+   a clean, dedicated, ignored source-mirror path. No application-specific
+   downloader is used. Original files are included as structural evidence.
 2. An `rclone` comparison confirms that every selected object has the same
    bytes and relative path as Mirrulations and that the dedicated mirror
    contains no unexpected files. Downstream stages refuse an unverified mirror.

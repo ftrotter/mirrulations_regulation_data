@@ -25,8 +25,12 @@ python3 mirrulations_downloader.py --agency DEA --textonly
 The first Markdown-enrichment development case uses:
 
 ```shell
-python3 mirrulations_downloader.py --docket CMS-2026-1255 --textonly
+python3 mirrulations_downloader.py --docket CMS-2026-1255
 ```
+
+The Markdown workflow requires this full bounded download because original PDFs
+provide structural evidence for the canonical extracted text. `--textonly`
+remains available for unrelated uses.
 
 Keep `MIRRULATIONS_DESTINATION_PATH` separate from `MARKDOWN_DB_PATH`. The
 former is an exact source mirror; the latter defaults to

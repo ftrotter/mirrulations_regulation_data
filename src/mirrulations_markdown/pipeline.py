@@ -12,6 +12,9 @@ from .citations import (
 )
 from .conversion import html_to_markdown, json_to_markdown, text_to_markdown
 from .inventory import inventory_source
+from .pdf_structure import extract_pdf_structure
+from .source_pairing import pair_extracted_attachments
+from .text_alignment import align_pdf_paragraphs
 
 
 STAGE_1 = "stage001_initial_markdown_mirror"
@@ -35,7 +38,7 @@ def _write_text(*, output_path, text):
     temporary_path.replace(output_path)
 
 
-def _front_matter(*, asset, selected_source_location):
+def _front_matter(*, asset, selected_source_location, pairing=None):
     values = {
         "document_id": Path(asset["source_object_key"]).stem,
         "source_object_key": asset["source_object_key"],
@@ -43,6 +46,9 @@ def _front_matter(*, asset, selected_source_location):
         "source_version": f"sha256:{asset['source_sha256']}",
         "selected_source_location": selected_source_location,
     }
+    if pairing and pairing.get("structural_source_object_key"):
+        values["structural_source_object_key"] = pairing["structural_source_object_key"]
+        values["structural_source_sha256"] = pairing["structural_source_sha256"]
     lines = ["---"]
     lines.extend(f"{key}: {json.dumps(value, ensure_ascii=False)}" for key, value in values.items())
     lines.extend(("---", ""))
@@ -77,16 +83,38 @@ def _content_block(*, markdown_body, normalization):
     }
 
 
+def _render_blocks(*, blocks, citations_by_block=None):
+    parts = []
+    for block in blocks:
+        text = block["plain_text"]
+        if citations_by_block is not None:
+            text = render_citations(
+                text=text, citations=citations_by_block.get(block["block_id"], [])
+            )
+        if block["block_type"] == "heading":
+            text = f"## {text}"
+        parts.append(f'<a id="{block["block_id"]}"></a>\n\n{text}')
+    return "\n\n".join(parts) + "\n"
+
+
 class MarkdownPipeline:
     """Namespace for the ordered first-milestone operations."""
 
     @staticmethod
     def run(*, source_root, markdown_db_path, docket_id=None):
         assets = inventory_source(source_root=source_root, docket_id=docket_id)
+        markdown_assets = [
+            asset for asset in assets if asset["source_role"] == "markdown-source"
+        ]
+        pairings = pair_extracted_attachments(source_root=source_root, assets=assets)
         metadata_root = markdown_db_path / "metadata"
         _write_json(
             output_path=metadata_root / "manifests" / "source_inventory.json",
             value={"schema_version": 1, "assets": assets},
+        )
+        _write_json(
+            output_path=metadata_root / "manifests" / "source_pairings.json",
+            value={"schema_version": 1, "pairings": list(pairings.values())},
         )
         adapter_statuses = external_adapter_statuses()
         _write_json(
@@ -94,13 +122,14 @@ class MarkdownPipeline:
             value={"schema_version": 1, "adapters": adapter_statuses},
         )
         failures = []
-        for asset in assets:
+        for asset in markdown_assets:
             try:
                 MarkdownPipeline._process_asset(
                     source_root=source_root,
                     markdown_db_path=markdown_db_path,
                     metadata_root=metadata_root,
                     asset=asset,
+                    pairing=pairings.get(asset["source_object_key"]),
                 )
             except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as error:
                 failures.append(
@@ -112,7 +141,8 @@ class MarkdownPipeline:
         run_status = {
             "schema_version": 1,
             "source_asset_count": len(assets),
-            "completed_asset_count": len(assets) - len(failures),
+            "markdown_asset_count": len(markdown_assets),
+            "completed_asset_count": len(markdown_assets) - len(failures),
             "failed_asset_count": len(failures),
             "failures": failures,
         }
@@ -122,39 +152,62 @@ class MarkdownPipeline:
         return run_status
 
     @staticmethod
-    def _process_asset(*, source_root, markdown_db_path, metadata_root, asset):
+    def _process_asset(
+        *, source_root, markdown_db_path, metadata_root, asset, pairing=None
+    ):
         source_path = source_root / asset["source_object_key"]
         markdown_body, selected_source_location, normalization = _convert_asset(
             source_path=source_path, source_suffix=asset["source_suffix"]
         )
-        block = _content_block(
-            markdown_body=markdown_body, normalization=normalization
-        )
+        alignment = None
+        if pairing and pairing["status"] == "available-pdf":
+            canonical_text = source_path.read_text(encoding="utf-8", errors="replace")
+            pdf_structure = extract_pdf_structure(
+                pdf_path=source_root / pairing["structural_source_object_key"]
+            )
+            alignment = align_pdf_paragraphs(
+                canonical_text=canonical_text, pdf_structure=pdf_structure
+            )
+        if alignment and alignment["blocks"]:
+            blocks = alignment["blocks"]
+            for order, block in enumerate(blocks, start=1):
+                block["block_id"] = f"p-{order:04d}"
+                block["order"] = order
+                block["heading_context"] = []
+                block["normalization"] = normalization
+        else:
+            blocks = [_content_block(
+                markdown_body=markdown_body, normalization=normalization
+            )]
         document_version = asset["source_sha256"]
         stage_1_text = (
             _front_matter(
-                asset=asset, selected_source_location=selected_source_location
+                asset=asset,
+                selected_source_location=selected_source_location,
+                pairing=pairing,
             )
-            + '<a id="p-0001"></a>\n\n'
-            + markdown_body
+            + _render_blocks(blocks=blocks)
         )
         stage_1_path = markdown_db_path / STAGE_1 / asset["markdown_path"]
         _write_text(output_path=stage_1_path, text=stage_1_text)
 
-        candidates = extract_explicit_citations(
-            text=block["plain_text"],
-            document_version=document_version,
-            block_id=block["block_id"],
-        )
+        candidates = []
+        for block in blocks:
+            candidates.extend(extract_explicit_citations(
+                text=block["plain_text"], document_version=document_version,
+                block_id=block["block_id"],
+            ))
         citations = [resolve_candidate(candidate=candidate) for candidate in candidates]
-        stage_2_body = render_citations(text=block["plain_text"], citations=citations)
+        citations_by_block = {}
+        for citation in citations:
+            citations_by_block.setdefault(citation["block_id"], []).append(citation)
         stage_2_text = (
             _front_matter(
-                asset=asset, selected_source_location=selected_source_location
+                asset=asset,
+                selected_source_location=selected_source_location,
+                pairing=pairing,
             )
-            + '<a id="p-0001"></a>\n\n'
-            + stage_2_body
-            + "\n"
+            + _render_blocks(blocks=blocks, citations_by_block=citations_by_block)
         )
         stage_2_path = markdown_db_path / STAGE_2 / asset["markdown_path"]
         _write_text(output_path=stage_2_path, text=stage_2_text)
@@ -164,7 +217,13 @@ class MarkdownPipeline:
         ).hexdigest()
         _write_json(
             output_path=metadata_root / "blocks" / f"{metadata_name}.json",
-            value={"schema_version": 1, "asset": asset, "blocks": [block]},
+            value={
+                "schema_version": 1,
+                "asset": asset,
+                "pairing": pairing,
+                "alignment": alignment,
+                "blocks": blocks,
+            },
         )
         _write_json(
             output_path=metadata_root

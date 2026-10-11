@@ -4,7 +4,14 @@ import hashlib
 from pathlib import Path
 
 
-SUPPORTED_SUFFIXES = {".htm", ".html", ".json", ".txt"}
+MARKDOWN_SOURCE_SUFFIXES = {".htm", ".html", ".json", ".txt"}
+STRUCTURE_STATUS_BY_SUFFIX = {
+    ".pdf": "available-pdf",
+    ".docx": "structure-pending-docx",
+    ".png": "structure-pending-image",
+    ".jpg": "structure-pending-image",
+    ".jpeg": "structure-pending-image",
+}
 
 
 def sha256_file(*, file_path):
@@ -23,7 +30,7 @@ def markdown_relative_path(*, source_relative_path):
 def inventory_source(*, source_root, docket_id=None):
     assets = []
     for file_path in sorted(source_root.rglob("*")):
-        if not file_path.is_file() or file_path.suffix.lower() not in SUPPORTED_SUFFIXES:
+        if not file_path.is_file():
             continue
         relative_path = file_path.relative_to(source_root)
         if docket_id and docket_id not in relative_path.parts:
@@ -36,6 +43,14 @@ def inventory_source(*, source_root, docket_id=None):
                 "size_bytes": file_stat.st_size,
                 "modified_time_ns": file_stat.st_mtime_ns,
                 "source_suffix": file_path.suffix.lower(),
+                "source_role": (
+                    "markdown-source"
+                    if file_path.suffix.lower() in MARKDOWN_SOURCE_SUFFIXES
+                    else "structural-source"
+                ),
+                "structure_status": STRUCTURE_STATUS_BY_SUFFIX.get(
+                    file_path.suffix.lower(), "not-applicable"
+                ),
                 "markdown_path": markdown_relative_path(
                     source_relative_path=relative_path
                 ).as_posix(),

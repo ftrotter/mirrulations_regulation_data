@@ -71,7 +71,8 @@ def main():
         parser.exit(1, f"markdown_enrichment.py Error: {error}\n")
     print(
         f"Processed {run_status['completed_asset_count']} of "
-        f"{run_status['source_asset_count']} source assets."
+        f"{run_status['markdown_asset_count']} readable assets from "
+        f"{run_status['source_asset_count']} total source objects."
     )
     if run_status["failed_asset_count"]:
         parser.exit(1, "markdown_enrichment.py Error: requested work is incomplete\n")

@@ -8,19 +8,24 @@ from .inventory import inventory_fingerprint, inventory_source
 
 
 REMOTE = "myconfig:mirrulations/"
-TEXT_SUFFIXES = ("*.txt", "*.json", "*.htm", "*.html")
 
 
-def docket_include_patterns(*, docket_id):
+def docket_include_patterns(*, docket_id, text_only=False):
     agency = docket_id.split("-", 1)[0]
     if not agency or docket_id.count("-") < 2:
         raise ValueError(
             f"verification.py Error: invalid docket ID {docket_id!r}"
         )
+    if text_only:
+        suffixes = ("*.txt", "*.json", "*.htm", "*.html")
+        return [
+            f"/{data_root}/{agency}/{docket_id}/**/{suffix}"
+            for data_root in ("raw-data", "derived-data")
+            for suffix in suffixes
+        ]
     return [
-        f"/{data_root}/{agency}/{docket_id}/**/{suffix}"
+        f"/{data_root}/{agency}/{docket_id}/**/*"
         for data_root in ("raw-data", "derived-data")
-        for suffix in TEXT_SUFFIXES
     ]
 
 
@@ -86,7 +91,7 @@ def verify_docket(*, source_root, metadata_root, docket_id, rclone_config_file):
         "schema_version": 1,
         "verified": verified,
         "docket_id": docket_id,
-        "text_only": True,
+        "text_only": False,
         "source_root": str(source_root.resolve()),
         "remote": REMOTE,
         "include_patterns": include_patterns,
@@ -112,6 +117,11 @@ def require_verified_manifest(*, manifest_path, source_root, docket_id=None):
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if not manifest.get("verified"):
         raise ValueError("verification.py Error: source mirror is not verified")
+    if manifest.get("text_only"):
+        raise ValueError(
+            "verification.py Error: text-only verification is insufficient for "
+            "structure-aware Markdown"
+        )
     if manifest.get("source_root") != str(source_root.resolve()):
         raise ValueError(
             "verification.py Error: verification manifest belongs to another source root"

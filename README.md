@@ -19,8 +19,9 @@ Using the script it is simple to download data by year, by Federal agency, and t
 
 ## Markdown enrichment
 
-The Markdown pipeline uses an exact, text-only Mirrulations mirror as immutable
-input. Configure separate source and output roots in your environment:
+The Markdown pipeline uses an exact, bounded Mirrulations mirror as immutable
+input. It includes originals for structure recovery. Configure separate source
+and output roots in your environment:
 
 ```dotenv
 MIRRULATIONS_DESTINATION_PATH=/absolute/path/to/mirrulations-source
@@ -35,8 +36,7 @@ For the manual development-validation docket, acquire the text corpus with:
 
 ```shell
 python3 scripts/rclone/mirrulations_downloader.py \
-  --docket CMS-2026-1255 \
-  --textonly
+  --docket CMS-2026-1255
 ```
 
 Verify the mirror and create the initial and citation-enriched Markdown
