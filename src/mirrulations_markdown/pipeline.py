@@ -14,10 +14,18 @@ from .citations import (
 )
 from .conversion import html_to_markdown, json_to_markdown, text_to_markdown
 from .document_selection import select_logical_documents
+from .friendly_metadata import (
+    document_metadata, metadata_index, write_document_friendly_names,
+)
 from .inventory import inventory_source
 from .pdf_structure import extract_pdf_structure
 from .source_pairing import pair_extracted_attachments
 from .text_alignment import align_pdf_paragraphs
+from .reference_metadata import (
+    normalized_reference_text, resolve_reference_names,
+    write_reference_friendly_names,
+)
+from .reverse_lookup import write_citation_reverse_lookup
 
 
 STAGE_1 = "stage001_initial_markdown_mirror"
@@ -75,7 +83,9 @@ def _prune_stale_outputs(*, markdown_db_path, metadata_root, selected_assets):
                 sidecar_path.unlink()
 
 
-def _front_matter(*, asset, selected_source_location, pairing=None):
+def _front_matter(
+    *, asset, selected_source_location, pairing=None, friendly_metadata=None
+):
     values = {
         "document_id": Path(asset["source_object_key"]).stem,
         "source_object_key": asset["source_object_key"],
@@ -86,6 +96,13 @@ def _front_matter(*, asset, selected_source_location, pairing=None):
     if pairing and pairing.get("structural_source_object_key"):
         values["structural_source_object_key"] = pairing["structural_source_object_key"]
         values["structural_source_sha256"] = pairing["structural_source_sha256"]
+    if friendly_metadata:
+        for key in (
+            "title", "authors", "organization", "person_name", "document_type",
+            "docket_id", "generated_friendly_name", "original_pdf_url",
+            "original_pdf_link",
+        ):
+            values[key] = friendly_metadata.get(key)
     lines = ["---"]
     lines.extend(f"{key}: {json.dumps(value, ensure_ascii=False)}" for key, value in values.items())
     lines.extend(("---", ""))
@@ -120,13 +137,14 @@ def _content_block(*, markdown_body, normalization):
     }
 
 
-def _render_blocks(*, blocks, citations_by_block=None):
+def _render_blocks(*, blocks, citations_by_block=None, reference_names=None):
     parts = []
     for block in blocks:
         text = block["plain_text"]
         if citations_by_block is not None:
             text = render_citations(
-                text=text, citations=citations_by_block.get(block["block_id"], [])
+                text=text, citations=citations_by_block.get(block["block_id"], []),
+                reference_names=reference_names,
             )
         if block["block_type"] == "heading":
             text = f"## {text}"
@@ -138,12 +156,17 @@ class MarkdownPipeline:
     """Namespace for the ordered first-milestone operations."""
 
     @staticmethod
-    def run(*, source_root, markdown_db_path, docket_id=None):
+    def run(
+        *, source_root, markdown_db_path, docket_id=None,
+        refresh_reference_titles=False, maximum_title_fetches=10,
+        title_opener=None,
+    ):
         assets = inventory_source(source_root=source_root, docket_id=docket_id)
         markdown_assets, selection_decisions = select_logical_documents(
             source_root=source_root, assets=assets
         )
         pairings = pair_extracted_attachments(source_root=source_root, assets=assets)
+        metadata_records = metadata_index(source_root=source_root)
         metadata_root = markdown_db_path / "metadata"
         _write_json(
             output_path=metadata_root / "manifests" / "source_inventory.json",
@@ -177,6 +200,10 @@ class MarkdownPipeline:
                     metadata_root=metadata_root,
                     asset=asset,
                     pairing=pairings.get(asset["source_object_key"]),
+                    friendly_metadata=document_metadata(
+                        asset=asset, metadata_records=metadata_records,
+                        pairing=pairings.get(asset["source_object_key"]),
+                    ),
                 )
                 adapter_results.extend(asset_adapter_results)
             except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as error:
@@ -186,6 +213,11 @@ class MarkdownPipeline:
                         "error": f"pipeline.py Error: {type(error).__name__}: {error}",
                     }
                 )
+        title_fetch_count = MarkdownPipeline._finalize_global_metadata(
+            markdown_db_path=markdown_db_path, metadata_root=metadata_root,
+            refresh_reference_titles=refresh_reference_titles,
+            maximum_title_fetches=maximum_title_fetches, title_opener=title_opener,
+        )
         run_status = {
             "schema_version": 1,
             "source_asset_count": len(assets),
@@ -194,6 +226,7 @@ class MarkdownPipeline:
             "failed_asset_count": len(failures),
             "failures": failures,
             "adapter_results": adapter_results,
+            "title_fetch_count": title_fetch_count,
         }
         _write_json(
             output_path=metadata_root / "runs" / "latest.json", value=run_status
@@ -201,8 +234,119 @@ class MarkdownPipeline:
         return run_status
 
     @staticmethod
+    def _finalize_global_metadata(
+        *, markdown_db_path, metadata_root, refresh_reference_titles,
+        maximum_title_fetches, title_opener
+    ):
+        documents = []
+        all_citations = []
+        block_records = {}
+        for block_path in sorted((metadata_root / "blocks").glob("*.json")):
+            record = json.loads(block_path.read_text(encoding="utf-8"))
+            block_records[block_path.stem] = record
+            metadata = record.get("document_metadata") or {}
+            documents.append({
+                "generated_friendly_name": metadata.get(
+                    "generated_friendly_name", record["asset"]["source_object_key"]
+                ),
+                "markdown_path": record["asset"]["markdown_path"],
+            })
+        document_names = write_document_friendly_names(
+            table_path=metadata_root / "document_friendly_names.md",
+            documents=documents,
+        )
+        for citation_path in sorted(
+            (metadata_root / "annotations" / "citations").glob("*.json")
+        ):
+            record = block_records.get(citation_path.stem)
+            if not record:
+                continue
+            for citation in json.loads(citation_path.read_text(encoding="utf-8"))[
+                "citations"
+            ]:
+                citation["markdown_path"] = record["asset"]["markdown_path"]
+                all_citations.append(citation)
+        unique_authorities = {}
+        for citation in all_citations:
+            citation["reference_text"] = (
+                normalized_reference_text(
+                    normalized_target=citation["normalized_target"]
+                )
+                if citation["citation_family"] in {"usc", "cfr"}
+                else citation.get("structured_components", {}).get(
+                    "corrected_citation"
+                ) or citation["matched_text"]
+            )
+            unique_authorities.setdefault(citation["normalized_target"], citation)
+        cache, fetch_count = resolve_reference_names(
+            citations=list(unique_authorities.values()),
+            cache_path=metadata_root / "cache" / "reference_titles.json",
+            refresh=refresh_reference_titles,
+            opener=title_opener,
+            maximum_fetches=maximum_title_fetches,
+        )
+        references = []
+        for target, citation in unique_authorities.items():
+            cache_record = cache[target]
+            references.append({
+                "normalized_target": target,
+                "official_reference_name": cache_record["official_reference_name"],
+                "reference_text": citation["reference_text"],
+                "reference_url": citation.get("destination_url") or "",
+            })
+        reference_names = write_reference_friendly_names(
+            table_path=metadata_root / "reference_friendly_names.md",
+            references=references,
+        )
+        for citation_path in sorted(
+            (metadata_root / "annotations" / "citations").glob("*.json")
+        ):
+            citation_document = json.loads(citation_path.read_text(encoding="utf-8"))
+            for citation in citation_document["citations"]:
+                target = citation["normalized_target"]
+                citation["official_reference_name"] = cache[target][
+                    "official_reference_name"
+                ]
+                citation["friendly_reference_name"] = reference_names[target]
+            _write_json(output_path=citation_path, value=citation_document)
+        for metadata_name, record in block_records.items():
+            citation_path = (
+                metadata_root / "annotations" / "citations" / f"{metadata_name}.json"
+            )
+            if not citation_path.is_file():
+                continue
+            citations = json.loads(citation_path.read_text(encoding="utf-8"))["citations"]
+            citations_by_block = {}
+            for citation in citations:
+                citations_by_block.setdefault(citation["block_id"], []).append(citation)
+            asset = record["asset"]
+            selected_location = (
+                "$html" if asset["source_suffix"] in {".htm", ".html"}
+                else asset.get("content_location") or "$text"
+            )
+            stage_2_text = _front_matter(
+                asset=asset, selected_source_location=selected_location,
+                pairing=record.get("pairing"),
+                friendly_metadata=record.get("document_metadata"),
+            ) + _render_blocks(
+                blocks=record["blocks"], citations_by_block=citations_by_block,
+                reference_names=reference_names,
+            )
+            _write_text(
+                output_path=markdown_db_path / STAGE_2 / asset["markdown_path"],
+                text=stage_2_text,
+            )
+        write_citation_reverse_lookup(
+            output_path=metadata_root / "citation_reverse_lookup.md",
+            citations=all_citations, reference_names=reference_names,
+            document_names=document_names,
+        )
+        return fetch_count
+
+    @staticmethod
     def _process_asset(
-        *, source_root, markdown_db_path, metadata_root, asset, pairing=None
+        *, source_root, markdown_db_path, metadata_root, asset, pairing=None,
+        friendly_metadata=None
     ):
         source_path = source_root / asset["source_object_key"]
         markdown_body, selected_source_location, normalization = _convert_asset(
@@ -234,6 +378,7 @@ class MarkdownPipeline:
                 asset=asset,
                 selected_source_location=selected_source_location,
                 pairing=pairing,
+                friendly_metadata=friendly_metadata,
             )
             + _render_blocks(blocks=blocks)
         )
@@ -269,6 +414,7 @@ class MarkdownPipeline:
                 asset=asset,
                 selected_source_location=selected_source_location,
                 pairing=pairing,
+                friendly_metadata=friendly_metadata,
             )
             + _render_blocks(blocks=blocks, citations_by_block=citations_by_block)
         )
@@ -285,6 +431,7 @@ class MarkdownPipeline:
                 "asset": asset,
                 "pairing": pairing,
                 "alignment": alignment,
+                "document_metadata": friendly_metadata,
                 "blocks": blocks,
             },
         )

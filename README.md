@@ -19,9 +19,10 @@ Using the script it is simple to download data by year, by Federal agency, and t
 
 ## Markdown enrichment
 
-The Markdown pipeline uses an exact, bounded Mirrulations mirror as immutable
-input. It includes originals for structure recovery. Configure separate source
-and output roots in your environment:
+The Markdown pipeline begins with an exact, bounded Mirrulations acquisition.
+It includes originals for structure recovery. After successful remote
+verification, JSON may be pretty-printed in place with pre- and post-formatting
+hashes recorded. Configure separate source and output roots in your environment:
 
 ```dotenv
 MIRRULATIONS_DESTINATION_PATH=/absolute/path/to/mirrulations-source
@@ -29,8 +30,8 @@ MARKDOWN_DB_PATH=./data/markdown_db/
 ```
 
 `MARKDOWN_DB_PATH` defaults to `./data/markdown_db/`. The source and output
-roots must not overlap. The pipeline never edits an actual `.env` file or a
-mirrored source object.
+roots must not overlap. The pipeline never edits an actual `.env` file.
+Non-JSON source objects remain unchanged.
 
 For the manual development-validation docket, acquire the text corpus with:
 
@@ -51,6 +52,22 @@ python3 scripts/markdown_enrichment.py \
   --rclone-config /absolute/path/to/rclone.config
 ```
 
+Add `--normalize-json` on the first run after a fresh verification to
+pretty-print downloaded JSON in place. The pipeline records original and
+normalized hashes. This is a one-time transformation per verified acquisition;
+use a fresh verified acquisition before normalizing again.
+
+Citation enrichment retrieves a small, controlled number of official page
+titles per run. Configure the hard request budget with:
+
+```shell
+--maximum-title-fetches 5
+```
+
+Cached failures are retried only with `--refresh-reference-titles`. A budget of
+zero performs no title requests and uses cached titles or normalized citation
+fallbacks.
+
 Readable output is stored in immutable numbered projections:
 
 ```text
@@ -63,6 +80,19 @@ data/markdown_db/
 The current implementation records unavailable external citation libraries in
 `metadata/runs/adapter_status.json`. It does not silently label built-in
 explicit USC/CFR detection as eyecite, LexNLP, or unitedstates/citation.
+
+The Markdown database includes three global metadata files:
+
+```text
+metadata/citation_reverse_lookup.md
+metadata/reference_friendly_names.md
+metadata/document_friendly_names.md
+```
+
+The editable friendly-name columns start blank. Enter a nonblank value to
+override the official reference title or generated document name. Reruns retain
+those edits. Citation reverse lookup headings and links use the edited value
+when present and otherwise use the official/generated value.
 
 ## Structure discovery
 

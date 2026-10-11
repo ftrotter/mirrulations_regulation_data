@@ -137,7 +137,11 @@ def require_verified_manifest(*, manifest_path, source_root, docket_id=None):
         source_root=source_root, docket_id=manifest_docket_id
     )
     current_fingerprint = inventory_fingerprint(assets=current_assets)
-    if manifest.get("source_inventory_fingerprint") != current_fingerprint:
+    expected_local_fingerprint = manifest.get(
+        "local_source_inventory_fingerprint",
+        manifest.get("source_inventory_fingerprint"),
+    )
+    if expected_local_fingerprint != current_fingerprint:
         raise ValueError(
             "verification.py Error: selected source bytes changed after verification"
         )

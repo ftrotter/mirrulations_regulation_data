@@ -52,11 +52,18 @@ All Markdown enrichment stages write beneath a configurable Markdown database
 root. The `MARKDOWN_DB_PATH` environment variable selects that root. When it is
 not set, the repository-local default is `./data/markdown_db/`.
 
-The Markdown database and the Mirrulations source mirror are separate trees.
+The Markdown database and the Mirrulations source tree are separate trees.
 Neither root may be equal to, contain, or be contained by the other. The source
 mirror is immutable pipeline input; generated Markdown, manifests, logs,
 annotations, caches, temporary files, and run records must never be written
-inside it.
+inside it, except for the explicitly approved post-verification JSON
+pretty-print normalization described by the initial-stage specification.
+
+Acquisition must first be verified against Mirrulations. After successful
+verification, downloaded JSON may be pretty-printed in place for human browsing.
+The source tree is therefore byte-exact only before normalization. Preserve both
+the verified remote-compatible hash and the normalized local hash, and never
+describe a normalized tree as a byte-exact mirror.
 
 Every readable enrichment is stored in an ordered, descriptively named stage
 directory, for example:
@@ -103,6 +110,11 @@ dependent output rather than silently replacing its provenance.
 
 Actual `.env` files are local configuration and must not be overwritten by the
 pipeline. Versioned example environment files document supported settings.
+
+Global human-editable metadata belongs under the Markdown database `metadata/`
+directory. Regeneration may add records and refresh generated columns, but must
+not overwrite edited friendly names. Citation and document friendly names are
+global across all dockets in the configured Markdown database.
 
 ## Graph Analysis
 

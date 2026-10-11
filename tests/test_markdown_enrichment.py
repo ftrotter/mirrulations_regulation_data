@@ -176,6 +176,17 @@ class VerificationTest(unittest.TestCase):
 
 
 class PipelineTest(unittest.TestCase):
+    @staticmethod
+    def _title_opener(request, timeout):
+        class Response:
+            status = 200
+            def read(self):
+                return b"<html><title>5 U.S.C. 553 - Rule making</title></html>"
+            def geturl(self): return request.full_url
+            def __enter__(self): return self
+            def __exit__(self, *_args): return False
+        return Response()
+
     def test_builds_both_stages_with_provenance_and_citation(self):
         with tempfile.TemporaryDirectory() as temporary_directory:
             temporary_root = Path(temporary_directory)
@@ -201,6 +212,7 @@ class PipelineTest(unittest.TestCase):
                 source_root=source_root,
                 markdown_db_path=markdown_db_path,
                 docket_id="CMS-2026-1255",
+                title_opener=self._title_opener,
             )
             output_relative_path = Path(
                 "raw-data/CMS/CMS-2026-1255/text-CMS-2026-1255/documents/"
@@ -215,16 +227,28 @@ class PipelineTest(unittest.TestCase):
                 source_root=source_root,
                 markdown_db_path=markdown_db_path,
                 docket_id="CMS-2026-1255",
+                title_opener=self._title_opener,
             )
 
             self.assertEqual(0, first_status["failed_asset_count"])
-            self.assertEqual(first_status, second_status)
+            self.assertEqual(1, first_status["title_fetch_count"])
+            self.assertEqual(0, second_status["title_fetch_count"])
+            self.assertEqual(
+                {key: value for key, value in first_status.items() if key != "title_fetch_count"},
+                {key: value for key, value in second_status.items() if key != "title_fetch_count"},
+            )
             self.assertEqual(source_bytes_before, source_file.read_bytes())
             self.assertEqual(stage_1_before, stage_1_path.read_bytes())
             self.assertEqual(stage_2_before, stage_2_path.read_bytes())
+            self.assertIn(
+                "| 5 U.S.C. 553 - Rule making |  | 5 U.S.C. § 553 |",
+                (markdown_db_path / "metadata/reference_friendly_names.md").read_text(
+                    encoding="utf-8"
+                ),
+            )
             self.assertIn("source_sha256:", stage_1_path.read_text(encoding="utf-8"))
             self.assertIn(
-                "[5 U.S.C. § 553](https://www.law.cornell.edu/uscode/text/5/553)",
+                "[5 U.S.C. 553 - Rule making](https://www.law.cornell.edu/uscode/text/5/553)",
                 stage_2_path.read_text(encoding="utf-8"),
             )
             self.assertTrue(
@@ -240,6 +264,18 @@ class PipelineTest(unittest.TestCase):
                 )
             )
             self.assertEqual(1, len(inventory["assets"]))
+            citation_sidecar = next(
+                (markdown_db_path / "metadata/annotations/citations").glob("*.json")
+            )
+            citation_record = json.loads(citation_sidecar.read_text())["citations"][0]
+            self.assertEqual(
+                "5 U.S.C. 553 - Rule making",
+                citation_record["official_reference_name"],
+            )
+            self.assertEqual(
+                citation_record["official_reference_name"],
+                citation_record["friendly_reference_name"],
+            )
             self.assertEqual("not-applicable", inventory["assets"][0]["structure_status"])
 
     @mock.patch("mirrulations_markdown.pipeline.extract_pdf_structure")

@@ -257,7 +257,7 @@ def resolve_candidate(*, candidate):
     }
 
 
-def render_citations(*, text, citations):
+def render_citations(*, text, citations, reference_names=None):
     rendered_text = text
     for citation in sorted(citations, key=lambda item: item["start"], reverse=True):
         if citation.get("resolution_status") != "resolved":
@@ -271,9 +271,12 @@ def render_citations(*, text, citations):
                 "citations.py Error: citation span does not match block text for "
                 f"{citation['annotation_id']}"
             )
+        anchor_text = (reference_names or {}).get(
+            citation["normalized_target"], matched_text
+        )
         rendered_text = (
             rendered_text[:start]
-            + f"[{matched_text}]({citation['destination_url']})"
+            + f"[{anchor_text}]({citation['destination_url']})"
             + rendered_text[end:]
         )
     return rendered_text

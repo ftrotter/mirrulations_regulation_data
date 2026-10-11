@@ -26,8 +26,10 @@ deferred and must receive an explicit structure-pending status.
 
 ## Purpose and scope
 
-Begin with a byte-for-byte local mirror of the selected Mirrulations source
-objects. Without changing that mirror, build a reproducible corpus of regulatory
+Begin with a verified byte-for-byte local acquisition of the selected
+Mirrulations source objects. After verification, pretty-print downloaded JSON
+in place for browsing while recording pre- and post-normalization hashes. Build
+a reproducible corpus of regulatory
 documents and comments as readable Markdown.
 
 Enrich explicit legal citations through a common adapter interface backed by
@@ -118,9 +120,11 @@ No pipeline stage may rename, move, rewrite, re-encode, reformat, decompress,
 concatenate, or delete a mirrored source file. Create all generated-data
 directories outside the mirror, as needed.
 
-Treat a verified mirror as immutable for the duration of a run. Record a
-SHA-256 hash for every selected source object. Every derivative must identify
-the exact source bytes from which it was produced.
+Treat non-JSON source objects as immutable. JSON normalization is the sole
+approved in-place source transformation and occurs only after remote
+verification. Record the verified original SHA-256 and normalized local SHA-256.
+Every derivative must identify the exact local source bytes from which it was
+produced.
 
 A later Mirrulations change creates a new source version. It must never
 silently alter the identity or provenance of an earlier run. If historical
@@ -452,10 +456,11 @@ Example:
 The agency acted under [5 U.S.C. § 553](https://www.law.cornell.edu/uscode/text/5/553).
 ```
 
-Keep citation wording unchanged. Insert links using block spans and a parsed
-Markdown structure so that escaping, existing links, formatting, and offsets
-remain correct. Existing citation hyperlinks may be retained, with a preferred
-resolved URL recorded separately.
+Preserve original citation wording and offsets in annotation sidecars. Visible
+Stage 2 link text uses the current friendly reference name, initially populated
+from the fetched official page title or normalized citation fallback. Existing
+citation hyperlinks may be retained, with a preferred resolved URL recorded
+separately.
 
 Leave ambiguous citations as plain text and record their status in the
 sidecar. Annotation records are authoritative for relationship metadata;
@@ -550,9 +555,9 @@ or modify it.
 2. An `rclone` comparison confirms that every selected object has the same
    bytes and relative path as Mirrulations and that the dedicated mirror
    contains no unexpected files. Downstream stages refuse an unverified mirror.
-3. Mirrored source files remain unchanged after a complete run. All manifests,
-   logs, normalized files, annotations, caches, and enriched Markdown are
-   stored outside the mirror.
+3. Non-JSON source files remain unchanged after a complete run. JSON is
+   pretty-printed only after successful verification, with original and local
+   hashes recorded. Other generated artifacts remain outside the source tree.
 4. Every derivative records the relative Mirrulations object key and SHA-256
    of its exact source bytes. A changed remote object creates a new source
    version rather than silently replacing prior provenance.
