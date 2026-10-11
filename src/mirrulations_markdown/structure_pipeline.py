@@ -16,6 +16,24 @@ from .structure_models import DocumentEligibility
 STAGE_3 = "stage003_structure_discovery"
 
 
+ATTACHMENT_PLACEHOLDER_PATTERN = re.compile(
+    r"^(?:please\s+)?see\s+(?:the\s+)?attached\b.{0,190}$",
+    re.IGNORECASE,
+)
+
+
+def is_attachment_placeholder(*, text):
+    normalized_text = re.sub(r"\s+", " ", text).strip()
+    if len(normalized_text) > 220:
+        return False
+    return bool(ATTACHMENT_PLACEHOLDER_PATTERN.fullmatch(normalized_text))
+
+
+def _submission_id(*, source_object_key):
+    match = re.search(r"([A-Z]+-\d{4}-\d+-\d{4})", source_object_key)
+    return match.group(1) if match else None
+
+
 def _configuration_hash(*, configuration):
     serialized = json.dumps(
         configuration.model_dump(mode="json"), sort_keys=True, separators=(",", ":")
@@ -23,10 +41,26 @@ def _configuration_hash(*, configuration):
     return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
 
 
-def document_eligibility(*, block_record, configuration):
+def document_eligibility(
+    *, block_record, configuration, submission_has_attachment=False
+):
     source_key = block_record["asset"]["source_object_key"]
     is_comment = "/comments/" in source_key or "comments_extracted_text" in source_key
     character_count = sum(len(block["plain_text"]) for block in block_record["blocks"])
+    if (
+        block_record["asset"].get("selection_reason")
+        == "form-submitted-comment-body"
+        and submission_has_attachment
+        and is_attachment_placeholder(
+            text=" ".join(block["plain_text"] for block in block_record["blocks"])
+        )
+    ):
+        return DocumentEligibility(
+            eligible=False, page_count=None,
+            page_count_method="not-applicable-placeholder",
+            character_count=character_count, maximum_comment_pages=None,
+            exclusion_reason="excluded-attachment-placeholder",
+        )
     if not is_comment:
         return DocumentEligibility(
             eligible=True, page_count=None, page_count_method="not-applicable",
@@ -60,7 +94,7 @@ def _task_hash(*, source_hash, block, configuration_hash):
 
 
 def _render_stage_3(*, stage_2_text, annotations, eligibility, configuration):
-    status = "complete" if eligibility.eligible else "excluded-length"
+    status = "complete" if eligibility.eligible else eligibility.exclusion_reason
     status_block = (
         f"> **Processing status:** {status}\n>\n"
         f"> **Annotation schema:** 1\n>\n"
@@ -141,6 +175,30 @@ class StructureDiscoveryPipeline:
             for block_path in blocks_root.glob("*.json")
         ]
         block_records.sort(key=lambda item: item[1]["asset"]["source_object_key"])
+        submission_ids_with_attachments = {
+            submission_id
+            for _path, record in block_records
+            for submission_id in [
+                _submission_id(
+                    source_object_key=record["asset"]["source_object_key"]
+                )
+            ]
+            if submission_id
+            and "_attachment_" in record["asset"]["source_object_key"]
+        }
+        inventory_path = metadata_root / "manifests" / "source_inventory.json"
+        if inventory_path.is_file():
+            inventory_assets = json.loads(
+                inventory_path.read_text(encoding="utf-8")
+            )["assets"]
+            submission_ids_with_attachments.update(
+                submission_id
+                for asset in inventory_assets
+                for submission_id in [
+                    _submission_id(source_object_key=asset["source_object_key"])
+                ]
+                if submission_id and "_attachment_" in asset["source_object_key"]
+            )
         for block_path, block_record in block_records:
             asset = block_record["asset"]
             if source_object_key and asset["source_object_key"] != source_object_key:
@@ -164,7 +222,13 @@ class StructureDiscoveryPipeline:
                     "block_count": len(block_record["blocks"]),
                 })
             eligibility = document_eligibility(
-                block_record=block_record, configuration=configuration
+                block_record=block_record,
+                configuration=configuration,
+                submission_has_attachment=(
+                    _submission_id(
+                        source_object_key=asset["source_object_key"]
+                    ) in submission_ids_with_attachments
+                ),
             )
             sidecar_path = annotation_root / block_path.name
             existing = (
@@ -267,6 +331,14 @@ class StructureDiscoveryPipeline:
                         })
             else:
                 excluded_documents += 1
+                annotations = []
+                if progress_callback:
+                    progress_callback({
+                        "event": "document_excluded",
+                        "document_number": selected_document_count,
+                        "source_object_key": asset["source_object_key"],
+                        "exclusion_reason": eligibility.exclusion_reason,
+                    })
             _write_json(
                 output_path=sidecar_path,
                 value={

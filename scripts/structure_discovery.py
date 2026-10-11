@@ -67,6 +67,11 @@ def main():
                 )
             elif event_name == "block_reused":
                 print(f"  Reused {event['block_id']} from cache", flush=True)
+            elif event_name == "document_excluded":
+                print(
+                    f"  Excluded: {event['exclusion_reason']}",
+                    flush=True,
+                )
             elif event_name == "document_completed":
                 print(
                     f"Document {event['document_number']} complete: "

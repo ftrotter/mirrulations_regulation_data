@@ -20,6 +20,7 @@ from mirrulations_markdown.structure_pipeline import (  # noqa: E402
     STAGE_3,
     StructureDiscoveryPipeline,
     document_eligibility,
+    is_attachment_placeholder,
 )
 
 
@@ -34,6 +35,43 @@ def _configuration(*, max_pages=50, summary_mode="deep"):
 
 
 class EligibilityTest(unittest.TestCase):
+    def test_identifies_attachment_only_placeholder_variants(self):
+        for text in (
+            "See attached",
+            "See attached file(s)",
+            "Please see the attached PDF for comments.",
+            "Please see attached comments from CVS Health on the proposed rule.",
+        ):
+            with self.subTest(text=text):
+                self.assertTrue(is_attachment_placeholder(text=text))
+
+    def test_does_not_treat_substantive_comment_as_placeholder(self):
+        self.assertFalse(is_attachment_placeholder(text=(
+            "We support the proposal but recommend a 72-hour deadline. "
+            "Please see attached comments for additional detail."
+        )))
+
+    def test_placeholder_is_excluded_only_when_attachment_exists(self):
+        record = {
+            "asset": {
+                "source_object_key": "raw/comments/CMS-2026-1255-0038.json",
+                "selection_reason": "form-submitted-comment-body",
+            },
+            "alignment": None,
+            "blocks": [{"plain_text": "Please see the attached PDF for comments."}],
+        }
+        excluded = document_eligibility(
+            block_record=record, configuration=_configuration(),
+            submission_has_attachment=True,
+        )
+        included = document_eligibility(
+            block_record=record, configuration=_configuration(),
+            submission_has_attachment=False,
+        )
+        self.assertFalse(excluded.eligible)
+        self.assertEqual("excluded-attachment-placeholder", excluded.exclusion_reason)
+        self.assertTrue(included.eligible)
+
     def test_exact_page_limit_is_eligible(self):
         record = {
             "asset": {"source_object_key": "derived/comments_extracted_text/item.txt"},
@@ -181,6 +219,60 @@ class StructurePipelineTest(unittest.TestCase):
             self.assertEqual(0, status["api_calls"])
             self.assertEqual(1, status["excluded_documents"])
             self.assertIn("**Processing status:** excluded-length", output)
+
+    def test_attachment_placeholder_makes_no_api_call_and_removes_stale_annotation(self):
+        events = []
+        async def caller_that_must_not_run(**_kwargs):
+            raise AssertionError("caller should not run")
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            markdown_db_path, stage_2_path, _stage_2_text, markdown_path = (
+                self._create_corpus(root_path=Path(temporary_directory))
+            )
+            block_path = next((markdown_db_path / "metadata/blocks").glob("*.json"))
+            record = json.loads(block_path.read_text(encoding="utf-8"))
+            record["asset"]["source_object_key"] = (
+                "raw-data/CMS/docket/text/comments/CMS-2026-1255-0038.json"
+            )
+            record["blocks"][0]["plain_text"] = "See attached file(s)"
+            block_path.write_text(json.dumps(record), encoding="utf-8")
+            stage_2_path.write_text(
+                '---\ndocument_id: "COMMENT-1"\n---\n<a id="p-0001"></a>\n\nSee attached file(s)\n',
+                encoding="utf-8",
+            )
+            attachment_block = markdown_db_path / "metadata/blocks/attachment.json"
+            attachment_block.write_text(json.dumps({
+                "asset": {
+                    "source_object_key": (
+                        "derived/CMS-2026-1255-0038_attachment_1_extracted.txt"
+                    ),
+                    "source_sha256": "attachment", "markdown_path": "attachment.md",
+                },
+                "blocks": [],
+            }), encoding="utf-8")
+            status = StructureDiscoveryPipeline.run(
+                markdown_db_path=markdown_db_path,
+                configuration=_configuration(),
+                passage_caller=caller_that_must_not_run,
+                source_object_key=(
+                    "raw-data/CMS/docket/text/comments/CMS-2026-1255-0038.json"
+                ),
+                progress_callback=events.append,
+            )
+            output = (markdown_db_path / STAGE_3 / markdown_path).read_text()
+            self.assertEqual(0, status["api_calls"])
+            self.assertIn("excluded-attachment-placeholder", output)
+            sidecar = next(
+                (markdown_db_path / "metadata/structure_discovery/annotations").glob("*.json")
+            )
+            self.assertEqual([], json.loads(sidecar.read_text())["annotations"])
+            exclusion_events = [
+                event for event in events if event["event"] == "document_excluded"
+            ]
+            self.assertEqual(
+                "excluded-attachment-placeholder",
+                exclusion_events[0]["exclusion_reason"],
+            )
 
     def test_source_object_filter_can_select_no_documents(self):
         async def caller_that_must_not_run(**_kwargs):
