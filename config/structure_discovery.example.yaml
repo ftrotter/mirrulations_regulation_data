@@ -1,0 +1,11 @@
+summary_model:
+  provider: google
+  model: gemini-flash-latest
+reference_model:
+  provider: google
+  model: gemini-flash-latest
+summary_mode: sections
+max_comment_pages: 50
+characters_per_estimated_page: 3000
+summary_prompt_version: 2
+reference_prompt_version: 2

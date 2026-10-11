@@ -64,6 +64,45 @@ The current implementation records unavailable external citation libraries in
 `metadata/runs/adapter_status.json`. It does not silently label built-in
 explicit USC/CFR detection as eyecite, LexNLP, or unitedstates/citation.
 
+## Structure discovery
+
+Stage 3 reads immutable Stage 2 Markdown and writes summaries and backward
+reference descriptions to:
+
+```text
+data/markdown_db/stage003_structure_discovery/
+```
+
+It uses [Magentic](https://github.com/jackmpcollins/magentic) as the typed model
+compatibility layer. Supported providers are OpenAI, Anthropic, and Google
+Gemini. Select the provider and model in a versioned YAML file such as
+`config/structure_discovery.example.yaml`. Keep credentials only in the process
+environment or a local ignored `.env` file:
+
+```dotenv
+OPENAI_API_KEY=
+ANTHROPIC_API_KEY=
+GEMINI_API_KEY=
+```
+
+Never put credentials in the YAML configuration. No provider or model fallback
+is performed.
+
+Run one bounded development document with:
+
+```shell
+.venv/bin/python scripts/structure_discovery.py \
+  --markdown-db data/markdown_db \
+  --configuration config/structure_discovery.example.yaml \
+  --source-object-key \
+derived-data/CMS/CMS-2026-1255/mirrulations/extracted_txt/comments_extracted_text/pypdf/CMS-2026-1255-0002_attachment_1_extracted.txt
+```
+
+Use `--document-limit` for a bounded multi-document development run. Stage 3
+task state is authoritative in `metadata/structure_discovery/`; Stage 3
+Markdown is a deterministic readable projection. Stage 1 and Stage 2 are never
+modified.
+
 
 ## Data License
 
