@@ -29,8 +29,16 @@ def create_argument_parser():
     parser.add_argument("--verify", action="store_true", help="Run rclone checks first.")
     parser.add_argument("--verification-manifest", help="Existing successful manifest.")
     parser.add_argument("--normalize-json", action="store_true")
-    parser.add_argument("--maximum-title-fetches", type=int, default=10)
+    parser.add_argument("--maximum-title-fetches", type=int)
+    parser.add_argument(
+        "--title-requests-per-second", type=float, default=1.0,
+        help="Pace title requests; 0.5 means one request every two seconds.",
+    )
     parser.add_argument("--refresh-reference-titles", action="store_true")
+    parser.add_argument(
+        "--global-metadata-only", action="store_true",
+        help="Rebuild global friendly-name tables and reverse lookup from sidecars.",
+    )
     return parser
 
 
@@ -38,11 +46,28 @@ def main():
     parser = create_argument_parser()
     arguments = parser.parse_args()
     try:
+        if arguments.title_requests_per_second <= 0:
+            raise ValueError("--title-requests-per-second must be greater than zero")
+        if arguments.maximum_title_fetches is not None and arguments.maximum_title_fetches < 0:
+            raise ValueError("--maximum-title-fetches cannot be negative")
         source_root, markdown_db_path = load_paths(
             source_root=arguments.source_root,
             markdown_db_path=arguments.markdown_db,
         )
         metadata_root = markdown_db_path / "metadata"
+        if arguments.global_metadata_only:
+            print("Generating global friendly-name and citation metadata...", flush=True)
+            title_fetch_count = MarkdownPipeline.finalize_global_metadata(
+                markdown_db_path=markdown_db_path,
+                refresh_reference_titles=arguments.refresh_reference_titles,
+                maximum_title_fetches=arguments.maximum_title_fetches,
+                title_requests_per_second=arguments.title_requests_per_second,
+            )
+            print(
+                f"Global metadata complete; fetched {title_fetch_count} titles.",
+                flush=True,
+            )
+            return
         if arguments.verify:
             if not arguments.rclone_config:
                 raise ValueError("--rclone-config is required with --verify")
@@ -76,12 +101,36 @@ def main():
                 __import__("json").dumps(normalization, indent=2, sort_keys=True) + "\n",
                 encoding="utf-8",
             )
+        def print_progress(event):
+            if event["event"] in {"asset_completed", "asset_failed"}:
+                if (
+                    event["event"] == "asset_failed"
+                    or event["asset_number"] % 50 == 0
+                    or event["asset_number"] == event["asset_count"]
+                ):
+                    print(
+                        f"Markdown assets: {event['asset_number']}/"
+                        f"{event['asset_count']} "
+                        f"({event['failure_count']} failures)",
+                        flush=True,
+                    )
+            elif event["event"] == "global_metadata_started":
+                print("Generating global friendly-name and citation metadata...", flush=True)
+            elif event["event"] == "global_metadata_completed":
+                print(
+                    f"Global metadata complete; fetched "
+                    f"{event['title_fetch_count']} titles.",
+                    flush=True,
+                )
+
         run_status = MarkdownPipeline.run(
             source_root=source_root,
             markdown_db_path=markdown_db_path,
             docket_id=arguments.docket,
             refresh_reference_titles=arguments.refresh_reference_titles,
             maximum_title_fetches=arguments.maximum_title_fetches,
+            title_requests_per_second=arguments.title_requests_per_second,
+            progress_callback=print_progress,
         )
     except ValueError as error:
         parser.exit(1, f"markdown_enrichment.py Error: {error}\n")

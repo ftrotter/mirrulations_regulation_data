@@ -27,5 +27,24 @@ class ReverseLookupTest(unittest.TestCase):
             self.assertEqual(1, text.count("[AGA comments]"))
             self.assertIn("comments/a.md#p-0007", text)
 
+    def test_includes_unresolved_citation(self):
+        citation = {
+            "normalized_target": "eyecite:fullcasecitation:hash",
+            "resolution_status": "unresolved",
+            "markdown_path": "comments/a.md", "block_id": "p-0008",
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "lookup.md"
+            write_citation_reverse_lookup(
+                output_path=path, citations=[citation],
+                reference_names={
+                    "eyecite:fullcasecitation:hash": "Foo v. Bar, 1 U.S. 2"
+                },
+                document_names={"comments/a.md": "AGA comments"},
+            )
+            text = path.read_text()
+            self.assertIn("## Foo v. Bar, 1 U.S. 2", text)
+            self.assertIn("comments/a.md#p-0008", text)
+
 
 if __name__ == "__main__": unittest.main(verbosity=2)

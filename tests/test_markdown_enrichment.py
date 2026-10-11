@@ -365,6 +365,29 @@ class PipelineTest(unittest.TestCase):
             )["decisions"]
             self.assertEqual("metadata-only-json", decisions[0]["selection_reason"])
 
+    def test_pipeline_reports_asset_and_global_metadata_progress(self):
+        events = []
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            temporary_root = Path(temporary_directory)
+            source_root = temporary_root / "source"
+            markdown_db_path = temporary_root / "markdown"
+            source_path = source_root / "raw-data/CMS/CMS-2026-1255/item.txt"
+            source_path.parent.mkdir(parents=True)
+            source_path.write_text("No citations.", encoding="utf-8")
+            MarkdownPipeline.run(
+                source_root=source_root,
+                markdown_db_path=markdown_db_path,
+                docket_id="CMS-2026-1255",
+                maximum_title_fetches=0,
+                progress_callback=events.append,
+            )
+            event_names = [event["event"] for event in events]
+            self.assertIn("asset_completed", event_names)
+            self.assertEqual(
+                ["global_metadata_started", "global_metadata_completed"],
+                event_names[-2:],
+            )
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

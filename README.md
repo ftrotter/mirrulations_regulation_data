@@ -57,16 +57,18 @@ pretty-print downloaded JSON in place. The pipeline records original and
 normalized hashes. This is a one-time transformation per verified acquisition;
 use a fresh verified acquisition before normalizing again.
 
-Citation enrichment retrieves a small, controlled number of official page
-titles per run. Configure the hard request budget with:
+Citation enrichment paces official-page title requests. Configure requests per
+second with a positive floating-point value:
 
 ```shell
---maximum-title-fetches 5
+--title-requests-per-second 2
 ```
 
-Cached failures are retried only with `--refresh-reference-titles`. A budget of
-zero performs no title requests and uses cached titles or normalized citation
-fallbacks.
+Values below one are supported: `0.5` means one request every two seconds and
+`0.3` means one request about every 3.33 seconds. Cached successes and failures
+are not requested again. Use `--refresh-reference-titles` to retry cached
+failures. `--maximum-title-fetches` remains available as an optional emergency
+cap but has no default limit.
 
 Readable output is stored in immutable numbered projections:
 
@@ -132,6 +134,20 @@ Use `--document-limit` for a bounded multi-document development run. Stage 3
 task state is authoritative in `metadata/structure_discovery/`; Stage 3
 Markdown is a deterministic readable projection. Stage 1 and Stage 2 are never
 modified.
+
+Stage 3 runs in the foreground and prints document, block, API-call, and cache
+reuse progress. Pace model requests with a positive floating-point value:
+
+```shell
+--requests-per-second 1
+```
+
+For slower pacing, `0.5` means one request every two seconds and `0.3` means
+one request about every 3.33 seconds. `--maximum-api-calls` remains a hard run
+budget. Run summaries report elapsed time, model key, completed tasks, reused
+tasks, and failures. Token usage is currently marked unavailable because the
+typed Magentic call returns the parsed Pydantic result without provider usage
+metadata.
 
 
 ## Data License

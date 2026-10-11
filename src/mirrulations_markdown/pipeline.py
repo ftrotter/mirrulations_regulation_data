@@ -158,8 +158,9 @@ class MarkdownPipeline:
     @staticmethod
     def run(
         *, source_root, markdown_db_path, docket_id=None,
-        refresh_reference_titles=False, maximum_title_fetches=10,
-        title_opener=None,
+        refresh_reference_titles=False, maximum_title_fetches=None,
+        title_requests_per_second=1.0, title_opener=None, title_sleeper=None,
+        progress_callback=None,
     ):
         assets = inventory_source(source_root=source_root, docket_id=docket_id)
         markdown_assets, selection_decisions = select_logical_documents(
@@ -192,7 +193,7 @@ class MarkdownPipeline:
         )
         failures = []
         adapter_results = []
-        for asset in markdown_assets:
+        for asset_number, asset in enumerate(markdown_assets, start=1):
             try:
                 asset_adapter_results = MarkdownPipeline._process_asset(
                     source_root=source_root,
@@ -206,6 +207,14 @@ class MarkdownPipeline:
                     ),
                 )
                 adapter_results.extend(asset_adapter_results)
+                if progress_callback:
+                    progress_callback({
+                        "event": "asset_completed",
+                        "asset_number": asset_number,
+                        "asset_count": len(markdown_assets),
+                        "source_object_key": asset["source_object_key"],
+                        "failure_count": len(failures),
+                    })
             except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as error:
                 failures.append(
                     {
@@ -213,11 +222,31 @@ class MarkdownPipeline:
                         "error": f"pipeline.py Error: {type(error).__name__}: {error}",
                     }
                 )
+                if progress_callback:
+                    progress_callback({
+                        "event": "asset_failed",
+                        "asset_number": asset_number,
+                        "asset_count": len(markdown_assets),
+                        "source_object_key": asset["source_object_key"],
+                        "failure_count": len(failures),
+                    })
+        if progress_callback:
+            progress_callback({
+                "event": "global_metadata_started",
+                "asset_count": len(markdown_assets),
+            })
         title_fetch_count = MarkdownPipeline._finalize_global_metadata(
             markdown_db_path=markdown_db_path, metadata_root=metadata_root,
             refresh_reference_titles=refresh_reference_titles,
-            maximum_title_fetches=maximum_title_fetches, title_opener=title_opener,
+            maximum_title_fetches=maximum_title_fetches,
+            title_requests_per_second=title_requests_per_second,
+            title_opener=title_opener, title_sleeper=title_sleeper,
         )
+        if progress_callback:
+            progress_callback({
+                "event": "global_metadata_completed",
+                "title_fetch_count": title_fetch_count,
+            })
         run_status = {
             "schema_version": 1,
             "source_asset_count": len(assets),
@@ -234,9 +263,26 @@ class MarkdownPipeline:
         return run_status
 
     @staticmethod
+    def finalize_global_metadata(
+        *, markdown_db_path, refresh_reference_titles=False,
+        maximum_title_fetches=None, title_requests_per_second=1.0,
+        title_opener=None, title_sleeper=None,
+    ):
+        return MarkdownPipeline._finalize_global_metadata(
+            markdown_db_path=markdown_db_path,
+            metadata_root=markdown_db_path / "metadata",
+            refresh_reference_titles=refresh_reference_titles,
+            maximum_title_fetches=maximum_title_fetches,
+            title_requests_per_second=title_requests_per_second,
+            title_opener=title_opener,
+            title_sleeper=title_sleeper,
+        )
+
+    @staticmethod
     def _finalize_global_metadata(
         *, markdown_db_path, metadata_root, refresh_reference_titles,
-        maximum_title_fetches, title_opener
+        maximum_title_fetches, title_requests_per_second, title_opener,
+        title_sleeper
     ):
         documents = []
         all_citations = []
@@ -284,6 +330,8 @@ class MarkdownPipeline:
             refresh=refresh_reference_titles,
             opener=title_opener,
             maximum_fetches=maximum_title_fetches,
+            requests_per_second=title_requests_per_second,
+            sleeper=title_sleeper,
         )
         references = []
         for target, citation in unique_authorities.items():

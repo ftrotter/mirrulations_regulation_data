@@ -9,8 +9,6 @@ def write_citation_reverse_lookup(
     occurrences = {}
     for citation in citations:
         target = citation["normalized_target"]
-        if citation.get("resolution_status") != "resolved":
-            continue
         occurrence = (
             citation["markdown_path"], citation["block_id"]
         )

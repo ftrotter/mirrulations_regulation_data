@@ -114,6 +114,39 @@ class ReferenceMetadataTest(unittest.TestCase):
             self.assertEqual((0, 1), (first_count, second_count))
             self.assertEqual("fetched", second["cfr:42:482.24"]["status"])
 
+    def test_request_rate_supports_fractional_pacing(self):
+        sleeps = []
+        def opener(request, timeout):
+            target = request.full_url.rsplit("/", 1)[-1]
+            return _Response(
+                f"<title>42 CFR {target} - Test</title>".encode(), request.full_url
+            )
+        citations = [
+            {
+                "normalized_target": f"cfr:42:{section}",
+                "destination_url": f"https://www.law.cornell.edu/cfr/text/42/{section}",
+            }
+            for section in ("1.1", "1.2", "1.3")
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            _cache, count = resolve_reference_names(
+                citations=citations,
+                cache_path=Path(directory) / "cache.json",
+                requests_per_second=0.5,
+                opener=opener,
+                sleeper=sleeps.append,
+            )
+            self.assertEqual(3, count)
+            self.assertEqual([2.0, 2.0], sleeps)
+
+    def test_rejects_nonpositive_request_rate(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaisesRegex(ValueError, "greater than zero"):
+                resolve_reference_names(
+                    citations=[], cache_path=Path(directory) / "cache.json",
+                    requests_per_second=0,
+                )
+
     def test_preserves_edited_reference_name(self):
         reference = {
             "normalized_target": "cfr:42:482.24", "official_reference_name": "Official",

@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import time
 import urllib.request
 
 from .friendly_metadata import parse_markdown_table_row
@@ -69,8 +70,14 @@ def title_matches_reference(*, title, normalized_target):
 
 
 def resolve_reference_names(
-    *, citations, cache_path, refresh=False, opener=None, maximum_fetches=10
+    *, citations, cache_path, refresh=False, opener=None, maximum_fetches=None,
+    requests_per_second=1.0, sleeper=None
 ):
+    if requests_per_second <= 0:
+        raise ValueError(
+            "reference_metadata.py Error: requests_per_second must be greater than zero"
+        )
+    selected_sleeper = sleeper or time.sleep
     cache = {}
     if cache_path.is_file():
         cache = json.loads(cache_path.read_text(encoding="utf-8"))
@@ -101,9 +108,11 @@ def resolve_reference_names(
                 "requested_url": None, "error": "No resolved destination URL",
             }
             continue
-        if fetch_count >= maximum_fetches:
+        if maximum_fetches is not None and fetch_count >= maximum_fetches:
             continue
         try:
+            if fetch_count:
+                selected_sleeper(1.0 / requests_per_second)
             fetch_count += 1
             fetched = fetch_official_title(url=url, opener=opener)
             if title_matches_reference(

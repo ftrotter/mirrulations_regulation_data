@@ -199,6 +199,22 @@ class StructurePipelineTest(unittest.TestCase):
             self.assertEqual(0, status["selected_documents"])
             self.assertEqual(0, status["api_calls"])
 
+    def test_source_prefix_filter_selects_matching_document(self):
+        async def fake_caller(**_kwargs):
+            return PassageEnrichment(
+                summary="This is a complete summary.", backward_references=[]
+            )
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            markdown_db_path, _stage_2_path, _stage_2_text, _markdown_path = (
+                self._create_corpus(root_path=Path(temporary_directory))
+            )
+            status = StructureDiscoveryPipeline.run(
+                markdown_db_path=markdown_db_path,
+                configuration=_configuration(), passage_caller=fake_caller,
+                source_object_prefix="raw-data/CMS/",
+            )
+            self.assertEqual(1, status["selected_documents"])
+
     def test_api_call_budget_stops_before_second_call(self):
         calls = []
 
@@ -247,6 +263,61 @@ class StructurePipelineTest(unittest.TestCase):
             self.assertEqual(1, status["api_calls"])
             self.assertEqual(1, status["failed_task_count"])
             self.assertNotIn("raw provider payload", status["failed_tasks"][0]["error"])
+
+    def test_fractional_pacing_and_progress_events(self):
+        current_time = [0.0]
+        sleeps = []
+        events = []
+
+        def clock():
+            return current_time[0]
+
+        def sleeper(seconds):
+            sleeps.append(seconds)
+            current_time[0] += seconds
+
+        async def fake_caller(**_kwargs):
+            return PassageEnrichment(
+                summary="This is a complete summary.", backward_references=[]
+            )
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            markdown_db_path, _stage_2_path, _stage_2_text, _markdown_path = (
+                self._create_corpus(root_path=Path(temporary_directory))
+            )
+            block_path = next((markdown_db_path / "metadata/blocks").glob("*.json"))
+            record = json.loads(block_path.read_text(encoding="utf-8"))
+            record["blocks"].append({
+                "block_id": "p-0002", "block_type": "paragraph",
+                "plain_text": "Second passage.", "heading_context": [],
+            })
+            block_path.write_text(json.dumps(record), encoding="utf-8")
+            status = StructureDiscoveryPipeline.run(
+                markdown_db_path=markdown_db_path,
+                configuration=_configuration(), passage_caller=fake_caller,
+                maximum_api_calls=2, requests_per_second=0.5,
+                progress_callback=events.append, sleeper=sleeper, clock=clock,
+            )
+            self.assertEqual([2.0], sleeps)
+            self.assertEqual(2, status["api_calls"])
+            self.assertEqual(2.0, status["elapsed_seconds"])
+            self.assertIn("document_started", [event["event"] for event in events])
+            self.assertEqual(
+                2,
+                sum(event["event"] == "api_call_completed" for event in events),
+            )
+
+    def test_rejects_nonpositive_request_rate(self):
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            markdown_db_path, *_rest = self._create_corpus(
+                root_path=Path(temporary_directory)
+            )
+            with self.assertRaisesRegex(ValueError, "greater than zero"):
+                StructureDiscoveryPipeline.run(
+                    markdown_db_path=markdown_db_path,
+                    configuration=_configuration(), passage_caller=lambda **_kwargs: None,
+                    requests_per_second=0,
+                )
 
     @mock.patch.dict("os.environ", {}, clear=True)
     def test_live_caller_preflight_rejects_missing_credentials_before_writes(self):

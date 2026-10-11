@@ -6,6 +6,7 @@ import json
 import math
 from pathlib import Path
 import re
+import time
 
 from .llm_backend import BackendFactory, MagenticPassageCaller
 from .pipeline import STAGE_2, _write_json, _write_text
@@ -106,8 +107,14 @@ class StructureDiscoveryPipeline:
     @staticmethod
     def run(
         *, markdown_db_path, configuration, passage_caller=None,
-        document_limit=None, source_object_key=None, maximum_api_calls=None
+        document_limit=None, source_object_key=None, maximum_api_calls=None,
+        requests_per_second=1.0, progress_callback=None, sleeper=None,
+        clock=None, source_object_prefix=None,
     ):
+        if requests_per_second <= 0:
+            raise ValueError(
+                "structure_pipeline.py Error: requests_per_second must be greater than zero"
+            )
         caller = passage_caller or MagenticPassageCaller.call
         if passage_caller is None:
             BackendFactory.verify_credentials(
@@ -117,15 +124,30 @@ class StructureDiscoveryPipeline:
         blocks_root = metadata_root / "blocks"
         annotation_root = metadata_root / "structure_discovery" / "annotations"
         config_hash = _configuration_hash(configuration=configuration)
+        selected_sleeper = sleeper or time.sleep
+        selected_clock = clock or time.monotonic
+        started_at = selected_clock()
+        last_request_at = None
         completed_documents = 0
         excluded_documents = 0
         failed_tasks = []
         api_calls = 0
+        reused_tasks = 0
+        completed_tasks = 0
+        total_blocks = 0
         selected_document_count = 0
-        for block_path in sorted(blocks_root.glob("*.json")):
-            block_record = json.loads(block_path.read_text(encoding="utf-8"))
+        block_records = [
+            (block_path, json.loads(block_path.read_text(encoding="utf-8")))
+            for block_path in blocks_root.glob("*.json")
+        ]
+        block_records.sort(key=lambda item: item[1]["asset"]["source_object_key"])
+        for block_path, block_record in block_records:
             asset = block_record["asset"]
             if source_object_key and asset["source_object_key"] != source_object_key:
+                continue
+            if source_object_prefix and not asset["source_object_key"].startswith(
+                source_object_prefix
+            ):
                 continue
             if document_limit is not None and selected_document_count >= document_limit:
                 break
@@ -133,6 +155,14 @@ class StructureDiscoveryPipeline:
             if not stage_2_path.is_file():
                 continue
             selected_document_count += 1
+            total_blocks += len(block_record["blocks"])
+            if progress_callback:
+                progress_callback({
+                    "event": "document_started",
+                    "document_number": selected_document_count,
+                    "source_object_key": asset["source_object_key"],
+                    "block_count": len(block_record["blocks"]),
+                })
             eligibility = document_eligibility(
                 block_record=block_record, configuration=configuration
             )
@@ -157,6 +187,16 @@ class StructureDiscoveryPipeline:
                     )
                     if task_hash in existing_by_hash:
                         annotations.append(existing_by_hash[task_hash])
+                        reused_tasks += 1
+                        completed_tasks += 1
+                        if progress_callback:
+                            progress_callback({
+                                "event": "block_reused",
+                                "source_object_key": asset["source_object_key"],
+                                "block_id": block["block_id"],
+                                "completed_tasks": completed_tasks,
+                                "api_calls": api_calls,
+                            })
                         continue
                     if maximum_api_calls is not None and api_calls >= maximum_api_calls:
                         failed_tasks.append({
@@ -169,7 +209,21 @@ class StructureDiscoveryPipeline:
                         })
                         break
                     try:
+                        if last_request_at is not None:
+                            elapsed_since_request = selected_clock() - last_request_at
+                            required_interval = 1.0 / requests_per_second
+                            if elapsed_since_request < required_interval:
+                                selected_sleeper(required_interval - elapsed_since_request)
+                        if progress_callback:
+                            progress_callback({
+                                "event": "api_call_started",
+                                "source_object_key": asset["source_object_key"],
+                                "block_id": block["block_id"],
+                                "api_call_number": api_calls + 1,
+                                "requests_per_second": requests_per_second,
+                            })
                         api_calls += 1
+                        last_request_at = selected_clock()
                         result = asyncio.run(caller(
                             model_spec=configuration.summary_model,
                             document_type=asset.get("selection_reason", "document"),
@@ -193,6 +247,15 @@ class StructureDiscoveryPipeline:
                             ),
                         }
                         annotations.append(annotation)
+                        completed_tasks += 1
+                        if progress_callback:
+                            progress_callback({
+                                "event": "api_call_completed",
+                                "source_object_key": asset["source_object_key"],
+                                "block_id": block["block_id"],
+                                "completed_tasks": completed_tasks,
+                                "api_calls": api_calls,
+                            })
                     except Exception as error:
                         failed_tasks.append({
                             "source_object_key": asset["source_object_key"],
@@ -223,6 +286,17 @@ class StructureDiscoveryPipeline:
                 text=stage_3_text,
             )
             completed_documents += 1
+            if progress_callback:
+                progress_callback({
+                    "event": "document_completed",
+                    "document_number": selected_document_count,
+                    "source_object_key": asset["source_object_key"],
+                    "completed_documents": completed_documents,
+                    "excluded_documents": excluded_documents,
+                    "failed_task_count": len(failed_tasks),
+                    "api_calls": api_calls,
+                    "reused_tasks": reused_tasks,
+                })
         return {
             "completed_documents": completed_documents,
             "excluded_documents": excluded_documents,
@@ -231,4 +305,11 @@ class StructureDiscoveryPipeline:
             "api_calls": api_calls,
             "selected_documents": selected_document_count,
             "maximum_api_calls": maximum_api_calls,
+            "requests_per_second": requests_per_second,
+            "total_blocks": total_blocks,
+            "completed_tasks": completed_tasks,
+            "reused_tasks": reused_tasks,
+            "elapsed_seconds": round(selected_clock() - started_at, 3),
+            "model_key": configuration.summary_model.model_key,
+            "token_usage_status": "unavailable-from-current-magentic-typed-call",
         }
