@@ -17,6 +17,53 @@ We have written [some helper scripts that will help automate the rclone commands
 
 Using the script it is simple to download data by year, by Federal agency, and to decide to download the raw text only, or to download both the raw text and the originals (generally pdfs and word documents).
 
+## Markdown enrichment
+
+The Markdown pipeline uses an exact, text-only Mirrulations mirror as immutable
+input. Configure separate source and output roots in your environment:
+
+```dotenv
+MIRRULATIONS_DESTINATION_PATH=/absolute/path/to/mirrulations-source
+MARKDOWN_DB_PATH=./data/markdown_db/
+```
+
+`MARKDOWN_DB_PATH` defaults to `./data/markdown_db/`. The source and output
+roots must not overlap. The pipeline never edits an actual `.env` file or a
+mirrored source object.
+
+For the manual development-validation docket, acquire the text corpus with:
+
+```shell
+python3 scripts/rclone/mirrulations_downloader.py \
+  --docket CMS-2026-1255 \
+  --textonly
+```
+
+Verify the mirror and create the initial and citation-enriched Markdown
+projections with:
+
+```shell
+python3 scripts/markdown_enrichment.py \
+  --source-root /absolute/path/to/mirrulations-source \
+  --markdown-db ./data/markdown_db \
+  --docket CMS-2026-1255 \
+  --verify \
+  --rclone-config /absolute/path/to/rclone.config
+```
+
+Readable output is stored in immutable numbered projections:
+
+```text
+data/markdown_db/
+  stage001_initial_markdown_mirror/
+  stage002_addition_of_citations/
+  metadata/
+```
+
+The current implementation records unavailable external citation libraries in
+`metadata/runs/adapter_status.json`. It does not silently label built-in
+explicit USC/CFR detection as eyecite, LexNLP, or unitedstates/citation.
+
 
 ## Data License
 

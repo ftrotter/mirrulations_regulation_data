@@ -13,7 +13,7 @@ BUCKET_REMOTE = "myconfig:mirrulations/"
 DEFAULT_TRANSFERS = 50
 ENV_FILE_PATH = Path(__file__).with_name(".env")
 MIRRULATIONS_DATA_ROOTS = ("raw-data", "derived-data")
-TEXT_FILE_PATTERNS = ("*.txt", "*.json", "*.htm")
+TEXT_FILE_PATTERNS = ("*.txt", "*.json", "*.htm", "*.html")
 
 
 def parse_comma_separated_values(value):
@@ -153,16 +153,17 @@ def format_command(command):
     return shlex.join(command)
 
 
-def confirm_and_run_commands(*, commands):
+def confirm_and_run_commands(*, commands, assume_yes=False):
     """Print, confirm, and execute rclone commands."""
     print("Preparing to run:")
     for command in commands:
         print(f"\t{format_command(command)}")
 
-    confirmation = input("Do you want to run these commands? [y/N]: ").strip().lower()
-    if confirmation not in {"y", "yes"}:
-        print("Not running. Goodbye.")
-        return False
+    if not assume_yes:
+        confirmation = input("Do you want to run these commands? [y/N]: ").strip().lower()
+        if confirmation not in {"y", "yes"}:
+            print("Not running. Goodbye.")
+            return False
 
     for command in commands:
         print(f"Running:\t{format_command(command)}")
@@ -193,7 +194,7 @@ def create_argument_parser():
     parser.add_argument(
         "--textonly",
         action="store_true",
-        help="Download only TXT, JSON, and HTM files.",
+        help="Download only TXT, JSON, HTM, and HTML files.",
     )
     parser.add_argument(
         "--getall",
@@ -208,6 +209,17 @@ def create_argument_parser():
     )
     parser.add_argument(
         "-d", "--docket", default="", help="Docket ID(s) separated by commas."
+    )
+    parser.add_argument(
+        "--destination",
+        help="Override MIRRULATIONS_DESTINATION_PATH without changing .env.",
+    )
+    parser.add_argument(
+        "--rclone-config",
+        help="Override RCLONE_CONFIG_FILE without changing .env.",
+    )
+    parser.add_argument(
+        "--yes", action="store_true", help="Run without interactive confirmation."
     )
     return parser
 
@@ -235,8 +247,23 @@ def run_downloader(*, arguments):
             "to download the entire bucket"
         )
 
-    load_environment_file(environment_file_path=ENV_FILE_PATH)
-    destination_path, rclone_config_file = get_configured_paths()
+    if arguments.destination or arguments.rclone_config:
+        if not arguments.destination or not arguments.rclone_config:
+            raise ValueError(
+                "mirrulations_downloader.py Error: --destination and "
+                "--rclone-config must be provided together"
+            )
+        destination_path = Path(arguments.destination).expanduser().resolve()
+        rclone_config_file = Path(arguments.rclone_config).expanduser().resolve()
+        destination_path.mkdir(parents=True, exist_ok=True)
+        if not rclone_config_file.is_file():
+            raise ValueError(
+                "mirrulations_downloader.py Error: rclone configuration file "
+                f"does not exist: {rclone_config_file}"
+            )
+    else:
+        load_environment_file(environment_file_path=ENV_FILE_PATH)
+        destination_path, rclone_config_file = get_configured_paths()
     include_patterns = []
     if not arguments.getall:
         include_patterns = build_include_patterns(
@@ -253,7 +280,7 @@ def run_downloader(*, arguments):
         include_patterns=include_patterns,
     )
     start_time = time.monotonic()
-    confirm_and_run_commands(commands=[command])
+    confirm_and_run_commands(commands=[command], assume_yes=arguments.yes)
     elapsed_seconds = round(time.monotonic() - start_time)
     print(
         "Process finished!\n"

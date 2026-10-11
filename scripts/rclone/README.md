@@ -11,7 +11,8 @@ Then view the available download options:
 python3 mirrulations_downloader.py --help
 ```
 
-The downloader supports agency, year, docket, and text-only filters. Docket
+The downloader supports agency, year, docket, and text-only filters. Text-only
+includes published TXT, JSON, HTM, and HTML objects. Docket
 filters take precedence over agency and year filters, matching the original
 downloader behavior. Filters cover both `raw-data/` and `derived-data/`.
 
@@ -20,3 +21,13 @@ For example, preview and confirm a text-only DEA download with:
 ```shell
 python3 mirrulations_downloader.py --agency DEA --textonly
 ```
+
+The first Markdown-enrichment development case uses:
+
+```shell
+python3 mirrulations_downloader.py --docket CMS-2026-1255 --textonly
+```
+
+Keep `MIRRULATIONS_DESTINATION_PATH` separate from `MARKDOWN_DB_PATH`. The
+former is an exact source mirror; the latter defaults to
+`./data/markdown_db/` and contains generated stage projections and metadata.

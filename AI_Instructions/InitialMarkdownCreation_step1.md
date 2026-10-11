@@ -8,8 +8,8 @@ The first end-to-end development run has three user-visible operations:
 
 1. download a bounded Mirrulations selection with the existing `rclone`
    helper and its `--textonly` option;
-2. create an initial Markdown version of every selected, applicable HTM, JSON,
-   and TXT asset; and
+2. create an initial Markdown version of every selected, applicable HTM, HTML,
+   JSON, and TXT asset; and
 3. create a second Markdown version that adds resolved legal citations as
    links.
 
@@ -167,7 +167,7 @@ Select and record an explicit scope. Prefer one or more docket IDs with
 uses `--textonly`.
 
 The `--textonly` option defines a deliberately restricted mirror containing
-the selected TXT, JSON, and HTM objects exactly as published. Omit
+the selected TXT, JSON, HTM, and HTML objects exactly as published. Omit
 `--textonly` only for a different, future workflow that explicitly includes
 original attachments; doing so is outside this milestone.
 

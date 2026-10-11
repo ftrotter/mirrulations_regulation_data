@@ -41,10 +41,11 @@ class IncludePatternTest(unittest.TestCase):
         patterns = downloader.build_include_patterns(
             agencies=[], years=[2022], dockets=[], text_only=True
         )
-        self.assertEqual(6, len(patterns))
+        self.assertEqual(8, len(patterns))
         self.assertIn("/raw-data/*/*2022*/**/*.txt", patterns)
         self.assertIn("/raw-data/*/*2022*/**/*.json", patterns)
         self.assertIn("/raw-data/*/*2022*/**/*.htm", patterns)
+        self.assertIn("/raw-data/*/*2022*/**/*.html", patterns)
         self.assertIn("/derived-data/*/*2022*/**/*.txt", patterns)
 
     def test_docket_filter_supersedes_agency_and_year(self):
@@ -138,6 +139,28 @@ class ArgumentValidationTest(unittest.TestCase):
         arguments = self.parser.parse_args(["--agency", "DEA", "--transfers", "0"])
         with self.assertRaisesRegex(ValueError, "greater than zero"):
             downloader.run_downloader(arguments=arguments)
+
+    def test_path_overrides_must_be_provided_together(self):
+        arguments = self.parser.parse_args(
+            ["--docket", "CMS-2026-1255", "--textonly", "--destination", "/tmp/data"]
+        )
+        with self.assertRaisesRegex(ValueError, "must be provided together"):
+            downloader.run_downloader(arguments=arguments)
+
+    @mock.patch.object(downloader, "confirm_and_run_commands", return_value=True)
+    def test_explicit_paths_bypass_environment_file(self, confirm_commands):
+        with mock.patch.object(Path, "mkdir"), mock.patch.object(
+            Path, "is_file", return_value=True
+        ):
+            arguments = self.parser.parse_args(
+                [
+                    "--docket", "CMS-2026-1255", "--textonly",
+                    "--destination", "/tmp/source", "--rclone-config",
+                    "/tmp/rclone.config", "--yes",
+                ]
+            )
+            downloader.run_downloader(arguments=arguments)
+        self.assertTrue(confirm_commands.call_args.kwargs["assume_yes"])
 
 
 if __name__ == "__main__":
