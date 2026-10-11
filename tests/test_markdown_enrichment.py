@@ -227,6 +227,13 @@ class PipelineTest(unittest.TestCase):
                 "[5 U.S.C. § 553](https://www.law.cornell.edu/uscode/text/5/553)",
                 stage_2_path.read_text(encoding="utf-8"),
             )
+            self.assertTrue(
+                all(
+                    result["adapter_name"] == "eyecite"
+                    and result["status"] == "success"
+                    for result in first_status["adapter_results"]
+                )
+            )
             inventory = json.loads(
                 (markdown_db_path / "metadata/manifests/source_inventory.json").read_text(
                     encoding="utf-8"

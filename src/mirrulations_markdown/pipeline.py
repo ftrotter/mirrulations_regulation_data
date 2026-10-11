@@ -6,7 +6,9 @@ from pathlib import Path
 
 from .citations import (
     external_adapter_statuses,
+    extract_eyecite_citations,
     extract_explicit_citations,
+    reconcile_candidates,
     render_citations,
     resolve_candidate,
 )
@@ -166,15 +168,17 @@ class MarkdownPipeline:
             value={"schema_version": 1, "adapters": adapter_statuses},
         )
         failures = []
+        adapter_results = []
         for asset in markdown_assets:
             try:
-                MarkdownPipeline._process_asset(
+                asset_adapter_results = MarkdownPipeline._process_asset(
                     source_root=source_root,
                     markdown_db_path=markdown_db_path,
                     metadata_root=metadata_root,
                     asset=asset,
                     pairing=pairings.get(asset["source_object_key"]),
                 )
+                adapter_results.extend(asset_adapter_results)
             except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as error:
                 failures.append(
                     {
@@ -189,6 +193,7 @@ class MarkdownPipeline:
             "completed_asset_count": len(markdown_assets) - len(failures),
             "failed_asset_count": len(failures),
             "failures": failures,
+            "adapter_results": adapter_results,
         }
         _write_json(
             output_path=metadata_root / "runs" / "latest.json", value=run_status
@@ -236,12 +241,26 @@ class MarkdownPipeline:
         _write_text(output_path=stage_1_path, text=stage_1_text)
 
         candidates = []
+        adapter_results = []
         for block in blocks:
             candidates.extend(extract_explicit_citations(
                 text=block["plain_text"], document_version=document_version,
                 block_id=block["block_id"],
             ))
-        citations = [resolve_candidate(candidate=candidate) for candidate in candidates]
+            eyecite_candidates, eyecite_status = extract_eyecite_citations(
+                text=block["plain_text"], document_version=document_version,
+                block_id=block["block_id"],
+            )
+            candidates.extend(eyecite_candidates)
+            adapter_results.append(
+                {"source_object_key": asset["source_object_key"],
+                 "block_id": block["block_id"], **eyecite_status}
+            )
+        reconciled_candidates = reconcile_candidates(candidates=candidates)
+        citations = [
+            resolve_candidate(candidate=candidate)
+            for candidate in reconciled_candidates
+        ]
         citations_by_block = {}
         for citation in citations:
             citations_by_block.setdefault(citation["block_id"], []).append(citation)
@@ -283,3 +302,4 @@ class MarkdownPipeline:
             / f"{metadata_name}.json",
             value={"schema_version": 1, "citations": citations},
         )
+        return adapter_results

@@ -1,3 +1,4 @@
 spacy
 python-dotenv
 pypdf==6.20.0
+eyecite==2.7.8

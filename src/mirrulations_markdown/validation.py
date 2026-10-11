@@ -108,6 +108,27 @@ def corpus_summary(*, markdown_db_path, primary_source_object_key=None):
                 ).items()
             )
         )
+    citation_root = markdown_db_path / "metadata" / "annotations" / "citations"
+    if citation_root.is_dir():
+        citation_statuses = Counter()
+        citation_families = Counter()
+        supporting_adapters = Counter()
+        for citation_path in citation_root.glob("*.json"):
+            citation_records = json.loads(
+                citation_path.read_text(encoding="utf-8")
+            )["citations"]
+            for citation in citation_records:
+                citation_statuses[citation.get("resolution_status", "not-recorded")] += 1
+                citation_families[citation["citation_family"]] += 1
+                for adapter_name in citation.get(
+                    "supporting_adapters", [citation["adapter_name"]]
+                ):
+                    supporting_adapters[adapter_name] += 1
+        summary["citation_resolution_statuses"] = dict(sorted(citation_statuses.items()))
+        summary["citation_families"] = dict(sorted(citation_families.items()))
+        summary["citation_supporting_adapters"] = dict(
+            sorted(supporting_adapters.items())
+        )
     if primary_source_object_key:
         metadata_name = hashlib.sha256(
             primary_source_object_key.encode("utf-8")
