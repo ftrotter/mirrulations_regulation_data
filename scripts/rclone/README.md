@@ -1,24 +1,22 @@
-This directory has a series of rclone commands that can be used to clone all or some of the mirrulations data to a local drive. 
+This directory contains a downloader that uses rclone to copy all or part of the
+Mirrulations dataset to a local drive.
 
-In order to use it, you need to get the appropriate keys from Amazon, and then copy rclone.conf.example to rclone.conf, and put your keys inside!! 
+The public bucket supports anonymous access; AWS keys are not required. Copy
+`rclone.config.example` to `rclone.config`, and copy `example.env` to `.env`.
+Set the destination and rclone configuration paths in `.env`.
 
-Then run 
+Then view the available download options:
 
+```shell
+python3 mirrulations_downloader.py --help
 ```
-python mirrulations_downloader.py
-```
-And it should guide you through your download options. 
 
-```
-Options:
-  -a, --agency TEXT  Agency name(s) separated by commas.
-  -y, --year TEXT    Year(s) or range(s) of years separated by commas or dash
-                     (e.g., 2010-2015).
-  --textonly         Flag to indicate if textonly should be True.
-  --getall           Download all agencies, all years. (WARNING: this could
-                     cost a few hundred dollars...)
-  --transfers TEXT   How many rclone connections to run at the same time
-                     (default is 50)
-  -d, --docket TEXT  Download a specific docket id
-  --help             Show this message and exit
+The downloader supports agency, year, docket, and text-only filters. Docket
+filters take precedence over agency and year filters, matching the original
+downloader behavior. Filters cover both `raw-data/` and `derived-data/`.
+
+For example, preview and confirm a text-only DEA download with:
+
+```shell
+python3 mirrulations_downloader.py --agency DEA --textonly
 ```

@@ -80,8 +80,27 @@ Mirrulations has been sponsored by the AWS Open Data service. This means that AW
 
 ### Understanding the Mirrulations folder structure
 
-The Mirrulations project [documents the directory structure used in the S3 bucket](https://github.com/mirrulations/mirrulations/blob/main/docs/structure.md).
+The Mirrulations project [documents the directory structure used in the S3 bucket](https://github.com/MoravianUniversity/mirrulations-data/blob/main/structure.md).
 You might find this documentation out of date, so make sure you look there!! 
+
+The repository includes a live integration test that checks a randomly selected
+regulation in the public bucket against the documented structure. It uses
+anonymous HTTPS access and does not require AWS credentials.
+
+The `data` root shown in the upstream structure document corresponds to the
+bucket's literal `raw-data/` prefix. The live test verifies that prefix before
+checking the agency, docket, binary, and text levels beneath it.
+
+```shell
+python3 -m unittest -v tests.test_live_s3_structure
+```
+
+Set `MIRRULATIONS_TEST_SEED` to repeat the same random selection when the
+available S3 prefixes have not changed:
+
+```shell
+MIRRULATIONS_TEST_SEED=structure-check python3 -m unittest -v tests.test_live_s3_structure
+```
 
 Generally, the structure looks like this: 
 

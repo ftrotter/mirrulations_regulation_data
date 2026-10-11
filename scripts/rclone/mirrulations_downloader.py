@@ -1,226 +1,275 @@
-import os
-from dotenv import load_dotenv
-import click
-import time
+"""Interactively download selected Mirrulations data with rclone."""
+
+import argparse
 import datetime
-import sys
-
-# Check for .env file before attempting to load it
-env_file_path = os.path.join(os.path.dirname(__file__), '.env')
-if not os.path.isfile(env_file_path):
-    print(f"Error: .env file not found at {env_file_path}")
-    print("Please create a .env file by copying example.env and configuring the required variables:")
-    print("  MIRRULATIONS_DESTINATION_PATH")
-    print("  RCLONE_CONFIG_FILE")
-    sys.exit(1)
-
-load_dotenv(env_file_path) #So we can get our passwords from the .env file
+import os
+from pathlib import Path
+import shlex
+import subprocess
+import time
 
 
-#print(f"Saving data to: {dest_dir} \nUsing rclone configuration file {rclone_config_file}")
+BUCKET_REMOTE = "myconfig:mirrulations/"
+DEFAULT_TRANSFERS = 50
+ENV_FILE_PATH = Path(__file__).with_name(".env")
+MIRRULATIONS_DATA_ROOTS = ("raw-data", "derived-data")
+TEXT_FILE_PATTERNS = ("*.txt", "*.json", "*.htm")
 
-#my_command = f"rclone copy myconfig:mirrulations/ {dest_dir} --config {rclone_config_file}"
 
-#print(f"Running: \n\t{my_command}")
-#os.system(my_command)
+def parse_comma_separated_values(value):
+    """Return nonempty, whitespace-trimmed values from a comma-separated string."""
+    return [item.strip() for item in value.split(",") if item.strip()]
 
 
-def parse_years(year_str):
+def parse_years(year_string):
+    """Expand comma-separated years and inclusive year ranges."""
     years = []
-    for item in year_str.split(','):
-        if '-' in item:
-            start, end = map(int, item.split('-'))
-            years.extend(range(start, end + 1))
-        else:
-            years.append(int(item))
+    for year_item in parse_comma_separated_values(year_string):
+        if "-" not in year_item:
+            years.append(int(year_item))
+            continue
+
+        range_parts = year_item.split("-")
+        if len(range_parts) != 2:
+            raise ValueError(f"Invalid year range: {year_item}")
+        start_year, end_year = map(int, range_parts)
+        if start_year > end_year:
+            raise ValueError(
+                f"Invalid year range {year_item}: the start year exceeds the end year"
+            )
+        years.extend(range(start_year, end_year + 1))
     return years
 
 
-def print_and_run_command_array(command_array):
+def validate_docket_id(docket_id):
+    """Return the agency component from an AGENCY-YEAR-NUMBER docket ID."""
+    docket_parts = docket_id.split("-")
+    if len(docket_parts) < 3 or not docket_parts[0]:
+        raise ValueError(
+            f"Invalid docket ID {docket_id!r}; expected AGENCY-YEAR-NUMBER"
+        )
+    return docket_parts[0]
 
-    print("Preparing to run:")
-    for this_command in command_array:
-        print(f"\t{command_array}")
 
-    if click.confirm('Do you want to run these commands?', default=False):
-        for this_command in command_array:
-            print(f"Running:\t{this_command}")
-            os.system(this_command)
+def build_include_patterns(*, agencies, years, dockets, text_only):
+    """Build rclone include filters for the requested Mirrulations selection."""
+    file_patterns = TEXT_FILE_PATTERNS if text_only else ("*",)
+
+    # Preserve the original behavior: explicit dockets supersede agency/year
+    # filters instead of combining with them.
+    if dockets:
+        selections = []
+        for docket_id in dockets:
+            agency = validate_docket_id(docket_id)
+            selections.append((agency, docket_id))
     else:
-        print("Not running. Goodbye.")
-        exit()
+        selected_agencies = agencies or ["*"]
+        selected_dockets = [f"*{year}*" for year in years] if years else ["*"]
+        selections = [
+            (agency, docket_pattern)
+            for agency in selected_agencies
+            for docket_pattern in selected_dockets
+        ]
+
+    include_patterns = []
+    for data_root in MIRRULATIONS_DATA_ROOTS:
+        for agency, docket_pattern in selections:
+            for file_pattern in file_patterns:
+                include_patterns.append(
+                    f"/{data_root}/{agency}/{docket_pattern}/**/{file_pattern}"
+                )
+    return include_patterns
 
 
+def build_rclone_command(
+    *, destination_path, rclone_config_file, transfers, include_patterns
+):
+    """Build an rclone argument list that can be executed without a shell."""
+    command = [
+        "rclone",
+        "copy",
+        BUCKET_REMOTE,
+        str(destination_path),
+        "--config",
+        str(rclone_config_file),
+        "--checkers",
+        str(transfers * 2),
+        "--transfers",
+        str(transfers),
+        "--log-file",
+        "rclone.log",
+        "--progress",
+    ]
+    for include_pattern in include_patterns:
+        command.extend(("--include", include_pattern))
+    return command
 
 
-@click.command()
-@click.option('--agency', '-a', default='', help="Agency name(s) separated by commas.")
-@click.option('--year', '-y', default='', help="Year(s) or range(s) of years separated by commas or dash (e.g., 2010-2015).")
-@click.option('--textonly', is_flag=True, help="Flag to indicate if textonly should be True.")
-@click.option('--getall', is_flag=True, help="Download all agencies, all years. (WARNING: this could cost a few hundred dollars...)")
-@click.option('--transfers', default='', help="How many rclone connections to run at the same time (default is 50)")
-@click.option('--docket','-d', default='', help="Download a specific docket id")
+def load_environment_file(*, environment_file_path):
+    """Load the downloader's .env file after CLI parsing, not during import."""
+    if not environment_file_path.is_file():
+        raise ValueError(
+            "mirrulations_downloader.py Error: .env file not found at "
+            f"{environment_file_path}. Copy example.env to .env and configure "
+            "MIRRULATIONS_DESTINATION_PATH and RCLONE_CONFIG_FILE."
+        )
 
-def main(agency, year, docket, textonly, getall, transfers ):
-    agency_list = [agency.strip() for agency in agency.split(',') if agency.strip()]
-    docket_list =  [docket.strip() for docket in docket.split(',') if docket.strip()]
-    
-    if year:
-        year_list = parse_years(year)
-    else:
-        year_list = []
+    try:
+        from dotenv import load_dotenv
+    except ImportError as import_error:
+        raise ValueError(
+            "mirrulations_downloader.py Error: python-dotenv is not installed. "
+            "Run `pip install -r requirements.txt`."
+        ) from import_error
 
-
-    run_command(agency_list, year_list, docket_list, textonly, getall, transfers)
-
-def run_command(agency_list, year_list, docket_list, textonly, getall, transfers):
-    """A command to generate and run the rclone commands needed to download regulations data from the mirrulations project!"""
-
-    start_time = time.time()
-
-    #How many rclone transfers should we use? We need to figure it out before we build the arguments to rclone that we 
-    #Will use on any future command
-    transfers_to_use = 50
-    if transfers:
-        if(transfers.isnumeric()):
-            transfers_to_use = transfers
-        else:
-            print("Non numeric value for transfers argument. confusion. exiting")
-            exit()
-    checkers_to_use = int(transfers_to_use) * 2
-
-    #these are the rclone commands that we always use
-    always_flags = f" --checkers {checkers_to_use} --transfers {transfers_to_use} --log-file 'rclone.log' -P "
-
-    #tracks whether there is a limitation argument
-    is_limited = False
-
-    if getall:
-        is_enough = True
-    else:
-        is_enough = False
-
-    if len(agency_list) > 0:
-        is_enough = True
-        is_limited = True
-    else:
-        agency_list = [ '*' ]
-
-    if len(year_list) > 0:
-        is_enough = True
-        is_limited = True
-    else:
-        year_list = [ '*' ]
-
-    if len(docket_list) > 0:
-        is_enough = True
-        is_limited = True
-    else:
-        docket_list = []
+    load_dotenv(environment_file_path)
 
 
-    #All 'text only' means is that we are not doing the word documents, pdfs, etc etc.. we just want to the raw text files
-    #these come in three flavors... 
-    if not textonly:
-        included_file_types = ['*']
-    else:
-        included_file_types = ['*.txt','*.json','*.htm']
-        is_limited = True
-        is_enough = True
+def get_configured_paths():
+    """Validate and return destination and rclone configuration paths."""
+    destination_value = os.getenv("MIRRULATIONS_DESTINATION_PATH")
+    config_value = os.getenv("RCLONE_CONFIG_FILE")
+    errors = []
 
-#we either need --getall or we need some other limitation
-    #we are not just going to download everything without some indication that we should...
-    if not is_enough:
-        print("If you want to download everything.. pass in the --getall paramater and go to lunch!! \nOtherwise add the --help for a full list of options")
-        exit()
-    
+    destination_path = Path(destination_value).expanduser() if destination_value else None
+    if destination_path is None:
+        errors.append("MIRRULATIONS_DESTINATION_PATH is not set")
+    elif not destination_path.is_dir():
+        errors.append(f"destination directory does not exist: {destination_path}")
 
-    #A substantial part of our configuration is contained in rclone configuration file 
-    #We need to make sure these exist! 
-    dest_dir = os.getenv('MIRRULATIONS_DESTINATION_PATH')
-    rclone_config_file = os.getenv('RCLONE_CONFIG_FILE')
-
-    has_error = False
-
-    if dest_dir is None:
-        print(f"Error: MIRRULATIONS_DESTINATION_PATH environment variable is not set. Please set it in your .env file")
-        has_error = True
-    elif not os.path.exists(dest_dir):
-        print(f"Error: {dest_dir} does not exist ")
-        has_error = True
-
+    rclone_config_file = Path(config_value).expanduser() if config_value else None
     if rclone_config_file is None:
-        print(f"Error: RCLONE_CONFIG_FILE environment variable is not set. Please set it in your .env file")
-        has_error = True
-    elif not os.path.isfile(rclone_config_file):
-        print(f"Error: {rclone_config_file} is not found")
-        has_error = True
+        errors.append("RCLONE_CONFIG_FILE is not set")
+    elif not rclone_config_file.is_file():
+        errors.append(f"rclone configuration file does not exist: {rclone_config_file}")
 
-    if has_error:
-        print("Crashing due to errors")
-        exit()
+    if errors:
+        raise ValueError("mirrulations_downloader.py Error: " + "; ".join(errors))
+    return destination_path, rclone_config_file
 
-    #If we get here then we have the files we need to proceed.
-    #I is possible that junk in the rclone.conf file would keep this from working...
-    #This will be the command.. or the prefix for the commands that we try to build later
-    base_rclone_command = f"rclone copy myconfig:mirrulations/ {dest_dir} --config {rclone_config_file} {always_flags}"
 
-    if getall:
-        if is_limited:
-            print(f"You have entered --getall and a filter at the same time. I dont know what to do... so I am not going to do anything. Try --help")
-            exit()
-        else:
-            #If we get here, then shoudl simply download everything.
-            #we just run the command with no modification with --include statements
-            commands_to_run = [ base_rclone_command ]
-            print_and_run_command_array(commands_to_run)
-    else:
-        #Here we are downloading some subset of the data.. which we will express with one or more --include statements to the rclone command
-        commands_to_run = []
+def format_command(command):
+    """Return a shell-readable representation of an argument list."""
+    return shlex.join(command)
 
-        include_these = []
-        for this_agency in agency_list:
-            for this_year in year_list:
-                if this_year != '*':
-                    this_year = f"*{this_year}*"
-                for this_file_type in included_file_types:
-                    # Updated pattern to match new directory structure with raw-data/ and derived-data/
-                    include_these.append(f"/*/{this_agency}/{this_year}/**/{this_file_type}")
 
-        # if we are doing dockets.. that is all we are doing
-        if len(docket_list) > 0:
-            include_these = []
+def confirm_and_run_commands(*, commands):
+    """Print, confirm, and execute rclone commands."""
+    print("Preparing to run:")
+    for command in commands:
+        print(f"\t{format_command(command)}")
 
-        for this_docket in docket_list:
-            # To really have any speed-up.. we also need to narrow by agency. Otherwise.. we will ahve to search for every agency 
-            # for the matching docket id.
-            # dockets take the form AGENCY-YEAR-ID like the soon to be famous DEA-2024-0059
-            docket_string_list = this_docket.split('-')
-            agency = docket_string_list.pop(0) # get the first segment.
+    confirmation = input("Do you want to run these commands? [y/N]: ").strip().lower()
+    if confirmation not in {"y", "yes"}:
+        print("Not running. Goodbye.")
+        return False
 
-            for this_file_type in included_file_types:
-                # Updated pattern to match new directory structure (both raw-data/ and derived-data/)
-                include_these.append(f"/*/{agency}/{this_docket}/**/{this_file_type}")
+    for command in commands:
+        print(f"Running:\t{format_command(command)}")
+        try:
+            subprocess.run(command, check=True)
+        except FileNotFoundError as file_not_found_error:
+            raise ValueError(
+                "mirrulations_downloader.py Error: rclone executable was not found. "
+                "Install rclone and ensure it is available on PATH."
+            ) from file_not_found_error
+    return True
 
-        this_command = base_rclone_command
-        for include_string in include_these:
-            this_command += f" --include \"{include_string}\" "
 
-        command_array = [ this_command ]
-        print_and_run_command_array(command_array)
+def create_argument_parser():
+    """Create the command-line parser."""
+    parser = argparse.ArgumentParser(
+        description="Download regulations data from the Mirrulations S3 bucket."
+    )
+    parser.add_argument(
+        "-a", "--agency", default="", help="Agency name(s) separated by commas."
+    )
+    parser.add_argument(
+        "-y",
+        "--year",
+        default="",
+        help="Year(s) or inclusive ranges separated by commas (for example, 2010-2015).",
+    )
+    parser.add_argument(
+        "--textonly",
+        action="store_true",
+        help="Download only TXT, JSON, and HTM files.",
+    )
+    parser.add_argument(
+        "--getall",
+        action="store_true",
+        help="Download the entire bucket (cannot be combined with filters).",
+    )
+    parser.add_argument(
+        "--transfers",
+        type=int,
+        default=DEFAULT_TRANSFERS,
+        help=f"Concurrent rclone transfers (default: {DEFAULT_TRANSFERS}).",
+    )
+    parser.add_argument(
+        "-d", "--docket", default="", help="Docket ID(s) separated by commas."
+    )
+    return parser
 
-    #No matter if we are downloading a portion or everything..
-    #We print out how long it took to run.
-    end_time = time.time()
 
-    elapsed_time = round(end_time - start_time)
-    printable_elapsed_time = str(datetime.timedelta(seconds = elapsed_time))
+def run_downloader(*, arguments):
+    """Validate CLI arguments, build the rclone command, and offer to run it."""
+    agencies = parse_comma_separated_values(arguments.agency)
+    dockets = parse_comma_separated_values(arguments.docket)
+    years = parse_years(arguments.year) if arguments.year else []
 
-    print(f"""
-Process finished!
-    Took {printable_elapsed_time} to finish ( {elapsed_time} seconds )
+    if arguments.transfers <= 0:
+        raise ValueError(
+            "mirrulations_downloader.py Error: --transfers must be greater than zero"
+        )
 
-            """)
+    has_filter = bool(agencies or years or dockets or arguments.textonly)
+    if arguments.getall and has_filter:
+        raise ValueError(
+            "mirrulations_downloader.py Error: --getall cannot be combined with "
+            "--agency, --year, --docket, or --textonly"
+        )
+    if not arguments.getall and not has_filter:
+        raise ValueError(
+            "mirrulations_downloader.py Error: specify a filter, or use --getall "
+            "to download the entire bucket"
+        )
+
+    load_environment_file(environment_file_path=ENV_FILE_PATH)
+    destination_path, rclone_config_file = get_configured_paths()
+    include_patterns = []
+    if not arguments.getall:
+        include_patterns = build_include_patterns(
+            agencies=agencies,
+            years=years,
+            dockets=dockets,
+            text_only=arguments.textonly,
+        )
+
+    command = build_rclone_command(
+        destination_path=destination_path,
+        rclone_config_file=rclone_config_file,
+        transfers=arguments.transfers,
+        include_patterns=include_patterns,
+    )
+    start_time = time.monotonic()
+    confirm_and_run_commands(commands=[command])
+    elapsed_seconds = round(time.monotonic() - start_time)
+    print(
+        "Process finished!\n"
+        f"    Took {datetime.timedelta(seconds=elapsed_seconds)} to finish "
+        f"({elapsed_seconds} seconds)"
+    )
+
+
+def main():
+    """Run the command-line downloader."""
+    parser = create_argument_parser()
+    arguments = parser.parse_args()
+    try:
+        run_downloader(arguments=arguments)
+    except (ValueError, subprocess.CalledProcessError) as error:
+        parser.exit(1, f"{error}\n")
 
 
 if __name__ == "__main__":

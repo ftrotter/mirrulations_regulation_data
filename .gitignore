@@ -1,6 +1,13 @@
+
+
+# Downloaded source records and generated corpus artifacts
+/data/
+
+# typical stuff and configuration files
 .DS_Store
-.venv
 .env
-data
 rclone.conf
 rclone.log
+.venv/
+__pycache__/
+.pytest_cache/
