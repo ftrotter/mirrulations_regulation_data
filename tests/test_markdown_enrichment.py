@@ -288,6 +288,40 @@ class PipelineTest(unittest.TestCase):
             self.assertIn('<a id="p-0003"></a>', output)
             self.assertIn("structural_source_object_key:", output)
 
+    def test_metadata_json_is_not_rendered_and_stale_projection_is_pruned(self):
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            temporary_root = Path(temporary_directory)
+            source_root = temporary_root / "source"
+            markdown_db_path = temporary_root / "markdown"
+            metadata_path = (
+                source_root / "raw-data/CMS/CMS-2026-1255/documents/rule.json"
+            )
+            metadata_path.parent.mkdir(parents=True)
+            metadata_path.write_text(
+                json.dumps({"data": {"attributes": {"comment": None, "title": "Rule"}}}),
+                encoding="utf-8",
+            )
+            stale_path = (
+                markdown_db_path / STAGE_1
+                / metadata_path.relative_to(source_root).with_name("rule.json.md")
+            )
+            stale_path.parent.mkdir(parents=True)
+            stale_path.write_text("stale", encoding="utf-8")
+            status = MarkdownPipeline.run(
+                source_root=source_root,
+                markdown_db_path=markdown_db_path,
+                docket_id="CMS-2026-1255",
+            )
+            self.assertEqual(0, status["markdown_asset_count"])
+            self.assertFalse(stale_path.exists())
+            decisions = json.loads(
+                (
+                    markdown_db_path
+                    / "metadata/manifests/document_selection.json"
+                ).read_text(encoding="utf-8")
+            )["decisions"]
+            self.assertEqual("metadata-only-json", decisions[0]["selection_reason"])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

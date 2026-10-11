@@ -11,6 +11,7 @@ from .citations import (
     resolve_candidate,
 )
 from .conversion import html_to_markdown, json_to_markdown, text_to_markdown
+from .document_selection import select_logical_documents
 from .inventory import inventory_source
 from .pdf_structure import extract_pdf_structure
 from .source_pairing import pair_extracted_attachments
@@ -36,6 +37,40 @@ def _write_text(*, output_path, text):
     temporary_path = output_path.with_suffix(f"{output_path.suffix}.tmp")
     temporary_path.write_text(text, encoding="utf-8")
     temporary_path.replace(output_path)
+
+
+def _metadata_name(*, source_object_key):
+    return hashlib.sha256(source_object_key.encode("utf-8")).hexdigest()
+
+
+def _prune_stale_outputs(*, markdown_db_path, metadata_root, selected_assets):
+    """Remove only generated artifacts no longer selected by the current run."""
+    selected_markdown_paths = {
+        asset["markdown_path"] for asset in selected_assets
+    }
+    for stage_name in (STAGE_1, STAGE_2):
+        stage_root = markdown_db_path / stage_name
+        if not stage_root.is_dir():
+            continue
+        for markdown_path in stage_root.rglob("*.md"):
+            relative_path = markdown_path.relative_to(stage_root).as_posix()
+            if relative_path not in selected_markdown_paths:
+                markdown_path.unlink()
+    selected_metadata_names = {
+        _metadata_name(source_object_key=asset["source_object_key"])
+        for asset in selected_assets
+    }
+    sidecar_roots = (
+        metadata_root / "blocks",
+        metadata_root / "annotations" / "citation_candidates",
+        metadata_root / "annotations" / "citations",
+    )
+    for sidecar_root in sidecar_roots:
+        if not sidecar_root.is_dir():
+            continue
+        for sidecar_path in sidecar_root.glob("*.json"):
+            if sidecar_path.stem not in selected_metadata_names:
+                sidecar_path.unlink()
 
 
 def _front_matter(*, asset, selected_source_location, pairing=None):
@@ -103,14 +138,23 @@ class MarkdownPipeline:
     @staticmethod
     def run(*, source_root, markdown_db_path, docket_id=None):
         assets = inventory_source(source_root=source_root, docket_id=docket_id)
-        markdown_assets = [
-            asset for asset in assets if asset["source_role"] == "markdown-source"
-        ]
+        markdown_assets, selection_decisions = select_logical_documents(
+            source_root=source_root, assets=assets
+        )
         pairings = pair_extracted_attachments(source_root=source_root, assets=assets)
         metadata_root = markdown_db_path / "metadata"
         _write_json(
             output_path=metadata_root / "manifests" / "source_inventory.json",
             value={"schema_version": 1, "assets": assets},
+        )
+        _write_json(
+            output_path=metadata_root / "manifests" / "document_selection.json",
+            value={"schema_version": 1, "decisions": selection_decisions},
+        )
+        _prune_stale_outputs(
+            markdown_db_path=markdown_db_path,
+            metadata_root=metadata_root,
+            selected_assets=markdown_assets,
         )
         _write_json(
             output_path=metadata_root / "manifests" / "source_pairings.json",
@@ -212,9 +256,9 @@ class MarkdownPipeline:
         stage_2_path = markdown_db_path / STAGE_2 / asset["markdown_path"]
         _write_text(output_path=stage_2_path, text=stage_2_text)
 
-        metadata_name = hashlib.sha256(
-            asset["source_object_key"].encode("utf-8")
-        ).hexdigest()
+        metadata_name = _metadata_name(
+            source_object_key=asset["source_object_key"]
+        )
         _write_json(
             output_path=metadata_root / "blocks" / f"{metadata_name}.json",
             value={

@@ -98,6 +98,16 @@ def corpus_summary(*, markdown_db_path, primary_source_object_key=None):
                 ).items()
             )
         )
+    selection_path = markdown_db_path / "metadata" / "manifests" / "document_selection.json"
+    if selection_path.is_file():
+        decisions = json.loads(selection_path.read_text(encoding="utf-8"))["decisions"]
+        summary["document_selection_reasons"] = dict(
+            sorted(
+                Counter(
+                    decision["selection_reason"] for decision in decisions
+                ).items()
+            )
+        )
     if primary_source_object_key:
         metadata_name = hashlib.sha256(
             primary_source_object_key.encode("utf-8")
