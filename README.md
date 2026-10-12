@@ -149,6 +149,71 @@ tasks, and failures. Token usage is currently marked unavailable because the
 typed Magentic call returns the parsed Pydantic result without provider usage
 metadata.
 
+### Pipeline status
+
+Use the pipeline status command as the standard way to answer questions such as
+"Where are we?" or "Which stage still has work remaining?":
+
+```shell
+.venv/bin/python scripts/pipeline_status.py --markdown-db data/markdown_db
+```
+
+The default `--markdown-db` value is the repository's `data/markdown_db`
+directory, so the shorter form is also valid:
+
+```shell
+.venv/bin/python scripts/pipeline_status.py
+```
+
+The report derives completion from generated files and authoritative metadata
+sidecars rather than parsing progress logs. It reports:
+
+- Source inventory size and selected Markdown document count.
+- Stage 1 Markdown files, semantic block count, and block types.
+- Stage 2 Markdown files, citation count, and citation-resolution status.
+- Stage 3 generated files, eligible and excluded documents, exclusion reasons,
+  contextual-segment completion, detected references, and missing block
+  coverage.
+- Stage 4 generated files, assessed references, linked references,
+  conservative no-match results, failed records, and unresolved references.
+- Known active or stale pipeline PID files.
+
+A stage is `complete` only when its authoritative artifacts cover all expected
+inputs without coverage errors. A stage is `partial` when some output exists
+but expected records are missing or inconsistent. A stage is `not-started`
+when it has no authoritative output.
+
+Example output:
+
+```text
+Pipeline status
+Source: complete — 1631 assets; 1138 selected documents
+Stage 1: complete — 1138/1138 Markdown files; 24194 semantic blocks
+Stage 2: complete — 1138/1138 Markdown files; 2731 citations
+Stage 3: complete — 1138/1138 documents; 941 eligible; 197 excluded; 2649/2649 segments; 6286 references; 0 missing blocks
+Stage 4: not-started — 0/6286 references assessed; 0 linked; 0 no-match; 6286 unresolved
+Active processes: none
+```
+
+Use JSON output for scripts, monitoring, or CI:
+
+```shell
+.venv/bin/python scripts/pipeline_status.py \
+  --markdown-db data/markdown_db \
+  --json
+```
+
+By default, known PID files are checked in `/tmp`. Override that location when
+pipeline processes use another runtime directory:
+
+```shell
+.venv/bin/python scripts/pipeline_status.py \
+  --runtime-directory /path/to/runtime
+```
+
+PID state is supplementary operational information. Generated files and
+sidecars—not PID files or logs—determine whether a stage is complete.
+
 
 ## Data License
 
