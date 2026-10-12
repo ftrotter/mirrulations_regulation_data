@@ -2,10 +2,19 @@
 A repository with instructions for accessing data from the mirrulations project. 
 Tries to stay up to date with mirrulations directory structures.
 
-See
-[`RegulationsGovRegulatoryProcessMetadata.md`](RegulationsGovRegulatoryProcessMetadata.md)
-for the evidence-based guide to Regulations.gov dockets, documents, comments,
-regulatory stages, supporting artifacts, and System of Records Notices.
+## Permanent documentation
+
+- [Corrected Mirrulations storage and JSON guide](MirrulationsStructureCorrected.md)
+- [Exact pinned upstream structure document](MirrulationsStructureUpstream.md)
+- [Regulatory resource traversal guide](MirrulationsRegulatoryDocumentStructure.md)
+- [Regulations.gov process metadata and SORNs](RegulationsGovRegulatoryProcessMetadata.md)
+- [Generated Markdown database contract](RichDocumentStructure.md)
+- [Checked-in API examples and simple downloader](examples/regulation_gov_results/)
+- [Official Reg Map PDF](https://www.reginfo.gov/public/reginfo/Regmap/REG_MAP_2020.pdf)
+
+These are the stable entry points for humans and automated readers. Generated
+files under `data/` remain reproducible evidence rather than primary
+documentation.
 
 ## S3 Access
 The Mirrulations project publishes its results at the following S3 Bucket. 
