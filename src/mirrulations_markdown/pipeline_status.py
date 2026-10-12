@@ -55,6 +55,74 @@ def _active_processes(*, runtime_directory):
     return processes
 
 
+def _last_nonempty_line(*, path):
+    if not path.is_file():
+        return None
+    lines = [line.strip() for line in path.read_text(encoding="utf-8").splitlines()]
+    return next((line for line in reversed(lines) if line), None)
+
+
+def _premium_benchmark_processes(*, metadata_root, runtime_directory):
+    """Discover and summarize provider jobs in nested Stage 4 runtime directories."""
+    processes = []
+    pid_paths = (
+        sorted(runtime_directory.glob("mirrulations-stage4-*/*.pid"))
+        if runtime_directory.is_dir() else []
+    )
+    benchmark_root = metadata_root / "reference_link_benchmarks"
+    cohort_manifests = sorted(benchmark_root.glob("benchmark-*/manifest.json"))
+    cohort = _json(path=cohort_manifests[-1]) if cohort_manifests else {}
+    for pid_path in pid_paths:
+        provider = pid_path.stem
+        try:
+            pid = int(pid_path.read_text(encoding="utf-8").strip())
+            os.kill(pid, 0)
+            running = True
+        except (OSError, ValueError):
+            pid = None
+            running = False
+        provider_root = benchmark_root / provider
+        accepted_reference_ids = set()
+        accepted_batch_files = 0
+        if provider_root.is_dir():
+            for batch_path in provider_root.glob("*/*/batches/*.json"):
+                accepted_batch_files += 1
+                accepted_reference_ids.update(
+                    link["reference_id"]
+                    for link in _json(path=batch_path).get("links", [])
+                )
+        rejected_paths = (
+            list(provider_root.glob("*/*/rejected_batches/*.json"))
+            if provider_root.is_dir() else []
+        )
+        provider_manifests = (
+            sorted(provider_root.glob("*/*/manifest.json"), key=lambda path: path.stat().st_mtime_ns)
+            if provider_root.is_dir() else []
+        )
+        provider_manifest = (
+            _json(path=provider_manifests[-1]) if provider_manifests else {}
+        )
+        processes.append({
+            "kind": "premium_stage4_benchmark",
+            "provider": provider,
+            "runtime_name": pid_path.parent.name,
+            "pid_file": str(pid_path),
+            "pid": pid,
+            "running": running,
+            "log_path": str(pid_path.with_suffix(".log")),
+            "latest_log_line": _last_nonempty_line(path=pid_path.with_suffix(".log")),
+            "cohort_comments": cohort.get("comment_count"),
+            "cohort_references": cohort.get("reference_count"),
+            "accepted_references": len(accepted_reference_ids),
+            "accepted_batch_files": accepted_batch_files,
+            "rejected_batch_files": len(rejected_paths),
+            "manifest_completed_references": provider_manifest.get("references_completed"),
+            "manifest_failed_batches": provider_manifest.get("failed_batch_count"),
+            "model": provider_manifest.get("model"),
+        })
+    return processes
+
+
 def pipeline_status(*, markdown_db_path, runtime_directory=Path("/tmp")):
     """Return one compact status document derived from pipeline artifacts."""
     metadata_root = markdown_db_path / "metadata"
@@ -226,6 +294,9 @@ def pipeline_status(*, markdown_db_path, runtime_directory=Path("/tmp")):
         "stage003": stage_3,
         "stage004": stage_4,
         "processes": _active_processes(runtime_directory=runtime_directory),
+        "premium_benchmark_processes": _premium_benchmark_processes(
+            metadata_root=metadata_root, runtime_directory=runtime_directory,
+        ),
     }
 
 
@@ -237,6 +308,7 @@ def format_pipeline_status(*, status):
     stage_3 = status["stage003"]
     stage_4 = status["stage004"]
     running = [process for process in status["processes"] if process["running"]]
+    benchmark_processes = status.get("premium_benchmark_processes", [])
     lines = [
         "Pipeline status",
         f"Source: {source['status']} — {source['inventory_assets']} assets; "
@@ -258,4 +330,18 @@ def format_pipeline_status(*, status):
             ", ".join(str(process["pid"]) for process in running) if running else "none"
         ),
     ]
+    if benchmark_processes:
+        lines.append("Premium Stage 4 benchmark processes:")
+        for process in benchmark_processes:
+            expected = process["cohort_references"]
+            expected_text = str(expected) if expected is not None else "not-recorded"
+            state = "running" if process["running"] else "stopped"
+            lines.append(
+                f"- {process['provider']}: {state} pid={process['pid']}; "
+                f"{process['accepted_references']}/{expected_text} accepted references; "
+                f"{process['accepted_batch_files']} accepted batches; "
+                f"{process['rejected_batch_files']} rejected batches"
+            )
+            if process["latest_log_line"]:
+                lines.append(f"  Latest: {process['latest_log_line']}")
     return "\n".join(lines)

@@ -228,14 +228,36 @@ async def _submit_batches(
                     response = await adapter.submit_question_batch(
                         prepared_context=prepared_context, questions=questions,
                     )
-                validate_link_batch(
-                    batch=response["batch"],
-                    expected_reference_ids=[item["reference_id"] for item in items],
-                    target_block_ids=[
-                        block["block_id"] for block in target_context["target_blocks"]
-                    ],
-                    open_questions=target_context["open_questions"],
-                )
+                try:
+                    validate_link_batch(
+                        batch=response["batch"],
+                        expected_reference_ids=[item["reference_id"] for item in items],
+                        target_block_ids=[
+                            block["block_id"] for block in target_context["target_blocks"]
+                        ],
+                        open_questions=target_context["open_questions"],
+                    )
+                except ValueError as validation_error:
+                    rejected_key = hashlib.sha256("|".join(
+                        item["reference_id"] for item in items
+                    ).encode("utf-8")).hexdigest()[:20]
+                    _write_json(
+                        output_path=(
+                            checkpoint_root / "rejected_batches"
+                            / f"batch-{rejected_key}.json"
+                        ),
+                        value={
+                            "schema_version": 1,
+                            "provider": adapter.provider, "model": adapter.model,
+                            "context_sha256": target_context["context_sha256"],
+                            "validation_error": str(validation_error),
+                            "response": response["batch"].model_dump(mode="json"),
+                            "provider_metadata": _normalized_batch_metadata(
+                                response=response
+                            ),
+                        },
+                    )
+                    raise
                 metadata = _normalized_batch_metadata(response=response)
                 result_by_id = {
                     result.reference_id: result for result in response["batch"].results

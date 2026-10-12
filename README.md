@@ -249,6 +249,13 @@ Use the pipeline-status command to verify downloaded Stage 4 coverage:
 .venv/bin/python scripts/pipeline_status.py --markdown-db data/markdown_db
 ```
 
+When premium benchmark jobs are launched beneath a runtime directory named
+`mirrulations-stage4-*`, the same command discovers their nested PID and log
+files automatically. It reports each provider's process state, accepted
+reference checkpoints, accepted batches, rejected semantic-validation batches,
+and latest progress line. Pass `--json` for the same provider-aware monitoring
+data under `premium_benchmark_processes`.
+
 ### Cross-provider premium Stage 4 benchmarks
 
 Run Gemini, Claude, and OpenAI against the same canonical full target and strict

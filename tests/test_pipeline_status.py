@@ -22,6 +22,47 @@ def _write_json(*, path, value):
 
 
 class PipelineStatusTest(unittest.TestCase):
+    def test_reports_nested_premium_benchmark_processes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            markdown_db, _asset = self._corpus(root=root)
+            benchmark_root = markdown_db / "metadata/reference_link_benchmarks"
+            _write_json(
+                path=benchmark_root / "benchmark-50-comments/manifest.json",
+                value={"comment_count": 50, "reference_count": 504},
+            )
+            _write_json(
+                path=(benchmark_root / "openai/test-model/context/batches/batch-one.json"),
+                value={"links": [
+                    {"reference_id": "reference-1"},
+                    {"reference_id": "reference-2"},
+                ]},
+            )
+            _write_json(
+                path=(benchmark_root / "openai/test-model/context/rejected_batches/bad.json"),
+                value={"validation_error": "bad target"},
+            )
+            runtime = root / "runtime"
+            process_root = runtime / "mirrulations-stage4-50"
+            process_root.mkdir(parents=True)
+            (process_root / "openai.pid").write_text(str(__import__("os").getpid()))
+            (process_root / "openai.log").write_text(
+                "Batch 1/51 complete\nBatch 2/51 complete\n"
+            )
+            status = pipeline_status(
+                markdown_db_path=markdown_db, runtime_directory=runtime,
+            )
+            process = status["premium_benchmark_processes"][0]
+            self.assertTrue(process["running"])
+            self.assertEqual("openai", process["provider"])
+            self.assertEqual(2, process["accepted_references"])
+            self.assertEqual(504, process["cohort_references"])
+            self.assertEqual(1, process["rejected_batch_files"])
+            rendered = format_pipeline_status(status=status)
+            self.assertIn("openai: running", rendered)
+            self.assertIn("2/504 accepted references", rendered)
+            self.assertIn("Latest: Batch 2/51 complete", rendered)
+
     def _corpus(self, *, root):
         markdown_db = root / "markdown"
         asset = {

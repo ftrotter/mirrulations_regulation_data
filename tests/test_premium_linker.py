@@ -53,7 +53,34 @@ class FakePremiumAdapter:
         return None
 
 
+class InvalidOpenQuestionAdapter(FakePremiumAdapter):
+    async def submit_question_batch(self, *, prepared_context, questions):
+        response = await super().submit_question_batch(
+            prepared_context=prepared_context, questions=questions,
+        )
+        result = response["batch"].results[0]
+        result.primary_relationship_class = "explicit_open_question"
+        result.open_question_ids = ["open-question-aaaaaaaaaaaa"]
+        return response
+
+
 class PremiumLinkerTest(unittest.TestCase):
+    def test_persists_structured_response_rejected_by_semantic_validator(self):
+        with tempfile.TemporaryDirectory() as directory:
+            markdown_db = self._write_corpus(root_path=Path(directory))
+            result = PremiumReferenceLinkerPipeline.run(
+                markdown_db_path=markdown_db, provider="anthropic", model="test-model",
+                adapter=InvalidOpenQuestionAdapter(), batch_size=2,
+                maximum_concurrency=1, retry_count=0,
+            )
+            self.assertEqual(1, result["failed_batch_count"])
+            rejected = list((
+                markdown_db / "metadata/reference_link_benchmarks"
+            ).rglob("rejected_batches/*.json"))
+            self.assertEqual(1, len(rejected))
+            record = json.loads(rejected[0].read_text())
+            self.assertIn("invented open-question IDs", record["validation_error"])
+
     def test_openai_cache_key_respects_provider_limit(self):
         adapter = object.__new__(OpenAICachedContextAdapter)
         prepared = adapter.prepare_target_context(target_context={
