@@ -41,13 +41,24 @@ def structural_attachment_identity(*, file_name):
 
 def pair_extracted_attachments(*, source_root, assets):
     """Return deterministic pair records keyed by canonical object key."""
+    def namespace(source_object_key):
+        parts = Path(source_object_key).parts
+        for root_name in ("raw-data", "derived-data"):
+            if root_name in parts:
+                index = parts.index(root_name)
+                if len(parts) > index + 2:
+                    return parts[index + 1], parts[index + 2]
+        return None, None
+
     originals_by_identity = {}
     for asset in assets:
         identity = structural_attachment_identity(
             file_name=Path(asset["source_object_key"]).name
         )
         if identity:
-            originals_by_identity.setdefault(identity[:2], []).append(asset)
+            originals_by_identity.setdefault(
+                (*namespace(asset["source_object_key"]), *identity[:2]), []
+            ).append(asset)
 
     pairings = {}
     for asset in assets:
@@ -55,8 +66,10 @@ def pair_extracted_attachments(*, source_root, assets):
         identity = extracted_attachment_identity(file_name=Path(canonical_key).name)
         if not identity or "/pypdf/" not in f"/{canonical_key}":
             continue
+        selected = None
+        scoped_identity = (*namespace(canonical_key), *identity)
         candidates = sorted(
-            originals_by_identity.get(identity, []),
+            originals_by_identity.get(scoped_identity, []),
             key=lambda candidate: candidate["source_object_key"],
         )
         docx_candidates = [
@@ -75,18 +88,23 @@ def pair_extracted_attachments(*, source_root, assets):
             selected = pdf_candidates[0]
             status = "available-pdf"
         elif len(pdf_candidates) > 1:
+            selected = None
             status = "ambiguous-pdf"
         elif candidates:
+            selected = None
             status = STRUCTURAL_SUFFIX_STATUS.get(
                 candidates[0]["source_suffix"], "structure-pending-unsupported"
             )
         else:
+            selected = None
             status = "missing-original"
         pairings[canonical_key] = {
             "canonical_source_object_key": canonical_key,
             "canonical_source_sha256": asset["source_sha256"],
             "record_id": identity[0],
             "attachment_number": identity[1],
+            "agency_id": scoped_identity[0],
+            "docket_id": scoped_identity[1],
             "status": status,
             "structural_source_object_key": (
                 selected["source_object_key"] if selected else None

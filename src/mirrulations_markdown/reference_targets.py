@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import re
 
+from .resource_index import build_resource_index, current_resource
+
 
 RULE_IDENTIFIER_PATTERN = re.compile(r"\b([A-Z]{2,10}-\d{4}-[A-Z0-9-]+)\b")
 SUBMISSION_IDENTIFIER_PATTERN = re.compile(r"([A-Z]+-\d{4}-\d+-\d{4})")
@@ -40,7 +42,7 @@ def _agency_rule_identifier(*, document_id, metadata, source_root):
     return None
 
 
-def build_target_registry(*, source_root, source_object_key):
+def build_target_registry(*, source_root, source_object_key, resource_index=None):
     """Return finite allowed targets for the current source document."""
     source_path = source_root / source_object_key
     metadata_path = source_path if source_path.suffix.lower() == ".json" else None
@@ -58,19 +60,29 @@ def build_target_registry(*, source_root, source_object_key):
             )
     if metadata_path is None or not metadata_path.is_file():
         return []
-    _data, attributes = _json_metadata(json_path=metadata_path)
+    data, attributes = _json_metadata(json_path=metadata_path)
     comment_on_document_id = attributes.get("commentOnDocumentId")
     docket_id = attributes.get("docketId")
     if not comment_on_document_id:
         return []
-    target_metadata_path = next(
-        iter(source_root.rglob(f"{comment_on_document_id}.json")), None
+    selected_index = resource_index or build_resource_index(source_root=source_root)
+    source_resource = current_resource(
+        resource_index=selected_index, resource_type="comments", public_id=data.get("id")
     )
-    target_attributes = {}
-    if target_metadata_path:
-        _target_data, target_attributes = _json_metadata(
-            json_path=target_metadata_path
+    if source_resource is not None:
+        attributes = source_resource["attributes"]
+        docket_id = attributes.get("docketId")
+        comment_on_document_id = attributes.get("commentOnDocumentId")
+    target_resource = current_resource(
+        resource_index=selected_index, resource_type="documents",
+        public_id=comment_on_document_id, docket_id=docket_id,
+    )
+    if target_resource is None:
+        raise ValueError(
+            "reference_targets.py Error: comment target document metadata is missing: "
+            f"{comment_on_document_id}"
         )
+    target_attributes = target_resource["attributes"]
     rule_identifier = _agency_rule_identifier(
         document_id=comment_on_document_id,
         metadata=target_attributes,
@@ -90,6 +102,11 @@ def build_target_registry(*, source_root, source_object_key):
             "docket_id": docket_id,
             "document_ids": [comment_on_document_id],
             "document_type": document_type,
+            "subtype": target_attributes.get("subtype"),
+            "relationship_type": "direct_comment_on",
+            "target_resource_type": "documents",
+            "metadata_source_object_key": target_resource["source_object_key"],
+            "metadata_revision_number": target_resource["revision_number"],
             "agency_rule_identifier": rule_identifier,
             "title": target_attributes.get("title"),
             "scope_label": scope_label,

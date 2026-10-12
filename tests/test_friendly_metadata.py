@@ -9,7 +9,7 @@ import unittest
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
 from mirrulations_markdown.friendly_metadata import (  # noqa: E402
-    document_metadata, metadata_from_json, normalized_friendly_name,
+    document_metadata, metadata_from_json, metadata_from_resource, normalized_friendly_name,
     parse_markdown_table_row, write_document_friendly_names,
 )
 
@@ -76,6 +76,37 @@ class FriendlyMetadataTest(unittest.TestCase):
             "CMS-2026-1255-0009/attachment_1.pdf)",
             metadata["original_pdf_link"],
         )
+
+    def test_normalized_resource_preserves_null_and_roles(self):
+        metadata = metadata_from_resource(resource={
+            "public_id": "C-1", "resource_type": "comments", "object_id": "opaque",
+            "source_object_key": "comments/C-1.json", "source_sha256": "hash",
+            "revision_number": 2,
+            "attribute_presence": {"organization": "explicit-null"},
+            "attributes": {
+                "organization": None, "authors": None, "title": None,
+                "docketId": "D-1", "commentOnDocumentId": "D-1-0001",
+            },
+        })
+        self.assertIsNone(metadata["organization"])
+        self.assertIsNone(metadata["authors"])
+        self.assertEqual("explicit-null", metadata["attribute_presence"]["organization"])
+        enriched = document_metadata(
+            asset={"source_object_key": "comments/C-1.json"},
+            metadata_records={"C-1": metadata},
+        )
+        self.assertEqual("form_comment", enriched["logical_document_role"])
+        self.assertEqual("metadata_json", enriched["representation_role"])
+
+    def test_role_aware_lookup_avoids_public_id_collision(self):
+        metadata = document_metadata(
+            asset={"source_object_key": "raw/documents/CMS-2026-1-0001_content.html"},
+            metadata_records={
+                ("documents", "CMS-2026-1-0001"): {"title": "Regulatory document"},
+                ("comments", "CMS-2026-1-0001"): {"title": "Public comment"},
+            },
+        )
+        self.assertEqual("Regulatory document", metadata["title"])
 
 
 if __name__ == "__main__":

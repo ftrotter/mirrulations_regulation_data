@@ -1,6 +1,7 @@
 """Tests for metadata-derived backward-reference target registries."""
 
 from pathlib import Path
+import json
 import sys
 import tempfile
 import unittest
@@ -50,6 +51,54 @@ class ReferenceTargetTest(unittest.TestCase):
                     source_root=Path(directory), source_object_key="document.txt"
                 ),
             )
+
+    def test_sorn_comment_target_remains_a_notice(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            comment_path = root / "raw/D/D-1/comments/D-1-0002.json"
+            document_path = root / "raw/D/D-1/documents/D-1-0001.json"
+            comment_path.parent.mkdir(parents=True)
+            document_path.parent.mkdir(parents=True)
+            comment_path.write_text(json.dumps({"data": {
+                "id": "D-1-0002", "type": "comments", "attributes": {
+                    "docketId": "D-1", "commentOnDocumentId": "D-1-0001",
+                },
+            }}))
+            document_path.write_text(json.dumps({"data": {
+                "id": "D-1-0001", "type": "documents", "attributes": {
+                    "docketId": "D-1", "documentType": "Notice",
+                    "subtype": "System of Records", "title": "New System of Records",
+                },
+            }}))
+            target = build_target_registry(
+                source_root=root,
+                source_object_key="raw/D/D-1/comments/D-1-0002.json",
+            )[0]
+        self.assertEqual("Notice", target["document_type"])
+        self.assertEqual("System of Records", target["subtype"])
+        self.assertEqual("direct_comment_on", target["relationship_type"])
+
+    def test_rejects_comment_target_in_different_docket(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            comment_path = root / "comments/C-1.json"
+            document_path = root / "documents/D-1.json"
+            comment_path.parent.mkdir()
+            document_path.parent.mkdir()
+            comment_path.write_text(json.dumps({"data": {
+                "id": "C-1", "type": "comments", "attributes": {
+                    "docketId": "DOCKET-A", "commentOnDocumentId": "D-1",
+                },
+            }}))
+            document_path.write_text(json.dumps({"data": {
+                "id": "D-1", "type": "documents", "attributes": {
+                    "docketId": "DOCKET-B", "documentType": "Notice",
+                },
+            }}))
+            with self.assertRaisesRegex(ValueError, "does not match"):
+                build_target_registry(
+                    source_root=root, source_object_key="comments/C-1.json",
+                )
 
 
 if __name__ == "__main__":

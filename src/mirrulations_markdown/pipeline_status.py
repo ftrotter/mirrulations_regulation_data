@@ -188,6 +188,7 @@ def pipeline_status(*, markdown_db_path, runtime_directory=Path("/tmp")):
     annotations = []
     completed_segments = 0
     planned_segments = 0
+    stale_target_registries = 0
     exclusion_reasons = Counter()
     for name, sidecar in stage_3_sidecars.items():
         eligibility = sidecar.get("eligibility", {})
@@ -205,6 +206,8 @@ def pipeline_status(*, markdown_db_path, runtime_directory=Path("/tmp")):
         }
         completed_segments += len(document_segment_hashes)
         record = block_records.get(name)
+        if record and sidecar.get("target_registry", []) != record.get("target_registry", []):
+            stale_target_registries += 1
         if not record or not is_eligible:
             continue
         expected_ids = {
@@ -224,7 +227,7 @@ def pipeline_status(*, markdown_db_path, runtime_directory=Path("/tmp")):
         for reference in annotation.get("backward_references", [])
     ]
     stage_3_files = _file_count(root=markdown_db_path / STAGE_3)
-    stage_3_errors = missing_owned_blocks + extra_owned_blocks
+    stage_3_errors = missing_owned_blocks + extra_owned_blocks + stale_target_registries
     stage_3 = {
         "status": _completion_status(
             actual=len(stage_3_sidecars), expected=expected_documents,
@@ -240,6 +243,7 @@ def pipeline_status(*, markdown_db_path, runtime_directory=Path("/tmp")):
         "annotations": len(annotations), "references": len(references),
         "missing_owned_blocks": missing_owned_blocks,
         "extra_owned_blocks": extra_owned_blocks,
+        "stale_target_registries": stale_target_registries,
     }
 
     link_root = metadata_root / "reference_links"
@@ -270,7 +274,7 @@ def pipeline_status(*, markdown_db_path, runtime_directory=Path("/tmp")):
     stage_4 = {
         "status": _completion_status(
             actual=len(linked_keys), expected=len(reference_keys),
-            errors=unresolved_references + extra_link_records,
+            errors=unresolved_references + extra_link_records + stale_target_registries,
         ),
         "files": stage_4_files, "link_sidecars": len(link_sidecars),
         "references_to_resolve": len(reference_keys),
@@ -283,6 +287,7 @@ def pipeline_status(*, markdown_db_path, runtime_directory=Path("/tmp")):
         ),
         "unresolved_references": unresolved_references,
         "extra_link_records": extra_link_records,
+        "upstream_stage3_stale": bool(stale_target_registries),
     }
 
     return {
@@ -322,6 +327,7 @@ def format_pipeline_status(*, status):
         f"{stage_3['excluded_documents']} excluded; {stage_3['completed_segments']}/"
         f"{stage_3['planned_segments_for_eligible_documents']} segments; "
         f"{stage_3['references']} references; {stage_3['missing_owned_blocks']} missing blocks",
+        f"Stage 3 stale target registries: {stage_3['stale_target_registries']}",
         f"Stage 4: {stage_4['status']} — {stage_4['link_records']}/"
         f"{stage_4['references_to_resolve']} references assessed; "
         f"{stage_4['linked']} linked; {stage_4['no_match']} no-match; "

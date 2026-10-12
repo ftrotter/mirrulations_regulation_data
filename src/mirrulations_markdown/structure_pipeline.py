@@ -69,7 +69,14 @@ def document_eligibility(
     *, block_record, configuration, submission_has_attachment=False
 ):
     source_key = block_record["asset"]["source_object_key"]
-    is_comment = "/comments/" in source_key or "comments_extracted_text" in source_key
+    document_metadata = block_record.get("document_metadata") or {}
+    logical_document_role = document_metadata.get("logical_document_role")
+    if logical_document_role:
+        is_comment = logical_document_role in {"form_comment", "comment_attachment"}
+        classification_method = "normalized-metadata"
+    else:
+        is_comment = "/comments/" in source_key or "comments_extracted_text" in source_key
+        classification_method = "path-fallback"
     character_count = sum(len(block["plain_text"]) for block in block_record["blocks"])
     if (
         block_record["asset"].get("selection_reason")
@@ -81,7 +88,7 @@ def document_eligibility(
     ):
         return DocumentEligibility(
             eligible=False, page_count=None,
-            page_count_method="not-applicable-placeholder",
+            page_count_method=f"not-applicable-placeholder:{classification_method}",
             character_count=character_count, maximum_comment_pages=None,
             exclusion_reason="excluded-attachment-placeholder",
         )

@@ -16,11 +16,12 @@ from .structure_pipeline import (
 )
 
 
-def _segment_hash(*, source_hash, segment, configuration_hash):
+def _segment_hash(*, source_hash, segment, configuration_hash, target_registry=None):
     value = json.dumps({
         "source_hash": source_hash,
         "segment": segment,
         "configuration_hash": configuration_hash,
+        "target_registry": target_registry or [],
         "task_type": "contextual-segment-v1",
     }, sort_keys=True, ensure_ascii=False)
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
@@ -142,6 +143,7 @@ class ContextualStructureDiscoveryPipeline:
                 if annotation.get("task_status") == "complete" and annotation.get("segment_task_hash"):
                     existing_by_segment.setdefault(annotation["segment_task_hash"], []).append(annotation)
             annotations = []
+            document_failed_tasks = []
             if eligibility.eligible:
                 segments = build_analysis_segments(
                     blocks=record["blocks"], maximum_owned_blocks=maximum_owned_blocks,
@@ -153,6 +155,7 @@ class ContextualStructureDiscoveryPipeline:
                     task_hash = _segment_hash(
                         source_hash=asset["source_sha256"], segment=segment,
                         configuration_hash=configuration_hash,
+                        target_registry=record.get("target_registry", []),
                     )
                     expected_ids = set(segment["owned_block_ids"])
                     if segment["section_block_id"]:
@@ -167,11 +170,13 @@ class ContextualStructureDiscoveryPipeline:
                 with ThreadPoolExecutor(max_workers=maximum_concurrency) as executor:
                     for segment, task_hash in pending:
                         if maximum_api_calls is not None and api_calls >= maximum_api_calls:
-                            failed_tasks.append({
+                            failure = {
                                 "source_object_key": asset["source_object_key"],
                                 "segment_id": segment["segment_id"],
                                 "error": "contextual_structure_pipeline.py Error: API budget exhausted",
-                            })
+                            }
+                            failed_tasks.append(failure)
+                            document_failed_tasks.append(failure)
                             continue
                         if last_request_at is not None:
                             wait = 1.0 / requests_per_second - (time.monotonic() - last_request_at)
@@ -201,14 +206,20 @@ class ContextualStructureDiscoveryPipeline:
                         try:
                             annotations.extend(future.result())
                         except Exception as error:
-                            failed_tasks.append({
+                            failure = {
                                 "source_object_key": asset["source_object_key"],
                                 "segment_id": segment["segment_id"],
                                 "error": (
                                     "contextual_structure_pipeline.py Error: segment failed "
                                     f"with {type(error).__name__}"
                                 ),
-                            })
+                            }
+                            failed_tasks.append(failure)
+                            document_failed_tasks.append(failure)
+            if document_failed_tasks:
+                # Never replace prior valid annotations with partial or empty
+                # output. The caller receives explicit failures and can retry.
+                continue
             block_order = {block["block_id"]: index for index, block in enumerate(record["blocks"])}
             annotations.sort(key=lambda item: block_order[item["block_id"]])
             _write_json(output_path=sidecar_path, value={

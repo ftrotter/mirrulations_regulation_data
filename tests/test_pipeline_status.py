@@ -141,6 +141,34 @@ class PipelineStatusTest(unittest.TestCase):
             self.assertEqual("complete", complete["stage003"]["status"])
             self.assertEqual("not-started", complete["stage004"]["status"])
 
+    def test_reports_stale_target_registry(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            markdown_db, asset = self._corpus(root=root)
+            block_path = markdown_db / "metadata/blocks/document.json"
+            block_record = json.loads(block_path.read_text())
+            block_record["target_registry"] = [{"target_key": "document:NEW"}]
+            _write_json(path=block_path, value=block_record)
+            _write_json(
+                path=markdown_db / "metadata/structure_discovery/annotations/document.json",
+                value={
+                    "asset": asset,
+                    "eligibility": {"eligible": True, "exclusion_reason": None},
+                    "target_registry": [{"target_key": "document:OLD"}],
+                    "annotations": [{
+                        "block_id": "paragraph-0001",
+                        "segment_task_hash": "segment-hash", "task_status": "complete",
+                        "backward_references": [],
+                    }],
+                },
+            )
+            status = pipeline_status(
+                markdown_db_path=markdown_db, runtime_directory=root / "runtime"
+            )
+        self.assertEqual("partial", status["stage003"]["status"])
+        self.assertEqual(1, status["stage003"]["stale_target_registries"])
+        self.assertTrue(status["stage004"]["upstream_stage3_stale"])
+
     def test_reports_complete_stage_four(self):
         with tempfile.TemporaryDirectory() as directory:
             markdown_db, asset = self._corpus(root=Path(directory))

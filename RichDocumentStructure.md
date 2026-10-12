@@ -25,6 +25,7 @@ data/markdown_db/
     ├── reference_links/
     ├── reference_link_benchmarks/
     ├── manifests/
+    │   └── resource_index.json
     ├── runs/
     └── cache/
 ```
@@ -47,6 +48,17 @@ metadata.
 
 Use `source_object_key` plus `source_sha256`. Do not use a basename or absolute
 local path as portable identity.
+
+`metadata/manifests/resource_index.json` indexes API resources by resource
+family plus public ID, preserves every mirrored JSON revision, and selects the
+highest revision suffix explicitly. Normalized metadata records preserve field
+presence, source hash, and selected revision.
+
+Keep these roles separate:
+
+- `api_resource_type`: `dockets`, `documents`, or `comments`;
+- `logical_document_role`: regulatory document, form comment, or attachment;
+- `representation_role`: metadata JSON, HTML body, original, or extraction.
 
 An asset record includes fields such as:
 

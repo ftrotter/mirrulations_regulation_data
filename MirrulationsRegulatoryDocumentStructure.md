@@ -81,6 +81,11 @@ evidence used.
 
 Never substitute one identifier for another.
 
+When multiple mirrored JSON revisions share an API identity, use the explicit
+resource index. It keys identity by resource family plus public ID, preserves
+all versions, and records which revision is selected. Never rely on filesystem
+sort order.
+
 ## Traversal recipe
 
 1. Retrieve document detail; retain public `id` and opaque `objectId`.

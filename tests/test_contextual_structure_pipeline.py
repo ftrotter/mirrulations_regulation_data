@@ -9,7 +9,7 @@ import unittest
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
 from mirrulations_markdown.contextual_structure_pipeline import (  # noqa: E402
-    ContextualStructureDiscoveryPipeline,
+    ContextualStructureDiscoveryPipeline, _segment_hash,
 )
 from mirrulations_markdown.pipeline import STAGE_2  # noqa: E402
 from mirrulations_markdown.structure_models import (  # noqa: E402
@@ -19,6 +19,23 @@ from mirrulations_markdown.structure_models import (  # noqa: E402
 
 
 class ContextualStructurePipelineTest(unittest.TestCase):
+    def test_segment_hash_changes_with_target_semantics(self):
+        common = {
+            "source_hash": "source", "segment": {"segment_id": "one"},
+            "configuration_hash": "configuration",
+        }
+        first = _segment_hash(
+            **common, target_registry=[{
+                "target_key": "document:ONE", "relationship_type": "direct_comment_on",
+            }]
+        )
+        second = _segment_hash(
+            **common, target_registry=[{
+                "target_key": "document:ONE", "relationship_type": "supports",
+            }]
+        )
+        self.assertNotEqual(first, second)
+
     def test_analyzes_section_and_whole_list_in_one_call(self):
         calls = []
 
@@ -122,6 +139,62 @@ class ContextualStructurePipelineTest(unittest.TestCase):
                 },
                 target_registry=[], allowed_targets_by_key={}, segment_hash="hash",
             )
+
+    def test_failed_document_does_not_overwrite_existing_sidecar(self):
+        async def failing_caller(**_kwargs):
+            raise RuntimeError("provider unavailable")
+
+        with tempfile.TemporaryDirectory() as directory:
+            markdown_db = Path(directory) / "markdown"
+            asset = {
+                "source_object_key": "comments/COMMENT-1.json",
+                "source_sha256": "hash", "markdown_path": "comments/COMMENT-1.md",
+                "selection_reason": "form-submitted-comment-body",
+            }
+            block_root = markdown_db / "metadata/blocks"
+            block_root.mkdir(parents=True)
+            (block_root / "source.json").write_text(json.dumps({
+                "asset": asset, "alignment": None,
+                "document_metadata": {"logical_document_role": "form_comment"},
+                "blocks": [{
+                    "block_id": "paragraph-0001", "block_type": "paragraph",
+                    "order": 1, "plain_text": "The deadline is too short.",
+                }],
+                "target_registry": [{
+                    "target_key": "document:TARGET-1", "scope_label": "test target",
+                }],
+            }))
+            stage_2 = markdown_db / STAGE_2 / asset["markdown_path"]
+            stage_2.parent.mkdir(parents=True)
+            stage_2.write_text("source")
+            sidecar = markdown_db / "metadata/structure_discovery/annotations/source.json"
+            sidecar.parent.mkdir(parents=True)
+            original = {"schema_version": 2, "annotations": [{"block_id": "old"}]}
+            sidecar.write_text(json.dumps(original))
+            model = ModelSpec(provider="openai", model="test")
+            result = ContextualStructureDiscoveryPipeline.run(
+                markdown_db_path=markdown_db,
+                configuration=StructureConfiguration(
+                    summary_model=model, reference_model=model,
+                ),
+                segment_caller=failing_caller,
+            )
+            self.assertEqual(1, result["failed_task_count"])
+            self.assertEqual(0, result["completed_documents"])
+            self.assertEqual(original, json.loads(sidecar.read_text()))
+
+            budget_result = ContextualStructureDiscoveryPipeline.run(
+                markdown_db_path=markdown_db,
+                configuration=StructureConfiguration(
+                    summary_model=model, reference_model=model,
+                ),
+                segment_caller=failing_caller,
+                maximum_api_calls=0,
+            )
+            self.assertEqual(1, budget_result["failed_task_count"])
+            self.assertIn("budget exhausted", budget_result["failed_tasks"][0]["error"])
+            self.assertEqual(0, budget_result["completed_documents"])
+            self.assertEqual(original, json.loads(sidecar.read_text()))
 
 
 if __name__ == "__main__":

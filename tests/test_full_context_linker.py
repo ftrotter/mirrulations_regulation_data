@@ -46,6 +46,15 @@ class FullContextLinkerTest(unittest.TestCase):
         }])
         self.assertEqual([], questions)
 
+    def test_detects_passive_and_agency_neutral_invitations(self):
+        questions = identify_open_questions(target_blocks=[
+            {"block_id": "paragraph-0001", "block_type": "paragraph", "order": 1,
+             "plain_text": "Comments are invited on the proposed retention period."},
+            {"block_id": "paragraph-0002", "block_type": "paragraph", "order": 2,
+             "plain_text": "The Commission seeks data on implementation costs."},
+        ])
+        self.assertEqual(2, len(questions))
+
     def test_serialization_is_deterministic_and_skylines_question(self):
         first = serialize_target_context(document_id="TARGET-1", target_blocks=self.blocks)
         second = serialize_target_context(

@@ -17,6 +17,10 @@ OPEN_QUESTION_PATTERNS = (
                r"(?:public )?(?:comment|comments|feedback|input)\b", re.IGNORECASE),
     re.compile(r"\bwe (?:ask|are considering|would like (?:comment|feedback|input)|wonder)\b",
                re.IGNORECASE),
+    re.compile(r"\bcomments? (?:are|is) (?:requested|invited|solicited|welcome)\b",
+               re.IGNORECASE),
+    re.compile(r"\b(?:requests|seeks|solicits|invites|welcomes) (?:data|evidence|views|alternatives)\b",
+               re.IGNORECASE),
 )
 RFI_HEADING_PATTERN = re.compile(r"\brequest for information\b", re.IGNORECASE)
 

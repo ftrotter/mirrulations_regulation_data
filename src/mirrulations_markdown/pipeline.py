@@ -31,6 +31,7 @@ from .reference_metadata import (
     write_reference_friendly_names,
 )
 from .reference_targets import build_target_registry
+from .resource_index import build_resource_index
 from .reverse_lookup import write_citation_reverse_lookup
 
 
@@ -106,7 +107,9 @@ def _front_matter(
         for key in (
             "title", "authors", "organization", "person_name", "document_type",
             "docket_id", "generated_friendly_name", "original_pdf_url",
-            "original_pdf_link",
+            "original_pdf_link", "api_resource_type", "logical_document_role",
+            "representation_role", "subtype", "comment_on_document_id",
+            "object_id", "metadata_revision_number",
         ):
             values[key] = friendly_metadata.get(key)
     lines = ["---"]
@@ -170,11 +173,18 @@ class MarkdownPipeline:
             source_root=source_root, assets=assets
         )
         pairings = pair_extracted_attachments(source_root=source_root, assets=assets)
-        metadata_records = metadata_index(source_root=source_root)
+        resource_index = build_resource_index(source_root=source_root, assets=assets)
+        metadata_records = metadata_index(
+            source_root=source_root, resource_index=resource_index
+        )
         metadata_root = markdown_db_path / "metadata"
         _write_json(
             output_path=metadata_root / "manifests" / "source_inventory.json",
             value={"schema_version": 1, "assets": assets},
+        )
+        _write_json(
+            output_path=metadata_root / "manifests" / "resource_index.json",
+            value={"schema_version": 1, "resources": resource_index["resources"]},
         )
         _write_json(
             output_path=metadata_root / "manifests" / "document_selection.json",
@@ -211,6 +221,7 @@ class MarkdownPipeline:
                     target_registry=build_target_registry(
                         source_root=source_root,
                         source_object_key=asset["source_object_key"],
+                        resource_index=resource_index,
                     ),
                 )
                 adapter_results.extend(asset_adapter_results)

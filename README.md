@@ -163,6 +163,30 @@ tasks, and failures. Token usage is currently marked unavailable because the
 typed Magentic call returns the parsed Pydantic result without provider usage
 metadata.
 
+### Sampled Stage 3 quality review
+
+Use the dedicated review runner instead of manually constructing cohort or
+validation commands. This example selects a deterministic 10% cohort,
+stratifies it by logical document role, performs one provider preflight call,
+runs Stage 3 only when preflight succeeds, and verifies that source, Stage 1,
+and Stage 2 remain immutable:
+
+```shell
+.venv/bin/python scripts/stage3_review.py --sample-fraction 0.10
+```
+
+The script loads repository-root `.env` automatically. Copy the documented
+`STAGE3_REVIEW_*` settings from `example.env` and adjust stable paths, API-call
+budget, pacing, concurrency, and segment bounds there. Only the fraction being
+sampled is supplied at invocation time. A blank
+`STAGE3_REVIEW_MAXIMUM_API_CALLS` budgets all segments in the selected cohort.
+
+The output directory receives `manifest.json`, `source_object_keys.json`, and
+`report.json`. Provider preflight failure stops the run before any Stage 3
+artifact is modified. The runner exits unsuccessfully when calls fail,
+immutable inputs change, target registries are stale, or owned blocks are
+missing from the selected cohort.
+
 ### Pipeline status
 
 Use the pipeline status command as the standard way to answer questions such as
