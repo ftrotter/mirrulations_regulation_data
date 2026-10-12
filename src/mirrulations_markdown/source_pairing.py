@@ -9,7 +9,7 @@ EXTRACTED_ATTACHMENT_PATTERN = re.compile(
 )
 STRUCTURAL_SUFFIX_STATUS = {
     ".pdf": "available-pdf",
-    ".docx": "structure-pending-docx",
+    ".docx": "available-docx",
     ".png": "structure-pending-image",
     ".jpg": "structure-pending-image",
     ".jpeg": "structure-pending-image",
@@ -59,11 +59,20 @@ def pair_extracted_attachments(*, source_root, assets):
             originals_by_identity.get(identity, []),
             key=lambda candidate: candidate["source_object_key"],
         )
+        docx_candidates = [
+            candidate for candidate in candidates if candidate["source_suffix"] == ".docx"
+        ]
         pdf_candidates = [
             candidate for candidate in candidates if candidate["source_suffix"] == ".pdf"
         ]
-        selected = pdf_candidates[0] if len(pdf_candidates) == 1 else None
-        if selected:
+        if len(docx_candidates) == 1:
+            selected = docx_candidates[0]
+            status = "available-docx"
+        elif len(docx_candidates) > 1:
+            selected = None
+            status = "ambiguous-docx"
+        elif len(pdf_candidates) == 1:
+            selected = pdf_candidates[0]
             status = "available-pdf"
         elif len(pdf_candidates) > 1:
             status = "ambiguous-pdf"
@@ -83,6 +92,18 @@ def pair_extracted_attachments(*, source_root, assets):
                 selected["source_object_key"] if selected else None
             ),
             "structural_source_sha256": selected["source_sha256"] if selected else None,
+            "structural_source_format": (
+                selected["source_suffix"].lstrip(".") if selected else None
+            ),
+            "alternate_structural_sources": [
+                {
+                    "source_object_key": candidate["source_object_key"],
+                    "source_sha256": candidate["source_sha256"],
+                    "format": candidate["source_suffix"].lstrip("."),
+                }
+                for candidate in candidates
+                if candidate is not selected
+            ],
             "candidate_source_object_keys": [
                 candidate["source_object_key"] for candidate in candidates
             ],

@@ -1,0 +1,27 @@
+schema_version: 1
+case_id: synthetic-malformed-comment
+case_type: synthetic
+description: Mixed HTML break variants, entities, lists, quotation, and table.
+public_source:
+  docket_id: synthetic
+  record_id: synthetic-malformed-comment
+  regulations_gov_url: null
+  public_record_notice: true
+canonical_source:
+  path: source/malformed_comment.html
+  role: canonical_text
+  sha256: 514508c6d11597f8802681bc0390703ea031cc4569b469f429c29db1762d0a80
+  mirrulations_object_key: null
+structural_sources: []
+expected:
+  comparison_mode: structural
+  forbidden_patterns:
+    - <br
+    - </br>
+    - \\x00
+    - <a id="p-
+  required_patterns:
+    - <a id="section-0001"></a>
+    - <a id="list-item-0001"></a>
+    - <a id="quotation-0001"></a>
+    - <a id="table-0001"></a>

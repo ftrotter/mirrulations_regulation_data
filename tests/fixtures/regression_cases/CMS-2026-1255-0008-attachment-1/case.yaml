@@ -1,0 +1,36 @@
+schema_version: 1
+case_id: CMS-2026-1255-0008-attachment-1
+case_type: extracted_attachment
+description: DOCX/PDF/TXT case where PDF wrapped bullet lines were incorrectly split
+  into paragraphs.
+public_source:
+  docket_id: CMS-2026-1255
+  record_id: CMS-2026-1255-0008
+  regulations_gov_url: https://www.regulations.gov/comment/CMS-2026-1255-0008
+  public_record_notice: true
+canonical_source:
+  path: source/CMS-2026-1255-0008_attachment_1_extracted.txt
+  role: canonical_text
+  sha256: f3543e7e22600c188fe9f4b97553ffe456603d670d7635e5eb0cca53f07fa0b3
+  mirrulations_object_key: derived-data/CMS/CMS-2026-1255/mirrulations/extracted_txt/comments_extracted_text/pypdf/CMS-2026-1255-0008_attachment_1_extracted.txt
+structural_sources:
+- path: source/CMS-2026-1255-0008_attachment_1.docx
+  role: structural_source
+  sha256: f108bf5ae841284e963ca145679c712eff3f6d322ce7c494c7f3fa6323a2e294
+  mirrulations_object_key: raw-data/CMS/CMS-2026-1255/binary-CMS-2026-1255/comments_attachments/CMS-2026-1255-0008_attachment_1.docx
+- path: source/CMS-2026-1255-0008_attachment_1.pdf
+  role: structural_source
+  sha256: 829634398ee8e1f695b860514af55c626f285b1f9b094049eb65deaa38e6ef43
+  mirrulations_object_key: raw-data/CMS/CMS-2026-1255/binary-CMS-2026-1255/comments_attachments/CMS-2026-1255-0008_attachment_1.pdf
+expected:
+  comparison_mode: structural
+  forbidden_patterns:
+  - <br
+  - </br>
+  - \x00
+  - <a id="p-
+  required_patterns:
+  - <a id="list-item-0001"></a>
+  - Step therapy sequences documented in published coverage policies that are inconsistently
+    enforced in practice, with some insurers approving requests that bypass stated requirements
+    while denying others that appear to satisfy them.

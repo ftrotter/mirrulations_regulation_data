@@ -1,0 +1,32 @@
+schema_version: 1
+case_id: CMS-2026-1255-0336-attachment-1
+case_type: extracted_attachment
+description: Small fast DOCX/PDF/TXT structure-selection and canonical-alignment case.
+public_source:
+  docket_id: CMS-2026-1255
+  record_id: CMS-2026-1255-0336
+  regulations_gov_url: https://www.regulations.gov/comment/CMS-2026-1255-0336
+  public_record_notice: true
+canonical_source:
+  path: source/CMS-2026-1255-0336_attachment_1_extracted.txt
+  role: canonical_text
+  sha256: b911265d462e7fc16ea461a0365ea65d8275ed3cd4a6054dc20ea1f4a1a9e5ef
+  mirrulations_object_key: derived-data/CMS/CMS-2026-1255/mirrulations/extracted_txt/comments_extracted_text/pypdf/CMS-2026-1255-0336_attachment_1_extracted.txt
+structural_sources:
+- path: source/CMS-2026-1255-0336_attachment_1.docx
+  role: structural_source
+  sha256: f80836ff5d8aff6272ae3453ad1b994637e8deff0d814060ac43156783d437e6
+  mirrulations_object_key: raw-data/CMS/CMS-2026-1255/binary-CMS-2026-1255/comments_attachments/CMS-2026-1255-0336_attachment_1.docx
+- path: source/CMS-2026-1255-0336_attachment_1.pdf
+  role: structural_source
+  sha256: fc43e75115b3679040a25a95388eb1d6cf2e10f3aff02edae973710f2c7a4fdb
+  mirrulations_object_key: raw-data/CMS/CMS-2026-1255/binary-CMS-2026-1255/comments_attachments/CMS-2026-1255-0336_attachment_1.pdf
+expected:
+  comparison_mode: structural
+  forbidden_patterns:
+  - <br
+  - </br>
+  - \x00
+  - <a id="p-
+  required_patterns:
+  - <a id="paragraph-0001"></a>

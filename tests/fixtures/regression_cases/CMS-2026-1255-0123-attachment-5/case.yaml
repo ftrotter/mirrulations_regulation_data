@@ -1,0 +1,27 @@
+schema_version: 1
+case_id: CMS-2026-1255-0123-attachment-5
+case_type: extracted_attachment
+description: PDF-only fallback structure case with no DOCX original.
+public_source:
+  docket_id: CMS-2026-1255
+  record_id: CMS-2026-1255-0123
+  regulations_gov_url: https://www.regulations.gov/comment/CMS-2026-1255-0123
+  public_record_notice: true
+canonical_source:
+  path: source/CMS-2026-1255-0123_attachment_5_extracted.txt
+  role: canonical_text
+  sha256: 17baf323d39faceb7fb1332f974440ddee4ecc1bee3556405fcc67aec75ae9f5
+  mirrulations_object_key: derived-data/CMS/CMS-2026-1255/mirrulations/extracted_txt/comments_extracted_text/pypdf/CMS-2026-1255-0123_attachment_5_extracted.txt
+structural_sources:
+- path: source/CMS-2026-1255-0123_attachment_5.pdf
+  role: structural_source
+  sha256: df2fbe3927b6becc47d399acfea63c39249cb8cd3f280e0483f45c408b82baae
+  mirrulations_object_key: raw-data/CMS/CMS-2026-1255/binary-CMS-2026-1255/comments_attachments/CMS-2026-1255-0123_attachment_5.pdf
+expected:
+  comparison_mode: structural
+  forbidden_patterns:
+  - <br
+  - </br>
+  - \x00
+  - <a id="p-
+  required_patterns: []

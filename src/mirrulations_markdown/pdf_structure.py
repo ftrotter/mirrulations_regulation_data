@@ -2,6 +2,10 @@
 
 import importlib.metadata
 import logging
+import re
+
+
+BULLET_PATTERN = re.compile(r"^(?:[•▪●]|[-*])\s+")
 def _layout_lines(*, layout_text):
     return [
         {
@@ -14,7 +18,7 @@ def _layout_lines(*, layout_text):
 
 
 def _paragraphs_from_lines(*, lines):
-    """Group layout-mode lines using blank rows and indentation evidence."""
+    """Group layout lines without splitting wrapped prose or bullet continuations."""
     paragraphs = []
     current_lines = []
     for line in lines:
@@ -23,7 +27,15 @@ def _paragraphs_from_lines(*, lines):
                 paragraphs.append(current_lines)
                 current_lines = []
             continue
-        starts_new = bool(current_lines and line["indent"] > 2)
+        starts_new = bool(
+            current_lines
+            and BULLET_PATTERN.match(line["text"])
+            and not BULLET_PATTERN.match(current_lines[0]["text"])
+        ) or bool(
+            current_lines
+            and BULLET_PATTERN.match(line["text"])
+            and BULLET_PATTERN.match(current_lines[0]["text"])
+        )
         if starts_new:
             paragraphs.append(current_lines)
             current_lines = []
@@ -32,9 +44,16 @@ def _paragraphs_from_lines(*, lines):
         paragraphs.append(current_lines)
     return [
         {
-            "text": " ".join(line["text"] for line in paragraph),
+            "text": re.sub(
+                r"^(?:[•▪●]|[-*])\s*", "",
+                " ".join(line["text"] for line in paragraph),
+            ),
             "line_count": len(paragraph),
             "indent": min(line["indent"] for line in paragraph),
+            "type_hint": (
+                "list-item" if BULLET_PATTERN.match(paragraph[0]["text"])
+                else "paragraph"
+            ),
         }
         for paragraph in paragraphs
     ]

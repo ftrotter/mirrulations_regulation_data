@@ -32,6 +32,18 @@ class PdfStructureTest(unittest.TestCase):
         self.assertEqual(2, len(paragraphs))
         self.assertEqual("First line continues", paragraphs[0]["text"])
 
+    def test_wrapped_bullet_continuations_remain_one_item(self):
+        paragraphs = _paragraphs_from_lines(lines=[
+            {"text": "• Step therapy sequences that are", "indent": 4, "is_blank": False},
+            {"text": "inconsistently enforced and bypass", "indent": 9, "is_blank": False},
+            {"text": "stated requirements.", "indent": 9, "is_blank": False},
+            {"text": "• Documentation standards differ", "indent": 4, "is_blank": False},
+            {"text": "from actual requirements.", "indent": 9, "is_blank": False},
+        ])
+        self.assertEqual(2, len(paragraphs))
+        self.assertEqual("list-item", paragraphs[0]["type_hint"])
+        self.assertIn("stated requirements", paragraphs[0]["text"])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

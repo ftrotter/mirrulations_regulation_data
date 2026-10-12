@@ -67,9 +67,12 @@ def align_pdf_paragraphs(*, canonical_text, pdf_structure):
             ).strip()
             aligned_blocks.append(
                 {
-                    "block_type": _block_type(
-                        text=canonical_block_text,
-                        line_count=paragraph["line_count"],
+                    "block_type": (
+                        paragraph.get("type_hint")
+                        or _block_type(
+                            text=canonical_block_text,
+                            line_count=paragraph["line_count"],
+                        )
                     ),
                     "plain_text": canonical_block_text,
                     "source_start": source_start,
@@ -135,6 +138,95 @@ def align_pdf_paragraphs(*, canonical_text, pdf_structure):
         "parser_version": pdf_structure.get("parser_version"),
         "page_count": pdf_structure.get("page_count"),
         "parser_warnings": pdf_structure.get("warnings", []),
+        "blocks": blocks_with_gaps,
+        "warnings": warnings,
+    }
+
+
+def align_structural_units(*, canonical_text, structure):
+    """Project DOCX semantic units onto canonical text while preserving wording."""
+    normalized_canonical, canonical_offsets = normalized_text_with_offsets(
+        text=canonical_text
+    )
+    search_offset = 0
+    aligned = []
+    warnings = []
+    for unit in structure["units"]:
+        if unit["type_hint"] == "table":
+            table_text = " ".join(cell for row in unit["rows"] for cell in row)
+            normalized_unit, _ = normalized_text_with_offsets(text=table_text)
+        else:
+            normalized_unit, _ = normalized_text_with_offsets(text=unit["text"])
+        if not normalized_unit:
+            continue
+        match_start = normalized_canonical.find(normalized_unit, search_offset)
+        if match_start < 0:
+            warnings.append({
+                "paragraph_text": unit.get("text") or table_text,
+                "warning": "exact_canonical_match_not_found",
+            })
+            continue
+        match_end = match_start + len(normalized_unit)
+        source_start = canonical_offsets[match_start]
+        source_end = canonical_offsets[match_end - 1] + 1
+        block = {
+            "block_type": unit["type_hint"],
+            "plain_text": re.sub(
+                r"\s+", " ", canonical_text[source_start:source_end]
+            ).strip(),
+            "source_start": source_start,
+            "source_end": source_end,
+            "page_start": None,
+            "page_end": None,
+            "alignment_method": "exact_whitespace_normalized_docx",
+            "alignment_confidence": 1.0,
+        }
+        if unit["type_hint"] == "table":
+            block["rows"] = unit["rows"]
+        aligned.append(block)
+        search_offset = match_end
+    # Reuse canonical-gap preservation and semantic metadata conventions.
+    blocks_with_gaps = []
+    previous_end = 0
+    for block in aligned:
+        raw_gap = canonical_text[previous_end:block["source_start"]]
+        gap_text = re.sub(r"\s+", " ", raw_gap).strip()
+        marker_only_gap = (
+            block["block_type"] == "list-item"
+            and bool(re.fullmatch(r"[•▪●*\-\s]+", gap_text))
+        )
+        if gap_text and not marker_only_gap:
+            blocks_with_gaps.append({
+                "block_type": "unmatched-canonical",
+                "plain_text": gap_text,
+                "source_start": previous_end,
+                "source_end": block["source_start"],
+                "page_start": None, "page_end": None,
+                "alignment_method": "canonical_gap_preserved",
+                "alignment_confidence": 0.0,
+            })
+            warnings.append({
+                "source_start": previous_end,
+                "source_end": block["source_start"],
+                "warning": "unmatched_canonical_gap",
+            })
+        blocks_with_gaps.append(block)
+        previous_end = block["source_end"]
+    if canonical_text[previous_end:].strip():
+        blocks_with_gaps.append({
+            "block_type": "unmatched-canonical",
+            "plain_text": re.sub(r"\s+", " ", canonical_text[previous_end:]).strip(),
+            "source_start": previous_end,
+            "source_end": len(canonical_text),
+            "page_start": None, "page_end": None,
+            "alignment_method": "canonical_gap_preserved",
+            "alignment_confidence": 0.0,
+        })
+    return {
+        "parser": structure["parser"],
+        "parser_version": structure["parser_version"],
+        "page_count": None,
+        "parser_warnings": structure.get("warnings", []),
         "blocks": blocks_with_gaps,
         "warnings": warnings,
     }

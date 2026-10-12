@@ -1,0 +1,24 @@
+schema_version: 1
+case_id: CMS-2026-1255-0038
+case_type: form_comment
+description: Attachment-only form placeholder with public attachment relationship
+  metadata.
+public_source:
+  docket_id: CMS-2026-1255
+  record_id: CMS-2026-1255-0038
+  regulations_gov_url: https://www.regulations.gov/comment/CMS-2026-1255-0038
+  public_record_notice: true
+canonical_source:
+  path: source/CMS-2026-1255-0038.json
+  role: canonical_text
+  sha256: c897f9146d521e180a50ba54d917977fe419bbe7cf79ebf173012a2289939db0
+  mirrulations_object_key: raw-data/CMS/CMS-2026-1255/text-CMS-2026-1255/comments/CMS-2026-1255-0038.json
+structural_sources: []
+expected:
+  comparison_mode: structural
+  forbidden_patterns:
+  - <br
+  - </br>
+  - \x00
+  - <a id="p-
+  required_patterns: []

@@ -51,7 +51,21 @@ class SourcePairingTest(unittest.TestCase):
         pairing = pair_extracted_attachments(
             source_root=Path("/unused"), assets=assets
         )[canonical_key]
-        self.assertEqual("structure-pending-docx", pairing["status"])
+        self.assertEqual("available-docx", pairing["status"])
+
+    def test_prefers_docx_over_pdf(self):
+        canonical_key = "derived/pypdf/TEST-1_attachment_2_extracted.txt"
+        assets = [
+            {"source_object_key": canonical_key, "source_sha256": "text", "source_suffix": ".txt"},
+            {"source_object_key": "raw/TEST-1_attachment_2.docx", "source_sha256": "docx", "source_suffix": ".docx"},
+            {"source_object_key": "raw/TEST-1_attachment_2.pdf", "source_sha256": "pdf", "source_suffix": ".pdf"},
+        ]
+        pairing = pair_extracted_attachments(
+            source_root=Path("/unused"), assets=assets
+        )[canonical_key]
+        self.assertEqual("available-docx", pairing["status"])
+        self.assertTrue(pairing["structural_source_object_key"].endswith(".docx"))
+        self.assertEqual("pdf", pairing["alternate_structural_sources"][0]["format"])
 
 
 if __name__ == "__main__":

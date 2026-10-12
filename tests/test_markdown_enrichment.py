@@ -328,7 +328,7 @@ class PipelineTest(unittest.TestCase):
             output = output_path.read_text(encoding="utf-8")
             self.assertEqual(0, status["failed_asset_count"])
             self.assertIn("## I. Heading", output)
-            self.assertIn('<a id="p-0003"></a>', output)
+            self.assertIn('<a id="paragraph-0002"></a>', output)
             self.assertIn("structural_source_object_key:", output)
 
     def test_metadata_json_is_not_rendered_and_stale_projection_is_pruned(self):

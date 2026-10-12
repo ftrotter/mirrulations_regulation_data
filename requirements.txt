@@ -1,6 +1,7 @@
 spacy
 python-dotenv
 pypdf==6.20.0
+python-docx==1.2.0
 eyecite==2.7.8
 magentic[anthropic]==0.41.1
 pydantic>=2,<3

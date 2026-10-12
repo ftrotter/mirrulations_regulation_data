@@ -1,0 +1,29 @@
+schema_version: 1
+case_id: CMS-2026-1255-0028
+case_type: form_comment
+description: Complex form comment with sections, labels, bullets, entities, and multiple
+  paragraphs.
+public_source:
+  docket_id: CMS-2026-1255
+  record_id: CMS-2026-1255-0028
+  regulations_gov_url: https://www.regulations.gov/comment/CMS-2026-1255-0028
+  public_record_notice: true
+canonical_source:
+  path: source/CMS-2026-1255-0028.json
+  role: canonical_text
+  sha256: c46ed1bf7561626d4aa1a5ca1c6d4ae047836906dbdf72d455093c1e2c60aef4
+  mirrulations_object_key: raw-data/CMS/CMS-2026-1255/text-CMS-2026-1255/comments/CMS-2026-1255-0028.json
+structural_sources: []
+expected:
+  comparison_mode: structural
+  forbidden_patterns:
+  - <br
+  - </br>
+  - \x00
+  - <a id="p-
+  required_patterns:
+  - <a id="section-0001"></a>
+  - <a id="paragraph-0001"></a>
+  - <a id="label-0001"></a>
+  - <a id="list-item-0001"></a>
+  - '## I. Clinical Urgency: Drug PA in Rheumatology Cannot Wait 7 Days'

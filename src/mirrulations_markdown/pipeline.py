@@ -14,13 +14,18 @@ from .citations import (
 )
 from .conversion import html_to_markdown, json_to_markdown, text_to_markdown
 from .document_selection import select_logical_documents
+from .docx_structure import extract_docx_structure
 from .friendly_metadata import (
     document_metadata, metadata_index, write_document_friendly_names,
 )
 from .inventory import inventory_source
 from .pdf_structure import extract_pdf_structure
 from .source_pairing import pair_extracted_attachments
-from .text_alignment import align_pdf_paragraphs
+from .text_alignment import align_pdf_paragraphs, align_structural_units
+from .semantic_document import (
+    aligned_to_semantic_blocks, html_to_semantic_blocks,
+    render_semantic_markdown,
+)
 from .reference_metadata import (
     normalized_reference_text, resolve_reference_names,
     write_reference_friendly_names,
@@ -138,18 +143,15 @@ def _content_block(*, markdown_body, normalization):
 
 
 def _render_blocks(*, blocks, citations_by_block=None, reference_names=None):
-    parts = []
-    for block in blocks:
+    def render_text(block):
         text = block["plain_text"]
         if citations_by_block is not None:
             text = render_citations(
                 text=text, citations=citations_by_block.get(block["block_id"], []),
                 reference_names=reference_names,
             )
-        if block["block_type"] == "heading":
-            text = f"## {text}"
-        parts.append(f'<a id="{block["block_id"]}"></a>\n\n{text}')
-    return "\n\n".join(parts) + "\n"
+        return text
+    return render_semantic_markdown(blocks=blocks, text_renderer=render_text)
 
 
 class MarkdownPipeline:
@@ -401,22 +403,36 @@ class MarkdownPipeline:
             source_path=source_path, source_suffix=asset["source_suffix"]
         )
         alignment = None
-        if pairing and pairing["status"] == "available-pdf":
-            canonical_text = source_path.read_text(encoding="utf-8", errors="replace")
-            pdf_structure = extract_pdf_structure(
-                pdf_path=source_root / pairing["structural_source_object_key"]
-            )
-            alignment = align_pdf_paragraphs(
-                canonical_text=canonical_text, pdf_structure=pdf_structure
-            )
-        if alignment and alignment["blocks"]:
-            blocks = alignment["blocks"]
-            for order, block in enumerate(blocks, start=1):
-                block["block_id"] = f"p-{order:04d}"
-                block["order"] = order
-                block["heading_context"] = []
+        blocks = None
+        if (
+            asset["source_suffix"] == ".json"
+            and asset.get("content_location") == "data.attributes.comment"
+        ):
+            source_json = json.loads(source_path.read_text(encoding="utf-8"))
+            comment_html = source_json["data"]["attributes"]["comment"]
+            blocks = html_to_semantic_blocks(html_text=comment_html)
+            for block in blocks:
                 block["normalization"] = normalization
-        else:
+        elif pairing and pairing["status"] in {"available-docx", "available-pdf"}:
+            canonical_text = source_path.read_text(encoding="utf-8", errors="replace")
+            structural_path = source_root / pairing["structural_source_object_key"]
+            if pairing["status"] == "available-docx":
+                docx_structure = extract_docx_structure(docx_path=structural_path)
+                alignment = align_structural_units(
+                    canonical_text=canonical_text, structure=docx_structure
+                )
+            else:
+                pdf_structure = extract_pdf_structure(pdf_path=structural_path)
+                alignment = align_pdf_paragraphs(
+                    canonical_text=canonical_text, pdf_structure=pdf_structure
+                )
+        if alignment and alignment["blocks"]:
+            blocks = aligned_to_semantic_blocks(
+                aligned_blocks=alignment["blocks"]
+            )
+            for block in blocks:
+                block["normalization"] = normalization
+        elif blocks is None:
             blocks = [_content_block(
                 markdown_body=markdown_body, normalization=normalization
             )]

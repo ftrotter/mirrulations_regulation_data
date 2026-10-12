@@ -9,11 +9,33 @@ sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
 from mirrulations_markdown.text_alignment import (  # noqa: E402
     align_pdf_paragraphs,
+    align_structural_units,
     normalized_text_with_offsets,
 )
 
 
 class TextAlignmentTest(unittest.TestCase):
+    def test_docx_list_item_aligns_as_one_canonical_block(self):
+        canonical = "Before  Step therapy sequences are enforced while denying others.  After"
+        result = align_structural_units(
+            canonical_text=canonical,
+            structure={
+                "parser": "python-docx", "parser_version": "test", "warnings": [],
+                "units": [{
+                    "text": "Step therapy sequences are enforced while denying others.",
+                    "type_hint": "list-item",
+                }],
+            },
+        )
+        list_blocks = [
+            block for block in result["blocks"]
+            if block["block_type"] == "list-item"
+        ]
+        self.assertEqual(1, len(list_blocks))
+        self.assertEqual(
+            "Step therapy sequences are enforced while denying others.",
+            list_blocks[0]["plain_text"],
+        )
     def test_normalization_maps_to_original_offsets(self):
         normalized, offsets = normalized_text_with_offsets(text="One  two\nthree")
         self.assertEqual("One two three", normalized)

@@ -1,0 +1,72 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "CMS",
+      "category": "Health Care Industry - PI015",
+      "city": null,
+      "comment": "I am writing to submit comments on the proposed rule CMS-0062-P. I am a rheumatologist in Seattle, Washington, and I conduct research on prior authorization barriers in rheumatology, including published studies on tocilizumab access delays in giant cell arteritis and carrier-level variation in PA approval rates for biologic medications. I submit these comments as an individual physician and researcher.<br/>I strongly support the goals of this proposed rule. <br/>I. Clinical Urgency: Drug PA in Rheumatology Cannot Wait 7 Days<br/>PA delays for biologic medications cause measurable patient harm. Visual loss in Giant Cell Arteritis can occur within hours. A 7-calendar-day standard decision window for non-urgent drug PA may be insufficient for this and similar conditions requiring urgent biologics. (Bays et al., J Rheumatol 2025, PMID 40089304.)<br/>Recommendation:<br/>&bull;  Create an explicit expedited drug PA pathway for conditions with acute risk of organ damage or death, with a 24-48 hour decision standard.<br/>&bull;  Define expedited eligibility criteria that include vision-threatening disease, acute inflammatory flares with functional impairment, and other conditions where delay risks irreversible harm.<br/><br/>II. Electronic Transmission Is Not Enough &mdash; Denial Content Must Be Meaningful<br/>Electronic submission of inadequate denial rationales does not advance transparency. In research analyzing Washington State&#39;s mandatory PA transparency dataset &mdash; the only publicly available drug-level PA dataset in the United States &mdash; I found approval rates for the same biologic drug ranging from 2.3% to 100% across carriers, a 44-fold variation that cannot be explained by clinical appropriateness alone. Opaque, inconsistent decision-making is not cured by digitizing it.<br/>Recommendation: Require that drug PA denial notices include:<br/>&bull;  The specific formulary criterion or clinical policy provision that was not met, cited by name and version.<br/>&bull;  Whether the denial is based on step therapy, and which specific prior drug trials are required.<br/>&bull;  Whether an AI or algorithmic tool was used in the decision, and if so, which system.<br/>&bull;  The name and specialty of the reviewing clinician for peer-to-peer denials.<br/><br/>Generic &#39;not medically necessary&#39; denials communicated electronically are no improvement over paper denials. The rule should specify minimum content standards for denial explanations.<br/>III. Step Therapy for Biologics Requires Specific Standards<br/>Step therapy &mdash; requiring patients to fail on a lower-cost drug before a prescribed biologic is authorized &mdash; is one of the most disruptive PA practices in rheumatology. It delays guideline-concordant care and in some cases results in preventable joint damage or organ injury during the mandated &#39;fail first&#39; period.<br/>Recommendation:<br/>&bull;  Require payers to publish step therapy protocols for each drug at each formulary tier in a standardized, machine-readable format.<br/>&bull;  Establish gold card exemptions for patients with documented completion of required step therapy in prior claims data, eliminating redundant re-authorization for the same drug class.<br/>&bull;  Prohibit prospective re-trials of drugs a patient has already documented failure on.<br/><br/>IV. Drug-Level PA Data Should Be Publicly Reported<br/>Washington State&#39;s mandatory PA transparency law is the only mechanism in the United States producing drug-specific, carrier-level PA approval and denial data. The variation it reveals &mdash; which is not visible in aggregate statistics &mdash; is essential for accountability and health services research. CMS is positioned to create a centralized, publicly accessible drug PA data repository that does not currently exist at the federal level.<br/>Recommendation: Require public reporting of drug PA metrics at the drug-specific and carrier-specific level, and establish a centralized CMS repository for this data &mdash; modeled on the transparency provisions of state laws like Washington&#39;s ESSB 6404.<br/><br/>CMS-0062-P is an important step toward holding payers accountable for drug PA practices that cause measurable patient harm. Strengthening the rule with expedited pathways for urgent biologics, meaningful denial content standards, step therapy transparency, an accelerated Medicare Advantage timeline, and drug-level public reporting would substantially improve outcomes for patients with autoimmune and rheumatic diseases.<br/>I am grateful for the opportunity to comment and am available to provide additional information.<br/>Respectfully submitted,<br/>Dr. Bays<br/>",
+      "commentOn": "09000064b927bd06",
+      "commentOnDocumentId": "CMS-2026-1255-0001",
+      "country": "United States",
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "CMS-2026-1255",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Alison",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Bays",
+      "legacyId": null,
+      "modifyDate": "2026-06-10T18:11:34Z",
+      "objectId": "09000064b92def09",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "phone": null,
+      "postedDate": "2026-06-10T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-05-18T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "WA",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Public Comment",
+      "title": "Comment on CMS-2026-1255-0001",
+      "trackingNbr": "mpb-tlkh-297l",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "CMS-2026-1255-0028",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/CMS-2026-1255-0028"
+    },
+    "relationships": {
+      "attachments": {
+        "data": [],
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/CMS-2026-1255-0028/attachments",
+          "self": "https://api.regulations.gov/v4/comments/CMS-2026-1255-0028/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}
