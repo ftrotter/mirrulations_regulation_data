@@ -85,10 +85,10 @@ def document_eligibility(
     )
 
 
-def _task_hash(*, source_hash, block, configuration_hash):
+def _task_hash(*, source_hash, block, configuration_hash, task_type):
     identity = (
         f"{source_hash}|{block['block_id']}|{block['plain_text']}|"
-        f"{configuration_hash}"
+        f"{configuration_hash}|{task_type}"
     )
     return hashlib.sha256(identity.encode("utf-8")).hexdigest()
 
@@ -110,7 +110,9 @@ def _render_stage_3(*, stage_2_text, annotations, eligibility, configuration):
     if not eligibility.eligible:
         return rendered
     annotation_by_block = {item["block_id"]: item for item in annotations}
-    anchor_pattern = re.compile(r'<a id="(?P<block_id>p-\d{4})"></a>')
+    anchor_pattern = re.compile(
+        r'<a id="(?P<block_id>(?:section|paragraph|list-item|quotation|label|table)-\d{4})"></a>'
+    )
     matches = list(anchor_pattern.finditer(rendered))
     for match in reversed(matches):
         block_id = match.group("block_id")
@@ -124,10 +126,14 @@ def _render_stage_3(*, stage_2_text, annotations, eligibility, configuration):
         visible_parts = []
         if annotation["render_summary"]:
             visible_parts.append(f"> **In brief:** {annotation['summary']}")
-        visible_parts.extend(
-            f"> **Reference:** {reference}"
-            for reference in annotation["backward_references"]
-        )
+        for reference in annotation["backward_references"]:
+            visible_parts.extend([
+                f"> **Reference target:** {reference['target']['scope_label']}",
+                (
+                    f"> **Reference:** Look in {reference['target']['scope_label']} "
+                    f"for {reference['search_description']}."
+                ),
+            ])
         if visible_parts:
             insertion = "\n" + "\n>\n".join(visible_parts) + "\n\n"
             if annotation.get("placement") == "before-block":
@@ -230,6 +236,7 @@ class StructureDiscoveryPipeline:
                     ) in submission_ids_with_attachments
                 ),
             )
+            target_registry = block_record.get("target_registry", [])
             sidecar_path = annotation_root / block_path.name
             existing = (
                 json.loads(sidecar_path.read_text(encoding="utf-8"))
@@ -242,12 +249,26 @@ class StructureDiscoveryPipeline:
             annotations = []
             if eligibility.eligible:
                 has_heading = any(
-                    block["block_type"] == "heading" for block in block_record["blocks"]
+                    block["block_type"] == "section" for block in block_record["blocks"]
                 )
+                allowed_targets_by_key = {
+                    target["target_key"]: target for target in target_registry
+                }
                 for index, block in enumerate(block_record["blocks"]):
+                    reference_check_requested = block["block_type"] in {
+                        "paragraph", "list-item", "quotation", "table"
+                    }
+                    summary_requested = (
+                        configuration.summary_mode == "deep"
+                        or block["block_type"] == "section"
+                        or not has_heading and index == 0
+                    )
+                    if not summary_requested and not reference_check_requested:
+                        continue
                     task_hash = _task_hash(
                         source_hash=asset["source_sha256"], block=block,
                         configuration_hash=config_hash,
+                        task_type="summary-and-targeted-reference-v2",
                     )
                     if task_hash in existing_by_hash:
                         annotations.append(existing_by_hash[task_hash])
@@ -293,16 +314,41 @@ class StructureDiscoveryPipeline:
                             document_type=asset.get("selection_reason", "document"),
                             heading_context=" / ".join(block.get("heading_context", [])),
                             passage_id=block["block_id"], source_text=block["plain_text"],
+                            allowed_targets=target_registry,
                         ))
+                        structured_references = []
+                        if reference_check_requested:
+                            for reference in result.backward_references:
+                                if reference.target_key not in allowed_targets_by_key:
+                                    raise ValueError(
+                                        "structure_pipeline.py Error: model returned "
+                                        f"unknown target key {reference.target_key!r}"
+                                    )
+                                structured_references.append({
+                                    "source_block_id": block["block_id"],
+                                    "target_key": reference.target_key,
+                                    "target": allowed_targets_by_key[reference.target_key],
+                                    "search_description": reference.search_description,
+                                })
                         annotation = {
                             "block_id": block["block_id"], "task_hash": task_hash,
-                            "task_status": "complete", "summary": result.summary,
-                            "backward_references": result.backward_references,
-                            "render_summary": (
-                                configuration.summary_mode == "deep"
-                                or block["block_type"] == "heading"
-                                or not has_heading and index == 0
+                            "summary_task_hash": _task_hash(
+                                source_hash=asset["source_sha256"], block=block,
+                                configuration_hash=(
+                                    f"summary-prompt-{configuration.summary_prompt_version}"
+                                ), task_type="summary",
                             ),
+                            "reference_task_hash": _task_hash(
+                                source_hash=asset["source_sha256"], block=block,
+                                configuration_hash=(
+                                    f"reference-prompt-{configuration.reference_prompt_version}|"
+                                    + json.dumps(target_registry, sort_keys=True)
+                                ), task_type="targeted-reference",
+                            ),
+                            "task_status": "complete", "summary": result.summary,
+                            "backward_references": structured_references,
+                            "reference_check_requested": reference_check_requested,
+                            "render_summary": summary_requested,
                             "placement": (
                                 "before-block"
                                 if configuration.summary_mode == "sections"
@@ -345,6 +391,7 @@ class StructureDiscoveryPipeline:
                     "schema_version": 1, "asset": asset,
                     "configuration_hash": config_hash,
                     "eligibility": eligibility.model_dump(mode="json"),
+                    "target_registry": target_registry,
                     "annotations": annotations,
                 },
             )

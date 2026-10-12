@@ -163,6 +163,29 @@ Summaries must:
 
 Examine each source paragraph for references to earlier-stage material.
 
+The pipeline must derive allowed backward-reference targets from source
+metadata before calling an LLM. When `commentOnDocumentId` identifies a specific
+proposed rule, the target is known and must not be inferred by the model. Pass
+the model a finite registry of allowed target keys. The model returns an allowed
+target key plus a specific English-language description of the passage sought.
+
+Store target scope separately from search description. For example:
+
+```json
+{
+  "source_block_id": "paragraph-0004",
+  "target_key": "document:CMS-2026-1255-0001",
+  "target_scope_type": "specific_document",
+  "target_document_ids": ["CMS-2026-1255-0001"],
+  "target_agency_rule_identifier": "CMS-0062-P",
+  "search_description": "the seven-calendar-day standard decision timeframe for non-urgent drug prior authorization"
+}
+```
+
+Reject target keys that were not supplied by the pipeline. Never ask the model
+to discover which proposed rule a comment addresses when metadata already
+provides that relationship.
+
 Examples include:
 
 - A comment discussing a requirement, rationale, question, or provision in the proposed rule.
@@ -203,6 +226,10 @@ A reference description must:
 - Preserve useful search details, including numbers, provision names, distinctive phrases, and requested changes.
 - Describe the referenced argument or provision without inventing its location or author.
 - Express uncertainty when the reference itself is unclear.
+- Name the known target deterministically. For comments on this development
+  docket, use `this proposed rule CMS-0062-P (Regulations.gov document
+  CMS-2026-1255-0001)` rather than vague text such as `a proposed rule`, `the
+  proposed rule`, or `a proposed rule provision`.
 
 A paragraph containing multiple distinct backward references may receive multiple **Reference:** annotations, each containing one sentence.
 

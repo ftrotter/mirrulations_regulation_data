@@ -30,6 +30,7 @@ from .reference_metadata import (
     normalized_reference_text, resolve_reference_names,
     write_reference_friendly_names,
 )
+from .reference_targets import build_target_registry
 from .reverse_lookup import write_citation_reverse_lookup
 
 
@@ -206,6 +207,10 @@ class MarkdownPipeline:
                     friendly_metadata=document_metadata(
                         asset=asset, metadata_records=metadata_records,
                         pairing=pairings.get(asset["source_object_key"]),
+                    ),
+                    target_registry=build_target_registry(
+                        source_root=source_root,
+                        source_object_key=asset["source_object_key"],
                     ),
                 )
                 adapter_results.extend(asset_adapter_results)
@@ -396,7 +401,7 @@ class MarkdownPipeline:
     @staticmethod
     def _process_asset(
         *, source_root, markdown_db_path, metadata_root, asset, pairing=None,
-        friendly_metadata=None
+        friendly_metadata=None, target_registry=None
     ):
         source_path = source_root / asset["source_object_key"]
         markdown_body, selected_source_location, normalization = _convert_asset(
@@ -496,6 +501,7 @@ class MarkdownPipeline:
                 "pairing": pairing,
                 "alignment": alignment,
                 "document_metadata": friendly_metadata,
+                "target_registry": target_registry or [],
                 "blocks": blocks,
             },
         )

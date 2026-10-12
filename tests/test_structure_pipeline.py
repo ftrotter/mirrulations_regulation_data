@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
 from mirrulations_markdown.pipeline import STAGE_2  # noqa: E402
 from mirrulations_markdown.structure_models import (  # noqa: E402
+    BackwardReference,
     ModelSpec,
     PassageEnrichment,
     StructureConfiguration,
@@ -108,7 +109,7 @@ class StructurePipelineTest(unittest.TestCase):
         source_text = "x" * 6001 if long_comment else "The deadline is too short."
         stage_2_text = (
             "---\ndocument_id: \"COMMENT-1\"\n---\n"
-            f'<a id="p-0001"></a>\n\n{source_text}\n'
+            f'<a id="paragraph-0001"></a>\n\n{source_text}\n'
         )
         stage_2_path.write_text(stage_2_text, encoding="utf-8")
         block_name = "block.json"
@@ -126,12 +127,25 @@ class StructurePipelineTest(unittest.TestCase):
                     "alignment": None,
                     "blocks": [
                         {
-                            "block_id": "p-0001",
+                            "block_id": "paragraph-0001",
                             "block_type": "paragraph",
                             "plain_text": source_text,
                             "heading_context": [],
                         }
                     ],
+                    "target_registry": [{
+                        "target_key": "document:TARGET-1",
+                        "scope_type": "specific_document",
+                        "docket_id": "DOCKET-1",
+                        "document_ids": ["TARGET-1"],
+                        "document_type": "Proposed Rule",
+                        "agency_rule_identifier": "TEST-0001-P",
+                        "title": "Test proposed rule",
+                        "scope_label": (
+                            "this proposed rule TEST-0001-P "
+                            "(Regulations.gov document TARGET-1)"
+                        ),
+                    }],
                 }
             ),
             encoding="utf-8",
@@ -146,7 +160,10 @@ class StructurePipelineTest(unittest.TestCase):
             return PassageEnrichment(
                 summary="The commenter argues that the deadline is too short.",
                 backward_references=[
-                    "Look for the proposed implementation deadline."
+                    BackwardReference(
+                        target_key="document:TARGET-1",
+                        search_description="the proposed implementation deadline",
+                    )
                 ],
             )
 
@@ -172,7 +189,10 @@ class StructurePipelineTest(unittest.TestCase):
             self.assertEqual(1, len(calls))
             self.assertIn("**In brief:**", output)
             self.assertIn("**Reference:**", output)
-            self.assertGreater(output.index("**In brief:**"), output.index('<a id="p-0001"></a>'))
+            self.assertGreater(
+                output.index("**In brief:**"),
+                output.index('<a id="paragraph-0001"></a>'),
+            )
             self.assertEqual(stage_2_before, stage_2_path.read_text(encoding="utf-8"))
 
     def test_section_mode_document_summary_precedes_headingless_source(self):
@@ -195,8 +215,64 @@ class StructurePipelineTest(unittest.TestCase):
                 encoding="utf-8"
             )
             self.assertLess(
-                output.index("**In brief:**"), output.index('<a id="p-0001"></a>')
+                output.index("**In brief:**"),
+                output.index('<a id="paragraph-0001"></a>'),
             )
+
+    def test_structured_reference_records_exact_block_and_known_target(self):
+        async def fake_caller(**kwargs):
+            self.assertEqual(
+                "document:TARGET-1", kwargs["allowed_targets"][0]["target_key"]
+            )
+            return PassageEnrichment(
+                summary="The commenter objects to the deadline.",
+                backward_references=[BackwardReference(
+                    target_key="document:TARGET-1",
+                    search_description="the seven-day decision deadline",
+                )],
+            )
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            markdown_db_path, _stage_2_path, _stage_2_text, markdown_path = (
+                self._create_corpus(root_path=Path(temporary_directory))
+            )
+            StructureDiscoveryPipeline.run(
+                markdown_db_path=markdown_db_path,
+                configuration=_configuration(), passage_caller=fake_caller,
+            )
+            sidecar = next(
+                (markdown_db_path / "metadata/structure_discovery/annotations").glob("*.json")
+            )
+            reference = json.loads(sidecar.read_text())["annotations"][0][
+                "backward_references"
+            ][0]
+            self.assertEqual("paragraph-0001", reference["source_block_id"])
+            self.assertEqual("document:TARGET-1", reference["target_key"])
+            output = (markdown_db_path / STAGE_3 / markdown_path).read_text()
+            self.assertIn(
+                "Look in this proposed rule TEST-0001-P "
+                "(Regulations.gov document TARGET-1) for the seven-day decision deadline.",
+                output,
+            )
+
+    def test_rejects_invented_target_key(self):
+        async def fake_caller(**_kwargs):
+            return PassageEnrichment(
+                summary="The commenter objects to the deadline.",
+                backward_references=[BackwardReference(
+                    target_key="document:INVENTED",
+                    search_description="the deadline",
+                )],
+            )
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            markdown_db_path, *_rest = self._create_corpus(
+                root_path=Path(temporary_directory)
+            )
+            status = StructureDiscoveryPipeline.run(
+                markdown_db_path=markdown_db_path,
+                configuration=_configuration(), passage_caller=fake_caller,
+            )
+            self.assertEqual(1, status["failed_task_count"])
+            self.assertEqual(1, status["api_calls"])
 
     def test_excluded_comment_makes_no_api_call(self):
         async def caller_that_must_not_run(**_kwargs):

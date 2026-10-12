@@ -1,5 +1,7 @@
 """Strict configuration and annotation models for structure discovery."""
 
+import re
+
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
@@ -57,13 +59,43 @@ class StructureConfiguration(BaseModel):
         return value
 
 
+class BackwardReference(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    target_key: str = Field(min_length=1)
+    search_description: str = Field(min_length=1)
+
+    @field_validator("search_description")
+    @classmethod
+    def normalize_description(cls, value):
+        normalized_value = value.strip()
+        if normalized_value.lower().startswith("look for "):
+            normalized_value = normalized_value[9:].strip()
+        if normalized_value[-1:] in {".", "!", "?"}:
+            normalized_value = normalized_value[:-1].strip()
+        vague_scope_patterns = (
+            r"\ba proposed rule\b",
+            r"\bthe proposed rule\b",
+            r"\ba proposed rule provision\b",
+        )
+        if any(
+            re.search(pattern, normalized_value, flags=re.IGNORECASE)
+            for pattern in vague_scope_patterns
+        ):
+            raise ValueError(
+                "structure_models.py Error: search_description must describe "
+                "the sought passage without a vague target scope"
+            )
+        return normalized_value[:1].lower() + normalized_value[1:]
+
+
 class PassageEnrichment(BaseModel):
     """Strict response for one source passage."""
 
     model_config = ConfigDict(extra="forbid")
 
     summary: str = Field(min_length=1)
-    backward_references: list[str] = Field(default_factory=list)
+    backward_references: list[BackwardReference] = Field(default_factory=list)
 
     @field_validator("summary")
     @classmethod
@@ -72,22 +104,6 @@ class PassageEnrichment(BaseModel):
         if normalized_value.count(".") + normalized_value.count("!") + normalized_value.count("?") < 1:
             raise ValueError("structure_models.py Error: summary must be a complete sentence")
         return normalized_value
-
-    @field_validator("backward_references")
-    @classmethod
-    def validate_backward_references(cls, values):
-        normalized_values = []
-        for value in values:
-            normalized_value = value.strip()
-            if not normalized_value.startswith("Look for "):
-                normalized_value = "Look for " + normalized_value[:1].lower() + normalized_value[1:]
-            if normalized_value[-1:] not in {".", "!", "?"}:
-                raise ValueError(
-                    "structure_models.py Error: backward references must be complete sentences"
-                )
-            normalized_values.append(normalized_value)
-        return normalized_values
-
 
 class DocumentEligibility(BaseModel):
     model_config = ConfigDict(extra="forbid")

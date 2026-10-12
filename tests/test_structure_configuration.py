@@ -11,19 +11,31 @@ sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 from mirrulations_markdown.structure_configuration import (  # noqa: E402
     load_structure_configuration,
 )
-from mirrulations_markdown.structure_models import PassageEnrichment  # noqa: E402
+from mirrulations_markdown.structure_models import (  # noqa: E402
+    BackwardReference, PassageEnrichment,
+)
 
 
 class StructureConfigurationTest(unittest.TestCase):
-    def test_normalizes_reference_instruction_prefix(self):
+    def test_normalizes_structured_reference_description(self):
         result = PassageEnrichment(
             summary="This is a summary.",
-            backward_references=["The proposed implementation deadline."],
+            backward_references=[BackwardReference(
+                target_key="document:TARGET-1",
+                search_description="Look for The seven-day implementation deadline.",
+            )],
         )
         self.assertEqual(
-            "Look for the proposed implementation deadline.",
-            result.backward_references[0],
+            "the seven-day implementation deadline",
+            result.backward_references[0].search_description,
         )
+
+    def test_rejects_vague_target_scope_in_search_description(self):
+        with self.assertRaisesRegex(ValueError, "vague target scope"):
+            BackwardReference(
+                target_key="document:TARGET-1",
+                search_description="the proposed rule provision on deadlines",
+            )
     def test_loads_valid_configuration(self):
         with tempfile.TemporaryDirectory() as temporary_directory:
             path = Path(temporary_directory) / "config.yaml"
