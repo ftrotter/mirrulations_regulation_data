@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "APHIS",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "APHIS-2023-0069",
+      "documentType": "Supporting & Related Material",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/APHIS-2023-0069-0002/content.docx",
+          "format": "docx",
+          "size": 94848
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/APHIS-2023-0069-0002/content.pdf",
+          "format": "pdf",
+          "size": 40172
+        }
+      ],
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-09-24T16:36:21Z",
+      "objectId": "09000064b9580f58",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-09-24T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-09-17T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Economic Analysis",
+      "title": "Initial Regulatory Flexibility Analysis",
+      "topics": null,
+      "trackingNbr": "mu5-lsa8-un7a",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "APHIS-2023-0069-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/APHIS-2023-0069-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/APHIS-2023-0069-0002/attachments",
+          "self": "https://api.regulations.gov/v4/documents/APHIS-2023-0069-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

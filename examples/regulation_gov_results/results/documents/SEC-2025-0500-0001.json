@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "SEC",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2025-03-20T04:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": null,
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/SEC-2025-0500-0001/content.pdf",
+          "format": "pdf",
+          "size": 273181
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/SEC-2025-0500-0001/content.htm",
+          "format": "htm",
+          "size": 41528
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2025-04705",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-03-20T12:01:21Z",
+      "objectId": "0900006486a12bc5",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-03-20T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-03-20T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Investment Company Names; Extension of Compliance Date",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "SEC-2025-0500-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/SEC-2025-0500-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/SEC-2025-0500-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/SEC-2025-0500-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

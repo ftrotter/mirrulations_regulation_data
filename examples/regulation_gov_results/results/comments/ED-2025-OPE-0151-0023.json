@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "category": "Institution of Higher Education",
+      "city": "8360 Old York Rd",
+      "comment": "Please see attached PDF from the Drexel University Occupational Therapy Department",
+      "commentOn": "09000064b8eb5847",
+      "commentOnDocumentId": "ED-2025-OPE-0151-0001",
+      "country": "United States",
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2025-OPE-0151",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Anna",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Grasso",
+      "legacyId": null,
+      "modifyDate": "2025-08-13T22:18:47Z",
+      "objectId": "09000064b8ef4a60",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2025-08-13T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-08-08T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "PA",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment on FR Doc # 2025-14333",
+      "trackingNbr": "me3-58il-urpc",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ED-2025-OPE-0151-0023",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ED-2025-OPE-0151-0023"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ED-2025-OPE-0151-0023/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ED-2025-OPE-0151-0023/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

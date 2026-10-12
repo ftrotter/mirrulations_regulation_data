@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "category": "Individual",
+      "city": "Bradenton",
+      "comment": "I am a single, widowed mother who has been carrying the weight of $78,000 in student loan debt for the past ten years. Despite making consistent payments, my balance has barely budged. My payments have largely gone toward interest, and the principal remains virtually untouched. It feels like I&#39;m running in a hamster wheel&mdash;exerting constant effort but going nowhere.<br/><br/>When I took out these loans, I believed education was an investment&mdash;one that would allow me to provide for my family and build a better life for my children. But the debt has become an anchor. It&rsquo;s disheartening to realize that a decade of paying hasn&#39;t moved me any closer to freedom from this burden.<br/><br/>I previously worked in the public sector for seven years&mdash;work that was meaningful but did not pay enough to meet the growing inflation. After losing my husband, I became the sole provider, and eventually, I had to leave that job for one with better pay, even though it meant giving up the path to Public Service Loan Forgiveness. That decision was not made lightly. <br/><br/>To make matters more stressful, my son is now a senior in high school. He has worked incredibly hard and dreams of attending a university like Duke. As his mother, I want to give him every opportunity to succeed, but the thought of taking on even more debt&mdash;or worse, watching him take it on himself&mdash;feels crushing. I dread the possibility of repeating this cycle for another generation.<br/><br/>All I&rsquo;m asking is for interest to be removed or have the opportunity to refinance the loans at 0-2% interest. I&#39;ve been responsible. I&#39;ve done everything that was expected of me. But the system is not working the way it should. There needs to be a more compassionate, realistic approach to how student loan debt is handled, especially for people like me who have served in public roles, faced personal hardship, and still strive to provide for their children.<br/><br/>Please consider the long-term impact this system has not only on borrowers, but on their families, their futures, and their ability to participate in the economy. I am just one story among millions, but I hope mine adds to the growing call for real, lasting change.<br/><br/>Thank you for listening.",
+      "commentOn": "09000064b8eb5847",
+      "commentOnDocumentId": "ED-2025-OPE-0151-0001",
+      "country": "United States",
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2025-OPE-0151",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Theresa",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Pate",
+      "legacyId": null,
+      "modifyDate": "2025-08-13T22:18:43Z",
+      "objectId": "09000064b8edfde1",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2025-08-13T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-08-05T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "FL",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment on FR Doc # 2025-14333",
+      "trackingNbr": "mdy-kznc-k4s1",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ED-2025-OPE-0151-0008",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ED-2025-OPE-0151-0008"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ED-2025-OPE-0151-0008/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ED-2025-OPE-0151-0008/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

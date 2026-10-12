@@ -1,0 +1,35 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "NRC",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": [
+        "10 CFR Part 25",
+        "10 CFR Part 95"
+      ],
+      "legacyId": null,
+      "modifyDate": "2009-02-03T16:09:50Z",
+      "objectId": "0b000064803c553f",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "3150-AH52",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Broadening Scope of Access Authorization and Facility Security Clearance Regulations"
+    },
+    "id": "NRC-2004-0009",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/NRC-2004-0009"
+    },
+    "type": "dockets"
+  }
+}

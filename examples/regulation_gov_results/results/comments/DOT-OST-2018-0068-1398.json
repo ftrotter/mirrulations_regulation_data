@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "DOT",
+      "category": null,
+      "city": null,
+      "comment": "Service dogs are necessary for more then just legally blind people. The are for medical alert,PSTD, mobility etc. Allergic to dogs hogwash. If you have an allergy can to dogs, you would have medication or u must live in a sterile bubble. If nothing else you would have an epi pen. There is no way that in every day life, that a dog would never cross your path out in public. Children, even adults have unirary and bowel accidents. So let&#39;s ban children, dogs adults etc. from flying if they have incontiencey issues. How about just having sterile flights for animal haters, perfect people etc. ",
+      "commentOn": "09000064832be8f9",
+      "commentOnDocumentId": "DOT-OST-2018-0068-1157",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "DOT-OST-2018-0068",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Patricia",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Gonciarz",
+      "legacyId": null,
+      "modifyDate": "2018-05-23T18:54:21Z",
+      "objectId": "09000064832cb059",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2018-05-23T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2018-05-23T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Patricia Gonciarz",
+      "trackingNbr": "1k2-93b6-l9r1",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "DOT-OST-2018-0068-1398",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1398"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1398/attachments",
+          "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1398/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

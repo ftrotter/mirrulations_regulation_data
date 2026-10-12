@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "category": null,
+      "city": null,
+      "comment": "To the department of education,<br/><br/>I support fully this new purpose on this new regulation in my opinion I feel by awarding the schools <br/>they will have a better understanding on how important it is to be in control of what&#39;s taking over the world today <br/>cyber is used everyone by all ages and by having cybersecurity and better knowledge, instilling and by awarding will create<br/> a better passion for educators to be on the look out for better security when having to deal with the cyber world.<br/><br/>Thanks for reading hope my comment<br/>can help make a difference in our education department.",
+      "commentOn": "0900006484010dae",
+      "commentOnDocumentId": "ED-2019-OPEPD-0108-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2019-OPEPD-0108",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "janet",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "avina",
+      "legacyId": null,
+      "modifyDate": "2023-04-27T20:55:41Z",
+      "objectId": "09000064840fc695",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2023-04-27T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2019-10-26T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment on FR Doc # 2019-21532",
+      "trackingNbr": "1k3-9cy5-g439",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ED-2019-OPEPD-0108-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ED-2019-OPEPD-0108-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ED-2019-OPEPD-0108-0002/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ED-2019-OPEPD-0108-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

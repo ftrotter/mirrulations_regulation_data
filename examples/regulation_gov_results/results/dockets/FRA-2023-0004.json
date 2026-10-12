@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FRA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Union Pacific Railroad Company\n\n",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-05-19T12:15:31Z",
+      "objectId": "0b000064855c780e",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Block Signal Application",
+      "subType2": null,
+      "title": "Union Pacific Railroad Company"
+    },
+    "id": "FRA-2023-0004",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FRA-2023-0004"
+    },
+    "type": "dockets"
+  }
+}

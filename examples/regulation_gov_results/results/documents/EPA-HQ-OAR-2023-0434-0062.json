@@ -1,0 +1,104 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": "2023-05-22T04:00:00Z",
+      "authors": [
+        "USEPA"
+      ],
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        },
+        {
+          "label": "Authors",
+          "name": "authors",
+          "tooltip": "Individuals and/or organizations that authored the document"
+        }
+      ],
+      "docAbstract": "Federal Register of Monday, May 22, 2023 (88 FR 32852) (EPA\u2013HQ\u2013OAR\u20132019\u20130424; FRL\u20137230\u201303\u2013OAR)",
+      "docketId": "EPA-HQ-OAR-2023-0434",
+      "documentType": "Supporting & Related Material",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OAR-2023-0434-0062/content.pdf",
+          "format": "pdf",
+          "size": 1072694
+        }
+      ],
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": "Electronic",
+      "modifyDate": "2024-01-27T01:41:24Z",
+      "objectId": "09000064863b79e3",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 96,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2024-01-26T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2024-01-22T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Publication - Previous/Related FR Notice",
+      "title": "Revisions and Confidentiality Determinations for Data Elements Under the Greenhouse Gas Reporting Rule: Supplemental notice of proposed rulemaking",
+      "topics": null,
+      "trackingNbr": "lrp-g7bi-c3ku",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OAR-2023-0434-0062",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2023-0434-0062"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2023-0434-0062/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2023-0434-0062/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

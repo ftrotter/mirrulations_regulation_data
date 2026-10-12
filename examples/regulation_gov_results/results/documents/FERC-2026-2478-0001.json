@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "FERC",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2026-04-30T04:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": null,
+      "documentType": "Notice",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/FERC-2026-2478-0001/content.pdf",
+          "format": "pdf",
+          "size": 216030
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/FERC-2026-2478-0001/content.html",
+          "format": "html",
+          "size": 4071
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2026-08354",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-04-30T16:25:23Z",
+      "objectId": "09000064b92b7ed0",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-04-30T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-04-30T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Application: Chugach Electric Association, Inc.; Reopening Comment Period",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "FERC-2026-2478-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/FERC-2026-2478-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/FERC-2026-2478-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/FERC-2026-2478-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

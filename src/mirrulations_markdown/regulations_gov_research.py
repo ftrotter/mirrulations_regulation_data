@@ -149,6 +149,54 @@ def _matches(*, category, document):
 
 class RegulationsGovResearch:
     @staticmethod
+    def export_examples(*, manifest, output_root):
+        """Export unique API-style resource files plus a category selection manifest."""
+        output_root = Path(output_root)
+        seen_ids = {resource: set() for resource in ("documents", "dockets", "comments")}
+        categories = []
+        for category in manifest["evidence"]:
+            categories.append({
+                "category_key": category["category_key"],
+                "category_label": category["category_label"],
+                "document_ids": [
+                    example["document"]["id"] for example in category["examples"]
+                ],
+            })
+            for example in category["examples"]:
+                resources = [("documents", example["document"])]
+                if example.get("docket"):
+                    resources.append(("dockets", example["docket"]))
+                resources.extend(("comments", comment) for comment in example["comments"])
+                for resource, record in resources:
+                    if record["id"] in seen_ids[resource]:
+                        continue
+                    write_path = output_root / resource / f"{record['id']}.json"
+                    write_path.parent.mkdir(parents=True, exist_ok=True)
+                    write_path.write_text(
+                        json.dumps({"data": record}, indent=2, sort_keys=True) + "\n",
+                        encoding="utf-8",
+                    )
+                    seen_ids[resource].add(record["id"])
+        example_manifest = {
+            "api_root": manifest["api_root"],
+            "generated_at": manifest["generated_at"],
+            "selection": "Five validated document examples per artifact category.",
+            "comment_selection": (
+                "Up to five comments per document, sorted by postedDate."
+            ),
+            "categories": categories,
+            "unique_resource_counts": {
+                resource: len(resource_ids)
+                for resource, resource_ids in seen_ids.items()
+            },
+        }
+        (output_root / "manifest.json").write_text(
+            json.dumps(example_manifest, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        return example_manifest
+
+    @staticmethod
     def _candidate_search(*, client, category, search_size, minimum_matches,
                           maximum_search_pages=10):
         candidates = []

@@ -1,0 +1,97 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2025-05-29T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Federal Register for Thursday, December 31, 1998 (63 FR 72200) [WH-FRL-6212-4]",
+      "docketId": "EPA-HQ-OW-1995-0105",
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OW-1995-0105-0003/content.pdf",
+          "format": "pdf",
+          "size": 132702
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "98-34421",
+      "frVolNum": "63",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-05-29T18:57:17Z",
+      "objectId": "09000064b8dc5ff0",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-05-29T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "1998-12-31T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "72200",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Withdrawal",
+      "title": "Withdrawal of the National Primary Drinking Water Regulations: Analytical Methods for Regulated Drinking Water Contaminants; Direct Final Rule [W-97-04-I-A-3]",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OW-1995-0105-0003",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-1995-0105-0003"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-1995-0105-0003/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-1995-0105-0003/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

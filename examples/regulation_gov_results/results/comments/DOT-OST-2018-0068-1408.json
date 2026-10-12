@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "DOT",
+      "category": null,
+      "city": null,
+      "comment": "True SERVICE ANIMALS - highly trained and LEGITIMATELY documented and necessary to a disabled person should always be allowed on.  <br/><br/>&quot;Emotional support animals&quot; on the other hand are close to a con.  $75 allows anyone to download a &quot;certificate&quot; from the internet.  And with that Paris Hilton gets to bring her dog on an airline because without him she suffers &quot;anxiety&quot;.  Please.<br/><br/>I actually have no allergies and love all animals - but the ESAs are causing a deserved backlash against the people who have a legal and legitimate need for service animals.  And that&#39;s not fair.",
+      "commentOn": "09000064832be8f9",
+      "commentOnDocumentId": "DOT-OST-2018-0068-1157",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "DOT-OST-2018-0068",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Joan",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Arkuszewski",
+      "legacyId": null,
+      "modifyDate": "2018-05-23T20:50:04Z",
+      "objectId": "09000064832cd116",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2018-05-23T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2018-05-23T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Joan Arkuszewski",
+      "trackingNbr": "1k2-93b8-l1wi",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "DOT-OST-2018-0068-1408",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1408"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1408/attachments",
+          "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1408/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

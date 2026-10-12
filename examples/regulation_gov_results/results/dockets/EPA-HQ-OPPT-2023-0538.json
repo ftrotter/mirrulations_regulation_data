@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        }
+      ],
+      "dkAbstract": "The Environmental Protection Agency (EPA) is proposing to add 16 individually listed per- and polyfluoroalkyl substances (PFAS) and 15 PFAS categories to the Toxics Release Inventory (TRI) list of toxic chemicals subject to reporting under the Emergency Planning and Community Right-to-Know Act (EPCRA) and the Pollution Prevention Act (PPA). EPA also addresses how PFAS compound categories should be treated and discusses what events may trigger the automatic addition of a PFAS to the TRI. These actions are being proposed to comply with the National Defense Authorization Act for Fiscal Year 2020 (NDAA).\n\nChemours and DuPont have given permission to Rule Writers to make their documents labeled as \"Trade Secret\" publicly available since they do not contain any confidential information.\n\n",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OPPT",
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-10-08T19:07:25Z",
+      "objectId": "0b0000648614dda0",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Addition of Certain Per- and Polyfluoroalkyl Substances (PFAS) to the Toxics Release Inventory (TRI)"
+    },
+    "id": "EPA-HQ-OPPT-2023-0538",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OPPT-2023-0538"
+    },
+    "type": "dockets"
+  }
+}

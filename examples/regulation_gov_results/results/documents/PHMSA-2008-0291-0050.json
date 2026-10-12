@@ -1,0 +1,91 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "PHMSA",
+      "allowLateComments": true,
+      "authorDate": "2010-08-05T00:00:00Z",
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": "Final Rule - Updates to Pipeline and Liquefied Natural Gas Reporting Requirements (One Rule).",
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Author/ Document Date",
+          "name": "authorDate",
+          "tooltip": "Date the authors wrote or published the document"
+        }
+      ],
+      "docAbstract": "Final Rule - Updates to Pipeline and Liquefied Natural Gas Reporting Requirements (One Rule).",
+      "docketId": "PHMSA-2008-0291",
+      "documentType": "Other",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": "PHMSA",
+      "govAgencyType": "Federal",
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-10-08T09:01:24Z",
+      "objectId": "0900006480ba3889",
+      "ombApproval": null,
+      "openForComment": true,
+      "organization": "U.S. DOT/PHMSA",
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": null,
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2010-11-24T00:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Other",
+      "title": "Final Environmental Checklist and Environmental Assessment",
+      "topics": null,
+      "trackingNbr": "80ba3889",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "PHMSA-2008-0291-0050",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/PHMSA-2008-0291-0050"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/PHMSA-2008-0291-0050/attachments",
+          "self": "https://api.regulations.gov/v4/documents/PHMSA-2008-0291-0050/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

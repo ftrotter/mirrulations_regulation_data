@@ -1,0 +1,36 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "CFTC",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": "The Commodity Futures Trading Commission (Commission or CFTC) is proposing amendments to its rules concerning event contract derivatives. The markets for these event contracts are commonly referred to as \"prediction markets.\u2019\u2019 In particular, the\nCommission is proposing amendments to further specify the types of event contracts that may be subject to a determination that they are contrary to the public interest, such that they may not be listed for trading or accepted for clearing on or through a CFTC registered entity, as provided in the Commodity Exchange Act (CEA). The proposed amendments set out factors\nthe Commission would apply in that determination and conform the process by which the determination would be\nmade to the CEA. The Commission also is proposing amendments to the procedure for the Commission\u2019s determination to enhance clarity and organization, as well as a definition of the term \u2018\u2018gaming\u2019\u2019 and a rule regarding when event contracts  \n\"involve\" an underlying activity.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": [
+        "event contracts",
+        "40.11",
+        "prediction markets"
+      ],
+      "legacyId": null,
+      "modifyDate": "2026-10-01T15:31:52Z",
+      "objectId": "0b000064b9329545",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "3038-AF65",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Prediction Markets; Public Interest Determinations"
+    },
+    "id": "CFTC-2026-1189",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/CFTC-2026-1189"
+    },
+    "type": "dockets"
+  }
+}

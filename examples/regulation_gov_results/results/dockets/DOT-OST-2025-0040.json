@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "DOT",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        }
+      ],
+      "dkAbstract": "Third-Party Complaint",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-08-13T18:01:19Z",
+      "objectId": "0b000064b8cf0bac",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Complaint",
+      "subType2": null,
+      "title": "Bristow Group Inc. - Third-Party Complaint Against HeliService USA LLC"
+    },
+    "id": "DOT-OST-2025-0040",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/DOT-OST-2025-0040"
+    },
+    "type": "dockets"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        },
+        {
+          "label": "Pre-EDOCKET ID",
+          "name": "organization",
+          "tooltip": "Identifies docket's (a regulatory action) orginating agency and/or department, equivalents: Division, and Organization."
+        }
+      ],
+      "dkAbstract": "Drinking Water State Revolving Funds",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OW",
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-09-11T14:24:42Z",
+      "objectId": "0b00006486aaf87c",
+      "organization": "W-00-11",
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Drinking Water State Revolving Funds"
+    },
+    "id": "EPA-HQ-OW-2000-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OW-2000-0001"
+    },
+    "type": "dockets"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "This action was submitted to the Office of Management and Budget (OMB) for review under Executive Order (EO) 12866, entitled Regulatory Planning and Review (58 FR 51735, October 4, 1993). According to section 6(a)(3)(E) of the EO, whenever the Agency makes publicly available a regulatory action that was reviewed under EO 12866, the Agency is also required to: (1) Make available to the public a copy of the information that was provided to OMB's Office of Information and Regulatory Affairs (OIRA) for review under the EO, i.e., the text of the draft regulatory action and, if applicable, an assessment of the potential costs and benefits; as well as additional information required for those actions that are determined to be economically significant under section 3(f) of the EO (see section 6(a)(3)(B) & (C)); (2) Identify for the public any substantive changes between the draft submitted to OMB and the action that was subsequently issued, using a method that is complete, clear and simple; and (3) Identify for the public those substantive changes made at the suggestion or recommendation of OIRA. These materials satisfy EO section 6(a)(3)(E).",
+      "docketId": "EPA-HQ-OPPT-2020-0642",
+      "documentType": "Supporting & Related Material",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OPPT-2020-0642-0765/content.pdf",
+          "format": "pdf",
+          "size": 97204
+        }
+      ],
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": "Electronic",
+      "modifyDate": "2025-09-18T18:59:31Z",
+      "objectId": "09000064b8f9cd49",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-09-18T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-09-16T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Interagency Review",
+      "title": "Documentation of EO 12866 Review; Trichloroethylene; Regulation under the Toxic Substances Control Act (TSCA); Compliance Date Extension; Interim Final Rule (RIN 2070-AL32)",
+      "topics": null,
+      "trackingNbr": "mfm-x2f0-j7w4",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OPPT-2020-0642-0765",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OPPT-2020-0642-0765"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OPPT-2020-0642-0765/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OPPT-2020-0642-0765/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

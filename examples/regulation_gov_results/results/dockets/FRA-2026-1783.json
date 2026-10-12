@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FRA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Special Approval",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-10-08T16:06:52Z",
+      "objectId": "0b000064b9377349",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Waiver",
+      "subType2": null,
+      "title": "DeQueen and Eastern Railroad"
+    },
+    "id": "FRA-2026-1783",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FRA-2026-1783"
+    },
+    "type": "dockets"
+  }
+}

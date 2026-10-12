@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "FDA",
+      "category": "Food Industry - C0027",
+      "city": null,
+      "comment": "As a citizen and an operator of a farm operation, <br/>I am saddened, appalled, outraged and MAD as hell, <br/>as to the current White Nationalist, Felon, Keystone Cop DJT<br/>administration&#39;s attempt to revert to the Jim Crow days of discrimination,<br/> fear mongering, judicial lawlessness, and public protections barriers breaking.<br/><br/>As I look over the past 2.5 years of USDA &amp; FDA recalls/alerts(personal storage)<br/>and see the carnage of death, sickness and destruction across this USA, <br/>I find the extension of 30 months beyond what was implemented in 2022<br/>as a way to codify the demands of a pyscho-laden administration<br/>attempts to carry out their &#39;&#39;Neo-Nazi No Country for Olde White Men&#39;&#39; Project 2025 agenda.<br/><br/>The souls of the dead, hurt, and damaged victim participants of<br/>USDA &amp; FDA recalls/alerts can not speak to this INJUSTICE, but I will. <br/>Elites and other corporate entities have long gotten away with misdeeds and wrong-doings<br/>in the USDA &amp; FDA arena and to give them 30 additional months, thru this administration&#39;s<br/>demonic rule of law, speaks of complicity and collusion.<br/><br/>I demand a &#39;SERIOUS&#39; review of this proposed action, in light of CURRENT software &amp; hardware<br/>technologies AVAILABLE at our disposal, WE can/should implement the ORIGINAL January 2026<br/>deadline.<br/><br/>We live in the 21st CENTURY, not the 20th century, ladies &amp; gentlemen.<br/>(API, SAP, WMS, CRM, SDI, ERP, AI, AI LLM)",
+      "commentOn": "09000064b8eec2b5",
+      "commentOnDocumentId": "FDA-2014-N-0053-1330",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "FDA-2014-N-0053",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "sergi",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "tolstoy",
+      "legacyId": null,
+      "modifyDate": "2025-08-08T23:39:56Z",
+      "objectId": "09000064b8ef2dd0",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2025-08-08T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-08-08T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Electronic Regulation from Form",
+      "title": "Comment from sergi tolstoy",
+      "trackingNbr": "me2-v2n0-634q",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "FDA-2014-N-0053-1336",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/FDA-2014-N-0053-1336"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/FDA-2014-N-0053-1336/attachments",
+          "self": "https://api.regulations.gov/v4/comments/FDA-2014-N-0053-1336/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

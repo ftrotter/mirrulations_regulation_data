@@ -1,0 +1,104 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": [
+        "USEPA"
+      ],
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Authors",
+          "name": "authors",
+          "tooltip": "Individuals and/or organizations that authored the document"
+        },
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Renewable Fuel Standard (RFS) Program: Standards for 2026 and 2027, Partial Waiver of 2025 Cellulosic Biofuel Volume Requirement, and Other Changes - Final Rule, Docket#: EPA-HQ-OAR-2024-0505, FRL#: 11947-02-OAR, RIN#: 2060-AW23",
+      "docketId": "EPA-HQ-OAR-2024-0505",
+      "documentType": "Supporting & Related Material",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OAR-2024-0505-0932/content.pdf",
+          "format": "pdf",
+          "size": 123821
+        }
+      ],
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": "Electronic",
+      "modifyDate": "2026-04-01T17:54:59Z",
+      "objectId": "09000064b9236a98",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-04-01T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-03-27T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Office of Management and Budget (OMB)",
+      "title": "Documentation of OMB Review - Final Rule",
+      "topics": null,
+      "trackingNbr": "mn6-n6zl-paat",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OAR-2024-0505-0932",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2024-0505-0932"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2024-0505-0932/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2024-0505-0932/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

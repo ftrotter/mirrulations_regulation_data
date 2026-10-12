@@ -1,0 +1,34 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "NRC",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": "NRC-2004-0011",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": [
+        "10 CFR Part 73"
+      ],
+      "legacyId": null,
+      "modifyDate": "2011-04-11T14:57:43Z",
+      "objectId": "0b000064803c5ace",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "3150-AH60",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Design Basis Threat"
+    },
+    "id": "NRC-2005-0013",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/NRC-2005-0013"
+    },
+    "type": "dockets"
+  }
+}

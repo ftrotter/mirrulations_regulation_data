@@ -1,0 +1,91 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2026-05-23T03:59:59Z",
+      "commentStartDate": "2026-04-22T04:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2026-FSA-0761",
+      "documentType": "Notice",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/ED-2026-FSA-0761-0001/content.pdf",
+          "format": "pdf",
+          "size": 241005
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2026-07817",
+      "frVolNum": "91 FR 21480",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-05-23T09:00:19Z",
+      "objectId": "09000064b92c6875",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-05-06T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-05-06T00:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "System of Records",
+      "title": "Notice of a Modified System of Records - NSLDS SORN",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "ED-2026-FSA-0761-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/ED-2026-FSA-0761-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/ED-2026-FSA-0761-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/ED-2026-FSA-0761-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

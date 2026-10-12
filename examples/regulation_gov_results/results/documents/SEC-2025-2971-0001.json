@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "SEC",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2025-10-02T04:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": null,
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/SEC-2025-2971-0001/content.pdf",
+          "format": "pdf",
+          "size": 237393
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/SEC-2025-2971-0001/content.html",
+          "format": "html",
+          "size": 32617
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2025-19316",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-10-02T23:45:52Z",
+      "objectId": "09000064b8feca96",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-10-02T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-10-02T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Extension of Compliance Date for Disclosure of Order Execution Information",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "SEC-2025-2971-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/SEC-2025-2971-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/SEC-2025-2971-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/SEC-2025-2971-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

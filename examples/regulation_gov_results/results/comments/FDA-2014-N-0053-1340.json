@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "FDA",
+      "category": "Private Industry - C0003",
+      "city": null,
+      "comment": "See Attached",
+      "commentOn": "09000064b8eec2b5",
+      "commentOnDocumentId": "FDA-2014-N-0053-1330",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "FDA-2014-N-0053",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "James",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Office",
+      "legacyId": null,
+      "modifyDate": "2025-08-27T23:07:30Z",
+      "objectId": "09000064b8f19ab0",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2025-08-27T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-08-25T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Victory Wholesale Grocers",
+      "trackingNbr": "mes-vfne-433c",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "FDA-2014-N-0053-1340",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/FDA-2014-N-0053-1340"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/FDA-2014-N-0053-1340/attachments",
+          "self": "https://api.regulations.gov/v4/comments/FDA-2014-N-0053-1340/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

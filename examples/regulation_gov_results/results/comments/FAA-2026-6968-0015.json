@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "FAA",
+      "category": null,
+      "city": "Brownsville",
+      "comment": "As a concerned resident of Brownsville, and a tax payer, I learned that The FAA has released a Draft Tiered Environmental Assessment for SpaceX&#39;s proposed Starship reentries to Starbase, expanding the potential crash areas in the Pacific Ocean.  Before rushing into this it is important to think of how this expansion and increase in rocket activity will affect our South Texas community.  Below are some really important considerations.<br/>1.<span style='padding-left: 30px'></span>Extend the public comment period and hold public hearings to ensure meaningful public participation. The comment time period is too short.<br/>2.<span style='padding-left: 30px'></span>The assessment minimizes the impact of interruptions on commercial air traffic, disrupting public passengers and air cargo operations. With 22 launches and landings per year, it is estimated that 6,600 flights per year will be affected, (Table 2.1-1. Potential Commercial Aircraft Affected by the Notional AHA for the Additional Starship Reentry Landing Trajectory to the Boca Chica Launch Site in Starbase, TX) potentially causing major disruptions to the general everyday working society.<br/>3.<span style='padding-left: 30px'></span>The assessment does not adequately analyze rocket anomalies over land. Once Starship leaves the ocean landing zones, it still travels over much of the western United States, and potentially parts of Mexico and Canada, before reaching Starbase, TX. Where is the analysis of &ldquo;anomalies&rdquo; over land if a problem arises? The document discusses commercial airspace closures but does not evaluate the environmental or public safety consequences if a malfunction occurs over land. Where is the analysis of all problems created over land as Starship returns to Starbase?<br/>4.<span style='padding-left: 30px'></span>The Port of Brownsville is planning a major expansion that includes Saronic Technologies&#39; military manufacturing facility. Has the FAA evaluated whether this development is compatible with frequent Starship landings?<br/>5.<span style='padding-left: 30px'></span>SpaceX has announced plans to build a natural gas liquefaction (LNG) facility at Starbase, with feed gas supplied by a lateral pipeline connected to the Rio Bravo Pipeline at the Port of Brownsville. Have all safety and security implications been considered? Is having an LNG facility at Starbase compatible with landing rockets at Starbase?<br/><br/>",
+      "commentOn": "09000064b939cb1f",
+      "commentOnDocumentId": "FAA-2026-6968-0003",
+      "country": "United States",
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "FAA-2026-6968",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Mary Elizabeth",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Hollmann",
+      "legacyId": null,
+      "modifyDate": "2026-07-23T19:10:23Z",
+      "objectId": "09000064b93bac4c",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-07-23T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-07-23T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "TX",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Mary Elizabeth Hollmann",
+      "trackingNbr": "mrx-nasj-0lz1",
+      "withdrawn": false,
+      "zip": "78520-5516"
+    },
+    "id": "FAA-2026-6968-0015",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/FAA-2026-6968-0015"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/FAA-2026-6968-0015/attachments",
+          "self": "https://api.regulations.gov/v4/comments/FAA-2026-6968-0015/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

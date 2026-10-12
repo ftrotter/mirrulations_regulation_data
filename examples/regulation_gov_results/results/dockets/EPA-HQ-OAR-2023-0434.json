@@ -1,0 +1,53 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        },
+        {
+          "label": "Short Title",
+          "name": "shortTitle",
+          "tooltip": "A combination of letters and or numbers assigned to an agency's regulatory action for purposes of brevity."
+        }
+      ],
+      "dkAbstract": "Proposed rulemaking to meet directives set forth in section 136 with respect to the Methane Emissions and Waste Reduction Incentive Program. Section 60113 of the Inflation Reduction Act of 2022 amended the Clean Air Act (CAA) by adding section 136, \u201cMethane Emissions and Waste Reduction Incentive Program for Petroleum and Natural Gas Systems.\u201d CAA section 136(c) directs the Administrator of the EPA to impose and collect a \u201cWaste Emissions Charge\u201d on methane emissions that exceed statutorily specified waste emissions thresholds from an owner or operator of an applicable facility.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OAR",
+      "keywords": [
+        "CAA 136",
+        "Emissions",
+        "CH4",
+        "IRA",
+        "Inflation Reduction Act",
+        "WEC",
+        "Waste Emissions Charge",
+        "Natural Gas Systems",
+        "Petroleum"
+      ],
+      "legacyId": null,
+      "modifyDate": "2025-05-19T13:41:46Z",
+      "objectId": "0b00006485ecb389",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2060-AW54",
+      "shortTitle": "Waste Emissions Charge for Petroleum and Natural Gas Systems",
+      "subType": null,
+      "subType2": null,
+      "title": "Methane Emissions and Waste Reduction Incentive Program for Petroleum and Natural Gas Systems"
+    },
+    "id": "EPA-HQ-OAR-2023-0434",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OAR-2023-0434"
+    },
+    "type": "dockets"
+  }
+}

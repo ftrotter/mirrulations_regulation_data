@@ -1,0 +1,102 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2026-04-23T03:59:59Z",
+      "commentStartDate": "2026-03-23T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Federal Register for Monday, March 23, 2026 (91 FR 13843) [FRL-13270-01-OMS]",
+      "docketId": "EPA-HQ-OFA-2026-1321",
+      "documentType": "Notice",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OFA-2026-1321-0001/content.pdf",
+          "format": "pdf",
+          "size": 219336
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OFA-2026-1321-0001/content.html",
+          "format": "html",
+          "size": 6513
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2026-05640",
+      "frVolNum": "91 FR 13843",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-04-23T09:00:14Z",
+      "objectId": "09000064b922c18d",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "EPA_FRDOC_0001-32670",
+      "pageCount": 2,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-03-23T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-03-23T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "13843 - 13844",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Privacy Act; Systems of Records; Rescindment of a System of Records",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OFA-2026-1321-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OFA-2026-1321-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OFA-2026-1321-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OFA-2026-1321-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

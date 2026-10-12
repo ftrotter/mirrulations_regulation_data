@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "category": null,
+      "city": "Atlanta",
+      "comment": "Alfred Hendrx is needing to give a complaint about the Extra Space Self Storage at 660 Edgewood Avenue Atlata Ga. There Ph.no is 404-525-6996 and 470-485-8301. What did is other conspires to not me have my belonging I spent about $1000.00 a month for the past 5 years putting belongings in my storage rooms. How the plan is the evit me when I do not have the $6000.00 to move it to another storage facility. I worked 15 years  Union Roofing for Social Security and my part Roofing Retierment. They did the same at 2 other storage in with in 3 months.",
+      "commentOn": "0900006483e5f5bf",
+      "commentOnDocumentId": "ED-2018-FSA-0083-0001",
+      "country": "United States",
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2018-FSA-0083",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Alfred",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Hendrix",
+      "legacyId": null,
+      "modifyDate": "2023-04-27T20:55:29Z",
+      "objectId": "0900006483f312a7",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2023-04-27T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2019-09-10T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "GA",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment on FR Doc # 2019-17615",
+      "trackingNbr": "1k3-9c3z-8kzp",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ED-2018-FSA-0083-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ED-2018-FSA-0083-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ED-2018-FSA-0083-0002/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ED-2018-FSA-0083-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

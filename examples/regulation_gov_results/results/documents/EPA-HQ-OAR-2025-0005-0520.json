@@ -1,0 +1,91 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "EPA-HQ-OAR-2025-0005",
+      "documentType": "Supporting & Related Material",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": "Electronic",
+      "modifyDate": "2026-05-26T16:22:00Z",
+      "objectId": "09000064b92a6170",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-05-26T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-04-23T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "FRM - Supporting and Related Materials",
+      "topics": null,
+      "trackingNbr": "mob-tzsh-ct1a",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OAR-2025-0005-0520",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2025-0005-0520"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2025-0005-0520/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2025-0005-0520/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

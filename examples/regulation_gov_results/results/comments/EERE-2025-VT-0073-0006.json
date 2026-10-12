@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "EERE",
+      "category": null,
+      "city": null,
+      "comment": "See attached file(s)",
+      "commentOn": "09000064b91bd3d5",
+      "commentOnDocumentId": "EERE-2025-VT-0073-0002",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "EERE-2025-VT-0073",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Kellen",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Schefter",
+      "legacyId": null,
+      "modifyDate": "2026-03-24T17:32:51Z",
+      "objectId": "09000064b922bb45",
+      "openForComment": false,
+      "organization": "Edison Electric Institute",
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-03-24T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-03-23T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Public Comment",
+      "title": "2026-03-23  Comment response to the published Interim Final Rule",
+      "trackingNbr": "mn3-9k11-v3tp",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "EERE-2025-VT-0073-0006",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0006"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0006/attachments",
+          "self": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0006/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

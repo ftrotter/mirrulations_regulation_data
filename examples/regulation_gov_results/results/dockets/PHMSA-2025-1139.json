@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "PHMSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Katie Koebbe petitions for a rulemaking to develop standards for vegetation management and right-of-way clearing along regulated pipeline corridors.",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-04-08T11:38:34Z",
+      "objectId": "0b000064b90844cd",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Pipeline Safety",
+      "subType2": null,
+      "title": "Katie Koebbe Petition for Rulemaking \u2013 Establishment of Clear Vegetation Management and Right-of-Way Clearing Standards for Pipeline Safety"
+    },
+    "id": "PHMSA-2025-1139",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/PHMSA-2025-1139"
+    },
+    "type": "dockets"
+  }
+}

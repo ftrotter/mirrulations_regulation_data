@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FAA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Mason Thomas Greenlee - Exemption/Rulemaking",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-02-05T13:36:57Z",
+      "objectId": "0b000064b8ef41d3",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Petitions",
+      "subType2": null,
+      "title": "Mason Thomas Greenlee - Exemption/Rulemaking"
+    },
+    "id": "FAA-2025-2300",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FAA-2025-2300"
+    },
+    "type": "dockets"
+  }
+}

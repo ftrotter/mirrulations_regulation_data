@@ -1,0 +1,97 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "NRC",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "70 FR 37647",
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "NRC-2005-0007",
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/NRC-2005-0007-0003/content.pdf",
+          "format": "pdf",
+          "size": 58730
+        }
+      ],
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-05-21T09:33:22Z",
+      "objectId": "090000648040dca0",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "0000000000000000",
+      "pageCount": 3,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": null,
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2008-03-28T00:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Direct Final Rule",
+      "title": "Direct Final Rule - List of Approved Spent Fuel Storage Casks:  VSC-24 Revision",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "NRC-2005-0007-0003",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/NRC-2005-0007-0003"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/NRC-2005-0007-0003/attachments",
+          "self": "https://api.regulations.gov/v4/documents/NRC-2005-0007-0003/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

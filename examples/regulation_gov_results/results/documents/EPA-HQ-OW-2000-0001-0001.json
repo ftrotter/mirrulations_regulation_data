@@ -1,0 +1,97 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2025-04-24T00:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Federal Register for Monday, August 7, 2000 (65 FR 48286) [FRL-6846-5] \n",
+      "docketId": "EPA-HQ-OW-2000-0001",
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OW-2000-0001-0001/content.pdf",
+          "format": "pdf",
+          "size": 3807070
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "00-19783",
+      "frVolNum": "65",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-05-15T09:00:17Z",
+      "objectId": "0900006486ab503b",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 28,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-04-24T00:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2000-08-07T00:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "48286 - 48312",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Interim Final Rule",
+      "title": "Drinking Water State Revolving Funds; Interim Final Rule [W-00-11-I-A-1]",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OW-2000-0001-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2000-0001-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2000-0001-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2000-0001-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

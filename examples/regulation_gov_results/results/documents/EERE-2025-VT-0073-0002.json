@@ -1,0 +1,105 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": [
+        "1904-AF47",
+        "1904-AF47"
+      ],
+      "address1": null,
+      "address2": null,
+      "agencyId": "EERE",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "10 CFR Part 474",
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2026-03-24T03:59:59Z",
+      "commentStartDate": "2026-02-19T05:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "EERE-2025-VT-0073",
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EERE-2025-VT-0073-0002/content.pdf",
+          "format": "pdf",
+          "size": 320789
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/EERE-2025-VT-0073-0002/content.html",
+          "format": "html",
+          "size": 52947
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2026-03300",
+      "frVolNum": "91FR7810",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-03-24T09:00:25Z",
+      "objectId": "09000064b91bd3d5",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "DOE_FRDOC_0001-5320",
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-02-19T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-02-19T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "7810 - 7817",
+      "stateProvinceRegion": null,
+      "subject": "Corporate Average Fuel Economy, Electric (Motor) Vehicle, Electric Power, Energy Conservation, Fuel Economy, Motor Vehicles, Research",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Interim Final Rule",
+      "title": "2026-02-19  Petroleum-Equivalent Fuel Economy Calculation, Interim final rule; request for\ncomments",
+      "topics": [
+        "Electric Power",
+        "Energy Conservation",
+        "Fuel Economy",
+        "Motor Vehicles",
+        "Research"
+      ],
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EERE-2025-VT-0073-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EERE-2025-VT-0073-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EERE-2025-VT-0073-0002/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EERE-2025-VT-0073-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

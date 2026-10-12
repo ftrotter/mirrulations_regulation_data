@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "FDA",
+      "category": null,
+      "city": null,
+      "comment": "Please see the attached document for FishWise&#39;s full comment.",
+      "commentOn": "09000064b8eec2b5",
+      "commentOnDocumentId": "FDA-2014-N-0053-1330",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "FDA-2014-N-0053",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": null,
+      "legacyId": null,
+      "modifyDate": "2025-08-22T18:09:30Z",
+      "objectId": "09000064b8f0a112",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2025-08-22T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-08-20T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Electronic Regulation from Form",
+      "title": "Comment from FishWise",
+      "trackingNbr": "mek-a25d-kkgv",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "FDA-2014-N-0053-1339",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/FDA-2014-N-0053-1339"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/FDA-2014-N-0053-1339/attachments",
+          "self": "https://api.regulations.gov/v4/comments/FDA-2014-N-0053-1339/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

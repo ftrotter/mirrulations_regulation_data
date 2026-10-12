@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "PHMSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "National Gas Pipeline of America - MAOP SP Request",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2023-05-31T16:10:41Z",
+      "objectId": "0b0000648511fc17",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Hazardous Materials",
+      "subType2": null,
+      "title": "National Gas Pipeline of America - MAOP SP Request"
+    },
+    "id": "PHMSA-2022-0075",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/PHMSA-2022-0075"
+    },
+    "type": "dockets"
+  }
+}

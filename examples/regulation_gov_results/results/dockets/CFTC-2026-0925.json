@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "CFTC",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": " The Commodity Futures Trading Commission (\u2018\u2018CFTC\u2019\u2019 or \u2018\u2018Commission\u2019\u2019) is adopting a final rule that revises the Commission\u2019s regulations to adopt a new seal. This final rule provides a description of the new seal and its image.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-05-11T12:45:56Z",
+      "objectId": "0b000064b92cc4de",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Official Seal"
+    },
+    "id": "CFTC-2026-0925",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/CFTC-2026-0925"
+    },
+    "type": "dockets"
+  }
+}

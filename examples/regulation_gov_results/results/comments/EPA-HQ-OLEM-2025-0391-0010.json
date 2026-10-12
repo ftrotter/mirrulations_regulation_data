@@ -1,0 +1,71 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "category": null,
+      "city": null,
+      "comment": "We appreciate it - we don&#39;t like hazardous waste!",
+      "commentOn": "09000064b8eea4f9",
+      "commentOnDocumentId": "EPA-HQ-OLEM-2025-0391-0001",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "EPA-HQ-OLEM-2025-0391",
+      "documentType": "Public Submission",
+      "duplicateComments": 1,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": null,
+      "legacyId": null,
+      "modifyDate": "2025-09-19T01:25:34Z",
+      "objectId": "09000064b8f9e673",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "phone": null,
+      "postedDate": "2025-09-18T04:00:00Z",
+      "postmarkDate": "2025-09-16T04:00:00Z",
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-09-16T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Public Comment",
+      "title": "Anonymous public comment",
+      "trackingNbr": "mfm-zd8u-krfd",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OLEM-2025-0391-0010",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/EPA-HQ-OLEM-2025-0391-0010"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/EPA-HQ-OLEM-2025-0391-0010/attachments",
+          "self": "https://api.regulations.gov/v4/comments/EPA-HQ-OLEM-2025-0391-0010/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "40 CFR Part 52",
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2025-08-26T03:59:59Z",
+      "commentStartDate": "2025-07-24T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "EPA-R06-OAR-2020-0165",
+      "documentType": "Proposed Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-R06-OAR-2020-0165-0010/content.pdf",
+          "format": "pdf",
+          "size": 235391
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-R06-OAR-2020-0165-0010/content.html",
+          "format": "html",
+          "size": 13825
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2025-13904",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-08-26T09:00:18Z",
+      "objectId": "09000064b8e9c55c",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "EPA_FRDOC_0001-32057",
+      "pageCount": 3,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-07-24T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-07-24T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "34790 - 34792",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "TX223.10 Supplemental notice of proposed rulemaking; Texas; Reasonably Available Control Technology in the Houston-Galveston-Brazoria Ozone Nonattainment Area, 3 pages.",
+      "topics": [
+        "Environmental Protection",
+        "Air Pollution Control",
+        "Incorporation by Reference",
+        "Nitrogen Dioxide",
+        "Ozone",
+        "Reporting and Recordkeeping Requirements",
+        "Volatile Organic Compounds"
+      ],
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-R06-OAR-2020-0165-0010",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-R06-OAR-2020-0165-0010"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-R06-OAR-2020-0165-0010/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-R06-OAR-2020-0165-0010/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

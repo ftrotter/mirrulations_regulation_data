@@ -1,0 +1,71 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ATBCB",
+      "category": "Individual",
+      "city": "Holland",
+      "comment": "Kudos for proposing hearing accessibility (via hearing loops) in your draft regulations for rail (including rapid rail/subway) accessibility! Let me offer an example of how such could help.<br/><br/>A couple years ago I was a distressed New York visitor on a subway train, hoping to exit at 116th Street (Columbia University). Alas, as a person with the great invisible disability (hearing loss) the conductor&#39;s announcements were indecipherable to me over the noise, even with my aids on maximum volume. Thus I missed an announcement (as a kindly fellow passenger later explained) that this train would be skipping that stop tonight, so I should exit at 96th to catch the next train.<br/><br/>Alas, I ended up at 137th, where I exited the subway, crossed the street, and bought a new ticket back to 116th, arriving late for my dinner date. If only the conductor&#39;s words had been accessibletransmitted wirelessly to hearing aids that could block the external noise while serving as in-the-ear speakers.<br/><br/>For more information--and pertinent evidence--see the attached article, and also www.hearingloop.org and https://www.hearingloss.org/programs-events/get-hearing-loop/<br/><br/>It is exciting to see hearing loops now spreading the nation--with installations ranging from NYC subway booths (where I was able to be redirected back to my destination) to thousands of worship places and auditoriums to several airports (including, now, Phoenix Sky Harbor Airport gate areas). Rail car hearing loops would not only serve passengers but also add to the hearing accessibility momentum, by giving countless people an opportunity to experience this simple, user-friendly technology for delivering announcements right to their hearing aids and cochlear implants.<br/><br/>Ergo, thank you!<br/>",
+      "commentOn": "09000064843692fd",
+      "commentOnDocumentId": "ATBCB-2020-0002-0001",
+      "country": "United States",
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "ATBCB-2020-0002",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "David",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Myers",
+      "legacyId": null,
+      "modifyDate": "2020-09-26T02:21:53Z",
+      "objectId": "0900006484377d9f",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "phone": null,
+      "postedDate": "2020-02-19T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2020-02-16T05:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "MI",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Myers, David",
+      "trackingNbr": "1k4-9f1z-qpii",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ATBCB-2020-0002-0005",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ATBCB-2020-0002-0005"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ATBCB-2020-0002-0005/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ATBCB-2020-0002-0005/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

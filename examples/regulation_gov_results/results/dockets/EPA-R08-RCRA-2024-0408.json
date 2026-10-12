@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        },
+        {
+          "label": "Short Title",
+          "name": "shortTitle",
+          "tooltip": "A combination of letters and or numbers assigned to an agency's regulatory action for purposes of brevity."
+        }
+      ],
+      "dkAbstract": "The Environmental Protection Agency (EPA) is proposing to grant authorization to the State of Utah for the changes to its hazardous waste program under the Solid Waste Disposal Act, as amended, commonly referred to as the Resource Conservation and Recovery Act (RCRA). The EPA has determined that these changes satisfy all requirements needed to qualify for final authorization, and is authorizing the State\u2019s changes through a direct final action which can be found in the \u201cRules and Regulations\u201d section of this Federal Register. In addition, the EPA is proposing to codify in the regulations entitled \u201cApproved State Hazardous Waste Management Programs\u201d, Utah\u2019s authorized hazardous waste program. The EPA will incorporate by reference into the Code of Federal Regulations (CFR) those provisions of the State regulations that are authorized and that the EPA will enforce under RCRA.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "R08-RCRA",
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-06-11T15:16:06Z",
+      "objectId": "0b0000648664eaf2",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": "Utah:  Final Authorization of State Hazardous Waste Management Program Revisions and Incorporation by Reference",
+      "subType": null,
+      "subType2": null,
+      "title": "Utah:  Final Authorization of State Hazardous Waste Management Program Revisions and Incorporation by Reference"
+    },
+    "id": "EPA-R08-RCRA-2024-0408",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-R08-RCRA-2024-0408"
+    },
+    "type": "dockets"
+  }
+}

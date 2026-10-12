@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FRA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Proposed Rule",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2024-08-26T13:07:05Z",
+      "objectId": "0b00006484a641ef",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2130-AC88",
+      "shortTitle": null,
+      "subType": "Regulations",
+      "subType2": null,
+      "title": "Train Crew Size Safety Requirements"
+    },
+    "id": "FRA-2021-0032",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FRA-2021-0032"
+    },
+    "type": "dockets"
+  }
+}

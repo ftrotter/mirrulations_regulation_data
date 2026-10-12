@@ -1,0 +1,98 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "CFTC",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "17 CFR Part 2",
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2026-05-11T04:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "CFTC-2026-0925",
+      "documentType": "Rule",
+      "effectiveDate": "2026-05-11T04:00:00Z",
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/CFTC-2026-0925-0001/content.pdf",
+          "format": "pdf",
+          "size": 1430106
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/CFTC-2026-0925-0001/content.html",
+          "format": "html",
+          "size": 8201
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2026-09327",
+      "frVolNum": "91 FR 25489",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-05-11T16:47:23Z",
+      "objectId": "09000064b92cfad6",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "CFTC_FRDOC_0001-0006",
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-05-11T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-05-11T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "25489 - 25492",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Official Seal - Final Rule",
+      "topics": [
+        "Seals and Insignia"
+      ],
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "CFTC-2026-0925-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/CFTC-2026-0925-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/CFTC-2026-0925-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/CFTC-2026-0925-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "NRC",
+      "category": null,
+      "city": null,
+      "comment": null,
+      "commentOn": "09000064803c54de",
+      "commentOnDocumentId": "NRC-2004-0005-0001",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Accession Number",
+          "name": "legacyId",
+          "tooltip": "Agency-specific identifier which was given to this document in legacy system"
+        },
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        },
+        {
+          "label": "Document Date",
+          "name": "postmarkDate",
+          "tooltip": "Date the document was postmarked"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "NRC-2004-0005",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Bishop R W",
+      "legacyId": "ML041950083",
+      "modifyDate": "2025-05-21T09:33:45Z",
+      "objectId": "09000064803c54e2",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "0000000000000000",
+      "pageCount": 4,
+      "phone": null,
+      "postedDate": null,
+      "postmarkDate": "2004-07-12T00:00:00Z",
+      "reasonWithdrawn": null,
+      "receiveDate": "2008-02-25T00:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Comment (2) submitted by Nuclear Energy Institute, Robert W. Bishop on Proposed Rule - Public Records",
+      "trackingNbr": "803c54e2",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "NRC-2004-0005-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/NRC-2004-0005-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/NRC-2004-0005-0002/attachments",
+          "self": "https://api.regulations.gov/v4/comments/NRC-2004-0005-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

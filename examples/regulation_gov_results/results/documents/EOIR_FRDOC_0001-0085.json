@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EOIR",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "8 CFR Part 208",
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "EOIR_FRDOC_0001",
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EOIR_FRDOC_0001-0085/content.pdf",
+          "format": "pdf",
+          "size": 220480
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/EOIR_FRDOC_0001-0085/content.htm",
+          "format": "htm",
+          "size": 34259
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2024-30774",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2024-12-30T15:26:28Z",
+      "objectId": "0900006486891c1b",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2024-12-27T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2024-12-27T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "105386 - 105391",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Security Bars and Processing; Delay of Effective Date",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EOIR_FRDOC_0001-0085",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EOIR_FRDOC_0001-0085"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EOIR_FRDOC_0001-0085/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EOIR_FRDOC_0001-0085/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

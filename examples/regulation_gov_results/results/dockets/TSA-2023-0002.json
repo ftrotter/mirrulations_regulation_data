@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "TSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Action Office",
+          "name": "shortTitle",
+          "tooltip": "Refers to a specific office within an agency that issues the docket (regulatory action)."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Notice of Proposed Rulemaking",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2024-10-23T12:16:31Z",
+      "objectId": "0b00006485cd6dd7",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "1652-AA76",
+      "shortTitle": "TSA-OCC-R&SS",
+      "subType": "General Rulemaking",
+      "subType2": null,
+      "title": "Minimum Standards for Driver\u2019s Licenses and Identification Cards Acceptable by Federal Agencies for Official Purposes; Waiver for Mobile Driver\u2019s Licenses"
+    },
+    "id": "TSA-2023-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/TSA-2023-0002"
+    },
+    "type": "dockets"
+  }
+}

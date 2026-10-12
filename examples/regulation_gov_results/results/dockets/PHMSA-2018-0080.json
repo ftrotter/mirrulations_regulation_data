@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "PHMSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Hazardous Materials: Modal Regulatory Reform Initiatives (RRTF) [HM-265]",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-07-16T12:13:15Z",
+      "objectId": "0b000064834ece72",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2137-AF41",
+      "shortTitle": null,
+      "subType": "Hazardous Materials",
+      "subType2": null,
+      "title": "Hazardous Materials: Modal Regulatory Reform Initiatives (RRTF) [HM-265]"
+    },
+    "id": "PHMSA-2018-0080",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/PHMSA-2018-0080"
+    },
+    "type": "dockets"
+  }
+}

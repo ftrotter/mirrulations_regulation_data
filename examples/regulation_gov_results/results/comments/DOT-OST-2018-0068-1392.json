@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": "2800 E Sunrise Blvd unit 12C",
+      "address2": "unit 12C",
+      "agencyId": "DOT",
+      "category": null,
+      "city": "Ft Lauderdale",
+      "comment": "The current laws allowing emotional support animals on airplanes and in restaurants has been abused in a huge way. One just needs to walk through any airport today to see the extreme volume of animals, too often mere puppies (cannot have been trained yet) or more than one animal in a family group.<br/><br/>Please reign this selfish activity in, by restricting the allowance to trained (with documentation) service animals, and not for random, doctor-noted emotional support animals.",
+      "commentOn": "09000064832be8f9",
+      "commentOnDocumentId": "DOT-OST-2018-0068-1157",
+      "country": "United States",
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "DOT-OST-2018-0068",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Mark",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Addison",
+      "legacyId": null,
+      "modifyDate": "2018-05-23T18:54:14Z",
+      "objectId": "09000064832cacf4",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2018-05-23T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2018-05-23T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "FL",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Mark Addison ",
+      "trackingNbr": "1k2-93b6-ss0d",
+      "withdrawn": false,
+      "zip": "33304"
+    },
+    "id": "DOT-OST-2018-0068-1392",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1392"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1392/attachments",
+          "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1392/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

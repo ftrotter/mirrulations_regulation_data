@@ -1,0 +1,71 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "category": null,
+      "city": null,
+      "comment": "See Attached",
+      "commentOn": "0900006486ab503b",
+      "commentOnDocumentId": "EPA-HQ-OW-2000-0001-0001",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Linda McCarty, Public Drinking Water Program",
+      "docketId": "EPA-HQ-OW-2000-0001",
+      "documentType": "Public Submission",
+      "duplicateComments": 1,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": null,
+      "legacyId": null,
+      "modifyDate": "2025-09-11T18:23:38Z",
+      "objectId": "09000064b8d4d1b7",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "phone": null,
+      "postedDate": "2025-09-11T04:00:00Z",
+      "postmarkDate": "2000-10-05T04:00:00Z",
+      "reasonWithdrawn": null,
+      "receiveDate": "2000-10-05T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Company/Organization Comment",
+      "title": "Comment submitted by Public Drinking Water Program\n [W-00-11-I-D1-7]",
+      "trackingNbr": "mao-436v-qbp3",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OW-2000-0001-0007",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/EPA-HQ-OW-2000-0001-0007"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/EPA-HQ-OW-2000-0001-0007/attachments",
+          "self": "https://api.regulations.gov/v4/comments/EPA-HQ-OW-2000-0001-0007/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

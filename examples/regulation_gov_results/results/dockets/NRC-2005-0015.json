@@ -1,0 +1,35 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "NRC",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": [
+        "spent fuel",
+        "NUHOMS"
+      ],
+      "legacyId": null,
+      "modifyDate": "2009-02-04T11:18:29Z",
+      "objectId": "0b000064803c5c2a",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "3150-AH63",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "List of Approved Spent Fuel Storage Casks:  NUHOMS-24PT4 Revision"
+    },
+    "id": "NRC-2005-0015",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/NRC-2005-0015"
+    },
+    "type": "dockets"
+  }
+}

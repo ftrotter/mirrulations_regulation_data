@@ -1,0 +1,51 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FDA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Docket Item Code",
+          "name": "generic",
+          "tooltip": "Type of Document That Establishes the Docket"
+        },
+        {
+          "label": "Center",
+          "name": "program",
+          "tooltip": "The agency specific program associated with the docket (regulatory action); equivalents: Docket Item Code,  Location."
+        },
+        {
+          "label": "Docket Status",
+          "name": "field2",
+          "tooltip": " Used to Identity that a Docket's Status is Open or Closed"
+        }
+      ],
+      "dkAbstract": "The Food and Drug Administration (FDA, the Agency, or we) is proposing to establish additional traceability recordkeeping requirements for persons that manufacture, process, pack, or hold foods the Agency has\ndesignated for inclusion on the Food Traceability List. The proposed rule would require these entities to establish and maintain records containing information on critical tracking events in the supply chain for these designated foods, such as growing, shipping, receiving, creating, and transforming the foods. The proposed requirements are intended to help the Agency rapidly and effectively identify recipients of foods to\nprevent or mitigate foodborne illness outbreaks and address credible threats of serious adverse health consequences or death resulting from foods being adulterated or misbranded. We are issuing this proposed rule in accordance with the FDA Food Safety Modernization Act (FSMA).",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": "OPEN",
+      "generic": "N",
+      "keywords": [
+        "of",
+        "of201364"
+      ],
+      "legacyId": null,
+      "modifyDate": "2026-10-09T14:53:04Z",
+      "objectId": "0b000064814f1672",
+      "organization": null,
+      "petitionNbr": null,
+      "program": "OF",
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Designation of High-Risk Foods for Tracing; Request for Comments and for Scientific Data and Information"
+    },
+    "id": "FDA-2014-N-0053",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FDA-2014-N-0053"
+    },
+    "type": "dockets"
+  }
+}

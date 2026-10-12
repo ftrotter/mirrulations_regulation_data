@@ -1,0 +1,34 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "NRC",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": [
+        "10 CFR Part 9"
+      ],
+      "legacyId": null,
+      "modifyDate": "2009-02-03T16:06:39Z",
+      "objectId": "0b000064803c54da",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "3150-AH12",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Public Records"
+    },
+    "id": "NRC-2004-0005",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/NRC-2004-0005"
+    },
+    "type": "dockets"
+  }
+}

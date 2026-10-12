@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        }
+      ],
+      "dkAbstract": "The Environmental Protection Agency (EPA) is issuing a direct final rule to update a requirement for Contracting Officers. The requirement will require the contracting officer to complete a Determination and Findings (D&F) that will be approved by the HCA for contracts with a base contract period and option periods which total in excess of five (5) years, unless otherwise prohibited by statute.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OMS",
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-12-01T14:35:56Z",
+      "objectId": "0b00006486484b4b",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Environmental Protection Agency Acquisition Regulation (EPAAR); Special Contracting Methods; Contracts - 1517.204"
+    },
+    "id": "EPA-HQ-OMS-2024-0148",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OMS-2024-0148"
+    },
+    "type": "dockets"
+  }
+}

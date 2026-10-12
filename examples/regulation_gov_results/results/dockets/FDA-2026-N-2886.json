@@ -1,0 +1,58 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FDA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Docket Item Code",
+          "name": "generic",
+          "tooltip": "Type of Document That Establishes the Docket"
+        },
+        {
+          "label": "Center",
+          "name": "program",
+          "tooltip": "The agency specific program associated with the docket (regulatory action); equivalents: Docket Item Code,  Location."
+        },
+        {
+          "label": "Docket Status",
+          "name": "field2",
+          "tooltip": " Used to Identity that a Docket's Status is Open or Closed"
+        },
+        {
+          "label": "Short Title",
+          "name": "shortTitle",
+          "tooltip": "A combination of letters and or numbers assigned to an agency's regulatory action for purposes of brevity."
+        }
+      ],
+      "dkAbstract": "Modification of certain terminology in Title 21",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": "OPEN",
+      "generic": "N",
+      "keywords": [
+        "2025-382",
+        "OC",
+        "Modification of certain terminology in Title 21",
+        "OPEN"
+      ],
+      "legacyId": null,
+      "modifyDate": "2026-10-05T15:10:14Z",
+      "objectId": "0b000064b9223d1c",
+      "organization": null,
+      "petitionNbr": null,
+      "program": "OC",
+      "rin": "Not Assigned",
+      "shortTitle": "Modification of certain terminology in Title 21",
+      "subType": null,
+      "subType2": null,
+      "title": "Modification of certain terminology in Title 21"
+    },
+    "id": "FDA-2026-N-2886",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FDA-2026-N-2886"
+    },
+    "type": "dockets"
+  }
+}

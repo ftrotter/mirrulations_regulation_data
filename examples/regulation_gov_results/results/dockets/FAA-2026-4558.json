@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FAA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Unmanned Aircraft Systems (UAS) Flight Restrictions. This action would implement section 2209, of the FAA Extension, Safety and\nSecurity Act of 2016, by establishing a process for operators and proprietors of certain fixed site facilities to request and maintain an unmanned aircraft flight restriction. The proposal also establishes requirements for applicants to demonstrate the unmanned aircraft flight restriction is necessary for: aviation safety, protection of people and property on the ground, national security, or homeland security. Lastly, the proposal identifies the types of operations that are allowed in the unmanned aircraft flight restriction UAFR.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-09-03T12:41:32Z",
+      "objectId": "0b000064b92a76bf",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2120-AL33",
+      "shortTitle": null,
+      "subType": "Rulemaking and Procedural Rules",
+      "subType2": null,
+      "title": "Designation \u2013 Restrict the Operation of Unmanned Aircraft in Close Proximity  to a Fixed Site Facility"
+    },
+    "id": "FAA-2026-4558",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FAA-2026-4558"
+    },
+    "type": "dockets"
+  }
+}

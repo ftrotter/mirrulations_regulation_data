@@ -1,0 +1,91 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "FDA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": "Federal Government - G0007",
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2026-04-27T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "File Date",
+          "name": "field2",
+          "tooltip": "Date the document was postmarked or filed into the docket"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "FDA-2026-E-4491",
+      "documentType": "Other",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": "04/22/2026",
+      "fileFormats": null,
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-04-28T00:56:44Z",
+      "objectId": "09000064b92a37b5",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-04-27T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-04-22T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Request",
+      "title": "Request for Information",
+      "topics": null,
+      "trackingNbr": "moa-i7zi-08cg",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "FDA-2026-E-4491-0003",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/FDA-2026-E-4491-0003"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/FDA-2026-E-4491-0003/attachments",
+          "self": "https://api.regulations.gov/v4/documents/FDA-2026-E-4491-0003/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

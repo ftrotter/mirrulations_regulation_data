@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "EERE",
+      "category": null,
+      "city": null,
+      "comment": "The Electric Drive Transportation Association (EDTA) is the cross-industry trade association promoting the advancement of electric drive technology and advanced transportation. EDTA&rsquo;s members represent the entire value chain of the industry, including vehicle, battery and component manufacturers, electric utilities, fleets, and infrastructure developers. Collectively, we are committed to realizing the economic, national security, public health and environmental benefits of electric mobility, which is a key asset in achieving the Administration&rsquo;s goals for U.S. energy dominance. <br/>In response to the Department of Energy&rsquo;s Office of Critical Minerals and Energy Innovation request for comments on revisions to the Petroleum Equivalent Factor (PEF), EDTA urges the Department to establish a consistent and realistic calculation that serves our national goals for energy security, provides manufacturers&rsquo; certainty, and enables consumer choice.<span style='padding-left: 30px'></span><br/>See attached file(s)",
+      "commentOn": "09000064b91bd3d5",
+      "commentOnDocumentId": "EERE-2025-VT-0073-0002",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "EERE-2025-VT-0073",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Genevieve",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Cullen",
+      "legacyId": null,
+      "modifyDate": "2026-03-24T19:30:52Z",
+      "objectId": "09000064b922e0f6",
+      "openForComment": false,
+      "organization": "Electric Drive Transportation Association (EDTA)",
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-03-24T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-03-23T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Public Comment",
+      "title": "2026-03-23  Comment response to the published Interim Final Rule",
+      "trackingNbr": "mn3-ry12-4c3f",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "EERE-2025-VT-0073-0012",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0012"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0012/attachments",
+          "self": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0012/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

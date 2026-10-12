@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        }
+      ],
+      "dkAbstract": "This action proposes the applicable volumes and percentage standards for 2026 and 2027 for cellulosic biofuel, biomass-based diesel, advanced biofuel, and total renewable fuel under the Renewable Fuel Standard (RFS) program, as well as to partially waive the 2025 cellulosic biofuel volume requirement and revise the associated percentage standard due to a shortfall in cellulosic biofuel production. This action also proposes several regulatory changes to the RFS program, including reducing the number of Renewable Identification Numbers (RINs) generated for imported renewable fuel and renewable fuel produced from foreign feedstocks and removing renewable electricity as a qualifying renewable fuel under the RFS program (eRINs).",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OAR",
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-06-23T14:12:28Z",
+      "objectId": "0b000064867dc6e2",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Renewable Fuel Standard (RFS) Program: Standards for 2026 and 2027, Partial Waiver of 2025 Cellulosic Biofuel Volume Requirement, and Other Changes"
+    },
+    "id": "EPA-HQ-OAR-2024-0505",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OAR-2024-0505"
+    },
+    "type": "dockets"
+  }
+}

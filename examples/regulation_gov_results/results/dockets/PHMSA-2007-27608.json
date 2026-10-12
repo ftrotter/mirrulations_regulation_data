@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "PHMSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Subject: Utility Technologies International Waiver Request 24 Jan 2007",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-09-19T18:32:12Z",
+      "objectId": "0b000064802b31f0",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Pipeline Safety",
+      "subType2": null,
+      "title": "Unitiy Technologies International Waiver Request 24 Jan 2007"
+    },
+    "id": "PHMSA-2007-27608",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/PHMSA-2007-27608"
+    },
+    "type": "dockets"
+  }
+}

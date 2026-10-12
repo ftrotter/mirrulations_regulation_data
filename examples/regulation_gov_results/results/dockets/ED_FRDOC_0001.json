@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "ED",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-10-08T12:26:29Z",
+      "objectId": "0b00006480215f7f",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Recently Posted ED Rules and Notices."
+    },
+    "id": "ED_FRDOC_0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/ED_FRDOC_0001"
+    },
+    "type": "dockets"
+  }
+}

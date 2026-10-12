@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "DOT",
+      "category": null,
+      "city": null,
+      "comment": "DOT-OST-2018-0068 (DOT)<br/><br/>One service animal per passenger should be allowed. These should include ESAs and PSAs. Prior notice should not be required.All animals should be contained by leash, harness, or closed container for smaller animals.<br/><br/>The airline should reserve the right to refuse:<br/>1. Animals that endanger other passengers.<br/>2. Animals not allowed by countries being traveled to.<br/>3. Unruly and/or misbehaving animals.<br/><br/>Passengers should be required to show proof that their animal is covered by liability insurance and is up-to-date on all vaccinations. Documentation should be required...a letter from a DOCTOR should be sufficient that includes a description of the service animal, ESA or PSA covered under the documentation.<br/><br/>If an animal is refused or disembarked, a formal explanation should be required for submission to DOT. The owner should get a copy of that documentation. Once an animal is refused due to danger or misbehavior, it should be added to a no-fly list.<br/><br/>This would be so much easier with a government registration for service animals!",
+      "commentOn": "09000064832be8f9",
+      "commentOnDocumentId": "DOT-OST-2018-0068-1157",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "DOT-OST-2018-0068",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Vivian",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Johnson",
+      "legacyId": null,
+      "modifyDate": "2018-05-23T18:54:16Z",
+      "objectId": "09000064832cadfe",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2018-05-23T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2018-05-23T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Vivian Johnson",
+      "trackingNbr": "1k2-93b6-4miy",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "DOT-OST-2018-0068-1394",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1394"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1394/attachments",
+          "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1394/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

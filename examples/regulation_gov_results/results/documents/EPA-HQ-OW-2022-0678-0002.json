@@ -1,0 +1,98 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": "2024-05-01T04:00:00Z",
+      "authors": [
+        "USEPA"
+      ],
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        },
+        {
+          "label": "Authors",
+          "name": "authors",
+          "tooltip": "Individuals and/or organizations that authored the document"
+        }
+      ],
+      "docAbstract": "The information collection activities in this proposed rulemaking have been submitted for approval to the OMB under the Paperwork Reduction Act (PRA). The Information Collection Request (ICR) document that the EPA prepared has been assigned EPA ICR number 2736.01. The ICR for the proposed WSRAR presents the total time, effort, and financial resources required of primacy agencies to generate, maintain, retain, disclose, and/or provide information to the EPA during the first three years following WSRAR promulgation. ",
+      "docketId": "EPA-HQ-OW-2022-0678",
+      "documentType": "Supporting & Related Material",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": "Electronic",
+      "modifyDate": "2024-05-31T00:43:45Z",
+      "objectId": "090000648653214d",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2024-05-30T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2024-05-03T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "WSRAR Information Collection Request",
+      "topics": null,
+      "trackingNbr": "lvq-s1r6-2aoi",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OW-2022-0678-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2022-0678-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2022-0678-0002/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2022-0678-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

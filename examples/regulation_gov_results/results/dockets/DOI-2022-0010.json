@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "DOI",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": "The Office of Hearings and Appeals (OHA) will make comprehensive procedural changes to Federal regulations governing hearings and appeals proceedings before the Department of the Interior\u2019s administrative tribunals. We will modify and update our regulations located in title 43 of the Code of Federal Regulations in part 4 to: promote expeditious and meaningful review of administrative decisions; reflect changes in the law; reorganize and streamline procedures and retitle subparts to improve clarity to parties; consolidate redundant language; eliminate outdated procedures; and allow OHA to continue to modernize its practice and keep pace with technological and other advancements, including the establishment of a regulatory framework for an electronic filing and case docket management system.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-06-13T12:31:31Z",
+      "objectId": "0b000064851ae6c6",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "1094-AA57",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Practices Before the Department of the Interior"
+    },
+    "id": "DOI-2022-0010",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/DOI-2022-0010"
+    },
+    "type": "dockets"
+  }
+}

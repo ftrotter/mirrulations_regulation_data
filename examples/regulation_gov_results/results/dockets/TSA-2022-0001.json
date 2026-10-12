@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "TSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Action Office",
+          "name": "shortTitle",
+          "tooltip": "Refers to a specific office within an agency that issues the docket (regulatory action)."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "The Transportation Security Administration (TSA) is seeking input regarding ways to strengthen cybersecurity and resiliency in the pipeline and rail (including freight, passenger, and transit rail) sectors",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-02-14T08:47:38Z",
+      "objectId": "0b00006485487ee5",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "1652-AA74",
+      "shortTitle": "TSA-2",
+      "subType": "General Rulemaking",
+      "subType2": null,
+      "title": "Enhancing Surface Cyber Risk Management"
+    },
+    "id": "TSA-2022-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/TSA-2022-0001"
+    },
+    "type": "dockets"
+  }
+}

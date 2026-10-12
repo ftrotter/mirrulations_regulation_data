@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "FAA",
+      "category": null,
+      "city": null,
+      "comment": "I am submitting this comment in response to the FAA&#39;s Draft Tiered Environmental Assessment for SpaceX&#39;s proposed Starship reentries to Starbase, and I urge the FAA to address the following concerns before finalizing any determination.<br/><br/>1. The comment period is inadequate for meaningful public participation. A document of this scope and technical complexity, addressing an expansion of potential crash areas in the Pacific Ocean, warrants more than a brief public comment window. I request that the FAA extend the comment period and hold public hearings so that affected communities, aviation stakeholders, and independent experts have adequate time to review the assessment and respond.<br/><br/>2. The assessment understates the impact on commercial air traffic. Table 2.1-1 of the Draft EA (Potential Commercial Aircraft Affected by the Notional AHA for the Additional Starship Reentry Landing Trajectory to the Boca Chica Launch Site) indicates that at a cadence of 22 launches and landings per year, approximately 6,600 commercial flights per year could be affected. This represents a substantial, recurring disruption to passengers and air cargo operations, and the assessment does not adequately weigh this cost against the proposed benefits.<br/><br/>3. The assessment fails to analyze the consequences of an anomaly over land. Starship&#39;s return trajectory carries it over much of the western United States, and potentially portions of Mexico and Canada, before reaching Starbase. The Draft EA discusses commercial airspace closures but does not evaluate the environmental or public safety consequences of a vehicle malfunction once it is over populated land rather than ocean. I request that the FAA require and publish a full anomaly analysis for the overland portion of the reentry corridor.<br/><br/>4. The assessment does not address compatibility with the planned Port of Brownsville expansion. The Port of Brownsville is pursuing a major expansion that includes a military manufacturing facility operated by Saronic Technologies. Has the FAA evaluated whether frequent Starship landings at Starbase are compatible with this development, given the proximity and the nature of the facility?<br/><br/>5. The assessment does not address the proposed natural gas liquefaction facility at Starbase. SpaceX has announced plans to build a natural gas liquefaction facility at Starbase, fed by a new pipeline connected to gas infrastructure at the Port of Brownsville. Co-locating a large-scale fuel liquefaction facility with a high-frequency rocket landing site raises serious safety and security questions that this Draft EA does not appear to consider. I request a full accounting of the risks of siting this facility at an active rocket landing zone.<br/><br/>6. The assessment does not account for the cumulative burden on the Boca Chica community. This border community has already absorbed repeated launch closures, land use changes, and industrial buildout tied to Starbase. Layering an expanded reentry footprint, a major port expansion with a military manufacturing facility, and a fuel liquefaction plant onto the same small area, without a combined assessment of these cumulative impacts, leaves the people who live there to bear risks that no single document accounts for. The FAA should evaluate these developments together, not in isolation.<br/><br/>For these reasons, I ask the FAA to extend the comment period, hold public hearings, and require a revised Draft Environmental Assessment that fully addresses commercial aviation impacts, overland anomaly risk, compatibility with adjacent industrial development at the Port of Brownsville, the safety implications of the proposed liquefaction facility, and the cumulative burden on the Boca Chica community before any determination is made.",
+      "commentOn": "09000064b939cb1f",
+      "commentOnDocumentId": "FAA-2026-6968-0003",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "FAA-2026-6968",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Anonymous",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Anonymous",
+      "legacyId": null,
+      "modifyDate": "2026-07-22T22:27:11Z",
+      "objectId": "09000064b93b5186",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-07-22T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-07-22T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Anonymous",
+      "trackingNbr": "mrw-e0f4-oc08",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "FAA-2026-6968-0014",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/FAA-2026-6968-0014"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/FAA-2026-6968-0014/attachments",
+          "self": "https://api.regulations.gov/v4/comments/FAA-2026-6968-0014/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

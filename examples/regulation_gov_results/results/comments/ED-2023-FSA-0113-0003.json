@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "category": "Parent/Relative",
+      "city": null,
+      "comment": "If the IRS is only send data from a filed return to FSA (as per the trainings that were given), how will FSA determine when a student or parent should have filed a return but didn&#39;t. For example, if the IRS has a W-2 for $50,000 in income but no return was filed, how will the FAFSA be processed? As a non-filer with an -3000 SAI? What about if the W-2 shows $200,000 income? Or the IRS has a 1099-INT with $20,000 of interest income? <br/>What about if someone filed a 6 month extension and made an estimated payment but never filed their actual 1040? How will the system treat those student/parents?<br/><br/>My concern is that people can game the FAFSA system by filing their FAFSA before they file their tax return and therefore get a maximum Pell when they really shouldn&#39;t even receive a minimum Pell. ",
+      "commentOn": "0900006485c14905",
+      "commentOnDocumentId": "ED-2023-FSA-0113-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2023-FSA-0113",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Anonymous",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Anonymous",
+      "legacyId": null,
+      "modifyDate": "2023-07-25T18:13:51Z",
+      "objectId": "0900006485c2364a",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2023-07-25T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2023-06-30T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment on FR Doc # 2023-13980 ",
+      "trackingNbr": "lji-qjtg-nz7j",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ED-2023-FSA-0113-0003",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ED-2023-FSA-0113-0003"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ED-2023-FSA-0113-0003/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ED-2023-FSA-0113-0003/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

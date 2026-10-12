@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "PHMSA",
+      "category": null,
+      "city": null,
+      "comment": "I support Option 4 of this rule: adopt proposed changes in reporting requirements. This action would ensure that there is more a comprehensive and streamlined process to collect data on pipelines in the United States. This would limit economic losses and improve safety due to the high risk of accidents and environmental harm.&nbsp;",
+      "commentOn": "0900006480ba3889",
+      "commentOnDocumentId": "PHMSA-2008-0291-0050",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "PHMSA-2008-0291",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Anonymous",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Anonymous",
+      "legacyId": null,
+      "modifyDate": "2025-10-08T16:13:48Z",
+      "objectId": "09000064b8ffba90",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2025-10-08T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-10-07T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Anonymous",
+      "trackingNbr": "mgh-da6k-anmq",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "PHMSA-2008-0291-0064",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/PHMSA-2008-0291-0064"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/PHMSA-2008-0291-0064/attachments",
+          "self": "https://api.regulations.gov/v4/comments/PHMSA-2008-0291-0064/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

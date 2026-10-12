@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        }
+      ],
+      "dkAbstract": "EPA is supplementing a proposed rule published on March 10, 2021, to approve revisions to the Texas State Implementation Plan (SIP) concerning Nitrogen Oxide (NOX) and Volatile Organic Compound (VOC) Reasonably Available Control Technology (RACT) requirements for the Serious Houston-Galveston-Brazoria (HGB), 2008 8-hour ozone National Air Quality Ambient Air Quality Standard (NAAQS) nonattainment area. Because of comments received on the March 10, 2021, proposal, we are providing additional analysis regarding the NOx and VOC RACT requirements. EPA is proposing to determine that the Texas rules meet RACT requirements for sources of NOx and VOCs in the serious HGB area.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "R06-OAR",
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-03-24T19:01:16Z",
+      "objectId": "0b000064844586f4",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "TX223 Texas Houston-Galveston-Brazoria 2008 8-Hour Ozone Standard Nonattainment Serious Area Reasonably Available Control Technology (RACT) Analysis SIP Revision"
+    },
+    "id": "EPA-R06-OAR-2020-0165",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-R06-OAR-2020-0165"
+    },
+    "type": "dockets"
+  }
+}

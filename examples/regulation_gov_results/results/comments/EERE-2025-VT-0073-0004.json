@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "EERE",
+      "category": null,
+      "city": null,
+      "comment": "Attached please find comments of the State of Iowa and the American Free Enterprise Chamber of Commerce.",
+      "commentOn": "09000064b91bd3d5",
+      "commentOnDocumentId": "EERE-2025-VT-0073-0002",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "EERE-2025-VT-0073",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Brenna",
+      "govAgency": "State of Iowa and the American Free Enterprise Chamber of Commerce",
+      "govAgencyType": "State",
+      "lastName": "Bird",
+      "legacyId": null,
+      "modifyDate": "2026-03-13T20:50:41Z",
+      "objectId": "09000064b92120e1",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-03-13T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-03-12T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Public Comment",
+      "title": "2026-03-12  Comment response to the published Interim Final Rule",
+      "trackingNbr": "mmn-w9f8-xli9",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "EERE-2025-VT-0073-0004",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0004"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0004/attachments",
+          "self": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0004/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

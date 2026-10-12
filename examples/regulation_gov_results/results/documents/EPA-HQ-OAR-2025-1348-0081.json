@@ -1,0 +1,104 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": [
+        "USEPA"
+      ],
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Authors",
+          "name": "authors",
+          "tooltip": "Individuals and/or organizations that authored the document"
+        },
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "NESHAP Subpart HH Production Phase 2 Response v1-Trail Pad 4 1.\nThe PDF version of this document may be an incomplete rendering of the original MS Excel file. Please open the Excel file to view the document in its entirety. \n",
+      "docketId": "EPA-HQ-OAR-2025-1348",
+      "documentType": "Supporting & Related Material",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OAR-2025-1348-0081/content.xlsx",
+          "format": "xlsx",
+          "size": 128840
+        }
+      ],
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": "Electronic",
+      "modifyDate": "2026-04-22T18:35:40Z",
+      "objectId": "09000064b9291405",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 89,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-04-22T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-04-19T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Data",
+      "title": "40 CFR Part 63 Subpart HH Wexpro Company Phase 2 Information Collection Request Facility Responses and Supplemental Information.",
+      "topics": null,
+      "trackingNbr": "mo6-eb35-onto",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OAR-2025-1348-0081",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2025-1348-0081"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2025-1348-0081/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2025-1348-0081/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

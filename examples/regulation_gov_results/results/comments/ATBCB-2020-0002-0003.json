@@ -1,0 +1,71 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ATBCB",
+      "category": "Individual",
+      "city": "Danville",
+      "comment": "I think this is a great idea.  While I&#39;m not wheel chair bound I do require a taller vehicle to get in and out of because of my back problems and fibro and arthritis. I am on disability and these structures would be fantastic.",
+      "commentOn": "09000064843692fd",
+      "commentOnDocumentId": "ATBCB-2020-0002-0001",
+      "country": "United States",
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "ATBCB-2020-0002",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Theresa",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Williams",
+      "legacyId": null,
+      "modifyDate": "2020-09-26T02:21:20Z",
+      "objectId": "090000648436bfd8",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "phone": null,
+      "postedDate": "2020-02-14T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2020-02-14T05:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Williams, Theresa",
+      "trackingNbr": "1k4-9f0h-do4s",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ATBCB-2020-0002-0003",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ATBCB-2020-0002-0003"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ATBCB-2020-0002-0003/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ATBCB-2020-0002-0003/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

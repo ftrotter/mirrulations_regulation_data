@@ -1,0 +1,71 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ATBCB",
+      "category": "Individual",
+      "city": "Kula Maui",
+      "comment": "Install 48&quot; wide x the length of track crossing humps with spring loaded flaps that will only have &quot; wide gaps on either sides of each rail that will depress when steel wheel pass over the 48&quot; wide access route over the tracks.  <br/><br/>Alternatively crossings could be restricted to major traffic crossings with gates and once the gates raise that would trigger a section 48&quot; wide traversable route that would allow only &quot; wide gap on either sides of the tracks and no vertical transition greater than &quot;.  When the gate lowers so will the 48&quot; wide traversable defined ADA route.<br/><br/>Thank you for your consideration,<br/>If we can send men to the moon we can provide access over train tracks that will keep trains safe and provides individuals in wheelchairs opportunities to cross tracks safely.<br/><br/>Jean Tessmer<br/>design@spaceoptions.com<br/><br/>Standing on the shoulders of Lois Thibault.   <br/>",
+      "commentOn": "09000064843692fd",
+      "commentOnDocumentId": "ATBCB-2020-0002-0001",
+      "country": "United States",
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "ATBCB-2020-0002",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Jean",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Tessmer",
+      "legacyId": null,
+      "modifyDate": "2020-09-26T02:21:05Z",
+      "objectId": "090000648438d09e",
+      "openForComment": false,
+      "organization": "Space Options Inc",
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "phone": null,
+      "postedDate": "2020-02-19T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2020-02-14T05:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "HI",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Tessmer, Jean",
+      "trackingNbr": "1k4-9f3v-ueoh",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ATBCB-2020-0002-0006",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ATBCB-2020-0002-0006"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ATBCB-2020-0002-0006/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ATBCB-2020-0002-0006/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

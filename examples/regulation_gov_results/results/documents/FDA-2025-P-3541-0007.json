@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "FDA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": "Private Industry - C0003",
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2025-10-17T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Document Legacy ID",
+          "name": "legacyId",
+          "tooltip": "Agency-specific identifier which was given to this document in legacy system"
+        },
+        {
+          "label": "File Date",
+          "name": "field2",
+          "tooltip": "Date the document was postmarked or filed into the docket"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "FDA-2025-P-3541",
+      "documentType": "Other",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": "10/17/2025",
+      "fileFormats": null,
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": "FDA-2025-P-3541-0001",
+      "media": null,
+      "modifyDate": "2025-10-17T21:16:20Z",
+      "objectId": "09000064b90314e2",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-10-17T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-10-17T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Withdrawal",
+      "title": "Withdrawal Letter",
+      "topics": null,
+      "trackingNbr": "mgv-3e32-ji25",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "FDA-2025-P-3541-0007",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/FDA-2025-P-3541-0007"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/FDA-2025-P-3541-0007/attachments",
+          "self": "https://api.regulations.gov/v4/documents/FDA-2025-P-3541-0007/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

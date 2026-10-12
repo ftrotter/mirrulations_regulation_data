@@ -1,0 +1,35 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "NRC",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": [
+        "10 CFR Part 50",
+        "10 CFR Part 72"
+      ],
+      "legacyId": null,
+      "modifyDate": "2009-02-04T11:41:05Z",
+      "objectId": "0b000064803c5dea",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "3150-AH39",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Submission of Annual Financial Reports: Elimination of Requirement"
+    },
+    "id": "NRC-2006-0009",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/NRC-2006-0009"
+    },
+    "type": "dockets"
+  }
+}

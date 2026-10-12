@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "DOI",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "43 CFR Part 4",
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2025-06-09T00:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "DOI-2022-0010",
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/DOI-2022-0010-0011/content.pdf",
+          "format": "pdf",
+          "size": 202892
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/DOI-2022-0010-0011/content.html",
+          "format": "html",
+          "size": 4935
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2025-10374",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-06-13T16:28:42Z",
+      "objectId": "09000064b8de49e5",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "DOI_FRDOC_0001-0150",
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-06-09T00:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-06-09T00:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "24231 - 24231",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Practices before the Department of the Interior; Delay of Effective Date",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "DOI-2022-0010-0011",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/DOI-2022-0010-0011"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/DOI-2022-0010-0011/attachments",
+          "self": "https://api.regulations.gov/v4/documents/DOI-2022-0010-0011/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

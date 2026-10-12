@@ -1,0 +1,97 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2025-04-10T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Federal Register for May 9, 2002 (67 FR 31302] [FRL-7208-5] ",
+      "docketId": "EPA-HQ-OW-2002-0072",
+      "documentType": "Notice",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OW-2002-0072-0003/content.pdf",
+          "format": "pdf",
+          "size": 171889
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "02-11651",
+      "frVolNum": "67",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-04-10T20:40:22Z",
+      "objectId": "0900006486a850f4",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 2,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-04-10T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2002-05-09T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "31302 - 31303",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Meeting",
+      "title": "Public Listening Sessions on EPA's Watershed Initiative; Notice of Public Meetings [W-02-05-I-A-2]",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OW-2002-0072-0003",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2002-0072-0003"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2002-0072-0003/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2002-0072-0003/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        }
+      ],
+      "dkAbstract": "Section 6 of the Toxic Substances Control Act (TSCA) requires EPA to address unreasonable risks that the Administrator has determined are presented by a chemical substance under the conditions of use. Following a risk evaluation carried out under the authority of TSCA section 6, EPA has determined that trichloroethylene (TCE) (CASRN 79-01-6) presents unreasonable risks of injury to health. EPA is initiating rulemaking under TSCA section 6 to address these unreasonable risks.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OPPT",
+      "keywords": [
+        "Trichloroethylene, TCE",
+        "CAS 79-01-6",
+        "Toxic Substances Control Act, Lautenberg Act,",
+        "Chemical Safety for the 21st Century"
+      ],
+      "legacyId": null,
+      "modifyDate": "2026-05-29T17:57:23Z",
+      "objectId": "0b0000648497391e",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2070-AK83",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Trichloroethylene (TCE); Rulemaking under TSCA Section 6(a)"
+    },
+    "id": "EPA-HQ-OPPT-2020-0642",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OPPT-2020-0642"
+    },
+    "type": "dockets"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        },
+        {
+          "label": "Pre-EDOCKET ID",
+          "name": "organization",
+          "tooltip": "Identifies docket's (a regulatory action) orginating agency and/or department, equivalents: Division, and Organization."
+        }
+      ],
+      "dkAbstract": "Contact: Bobbie Lively-Diebold, Response Standards and Criteria Branch, Emergency Response Division, 703-356-8774, HQ: Rulemaking proposed February 17, 1993.  Finalized July 1, 1994.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OPA",
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2022-03-24T17:56:18Z",
+      "objectId": "0b000064800c36a2",
+      "organization": "SPCC-2P",
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Oil Pollution Prevention, Non-Transportation-Related Onshore and Offshore Facilities"
+    },
+    "id": "EPA-HQ-OPA-1993-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OPA-1993-0001"
+    },
+    "type": "dockets"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "DOT",
+      "category": null,
+      "city": null,
+      "comment": "I think ESAs and service dogs provide a very real service to a number of people. I have known several ESAs (dogs) that have provided a valuable service to veterans. I know their are those that abuse the system but the same can be said about food stamps and other welfare services yet we are not throwing those programs out. Establishing guidelines for ESA animals with a federal registry might be a good option to placate abuse issues but will never completely end abuse of such programs.",
+      "commentOn": "09000064832be8f9",
+      "commentOnDocumentId": "DOT-OST-2018-0068-1157",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "DOT-OST-2018-0068",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Ryan",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Towner",
+      "legacyId": null,
+      "modifyDate": "2018-05-23T20:09:06Z",
+      "objectId": "09000064832cc07e",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2018-05-23T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2018-05-23T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Ryan Towner",
+      "trackingNbr": "1k2-93b7-32e3",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "DOT-OST-2018-0068-1404",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1404"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1404/attachments",
+          "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0068-1404/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

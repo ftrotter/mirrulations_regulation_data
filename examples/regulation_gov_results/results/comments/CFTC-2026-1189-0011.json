@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "CFTC",
+      "category": null,
+      "city": null,
+      "comment": "Betting on pre-recorded shows like Survivor where the outcome is known by many individuals inherently opens the door to insider trading. These type of shows/events should not be on &ldquo;prediction&rdquo; markets as the outcome is already known. ",
+      "commentOn": "09000064b93288d8",
+      "commentOnDocumentId": "CFTC-2026-1189-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "CFTC-2026-1189",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Jared",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Dywan",
+      "legacyId": null,
+      "modifyDate": "2026-06-15T19:31:32Z",
+      "objectId": "09000064b932ba3b",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-06-15T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-06-13T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Comment on CFTC-2026-1189, CFTC-2026-1189-0001, Jared, Dywan",
+      "trackingNbr": "mqc-lftg-r56u",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "CFTC-2026-1189-0011",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0011"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0011/attachments",
+          "self": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0011/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

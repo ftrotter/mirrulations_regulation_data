@@ -1,0 +1,42 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        }
+      ],
+      "dkAbstract": "The U.S. Environmental Protection Agency received petitions to reconsider certain provisions of the 2023 Technology Transitions Rule established under subsection (i) of the American Innovation and Manufacturing\n(AIM) Act. This proposal would reconsider topics raised by those petitions including adjustments to restrictions for refrigeration equipment used in semiconductor manufacturing and intermodal refrigerated transport and related to the continued manufacture and sale of condensing units in the residential and light commercial air conditioning and heat pump subsector. The proposed rule would also amend and clarify other provisions of the 2023 Technology Transitions Rule in addition to those covered by the petitions.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OAR",
+      "keywords": [
+        "reconsideration",
+        "hydrofluorocarbons",
+        "Phasedown"
+      ],
+      "legacyId": null,
+      "modifyDate": "2026-06-25T17:27:29Z",
+      "objectId": "0b0000648689abe7",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2060-AW39",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Phasedown of Hydrofluorocarbons: Reconsideration of Certain Regulatory Requirements Promulgated Under the Technology Transitions Provisions of the American Innovation and Manufacturing Act of 2020"
+    },
+    "id": "EPA-HQ-OAR-2025-0005",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OAR-2025-0005"
+    },
+    "type": "dockets"
+  }
+}

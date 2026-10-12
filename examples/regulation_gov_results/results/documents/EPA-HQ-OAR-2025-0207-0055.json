@@ -1,0 +1,104 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": "2026-02-01T05:00:00Z",
+      "authors": [
+        "USEPA"
+      ],
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Authors",
+          "name": "authors",
+          "tooltip": "Individuals and/or organizations that authored the document"
+        },
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Documentation of changes made to the NPRM FRN and supporting files during E.O. 12866 review and correspondence between EPA and OMB\nFebruary 2026 Memorandum from Michael Cantoni III, General Engineer,  Refining and Chemical Production Branch, IPPD, to EPA Docket Number EPA-HQ-OAR-2025-0207",
+      "docketId": "EPA-HQ-OAR-2025-0207",
+      "documentType": "Supporting & Related Material",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OAR-2025-0207-0055/content.pdf",
+          "format": "pdf",
+          "size": 260686
+        }
+      ],
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": "Electronic",
+      "modifyDate": "2026-03-04T18:29:26Z",
+      "objectId": "09000064b91e5116",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-03-04T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-02-27T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Memorandum",
+      "title": "Documentation of OMB Review Memo",
+      "topics": null,
+      "trackingNbr": "mm5-e4zp-54z5",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OAR-2025-0207-0055",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2025-0207-0055"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2025-0207-0055/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2025-0207-0055/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

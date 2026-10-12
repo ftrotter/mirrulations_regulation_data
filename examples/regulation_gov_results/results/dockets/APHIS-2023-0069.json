@@ -1,0 +1,35 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "APHIS",
+      "category": "Domestic Animal Health Programs",
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": [
+        "USDA",
+        "agriculture"
+      ],
+      "legacyId": null,
+      "modifyDate": "2026-10-05T12:52:09Z",
+      "objectId": "0b00006485f99123",
+      "organization": null,
+      "petitionNbr": null,
+      "program": "Plant Protection and Quarantine",
+      "rin": null,
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Reduce time required for HPAI import requirements"
+    },
+    "id": "APHIS-2023-0069",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/APHIS-2023-0069"
+    },
+    "type": "dockets"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "40 CFR Parts 271 and 272",
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2025-02-20T00:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "EPA-R08-RCRA-2024-0408",
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-R08-RCRA-2024-0408-0018/content.pdf",
+          "format": "pdf",
+          "size": 196906
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-R08-RCRA-2024-0408-0018/content.html",
+          "format": "html",
+          "size": 3843
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2025-02908",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-05-20T20:27:43Z",
+      "objectId": "0900006486975a4c",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "EPA_FRDOC_0001-31682",
+      "pageCount": 1,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-02-20T00:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-02-19T00:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "9954 - 9954",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Utah: Final Authorization of State Hazardous Waste Management Program Revisions and Incorporation by Reference; Withdrawal of Direct Final Rule",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-R08-RCRA-2024-0408-0018",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-R08-RCRA-2024-0408-0018"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-R08-RCRA-2024-0408-0018/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-R08-RCRA-2024-0408-0018/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

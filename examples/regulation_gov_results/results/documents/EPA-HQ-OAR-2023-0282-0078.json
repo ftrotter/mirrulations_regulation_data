@@ -1,0 +1,104 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": "2023-03-01T05:00:00Z",
+      "authors": [
+        "Eastern Research Group, Inc"
+      ],
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        },
+        {
+          "label": "Authors",
+          "name": "authors",
+          "tooltip": "Individuals and/or organizations that authored the document"
+        }
+      ],
+      "docAbstract": " March 2023  Memo to: Andrew Bouchard, U.S. EPA/OAQPS/SPPD \u2013 EPA Office of Air Quality Planning and Standards from Eastern Research Group, Inc. regarding  Data Received from Information Collection Request for Chemical Manufacturers",
+      "docketId": "EPA-HQ-OAR-2023-0282",
+      "documentType": "Supporting & Related Material",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OAR-2023-0282-0078/content.pdf",
+          "format": "pdf",
+          "size": 3668974
+        }
+      ],
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": "Electronic",
+      "modifyDate": "2024-12-28T01:54:59Z",
+      "objectId": "090000648687bf63",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 168,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2024-12-27T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2024-12-18T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Memorandum",
+      "title": "Data Received from Information Collection Request for Chemical Manufacturers",
+      "topics": null,
+      "trackingNbr": "m4u-7qzn-xzze",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OAR-2023-0282-0078",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2023-0282-0078"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2023-0282-0078/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2023-0282-0078/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

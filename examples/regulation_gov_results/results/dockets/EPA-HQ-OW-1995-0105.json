@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        },
+        {
+          "label": "Pre-EDOCKET ID",
+          "name": "organization",
+          "tooltip": "Identifies docket's (a regulatory action) orginating agency and/or department, equivalents: Division, and Organization."
+        }
+      ],
+      "dkAbstract": "EPA is proposing to approve the use of updated versions of previously approved American Society for Testing and Materials (ASTM), Standard Methods for the Examination of Water and Wastewater (Standard Methods or SM) arid Environmental Protection Agency (EPA) analytical methods for compliance determinations of chemical and microbiological contaminants in drinking water. \nRelated to OW-1998-0004 (W-97-05) and OW-1999-0084 (W-98-27).\n\t",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OW",
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-12-19T15:09:13Z",
+      "objectId": "0b000064b8dab53a",
+      "organization": "W-97-04",
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "National Primary Drinking Water Regulations: Analytical Methods for Regulated Drinking Water Contaminants"
+    },
+    "id": "EPA-HQ-OW-1995-0105",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OW-1995-0105"
+    },
+    "type": "dockets"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EERE",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "10 CFR Part 430",
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2019-01-25T05:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "EERE-2006-STD-0018",
+      "documentType": "Proposed Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EERE-2006-STD-0018-0020/content.pdf",
+          "format": "pdf",
+          "size": 2176145
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "78-35936",
+      "frVolNum": "44FR49",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2019-01-25T17:51:55Z",
+      "objectId": "0900006483a0b890",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2019-01-25T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "1979-01-02T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "49 - 60",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Advance Notice of Proposed Rulemaking (ANPRM)",
+      "title": "1979-01-02  Energy Conservation Program for Consumer Products; Advance Notice of Proposed Rulemaking and Notice of Public Meetings Regarding Energy Efficiency Standards for Nine Types of Consumers Products; Advance Notice of Proposed Rulemaking and Notice of Public Meetings",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EERE-2006-STD-0018-0020",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EERE-2006-STD-0018-0020"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EERE-2006-STD-0018-0020/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EERE-2006-STD-0018-0020/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

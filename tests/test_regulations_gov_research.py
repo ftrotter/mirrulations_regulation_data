@@ -109,6 +109,31 @@ class RegulationsGovResearchTest(unittest.TestCase):
         self.assertEqual("opaque", example["comment_search_object_id"])
         self.assertEqual(["A-2"], example["sample_comment_ids"])
 
+    def test_export_examples_deduplicates_resources(self):
+        document = {"id": "A-1", "attributes": {}}
+        docket = {"id": "A", "attributes": {}}
+        comment = {"id": "A-2", "attributes": {}}
+        manifest = {
+            "api_root": "https://example.test", "generated_at": "test",
+            "evidence": [{
+                "category_key": "one", "category_label": "One",
+                "examples": [
+                    {"document": document, "docket": docket, "comments": [comment]},
+                    {"document": document, "docket": docket, "comments": [comment]},
+                ],
+            }],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            result = RegulationsGovResearch.export_examples(
+                manifest=manifest, output_root=Path(directory),
+            )
+            file_count = len(list(Path(directory).rglob("*.json")))
+        self.assertEqual(
+            {"documents": 1, "dockets": 1, "comments": 1},
+            result["unique_resource_counts"],
+        )
+        self.assertEqual(4, file_count)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

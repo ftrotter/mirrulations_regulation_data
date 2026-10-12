@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "ATBCB",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": "We, the Architectural and Transportation Barriers Compliance Board (hereafter, \u201cAccess Board\u201d, \u201cBoard\u201d, or \u201cwe\u201d), are issuing this Advance Notice of Proposed Rulemaking (ANPRM) to begin the process of updating our existing accessibility guidelines for rail vehicles covered by the Americans with Disabilities Act (ADA).  By this ANPRM, the Access Board invites public comment on the substance of recommendations contained in the report issued by its Rail Vehicles Access Advisory Committee (RVAAC) and poses related questions.  The Board will consider comments received in response to this ANPRM, along with the recommendations in the RVACC report, to develop proposed updates to our rail vehicle accessibility guidelines in a future rulemaking.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": [
+        "ADA",
+        "Rail",
+        "Facilities",
+        "Vehicles",
+        "Transportation"
+      ],
+      "legacyId": null,
+      "modifyDate": "2024-08-26T13:13:29Z",
+      "objectId": "0b0000648433c58b",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "3014-AA42",
+      "shortTitle": "Rail ANPRM",
+      "subType": "NA",
+      "subType2": null,
+      "title": "ADA Accessibility Guidelines for Transportation Vehicles; Rail Vehicles"
+    },
+    "id": "ATBCB-2020-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/ATBCB-2020-0002"
+    },
+    "type": "dockets"
+  }
+}

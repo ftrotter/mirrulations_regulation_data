@@ -1,0 +1,97 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2025-04-24T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Federal Register for Friday, January 12, 2001 (66 FR 2823) [FRL-6931-8]",
+      "docketId": "EPA-HQ-OW-2000-0001",
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OW-2000-0001-0002/content.pdf",
+          "format": "pdf",
+          "size": 223237
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "01-693 ",
+      "frVolNum": "66",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-04-24T15:41:57Z",
+      "objectId": "0900006486ab503a",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 3,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-04-24T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2001-01-12T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "2823 - 2825",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Final Rule",
+      "title": "Drinking Water State Revolving Funds Rule; Adoption of Interim Final Rule as Final Rule [W-00-11-II-A-1]",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OW-2000-0001-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2000-0001-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2000-0001-0002/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-2000-0001-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

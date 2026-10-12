@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "category": "Financial Aid Administrator",
+      "city": null,
+      "comment": "The proposed NSLDS modifications introduce significant operational considerations for institutions administering Title IV aid, particularly related to the implementation of new aggregate loan limits, legacy borrower tracking, and institutionally assigned lower annual loan limits. Baylor University supports the Department&rsquo;s efforts to improve consistency and oversight in federal loan administration; however, successful implementation will require timely, accurate, and transparent NSLDS reporting and functionality. Institutions will need clear visibility into borrower classification statuses, aggregate limit calculations, transition-period eligibility determinations for legacy borrowers, and the application of institutional loan limit restrictions in real time to prevent conflicting information, packaging delays, and inadvertent overawards. Because these changes will directly affect counseling, awarding, reconciliation, and borrower communication processes, the Department should prioritize system interoperability, robust institutional training, and clear correction/appeal mechanisms to minimize administrative burden and student confusion during implementation.",
+      "commentOn": "09000064b92c6875",
+      "commentOnDocumentId": "ED-2026-FSA-0761-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2026-FSA-0761",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": null,
+      "legacyId": null,
+      "modifyDate": "2026-06-08T22:53:38Z",
+      "objectId": "09000064b92ed6a1",
+      "openForComment": false,
+      "organization": "Baylor University",
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-06-08T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-05-22T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment on FR Doc # 2026-07817",
+      "trackingNbr": "mph-b1lx-hfs5",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ED-2026-FSA-0761-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ED-2026-FSA-0761-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ED-2026-FSA-0761-0002/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ED-2026-FSA-0761-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

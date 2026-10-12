@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "ED",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2023-07-25T14:14:06Z",
+      "objectId": "0b00006485b95da6",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "New Fostering Undergraduate Talent by Unlocking Resources for Education System of Records"
+    },
+    "id": "ED-2023-FSA-0113",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/ED-2023-FSA-0113"
+    },
+    "type": "dockets"
+  }
+}

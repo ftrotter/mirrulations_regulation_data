@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "DOT",
+      "category": null,
+      "city": null,
+      "comment": "Thank you. I&rsquo;m Todd Wallace, Director of Industry Affairs for the American Society of Travel Advisors. ASTA represents the more than 300,000 travel advisors across the country, and the travel agencies they work for, 97% of which are small businesses. First, I want to extend the association&rsquo;s appreciation to DOT for revitalizing this committee and swiftly holding its first public meeting in over 3 years. Over the last two days, ticket agents have been the subject of discussion, but it&rsquo;s been our experience that this term is not clearly understood by policymakers. Ticket agents are largely travel advisors and in 2025, they booked an average of 800,000 airline tickets per day, for a total of $100 billion in annual sales. Despite this crucial role in air sales, ticket agents do not have a seat on this committee which is debating their very businesses. While we appreciate the consultative rights provided to ticket agents in the 2024 FAA reauthorization bill, we would welcome the committee&rsquo;s support for formally adding a ticket agent seat to ACPAC. Legislation to this end was already approved by the House in March of this year. Again, we thank DOT and the committee for holding these public meetings, and we look forward to engaging with you more in the future.",
+      "commentOn": "09000064b94bf6bf",
+      "commentOnDocumentId": "DOT-OST-2018-0190-0116",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "DOT-OST-2018-0190",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": null,
+      "legacyId": null,
+      "modifyDate": "2026-09-25T23:32:59Z",
+      "objectId": "09000064b95c8dd4",
+      "openForComment": false,
+      "organization": "ASTA - American Society of Travel Advisors",
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-09-25T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-09-25T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from ASTA - American Society of Travel Advisors",
+      "trackingNbr": "muh-ar26-kmoi",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "DOT-OST-2018-0190-0117",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0190-0117"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0190-0117/attachments",
+          "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0190-0117/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

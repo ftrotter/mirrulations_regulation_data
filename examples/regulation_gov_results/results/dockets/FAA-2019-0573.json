@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FAA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Amazon - Exemption/Rulemaking",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-09-16T12:20:29Z",
+      "objectId": "0b00006483d971ef",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Petition - Section 333",
+      "subType2": null,
+      "title": "Amazon - Exemption/Rulemaking"
+    },
+    "id": "FAA-2019-0573",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FAA-2019-0573"
+    },
+    "type": "dockets"
+  }
+}

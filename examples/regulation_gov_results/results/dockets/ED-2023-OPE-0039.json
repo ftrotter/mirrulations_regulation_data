@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "ED",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-01-02T09:49:52Z",
+      "objectId": "0b000064856f3aed",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Intent to Establish a Negotiated Rulemaking Committee"
+    },
+    "id": "ED-2023-OPE-0039",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/ED-2023-OPE-0039"
+    },
+    "type": "dockets"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "category": null,
+      "city": null,
+      "comment": "&ldquo;Air Plan Approval; Texas; Reasonably Available Control Technology in the Houston-Galveston-Brazoria Ozone Nonattainment Area&rdquo;<br/>Document Number: 2025-13904 | 90 FR 34790 | Docket: EPA-R06-OAR-2020-0165<br/>Submitted: August 5, 2025<br/><br/>Comment:<br/><br/>To Whom It May Concern,<br/><br/>Thank you for the opportunity to provide public input on the proposed approval of revisions to the Texas State Implementation Plan (SIP) addressing Reasonably Available Control Technology (RACT) in the Houston-Galveston-Brazoria (HGB) ozone nonattainment area.<br/><br/>The HGB region is a critical industrial hub with significant emissions of ozone precursors, including nitrogen oxides (NO\u2093) and volatile organic compounds (VOCs). These emissions frequently co-occur with substantial carbon dioxide (CO\u2082) output from the same sources. While CO\u2082 is not classified as an ozone precursor under the National Ambient Air Quality Standards (NAAQS), it plays an increasingly important contextual role in the formation and persistence of ozone through its contribution to elevated temperatures and atmospheric stagnation patterns.<br/><br/>RACT determinations involve a cost-effectiveness framework that should be broadened to acknowledge CO\u2082 emissions as a relevant co-factor. Many of the control technologies used to reduce VOCs and NO\u2093&mdash;such as energy efficiency upgrades, process optimization, or fuel switching&mdash;offer simultaneous reductions in CO\u2082. Conversely, selecting technologies with low capital costs but high energy consumption may improve short-term ozone metrics while exacerbating long-term climate impacts.<br/><br/>In a region as emissions-intensive and climate-sensitive as Houston, failure to incorporate CO\u2082 considerations into air quality planning presents a missed opportunity for systemic benefit. Moreover, the persistent health disparities and economic vulnerabilities in the area mean that future air quality strategies must be not only technically sound but resilient in a changing climate.<br/><br/>Accordingly, I respectfully recommend that the EPA:<br/><br/>Encourage Texas to quantify and disclose expected CO\u2082 impacts associated with proposed RACT measures, where feasible;<br/><br/>Promote technology selection and permitting practices that capture co-benefits across ozone precursors and GHGs;<br/><br/>Acknowledge the indirect role of CO\u2082 in ozone formation dynamics, especially in urban-industrial environments.<br/><br/>Even in the absence of a statutory requirement to regulate CO\u2082 under RACT, its systemic relevance to air quality outcomes is now clear. Recognizing and integrating this understanding into SIP reviews can help ensure that environmental gains are sustainable and forward-looking.<br/><br/>Thank you for your work and commitment to clean air.<br/><br/>Sincerely,<br/>A Concerned Citizen<br/>Submitted Anonymously<br/>Date: August 5, 2025",
+      "commentOn": "09000064b8e9c55c",
+      "commentOnDocumentId": "EPA-R06-OAR-2020-0165-0010",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "EPA-R06-OAR-2020-0165",
+      "documentType": "Public Submission",
+      "duplicateComments": 1,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": null,
+      "legacyId": null,
+      "modifyDate": "2025-08-13T23:00:56Z",
+      "objectId": "09000064b8ee1cd5",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "phone": null,
+      "postedDate": "2025-08-13T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-08-05T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Public Comment",
+      "title": "TX223.13 Anonymous public comment on EPA-R06-OAR-2020-0165-0010",
+      "trackingNbr": "mdy-w5u2-f4s1",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "EPA-R06-OAR-2020-0165-0013",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/EPA-R06-OAR-2020-0165-0013"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/EPA-R06-OAR-2020-0165-0013/attachments",
+          "self": "https://api.regulations.gov/v4/comments/EPA-R06-OAR-2020-0165-0013/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

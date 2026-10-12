@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FAA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Raytheon - Exemption/Rulemaking",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-07-06T12:26:30Z",
+      "objectId": "0b000064b909b784",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Petitions",
+      "subType2": null,
+      "title": "Raytheon - Exemption/Rulemaking"
+    },
+    "id": "FAA-2025-5236",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FAA-2025-5236"
+    },
+    "type": "dockets"
+  }
+}

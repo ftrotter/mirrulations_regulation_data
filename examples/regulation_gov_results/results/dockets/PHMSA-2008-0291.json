@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "PHMSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Updates to Pipeline and Liquefied Natural Gas Reporting Requirements",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-10-08T12:13:48Z",
+      "objectId": "0b0000648077f280",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2137-AE33",
+      "shortTitle": null,
+      "subType": "Pipeline Safety",
+      "subType2": null,
+      "title": "Updates to Pipeline and Liquefied Natural Gas Reporting Requirements"
+    },
+    "id": "PHMSA-2008-0291",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/PHMSA-2008-0291"
+    },
+    "type": "dockets"
+  }
+}

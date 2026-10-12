@@ -1,0 +1,97 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2025-06-30T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Federal Register for Tuesday, March 30, 1999 (64 FR 15158) [FRL-6317-4]",
+      "docketId": "EPA-HQ-OW-1996-0115",
+      "documentType": "Notice",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OW-1996-0115-0066/content.pdf",
+          "format": "pdf",
+          "size": 287030
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "99-7772",
+      "frVolNum": "64",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-07-01T03:28:29Z",
+      "objectId": "09000064b8e4a505",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 2,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-06-30T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "1999-03-30T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "15158 - 15159",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Meeting",
+      "title": "Effluent Guidelines Plan Update and Notice of Public Meeting [W-98-10-II-A-2]",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OW-1996-0115-0066",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-1996-0115-0066"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-1996-0115-0066/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OW-1996-0115-0066/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

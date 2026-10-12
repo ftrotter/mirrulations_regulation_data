@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "CFTC",
+      "category": null,
+      "city": null,
+      "comment": "Comment of Robert Walker &mdash; former Sportsbook Director (Stardust; MGM Mirage), principal of A1 Risk Management Solutions &mdash; urging the Commission to analyze sports event contracts by economic substance and to require manipulation, insider-information, and surveillance controls equivalent to those imposed on state-licensed sportsbooks. Full comment attached.",
+      "commentOn": "09000064b93288d8",
+      "commentOnDocumentId": "CFTC-2026-1189-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "CFTC-2026-1189",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Robert",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Walker",
+      "legacyId": null,
+      "modifyDate": "2026-06-12T20:39:56Z",
+      "objectId": "09000064b93290b6",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-06-12T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-06-12T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Comment on CFTC-2026-1189, CFTC-2026-1189-0001, Robert,  Walker",
+      "trackingNbr": "mqb-4ybj-d4nk",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "CFTC-2026-1189-0004",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0004"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0004/attachments",
+          "self": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0004/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

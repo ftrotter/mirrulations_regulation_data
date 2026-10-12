@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FMCSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Notice of Proposed Rulemaking",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-06-16T17:50:39Z",
+      "objectId": "0b000064862a0bf6",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2126-AC63",
+      "shortTitle": null,
+      "subType": "Payment Procedures",
+      "subType2": null,
+      "title": "Transparency in Property  Broker Transactions"
+    },
+    "id": "FMCSA-2023-0257",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FMCSA-2023-0257"
+    },
+    "type": "dockets"
+  }
+}

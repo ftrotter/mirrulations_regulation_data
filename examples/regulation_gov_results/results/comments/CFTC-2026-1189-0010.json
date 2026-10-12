@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "CFTC",
+      "category": null,
+      "city": null,
+      "comment": "Re: Prediction Markets; Public Interest Determinations, RIN 3038-AF65<br/><br/>Please see the attached file, cftc-comment-ranieri.txt, for the full text of this comment, submitted by Gianlorenzo Ranieri, Founder, Convexly (convexly.app), an independent provider of market-quality measurement and published research on prediction markets.<br/><br/>Summary: Convexly is not affiliated with, invested in, or compensated by any exchange, designated contract market, broker, or trading firm. We comment because the proposal&#39;s public interest framework turns, in significant part, on empirical questions about market quality that independent measurement can help answer. We respectfully recommend that, in finalizing Appendix F, the Commission: (1) treat observable market-quality and integrity metrics as relevant evidence in public interest determinations where such evidence is available; (2) expect published, versioned, reproducible methodology behind any metric relied upon in a determination, with limitations and unfavorable results disclosed; and (3) remain source-neutral as to the source of such evidence. We ask for nothing in this comment, and nothing in it should be read as a request for any role, designation, recognition, or commercial preference for Convexly or for independent data providers generally.",
+      "commentOn": "09000064b93288d8",
+      "commentOnDocumentId": "CFTC-2026-1189-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "CFTC-2026-1189",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": null,
+      "legacyId": null,
+      "modifyDate": "2026-06-15T19:31:16Z",
+      "objectId": "09000064b932b493",
+      "openForComment": false,
+      "organization": "Convexly",
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-06-15T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-06-13T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Comment on CFTC-2026-1189, CFTC-2026-1189-0001, Convexly",
+      "trackingNbr": "mqc-j1zt-1ojk",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "CFTC-2026-1189-0010",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0010"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0010/attachments",
+          "self": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0010/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

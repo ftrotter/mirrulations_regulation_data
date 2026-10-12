@@ -1,0 +1,66 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FDA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "General Information",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, Docket Subject, Related To, Summary."
+        },
+        {
+          "label": "Docket Item Code",
+          "name": "generic",
+          "tooltip": "An agency specific code that identifies the type of document that established the docket (regulatory action)."
+        },
+        {
+          "label": "Center",
+          "name": "program",
+          "tooltip": "The agency specific program associated with the docket (regulatory action); equivalents: Docket Item Code,  Location."
+        },
+        {
+          "label": "Docket Status",
+          "name": "field2",
+          "tooltip": "Used to Identity that a Docket's Status is Open or Closed"
+        },
+        {
+          "label": "Short Title",
+          "name": "shortTitle",
+          "tooltip": "A combination of letters and or numbers assigned to an agency's regulatory action for purposes of brevity."
+        }
+      ],
+      "dkAbstract": "OPEN",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": "OPEN",
+      "generic": "N",
+      "keywords": [
+        "Filing of Color Additive Petition from Center",
+        "for Science in the Public Interest, et al.",
+        "Request to Revoke Color Additive Listing for",
+        "Use of FD&C Red No. 3 in Food and Ingested Drugs",
+        "FRDTS 2022-840",
+        "CFSAN",
+        "OPEN"
+      ],
+      "legacyId": null,
+      "modifyDate": "2026-08-05T16:36:51Z",
+      "objectId": "0b0000648563c403",
+      "organization": null,
+      "petitionNbr": null,
+      "program": "CFSAN",
+      "rin": null,
+      "shortTitle": "Filing of Color Additive Petition from Center for Science in the Public Interest, et al.; Request to Revoke Color Additive Listing for Use of FD&C Red No. 3 in Food and Ingested Drugs.",
+      "subType": null,
+      "subType2": null,
+      "title": "Filing of Color Additive Petition from Center for Science in the Public Interest, et al.; Request to Revoke Color Additive Listing for Use of FD&C Red No. 3 in Food and Ingested Drugs."
+    },
+    "id": "FDA-2023-N-0437",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FDA-2023-N-0437"
+    },
+    "type": "dockets"
+  }
+}

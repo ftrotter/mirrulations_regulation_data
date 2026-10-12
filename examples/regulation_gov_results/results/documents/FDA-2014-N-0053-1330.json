@@ -1,0 +1,107 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "FDA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "21 CFR Part 1",
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2025-09-09T03:59:59Z",
+      "commentStartDate": "2025-08-07T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Document Date",
+          "name": "effectiveDate",
+          "tooltip": "The date the document is effective"
+        },
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "FDA-2014-N-0053",
+      "documentType": "Proposed Rule",
+      "effectiveDate": "2025-08-07T04:00:00Z",
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/FDA-2014-N-0053-1330/content.pdf",
+          "format": "pdf",
+          "size": 265820
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/FDA-2014-N-0053-1330/content.html",
+          "format": "html",
+          "size": 36233
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2025-14967",
+      "frVolNum": "90 FR 38084",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-09-11T09:00:20Z",
+      "objectId": "09000064b8eec2b5",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "FDA_FRDOC_0001-13771",
+      "pageCount": 5,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-08-07T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-08-07T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "38084 - 38088",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Notice of Proposed Rulemaking (NPRM)",
+      "title": "Requirements for Additional Traceability Records for Certain Foods: Compliance Date Extension",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "FDA-2014-N-0053-1330",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/FDA-2014-N-0053-1330"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/FDA-2014-N-0053-1330/attachments",
+          "self": "https://api.regulations.gov/v4/documents/FDA-2014-N-0053-1330/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

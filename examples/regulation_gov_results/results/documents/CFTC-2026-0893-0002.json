@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "CFTC",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "17 CFR Part 146",
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2026-10-02T03:59:59Z",
+      "commentStartDate": "2026-09-21T04:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "CFTC-2026-0893",
+      "documentType": "Proposed Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/CFTC-2026-0893-0002/content.pdf",
+          "format": "pdf",
+          "size": 203591
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/CFTC-2026-0893-0002/content.html",
+          "format": "html",
+          "size": 7496
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2026-19290",
+      "frVolNum": "91 FR 59711",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-09-29T09:00:26Z",
+      "objectId": "09000064b959daea",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "CFTC_FRDOC_0001-0052",
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-09-21T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-09-21T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "59711 - 59711",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Privacy Act Regulations - Reopening of the Comment Period",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "CFTC-2026-0893-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/CFTC-2026-0893-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/CFTC-2026-0893-0002/attachments",
+          "self": "https://api.regulations.gov/v4/documents/CFTC-2026-0893-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

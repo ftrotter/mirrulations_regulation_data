@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "VA",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": "The Department of Veterans Affairs (VA) proposes to revise sections that address the ear, nose, throat, audiology, and respiratory systems.  The purpose of these changes is to update medical terminology, incorporate medical advances that have occurred since the last review, and provide well-defined criteria in accordance with actual clinical practice.  VA will also rename the body system currently designated for conditions related to hearing and the ear, to include the nose and throat.  VA will also consolidate within the scope of otolaryngology several diagnostic codes (DCs) currently listed within the respiratory system.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-10-23T16:08:29Z",
+      "objectId": "0b00006484f7886f",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2900-AQ72",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Schedule for Rating Disabilities: Ear, Nose, Throat, and Audiology Disabilities; Special Provisions Regarding Evaluation of Respiratory Conditions; Schedule for Rating Disabilities: Respiratory System (2900-AQ72)"
+    },
+    "id": "VA-2022-VBA-0009",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/VA-2022-VBA-0009"
+    },
+    "type": "dockets"
+  }
+}

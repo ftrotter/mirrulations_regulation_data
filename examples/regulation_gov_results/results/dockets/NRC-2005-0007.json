@@ -1,0 +1,35 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "NRC",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": [
+        "10 CFR Part 72",
+        "spent fuel"
+      ],
+      "legacyId": null,
+      "modifyDate": "2009-02-04T11:11:25Z",
+      "objectId": "0b000064803c5994",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "3150-AH70",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "List of Approved Spent Fuel Storage Casks:  VSC-24 Revision"
+    },
+    "id": "NRC-2005-0007",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/NRC-2005-0007"
+    },
+    "type": "dockets"
+  }
+}

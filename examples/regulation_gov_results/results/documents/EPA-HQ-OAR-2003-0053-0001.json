@@ -1,0 +1,97 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2004-03-31T04:59:59Z",
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Federal Register of January 30, 2004 (69 FR 4566) (FRL-7604-3)",
+      "docketId": "EPA-HQ-OAR-2003-0053",
+      "documentType": "Proposed Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OAR-2003-0053-0001/content.pdf",
+          "format": "pdf",
+          "size": 569219
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "4566",
+      "frVolNum": "69",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2020-03-14T01:00:38Z",
+      "objectId": "09000064800a7bea",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 86,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": null,
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2005-11-25T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Federal Register Document",
+      "title": "Rule To Reduce Interstate Transport of Fine Particulate Matter and Ozone (Interstate Air Quality Rule); Proposed Rule",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OAR-2003-0053-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2003-0053-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2003-0053-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OAR-2003-0053-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "DOT",
+      "allowLateComments": true,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2026-08-31T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "DOT-OST-2018-0190",
+      "documentType": "Notice",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/DOT-OST-2018-0190-0116/content.pdf",
+          "format": "pdf",
+          "size": 213322
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/DOT-OST-2018-0190-0116/content.html",
+          "format": "html",
+          "size": 9473
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2026-17721",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-10-03T09:00:40Z",
+      "objectId": "09000064b94bf6bf",
+      "ombApproval": null,
+      "openForComment": true,
+      "organization": null,
+      "originalDocumentId": "DOT_FRDOC_0001-1781",
+      "pageCount": 2,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-08-31T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-08-31T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "55978 - 55979",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Public Meetings",
+      "title": "Aviation Consumer Protection Advisory Committee; Notice of Public Meeting",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "DOT-OST-2018-0190-0116",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/DOT-OST-2018-0190-0116"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/DOT-OST-2018-0190-0116/attachments",
+          "self": "https://api.regulations.gov/v4/documents/DOT-OST-2018-0190-0116/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

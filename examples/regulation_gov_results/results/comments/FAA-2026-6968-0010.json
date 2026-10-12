@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "FAA",
+      "category": null,
+      "city": "Cambria",
+      "comment": "I wish not to extend expansion to Space X due to its negative impact  on surrounding areas.  The area is unable to support this intensive abuse of its water. Also not to be remised are other environmental impacts on air and wildlife.  Humans and wildlife should be protected against this intense assault.  Appreciate your consideration.",
+      "commentOn": "09000064b939cb1f",
+      "commentOnDocumentId": "FAA-2026-6968-0003",
+      "country": "United States",
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "FAA-2026-6968",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Teresa",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Borstelmann",
+      "legacyId": null,
+      "modifyDate": "2026-07-17T21:51:16Z",
+      "objectId": "09000064b93a80bb",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-07-17T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-07-17T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "CA",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Teresa Borstelmann",
+      "trackingNbr": "mrp-7qkg-ganf",
+      "withdrawn": false,
+      "zip": "93428"
+    },
+    "id": "FAA-2026-6968-0010",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/FAA-2026-6968-0010"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/FAA-2026-6968-0010/attachments",
+          "self": "https://api.regulations.gov/v4/comments/FAA-2026-6968-0010/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

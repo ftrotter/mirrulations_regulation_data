@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "34 CFR Chapter VI",
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2025-07-25T03:59:59Z",
+      "commentStartDate": "2025-07-25T04:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2025-OPE-0151",
+      "documentType": "Proposed Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/ED-2025-OPE-0151-0002/content.pdf",
+          "format": "pdf",
+          "size": 280504
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/ED-2025-OPE-0151-0002/content.html",
+          "format": "html",
+          "size": 23583
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2025-13998",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-07-31T09:00:12Z",
+      "objectId": "09000064b8e9cbd4",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "ED_FRDOC_0001-1118",
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-07-25T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-07-25T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Notice of Proposed Rulemaking (NPRM)",
+      "title": "Hearings, Meetings, Proceedings, etc.: Negotiated Rulemaking Committees",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "ED-2025-OPE-0151-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/ED-2025-OPE-0151-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/ED-2025-OPE-0151-0002/attachments",
+          "self": "https://api.regulations.gov/v4/documents/ED-2025-OPE-0151-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

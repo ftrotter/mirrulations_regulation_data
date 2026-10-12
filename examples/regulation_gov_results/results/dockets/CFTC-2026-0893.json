@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "CFTC",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": "The Commodity Futures Trading Commission (CFTC or Commission) is establishing a new Insider Risk Program, the records of which are included in a new Privacy Act system of records, CFTC-59, Insider Risk Program Records (CFTC-59), published concurrently in this Federal Register. The Commission proposes here to update its regulations to exempt CFTC-59 from certain provisions of the Privacy Act in accordance with the requirements of the Privacy Act and the guidance contained in Office of Management and Budget (OMB) Circular A-108, Federal Agency Responsibilities for Review, Reporting, and Publication Under the Privacy Act(OMB A-108) in order to maintain the integrity of insider risk investigations and to keep confidential the identity of confidential sources. If the Commission adopts this proposal, the records in CFTC-59 will be exempt from those provisions of the Privacy Act pertaining to an individual's right to access and request amendment of their records.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-09-22T20:43:58Z",
+      "objectId": "0b000064b9371360",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "3038-AF47",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Privacy Act Regulations"
+    },
+    "id": "CFTC-2026-0893",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/CFTC-2026-0893"
+    },
+    "type": "dockets"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "VA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "38 CFR Part 4",
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "VA-2026-VBA-0067",
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/VA-2026-VBA-0067-20459/content.pdf",
+          "format": "pdf",
+          "size": 211960
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/VA-2026-VBA-0067-20459/content.html",
+          "format": "html",
+          "size": 4965
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2026-03940",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-03-09T16:56:15Z",
+      "objectId": "09000064b91e31f5",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "VA_FRDOC_0001-7037",
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-02-27T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-02-27T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "9712 - 9712",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Rescission of Interim Final Rule, Evaluative Rating: Impact of Medication (AS49)",
+      "topics": [
+        "Disability Benefits",
+        "Veterans"
+      ],
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "VA-2026-VBA-0067-20459",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/VA-2026-VBA-0067-20459"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/VA-2026-VBA-0067-20459/attachments",
+          "self": "https://api.regulations.gov/v4/documents/VA-2026-VBA-0067-20459/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": [
+        "0648-BJ62",
+        "0648-BJ62"
+      ],
+      "address1": null,
+      "address2": null,
+      "agencyId": "NOAA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": "15 CFR Part 922",
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": "2026-07-15T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "NOAA_FRDOC_0001",
+      "documentType": "Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/NOAA_FRDOC_0001-7625/content.pdf",
+          "format": "pdf",
+          "size": 234754
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/NOAA_FRDOC_0001-7625/content.html",
+          "format": "html",
+          "size": 11228
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2026-14204",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-07-15T16:25:52Z",
+      "objectId": "09000064b939f424",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 2,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-07-15T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-07-15T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "43321 - 43322",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Lake Ontario National Marine Sanctuary; Delay of Effective Date",
+      "topics": [
+        "Administrative Practices and Procedures",
+        "Coastal Zone",
+        "Natural Resources",
+        "Historic Preservation",
+        "Marine Resources",
+        "Recreation and Recreation Areas"
+      ],
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "NOAA_FRDOC_0001-7625",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/NOAA_FRDOC_0001-7625"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/NOAA_FRDOC_0001-7625/attachments",
+          "self": "https://api.regulations.gov/v4/documents/NOAA_FRDOC_0001-7625/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "USCG",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Action Office",
+          "name": "shortTitle",
+          "tooltip": "Refers to a specific office within an agency that issues the docket (regulatory action)."
+        }
+      ],
+      "dkAbstract": "The Coast Guard seeks input from the public on improving its Streamlined Inspection Program (SIP), which is explained in Navigation and Vessel Inspection Circular (NVIC) 02\u201399. We seek information, ideas, and recommendations to ensure SIP implementation aligns with national security, economic prosperity, and workforce development objectives set forth in the Presidential Executive Order on Restoring America\u2019s Maritime Dominance. Finally, public input will aid in developing and improving the SIP as a tool for strengthening the domestic maritime industrial base, enhancing regulatory efficiency, and supporting the competitiveness of U.S.-flagged and U.S. built vessels. \n",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-09-29T13:25:21Z",
+      "objectId": "0b000064b911573d",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": "Headquarters",
+      "subType": null,
+      "subType2": null,
+      "title": "Streamlined (Vessel) Inspection Program (NVIC 02\u201399)\u2014Request for Information"
+    },
+    "id": "USCG-2026-0041",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/USCG-2026-0041"
+    },
+    "type": "dockets"
+  }
+}

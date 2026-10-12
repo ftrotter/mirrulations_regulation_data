@@ -1,0 +1,97 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": "1995-03-13T05:00:00Z",
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Federal Register of Monday, March 13, 1995 (60 FR 13526) (FRL\u20135168\u20132)",
+      "docketId": "EPA-HQ-OLEM-2022-0174",
+      "documentType": "Supporting & Related Material",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OLEM-2022-0174-0532/content.pdf",
+          "format": "pdf",
+          "size": 236993
+        }
+      ],
+      "firstName": null,
+      "frDocNum": null,
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": "Electronic ",
+      "modifyDate": "2024-03-12T00:55:23Z",
+      "objectId": "09000064863d14c1",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 20,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2024-03-11T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2024-01-30T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Publication - Previous/Related FR Notice",
+      "title": "60 FR 13526; Accidental Release Prevention Requirements. Supplemental notice of proposed rulemaking. 1995",
+      "topics": null,
+      "trackingNbr": "ls0-uhuq-llz3",
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OLEM-2022-0174-0532",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OLEM-2022-0174-0532"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OLEM-2022-0174-0532/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OLEM-2022-0174-0532/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

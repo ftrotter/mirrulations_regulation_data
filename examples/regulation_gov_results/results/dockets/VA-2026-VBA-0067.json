@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "VA",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": "VA is rescinding the interim final rule, Evaluative Rating: Impact of Medication, published on February 17, 2026, and restoring the prior regulatory text.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-03-16T14:48:40Z",
+      "objectId": "0b000064b91b3e3e",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2900-AS49",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Evaluative Rating: Impact of Medication (AS49)"
+    },
+    "id": "VA-2026-VBA-0067",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/VA-2026-VBA-0067"
+    },
+    "type": "dockets"
+  }
+}

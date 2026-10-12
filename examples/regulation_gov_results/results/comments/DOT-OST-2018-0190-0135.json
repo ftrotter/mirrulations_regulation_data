@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "DOT",
+      "category": null,
+      "city": null,
+      "comment": "In response to the Committee&#39;s request for general insights about consumer engagement with Southwest Airlines&#39; website pages dedicated to Passenger Rights...<br/>Consumers are going to our &ldquo;Help Center&rdquo; and &ldquo;Customer Commitment&rdquo; pages &ndash; some pages (a lot) more so than others. We receive around 5.1M (total) interactions with pages related to different &ldquo;Passenger Rights&rdquo; over the most-recent 12-month period - which is the equivalent of 3% of enplaned PAX (5.1M interactions/170.7M enplaned PAX for the 12-month research range) or DOT Ratio = approximately 3,000 interactions per 100,000 enplaned PAX.  The Top 5 Passenger Rights categories visited during the most-recent 12-month period are: Baggage Policies, Travel Funds, Disability Accommodations, Customer Commitments, and Customer Service Plan.<br/>",
+      "commentOn": "09000064b94bf6bf",
+      "commentOnDocumentId": "DOT-OST-2018-0190-0116",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "DOT-OST-2018-0190",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": null,
+      "legacyId": null,
+      "modifyDate": "2026-10-02T19:26:04Z",
+      "objectId": "09000064b96044de",
+      "openForComment": false,
+      "organization": "Southwest Airlines",
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-10-02T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-10-02T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from Southwest Airlines",
+      "trackingNbr": "mur-3o0w-mc5h",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "DOT-OST-2018-0190-0135",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0190-0135"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0190-0135/attachments",
+          "self": "https://api.regulations.gov/v4/comments/DOT-OST-2018-0190-0135/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

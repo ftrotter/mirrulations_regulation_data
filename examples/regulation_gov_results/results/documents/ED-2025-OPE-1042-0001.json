@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2026-01-27T04:59:59Z",
+      "commentStartDate": "2026-01-26T06:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2025-OPE-1042",
+      "documentType": "Proposed Rule",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/ED-2025-OPE-1042-0001/content.pdf",
+          "format": "pdf",
+          "size": 219440
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/ED-2025-OPE-1042-0001/content.html",
+          "format": "html",
+          "size": 19350
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2026-01620",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2026-01-27T22:39:05Z",
+      "objectId": "09000064b91845bb",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "ED_FRDOC_0001-1129",
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2026-01-27T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-01-27T05:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Negotiated Rulemaking (NEG REG)",
+      "title": "Intent to Establish Negotiated Rulemaking Committee",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "ED-2025-OPE-1042-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/ED-2025-OPE-1042-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/ED-2025-OPE-1042-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/ED-2025-OPE-1042-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "ED",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2023-04-03T08:51:04Z",
+      "objectId": "0b000064855fba33",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "New System of Records for the Emergency Notification System"
+    },
+    "id": "ED-2023-OFO-0021",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/ED-2023-OFO-0021"
+    },
+    "type": "dockets"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "USDA",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-10-06T13:03:01Z",
+      "objectId": "0b000064801eaa92",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Recently Posted USDA Rules and Notices."
+    },
+    "id": "USDA_FRDOC_0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/USDA_FRDOC_0001"
+    },
+    "type": "dockets"
+  }
+}

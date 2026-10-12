@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "CFTC",
+      "category": null,
+      "city": null,
+      "comment": "The citizens of the USA have constitutional freedoms.  Therefore the Federal Government should have very limited oversight. in reference topic and or events to be predicted. ",
+      "commentOn": "09000064b93288d8",
+      "commentOnDocumentId": "CFTC-2026-1189-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "CFTC-2026-1189",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "M",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Wilton",
+      "legacyId": null,
+      "modifyDate": "2026-06-12T20:39:02Z",
+      "objectId": "09000064b9329269",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-06-12T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-06-12T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Comment on CFTC_FRDOC_0001, CFTC_FRDOC_0001-0017, M, Wilton",
+      "trackingNbr": "mqb-2jns-3vdt",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "CFTC-2026-1189-0003",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0003"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0003/attachments",
+          "self": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0003/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "NHTSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Model Years 2027 and Beyond Corporate Average Fuel Economy Standards and Model Years 2030 and Beyond Heavy-Duty Pickup Trucks and Vans Fuel Efficiency Improvement Program Standards",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-12-04T21:07:44Z",
+      "objectId": "0b00006485a1661a",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": "Fuel Economy",
+      "subType2": null,
+      "title": "Model Years 2027 and Beyond Corporate Average Fuel Economy Standards and Model Years 2030 and Beyond Heavy-Duty Pickup Trucks and Vans Fuel Efficiency Improvement Program Standards"
+    },
+    "id": "NHTSA-2023-0022",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/NHTSA-2023-0022"
+    },
+    "type": "dockets"
+  }
+}

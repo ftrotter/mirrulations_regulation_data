@@ -1,0 +1,321 @@
+{
+  "api_root": "https://api.regulations.gov/v4",
+  "categories": [
+    {
+      "category_key": "rfi",
+      "category_label": "Request for information",
+      "document_ids": [
+        "FDA-2026-E-4491-0003",
+        "FAA-2025-1227-0004",
+        "FAA-2025-1272-0006",
+        "FAA-2025-2300-0002",
+        "FAA-2025-2019-0003"
+      ]
+    },
+    {
+      "category_key": "anprm",
+      "category_label": "Advance notice of proposed rulemaking",
+      "document_ids": [
+        "EPA-HQ-OW-2005-0014-0064",
+        "ATBCB-2020-0002-0001",
+        "EERE-2006-STD-0018-0022",
+        "EERE-2006-STD-0018-0020",
+        "DOT-OST-2018-0068-1157"
+      ]
+    },
+    {
+      "category_key": "nprm",
+      "category_label": "Notice of proposed rulemaking",
+      "document_ids": [
+        "EPA-HQ-OPA-1993-0001-0092",
+        "NRC-2004-0005-0001",
+        "NRC-2004-0001-0001",
+        "EPA-HQ-OAR-2003-0053-0001",
+        "CFTC-2026-1189-0001"
+      ]
+    },
+    {
+      "category_key": "supplemental_nprm",
+      "category_label": "Supplemental proposed rule",
+      "document_ids": [
+        "VA-2022-VBA-0009-2684",
+        "EPA-R06-OAR-2020-0165-0011",
+        "EPA-R06-OAR-2020-0165-0010",
+        "EPA-HQ-OLEM-2022-0174-0532",
+        "EPA-HQ-OAR-2023-0434-0062"
+      ]
+    },
+    {
+      "category_key": "comment_period",
+      "category_label": "Comment-period extension or reopening",
+      "document_ids": [
+        "CFTC-2026-0893-0002",
+        "USCG-2026-0041-0079",
+        "FDA-2026-N-2526-0019",
+        "FERC-2026-2478-0001",
+        "FDA-2026-N-2886-0002"
+      ]
+    },
+    {
+      "category_key": "public_meeting",
+      "category_label": "Public meeting, hearing, or listening session",
+      "document_ids": [
+        "OSHA-2016-0005-0070",
+        "DOT-OST-2018-0190-0116",
+        "EPA-HQ-OW-2002-0072-0003",
+        "EPA-HQ-OW-1996-0115-0066",
+        "EPA-HQ-OLEM-2025-0391-0001"
+      ]
+    },
+    {
+      "category_key": "negotiated_rulemaking",
+      "category_label": "Negotiated rulemaking",
+      "document_ids": [
+        "ED_FRDOC_0001-1106",
+        "ED-2025-OPE-1042-0001",
+        "ED-2023-OPE-0039-0003",
+        "ED-2025-OPE-0151-0002",
+        "ED-2025-OPE-0151-0001"
+      ]
+    },
+    {
+      "category_key": "direct_final_rule",
+      "category_label": "Direct final rule",
+      "document_ids": [
+        "NRC-2006-0009-0001",
+        "NRC-2005-0007-0001",
+        "NRC-2005-0015-0001",
+        "NRC-2005-0007-0003",
+        "EPA-HQ-OPPT-2023-0538-0304"
+      ]
+    },
+    {
+      "category_key": "direct_final_withdrawal",
+      "category_label": "Withdrawal of direct final rule",
+      "document_ids": [
+        "NRC-2004-0009-0003",
+        "EPA-R08-RCRA-2024-0408-0018",
+        "EPA-HQ-OMS-2024-0148-0005",
+        "NRC-2003-0011-0003",
+        "EPA-HQ-OW-1995-0105-0003"
+      ]
+    },
+    {
+      "category_key": "interim_final_rule",
+      "category_label": "Interim final rule",
+      "document_ids": [
+        "DOJ-OLP-2026-0166-0001",
+        "EPA-HQ-OW-2000-0001-0002",
+        "VA-2026-VBA-0067-20459",
+        "EERE-2025-VT-0073-0002",
+        "EPA-HQ-OW-2000-0001-0001"
+      ]
+    },
+    {
+      "category_key": "final_rule",
+      "category_label": "Final rule",
+      "document_ids": [
+        "NRC-2004-0005-0006",
+        "CFTC-2026-0925-0001",
+        "NRC-2005-0013-0119",
+        "EPA-HQ-OW-2000-0001-0002",
+        "PHMSA-2018-0080-0052"
+      ]
+    },
+    {
+      "category_key": "correction",
+      "category_label": "Correction",
+      "document_ids": [
+        "FRA-2026-1783-0002",
+        "PHMSA-2025-0455-0016",
+        "DOT-OST-2026-2773-0001",
+        "DOT-OST-2004-19622-0079",
+        "FAA-2026-6671-0022"
+      ]
+    },
+    {
+      "category_key": "effective_date_delay",
+      "category_label": "Effective-date delay",
+      "document_ids": [
+        "NOAA_FRDOC_0001-7625",
+        "USDA_FRDOC_0001-3151",
+        "DOI-2022-0010-0011",
+        "EOIR_FRDOC_0001-0085",
+        "DOI-2022-0010-0009"
+      ]
+    },
+    {
+      "category_key": "compliance_date_extension",
+      "category_label": "Compliance-date extension",
+      "document_ids": [
+        "SEC-2025-2971-0001",
+        "SEC-2025-0500-0001",
+        "EPA-HQ-OPPT-2020-0642-0765",
+        "SEC-2026-1094-0001",
+        "FDA-2014-N-0053-1330"
+      ]
+    },
+    {
+      "category_key": "amendment",
+      "category_label": "Amendment or revision",
+      "document_ids": [
+        "FRA-2026-0628-0004",
+        "FRA-2025-0720-0004",
+        "FDA-2026-P-5991-0007",
+        "FAA-2025-5236-0003",
+        "FAA-2019-0573-0090"
+      ]
+    },
+    {
+      "category_key": "withdrawal",
+      "category_label": "Withdrawal",
+      "document_ids": [
+        "FDA-2025-P-3541-0007",
+        "FAA-2023-2469-0006",
+        "PHMSA-2007-27608-0004",
+        "PHMSA-2024-0169-0003",
+        "PHMSA-RSPA-2004-19469-0018"
+      ]
+    },
+    {
+      "category_key": "rescission",
+      "category_label": "Rescission or repeal",
+      "document_ids": [
+        "FRA-2023-0004-0007",
+        "FRA-2025-0489-0002",
+        "FRA-2025-0522-0002",
+        "FRA-2025-0030-0003",
+        "FRA-2025-0523-0002"
+      ]
+    },
+    {
+      "category_key": "petition",
+      "category_label": "Petition for rulemaking or reconsideration",
+      "document_ids": [
+        "PHMSA-2026-0661-0002",
+        "PHMSA-2026-2346-0001",
+        "PHMSA-2025-1139-0002",
+        "PHMSA-2026-1255-0001",
+        "FMCSA-2023-0257-0359"
+      ]
+    },
+    {
+      "category_key": "supporting_material",
+      "category_label": "Supporting and related material",
+      "document_ids": [
+        "EPA-HQ-OAR-2025-0005-0520",
+        "EPA-HQ-OAR-2021-0643-0279",
+        "FDA-2023-N-0437-34785",
+        "NHTSA-2023-0022-0001",
+        "PHMSA-2022-0075-0002"
+      ]
+    },
+    {
+      "category_key": "regulatory_impact_analysis",
+      "category_label": "Regulatory impact analysis",
+      "document_ids": [
+        "PHMSA-2025-0019-0036",
+        "FAA-2026-4558-0004",
+        "PHMSA-2025-0089-0006",
+        "EPA-HQ-OW-2002-0008-0280",
+        "FRA-2021-0032-13201"
+      ]
+    },
+    {
+      "category_key": "regulatory_flexibility",
+      "category_label": "Regulatory flexibility analysis",
+      "document_ids": [
+        "EPA-HQ-OW-2022-0678-0003",
+        "APHIS-2023-0069-0002",
+        "TSA-2023-0002-0050",
+        "EPA-HQ-OPPT-2020-0549-0367",
+        "TSA-2022-0001-0043"
+      ]
+    },
+    {
+      "category_key": "information_collection",
+      "category_label": "Information collection or PRA material",
+      "document_ids": [
+        "EPA-HQ-OW-2022-0678-0002",
+        "EPA-HQ-OAR-2025-1348-0081",
+        "EPA-HQ-OAR-2023-0282-0078",
+        "EPA-HQ-OAR-2025-1348-0127",
+        "EPA-HQ-OAR-2025-1348-0065"
+      ]
+    },
+    {
+      "category_key": "environmental_analysis",
+      "category_label": "Environmental analysis",
+      "document_ids": [
+        "PHMSA-2008-0291-0050",
+        "PHMSA-2025-0019-0037",
+        "PHMSA-2025-0455-0014",
+        "FAA-2026-6968-0003",
+        "PHMSA-2023-0114-0004"
+      ]
+    },
+    {
+      "category_key": "response_to_comments",
+      "category_label": "Response to comments",
+      "document_ids": [
+        "DOT-OST-2025-0040-0015",
+        "FRA-2003-15012-0032",
+        "FRA-2020-0087-0026",
+        "FRA-2025-0590-0007",
+        "FMCSA-2025-0128-0009"
+      ]
+    },
+    {
+      "category_key": "omb_interagency",
+      "category_label": "OMB or interagency-review material",
+      "document_ids": [
+        "EPA-HQ-OAR-2025-0207-0055",
+        "EPA-HQ-OAR-2024-0505-0932",
+        "EPA-HQ-OAR-2025-3297-0054",
+        "EPA-HQ-OAR-2024-0505-0317",
+        "EPA-HQ-OAR-2024-0411-0072"
+      ]
+    },
+    {
+      "category_key": "sorn_initial",
+      "category_label": "Initial system of records notice",
+      "document_ids": [
+        "ED-2023-FSA-0113-0001",
+        "ED-2023-OFO-0021-0001",
+        "ED-2019-OPEPD-0108-0001",
+        "ED-2018-FSA-0083-0001",
+        "ED-2019-OSERS-0077-0001"
+      ]
+    },
+    {
+      "category_key": "sorn_modified",
+      "category_label": "Modified system of records notice",
+      "document_ids": [
+        "ED-2026-FSA-0793-0001",
+        "ED-2026-FSA-0760-0001",
+        "ED-2026-FSA-0761-0001",
+        "ED-2026-FSA-0727-0001",
+        "ED-2023-FSA-0109-0001"
+      ]
+    },
+    {
+      "category_key": "sorn_rescinded",
+      "category_label": "Rescinded system of records notice",
+      "document_ids": [
+        "EPA-HQ-OFA-2026-1321-0001",
+        "EPA-HQ-OFA-2026-1884-0001",
+        "MSPB-2025-0070-0001",
+        "DOI-2024-0004-0001",
+        "DOI-2023-0021-0001"
+      ]
+    }
+  ],
+  "comment_selection": "Up to five comments per document, sorted by postedDate.",
+  "generated_at": "2026-10-12T18:05:58.368510+00:00",
+  "selection": "Five validated document examples per artifact category.",
+  "unique_resource_counts": {
+    "comments": 78,
+    "dockets": 121,
+    "documents": 139
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "OSHA",
+      "category": null,
+      "city": "Washington",
+      "comment": "See attached file(s)",
+      "commentOn": "09000064865890c4",
+      "commentOnDocumentId": "OSHA-2016-0005-0070",
+      "country": "United States",
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        },
+        {
+          "label": "Post Mark Date",
+          "name": "postmarkDate",
+          "tooltip": "Date the document was postmarked"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "OSHA-2016-0005",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Rebecca",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "O'Donnell",
+      "legacyId": null,
+      "modifyDate": "2024-07-03T12:28:21Z",
+      "objectId": "09000064865d81af",
+      "openForComment": false,
+      "organization": "American Chemistry Council (ACC)",
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2024-07-03T04:00:00Z",
+      "postmarkDate": "2024-07-02T04:00:00Z",
+      "reasonWithdrawn": null,
+      "receiveDate": "2024-07-02T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "DC",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment from O'Donnell, Rebecca; American Chemistry Council (ACC)",
+      "trackingNbr": "ly4-zzpf-p2j9",
+      "withdrawn": false,
+      "zip": "20002"
+    },
+    "id": "OSHA-2016-0005-0073",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/OSHA-2016-0005-0073"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/OSHA-2016-0005-0073/attachments",
+          "self": "https://api.regulations.gov/v4/comments/OSHA-2016-0005-0073/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

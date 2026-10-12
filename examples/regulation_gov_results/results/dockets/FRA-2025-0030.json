@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "FRA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Waiver Petition",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-07-08T14:13:46Z",
+      "objectId": "0b0000648694e600",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Waiver",
+      "subType2": null,
+      "title": "Sonoma-Marin Area Rail Transit (SMART)"
+    },
+    "id": "FRA-2025-0030",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/FRA-2025-0030"
+    },
+    "type": "dockets"
+  }
+}

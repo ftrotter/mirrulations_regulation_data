@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "OSHA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Description",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Docket Subject, General Info, Related To, Summary."
+        }
+      ],
+      "dkAbstract": "Providing comments every 2 years or more.",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-07-07T12:34:26Z",
+      "objectId": "0b00006481e4caac",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Miscellaneous",
+      "subType2": null,
+      "title": "International/Globally Harmonized System (GHS)"
+    },
+    "id": "OSHA-2016-0005",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/OSHA-2016-0005"
+    },
+    "type": "dockets"
+  }
+}

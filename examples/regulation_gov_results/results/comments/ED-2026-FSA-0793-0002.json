@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "category": "Financial Aid Administrator",
+      "city": null,
+      "comment": "System of Records<br/><br/>Re TPD eligibility<br/><br/>Since you are now automating VA and other TPD discharges, it&rsquo;s causing a huge program integrity problem where students who qualify keep taking NEW loans (even years after prior loans were discharged) that are immediately discharged, even after the student has submitted the necessary documentation to the institution, including the physician&rsquo;s letter establishing stating their ability to engage in gainful activity and their acknowledgement NOT to have new loans discharged.  Due to the automatic discharge, they end up getting it both ways &ndash; new loans AND immediate discharge of those loans. There&rsquo;s nothing preventing students from doing this all the way up to the lifetime limits (or forever in the case of Grad plus).  The fact that the student submits documents to the school agreeing that their new loans cannot be discharged based on the same conditions never seems to make its way into ED system to prevent automatic discharges.<br/><br/>Another common scenario is that we receive a new ISIR indicating a discharge AFTER loans have already been disbursed (this can be one term&rsquo;s worth or an entire award year). This puts the school in the precarious position of having to either chase down the necessary documentation to re-establish eligibility, or return all of those loans (if the school DOESN&#39;T have to return the loans based on the ISIR date, then the student gets it both ways even if the department and/or student knew their TPD status before any loans were originated).  <br/><br/>To prevent this, if you have discharged prior loans under TPD, or have identified someone as potentially eligible through screening (which should be done any time a student fills out a FAFSA, MPN or LEC and when any new loan is originated), you should either a) prevent the disbursement of any loan until there&rsquo;s documentation of the necessary requirements to re-establish eligibility or opt out, or b) in the case of prior discharges, cease any further automatic discharges.   When the student fills out a new FAFSA, MPN or LEC, display a message to the student at that time that they appear to be eligible for TPD discharge, so they either a) cannot receive new loans (if prior loans have been discharged) or b) need to complete the necessary paperwork to reestablish eligibility, or complete an opt out. Right now, there doesn&#39;t seem to be any coordination between the origination of loans, their TPD status and prior discharges.  These processes need to be working together to prevent the disbursement of loans for those who are eligible for discharge and who have not completed the necessary opt out documentation.<br/><br/>While politically popular as expedient and &ldquo;common sense&rdquo;, the automatic discharge process is creating unintended consequences, perverse incentives and should not be open-ended.<br/><br/>Our office could provide you with multiple examples of students that fit the scenarios mentioned above and I&rsquo;m sure many other institutions could do the same. The students in question know they are TPD eligible, most have had prior loans discharged, but want new loans anyway. <br/><br/>Re Identifying Legacy Status<br/><br/>To the greatest extent possible, we request that you prevent the completion of a graduate plus loan during the application process when the student in question is not a legacy borrower. This could be done using a combination of administrative data, and where necessary, screening questions from the applicant.  If, for example, you have no record of a recent direct loan for the applicant, prevent them from completing the grad plus up front.  If they have a recent loan, but it is not possible to identify their 26/27 program until the school originates a new loan, then ask the student whether their program is the same one as the last one you have on file from 25/26 and require an acknowledgement that if their 26/27 program does not match the one on file, the student will not be eligible.<br/>",
+      "commentOn": "09000064b92c4fca",
+      "commentOnDocumentId": "ED-2026-FSA-0793-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2026-FSA-0793",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Anonymous",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Anonymous",
+      "legacyId": null,
+      "modifyDate": "2026-05-06T20:43:18Z",
+      "objectId": "09000064b92c63e9",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-05-06T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-05-06T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment on FR Doc # 2026-07826",
+      "trackingNbr": "mou-8jzj-c4qj",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ED-2026-FSA-0793-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ED-2026-FSA-0793-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ED-2026-FSA-0793-0002/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ED-2026-FSA-0793-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

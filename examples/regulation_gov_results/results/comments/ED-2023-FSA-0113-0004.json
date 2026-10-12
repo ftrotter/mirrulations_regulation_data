@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "category": "Financial Aid Administrator",
+      "city": null,
+      "comment": "This data sharing arrangement can greatly improve program integrity and processing barriers for students and taxpayers.  However, this should not just be used to automate IDR or determine eligibility for Pell grants.  We should use the forthcoming data on the level of loan subsidies to determine which institutions to recoup the cost from and/or cease or curtail lending to, and which students (yes, students also have responsibility here) to stop lending to and thereby prevent fraud and abuse.  Failure to rein in lending based on this data only bakes in the unsustainable nature of the lending programs.  Repaying your loans in full should be the expectation, not the exception.    It should not be used to endorse borrowing unlimited amounts, since ANY amount is now &ldquo;affordable&rdquo; due to automatic income verification for IDR, where defaults will be essentially eliminated. <br/><br/>Schools currently have no incentive whatsoever to limit someone&rsquo;s borrowing, even if they know the student&rsquo;s debt to earnings is completely out of line with economic reality or the student&#39;s chance at success.  If the only change made through this new data sharing system is automatic income verification, it will only exacerbate that problem.<br/><br/>A low-income student hopping from school to school (typically online schools) borrowing far beyond their ability to pay for back-to-back post baccalaureate degrees is just as fraudulent as a school promising a career it cannot deliver.  Give schools more of a reason to report and prevent this without fear of retaliation and use the data you have regarding a student&#39;s debt/income and borrowing patterns to weed out this behavior. Hint: the MAJORITY of borrowers with over $80,000 in loans attending an online institution will never repay their loans.  <br/><br/>If borrowers are routinely leaving an institution with more debt than they can repay, the cost of those subsidized payments should be recognized and dealt with in real time, not years down the line when the loan is cancelled or the school closes.  If, for example, more than half of a school&rsquo;s borrowers require at least a 50 percent subsidy on their loan payments (e.g. they should be paying $900 month based on the amount they owe, but are only paying $100, or even $0, based on IDR), that is time to step in and curtail lending to that institution.  ",
+      "commentOn": "0900006485c14905",
+      "commentOnDocumentId": "ED-2023-FSA-0113-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2023-FSA-0113",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Anonymous",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Anonymous",
+      "legacyId": null,
+      "modifyDate": "2023-07-25T18:14:07Z",
+      "objectId": "0900006485cead5e",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2023-07-25T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2023-07-20T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment on FR Doc # 2023-13980 ",
+      "trackingNbr": "lkb-75ft-9iwh",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ED-2023-FSA-0113-0004",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ED-2023-FSA-0113-0004"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ED-2023-FSA-0113-0004/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ED-2023-FSA-0113-0004/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

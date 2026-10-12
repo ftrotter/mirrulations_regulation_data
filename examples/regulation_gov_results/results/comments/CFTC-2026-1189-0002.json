@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "CFTC",
+      "category": null,
+      "city": null,
+      "comment": "One thing that appears to be missing from these proposed rules is a restriction against having so-called prediction markets involving events that have already occurred. While it may seem preposterous that such things would be allowed, Kalshi and possibly other sites have allowed betting on the outcome of prerecorded TV shows like Survivor. This allowed people with knowledge of leaks from the outcome of the show &mdash; who the winner is &mdash; to make guaranteed bets using information that other participants in the market did not have, which is inherently unfair insider trading. Kalshi claimed to have investigated and not found actual insiders, but even if such bets come from second- or third-hand sources, the information itself is still based on insider knowledge. This is going to happen in every situation of &ldquo;predicting&rdquo; an outcome that has already occurred. As such, market betting on such situations should be forbidden as it is inherently unfair. ",
+      "commentOn": "09000064b93288d8",
+      "commentOnDocumentId": "CFTC-2026-1189-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "CFTC-2026-1189",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "David",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Bloomberg",
+      "legacyId": null,
+      "modifyDate": "2026-06-12T20:38:35Z",
+      "objectId": "09000064b9328cf8",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-06-12T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-06-12T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Comment on CFTC_FRDOC_0001, CFTC_FRDOC_0001-0017, David, Bloomberg",
+      "trackingNbr": "mqb-20tx-7ldl",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "CFTC-2026-1189-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0002/attachments",
+          "self": "https://api.regulations.gov/v4/comments/CFTC-2026-1189-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

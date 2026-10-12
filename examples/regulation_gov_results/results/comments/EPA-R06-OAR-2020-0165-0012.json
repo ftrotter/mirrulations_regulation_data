@@ -1,0 +1,71 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "category": null,
+      "city": null,
+      "comment": "To the U.S. Environmental Protection Agency,<br/><br/>I am writing to submit a public comment regarding the review of State Implementation Plans (SIPs) under the Clean Air Act. I urge the EPA to ensure that states fully consider the economic costs associated with carbon dioxide (CO2) emissions when developing and reviewing their SIPs.<br/><br/>It is a well-established principle that CO2 and other greenhouse gas (GHG) emissions have a significant economic impact. These costs, often referred to as the social cost of carbon, include damages from climate change-related events such as sea-level rise, extreme weather, and impacts on agriculture and human health. Incorporating these costs into the SIP review process is essential for a complete and accurate assessment of the benefits and drawbacks of proposed control strategies.<br/><br/>A particular area of concern is the potential for unintended consequences from emissions control strategies. For example, some combustion control methods designed to reduce volatile organic compounds (VOCs) may inadvertently increase CO2 emissions. While the reduction of VOCs is a crucial goal, a comprehensive analysis must weigh the benefits of reduced VOCs against the potential harm from increased GHG emissions. It is conceivable that in some cases, the long-term economic harm from additional CO2 could exceed the short-term benefits of reduced VOCs.<br/><br/>Therefore, I respectfully request that the EPA require states to include a detailed analysis of the GHG impacts, and the associated economic costs, of all proposed control measures in their SIPs. This would ensure a more holistic and economically sound approach to air quality management, one that fully accounts for the complex interplay between local air pollutants and global climate change.<br/><br/>Thank you for your time and consideration of this important matter.",
+      "commentOn": "09000064b8e9c55c",
+      "commentOnDocumentId": "EPA-R06-OAR-2020-0165-0010",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": null,
+      "docketId": "EPA-R06-OAR-2020-0165",
+      "documentType": "Public Submission",
+      "duplicateComments": 1,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": null,
+      "legacyId": null,
+      "modifyDate": "2025-08-13T23:00:34Z",
+      "objectId": "09000064b8ee1287",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 1,
+      "phone": null,
+      "postedDate": "2025-08-13T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-08-05T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Public Comment",
+      "title": "TX223.12 Anonymous public comment on EPA-R06-OAR-2020-0165-0010",
+      "trackingNbr": "mdy-tdap-smwl",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "EPA-R06-OAR-2020-0165-0012",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/EPA-R06-OAR-2020-0165-0012"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/EPA-R06-OAR-2020-0165-0012/attachments",
+          "self": "https://api.regulations.gov/v4/comments/EPA-R06-OAR-2020-0165-0012/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

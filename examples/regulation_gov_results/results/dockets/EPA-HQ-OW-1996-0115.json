@@ -1,0 +1,48 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Description",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Docket Subject, General Info, Related To, Summary."
+        },
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        },
+        {
+          "label": "Pre-EDOCKET ID",
+          "name": "organization",
+          "tooltip": "Identifies docket's (a regulatory action) orginating agency and/or department, equivalents: Division, and Organization."
+        }
+      ],
+      "dkAbstract": "Effluent Guidelines Plan",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OW",
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-09-11T14:24:35Z",
+      "objectId": "0b000064867d1c86",
+      "organization": "EGP (W-98-10)",
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Effluent Guidelines Plan (EGP)"
+    },
+    "id": "EPA-HQ-OW-1996-0115",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OW-1996-0115"
+    },
+    "type": "dockets"
+  }
+}

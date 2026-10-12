@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "DOJ",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": " Pursuant to the Administrative Procedure Act, the Department of Justice (\u2018\u2018the Department\u2019\u2019) is adopting a process for considering petitions submitted by interested persons requesting that the Department issue, amend, or repeal a rule.",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-10-06T12:43:58Z",
+      "objectId": "0b000064b93f2c08",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "1105-AB84",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Procedures for Submission and Consideration of Petitions for Rulemaking"
+    },
+    "id": "DOJ-OLP-2026-0166",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/DOJ-OLP-2026-0166"
+    },
+    "type": "dockets"
+  }
+}

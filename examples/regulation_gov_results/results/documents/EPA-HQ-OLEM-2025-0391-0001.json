@@ -1,0 +1,102 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "EPA",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2025-09-17T03:59:59Z",
+      "commentStartDate": "2025-08-07T04:00:00Z",
+      "country": null,
+      "displayProperties": [
+        {
+          "label": "Page Count",
+          "name": "pageCount",
+          "tooltip": "Number of pages In the content file"
+        }
+      ],
+      "docAbstract": "Federal Register for Thursday, August 7, 2025 (90 FR 38146) [FRL-12904-01-OLEM]",
+      "docketId": "EPA-HQ-OLEM-2025-0391",
+      "documentType": "Notice",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OLEM-2025-0391-0001/content.pdf",
+          "format": "pdf",
+          "size": 217006
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/EPA-HQ-OLEM-2025-0391-0001/content.html",
+          "format": "html",
+          "size": 13273
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2025-14977",
+      "frVolNum": "90",
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-10-03T09:00:15Z",
+      "objectId": "09000064b8eea4f9",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": "EPA_FRDOC_0001-32098",
+      "pageCount": 2,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-08-07T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-08-07T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": "38146 - 38147",
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Meeting",
+      "title": "Hazardous Waste Electronic Manifest System (\u2018\u2018e-Manifest\u2019\u2019) Advisory Board; Notice of Public Meeting",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "EPA-HQ-OLEM-2025-0391-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OLEM-2025-0391-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/EPA-HQ-OLEM-2025-0391-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/EPA-HQ-OLEM-2025-0391-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "DOI",
+      "category": null,
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2024-11-30T01:00:51Z",
+      "objectId": "0b000064860fb188",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Privacy Act of 1974; System of Records; Rescindment of Three System of Records Notices"
+    },
+    "id": "DOI-2023-0021",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/DOI-2023-0021"
+    },
+    "type": "dockets"
+  }
+}

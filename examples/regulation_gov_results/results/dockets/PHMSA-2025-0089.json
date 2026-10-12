@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "PHMSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Hazardous Materials: Reducing Burdens on Domestic Aerosol Shippers",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-08-07T12:02:01Z",
+      "objectId": "0b000064b8dc2cb8",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2137-AG03",
+      "shortTitle": null,
+      "subType": "Hazardous Materials",
+      "subType2": null,
+      "title": "Hazardous Materials: Reducing Burdens on Domestic Aerosol Shippers"
+    },
+    "id": "PHMSA-2025-0089",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/PHMSA-2025-0089"
+    },
+    "type": "dockets"
+  }
+}

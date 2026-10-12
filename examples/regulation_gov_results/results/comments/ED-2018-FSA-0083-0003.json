@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "category": null,
+      "city": "Seattle",
+      "comment": "See attached file(s).<br/><br/>Comment submitted on behalf of Colorado Attorney General Phil Weiser, New Jersey Attorney General Gurbir S. Grewal, Washington State Attorney General Bob Ferguson, California Attorney General Xavier Becerra, Connecticut Attorney General William Tong, District of Columbia Attorney General Karl A. Racine, Hawaii Attorney General Clare E. Connors, Illinois Attorney General Kwame Raoul, Iowa Attorney General Tom Miller, Maine Attorney General Aaron M. Frey, Maryland Attorney General Brian Frosh, Massachusetts Attorney General Maura Healey, Michigan Attorney General Dana Nessel, Minnesota Attorney General Keith Ellison, New Mexico Attorney General Hector Balderas, New York Attorney General Letitia A. James, North Carolina Attorney General Josh Stein, Oregon Attorney General Ellen F. Rosenblum, Pennsylvania Attorney General Josh Shapiro, and Virginia Attorney General Mark R. Herring.",
+      "commentOn": "0900006483e5f5bf",
+      "commentOnDocumentId": "ED-2018-FSA-0083-0001",
+      "country": "United States",
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2018-FSA-0083",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Ellen",
+      "govAgency": null,
+      "govAgencyType": "State",
+      "lastName": "Austin Hall",
+      "legacyId": null,
+      "modifyDate": "2023-04-27T20:55:30Z",
+      "objectId": "0900006483f794b6",
+      "openForComment": false,
+      "organization": "Washington State Attorney General's Office",
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2023-04-27T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2019-09-16T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": "WA",
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment on FR Doc # 2019-17615",
+      "trackingNbr": "1k3-9c7z-cect",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ED-2018-FSA-0083-0003",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ED-2018-FSA-0083-0003"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ED-2018-FSA-0083-0003/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ED-2018-FSA-0083-0003/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

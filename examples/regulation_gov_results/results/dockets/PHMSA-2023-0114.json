@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "PHMSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Docket Subject",
+          "name": "abstract",
+          "tooltip": "Describes an agency's specific regulatory action; equivalents: Abstract, Description, General Info, Related To, Summary."
+        },
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "Request for special permit for: EcoElectrica,  LNG Vacuum Jacketed (VJ) Piping System, Puerto Rico",
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-04-13T17:37:46Z",
+      "objectId": "0b0000648610bc74",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": "Pipeline Safety",
+      "subType2": null,
+      "title": "Eco Electrica LNG Special Permit Request LNG Vacuum Jacketed (VJ) Piping System"
+    },
+    "id": "PHMSA-2023-0114",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/PHMSA-2023-0114"
+    },
+    "type": "dockets"
+  }
+}

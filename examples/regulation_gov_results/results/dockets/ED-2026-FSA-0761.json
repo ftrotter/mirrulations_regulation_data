@@ -1,0 +1,32 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "ED",
+      "category": "NA",
+      "displayProperties": [],
+      "dkAbstract": null,
+      "docketType": "Nonrulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-06-08T18:56:36Z",
+      "objectId": "0b000064b9228695",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": null,
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Notice of a Modified System of Records"
+    },
+    "id": "ED-2026-FSA-0761",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/ED-2026-FSA-0761"
+    },
+    "type": "dockets"
+  }
+}

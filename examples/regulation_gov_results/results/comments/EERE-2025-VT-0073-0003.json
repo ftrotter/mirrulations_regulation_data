@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "EERE",
+      "category": null,
+      "city": null,
+      "comment": "See attached file(s)",
+      "commentOn": "09000064b91bd3d5",
+      "commentOnDocumentId": "EERE-2025-VT-0073-0002",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "EERE-2025-VT-0073",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Michael",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Ravnitzky",
+      "legacyId": null,
+      "modifyDate": "2026-02-21T02:41:40Z",
+      "objectId": "09000064b91c5bcc",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-02-20T05:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-02-18T05:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Public Comment",
+      "title": "2026-02-18  Comment response to the published Interim Final Rule",
+      "trackingNbr": "mlu-3f4l-gygj",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "EERE-2025-VT-0073-0003",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0003"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0003/attachments",
+          "self": "https://api.regulations.gov/v4/comments/EERE-2025-VT-0073-0003/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "EPA",
+      "category": null,
+      "displayProperties": [
+        {
+          "label": "Location",
+          "name": "generic",
+          "tooltip": "Agency specific program associated with a docket (regulatory action); equivalents: Bureau, Docket Item Code, Program Area."
+        },
+        {
+          "label": "Pre-EDOCKET ID",
+          "name": "organization",
+          "tooltip": "Identifies docket's (a regulatory action) orginating agency and/or department, equivalents: Division, and Organization."
+        }
+      ],
+      "dkAbstract": "Contact: Jennifer Wigal, USEPA/OW/OST, (202) 566-5384, HQ",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": "HQ-OW",
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2025-09-11T14:24:07Z",
+      "objectId": "0b000064800c804f",
+      "organization": "W-98-01",
+      "petitionNbr": null,
+      "program": null,
+      "rin": "Not Assigned",
+      "shortTitle": null,
+      "subType": null,
+      "subType2": null,
+      "title": "Revisions to Water Quality Standards"
+    },
+    "id": "EPA-HQ-OW-2005-0014",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/EPA-HQ-OW-2005-0014"
+    },
+    "type": "dockets"
+  }
+}

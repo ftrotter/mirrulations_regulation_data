@@ -1,0 +1,38 @@
+{
+  "data": {
+    "attributes": {
+      "agencyId": "PHMSA",
+      "category": "Pending",
+      "displayProperties": [
+        {
+          "label": "Disposition",
+          "name": "category",
+          "tooltip": "An agency specific docket category indicating the status of a regulatory action."
+        }
+      ],
+      "dkAbstract": "This docket is for a rulemaking on all aspects of anomaly remediation and repair, including the latest research, industry best practices, and lessons learned from accidents on hazardous liquid and carbon dioxide pipelines.  The rulemaking will also address repair and remediation requirements on pipeline segments determined to not potentially impact high-consequence areas (HCAs) in the event of a release, inspection of in-service breakout tanks, and assessment of dents on gas transmission lines.\n\n",
+      "docketType": "Rulemaking",
+      "effectiveDate": null,
+      "field1": null,
+      "field2": null,
+      "generic": null,
+      "keywords": null,
+      "legacyId": null,
+      "modifyDate": "2026-09-09T12:06:37Z",
+      "objectId": "0b00006486a0dd43",
+      "organization": null,
+      "petitionNbr": null,
+      "program": null,
+      "rin": "2137-AF44",
+      "shortTitle": null,
+      "subType": "Pipeline Safety",
+      "subType2": null,
+      "title": "Pipeline Safety:  Repair Criteria for Hazardous Liquid and Gas Transmission Pipelines"
+    },
+    "id": "PHMSA-2025-0019",
+    "links": {
+      "self": "https://api.regulations.gov/v4/dockets/PHMSA-2025-0019"
+    },
+    "type": "dockets"
+  }
+}

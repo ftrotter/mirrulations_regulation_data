@@ -1,0 +1,96 @@
+{
+  "data": {
+    "attributes": {
+      "additionalRins": null,
+      "address1": null,
+      "address2": null,
+      "agencyId": "MSPB",
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "category": null,
+      "cfrPart": null,
+      "city": null,
+      "comment": null,
+      "commentEndDate": "2025-09-26T03:59:59Z",
+      "commentStartDate": "2025-08-26T04:00:00Z",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": null,
+      "documentType": "Notice",
+      "effectiveDate": null,
+      "email": null,
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/MSPB-2025-0070-0001/content.pdf",
+          "format": "pdf",
+          "size": 216837
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/MSPB-2025-0070-0001/content.html",
+          "format": "html",
+          "size": 6713
+        }
+      ],
+      "firstName": null,
+      "frDocNum": "2025-16313",
+      "frVolNum": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "implementationDate": null,
+      "lastName": null,
+      "legacyId": null,
+      "media": null,
+      "modifyDate": "2025-08-26T16:29:35Z",
+      "objectId": "09000064b8f18f12",
+      "ombApproval": null,
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "phone": null,
+      "postedDate": "2025-08-26T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2025-08-26T04:00:00Z",
+      "regWriterInstruction": null,
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "stateProvinceRegion": null,
+      "subject": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Privacy Act; Systems of Records; Rescindment",
+      "topics": null,
+      "trackingNbr": null,
+      "withdrawn": false,
+      "withinCommentPeriod": false,
+      "zip": null
+    },
+    "id": "MSPB-2025-0070-0001",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/MSPB-2025-0070-0001"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/documents/MSPB-2025-0070-0001/attachments",
+          "self": "https://api.regulations.gov/v4/documents/MSPB-2025-0070-0001/relationships/attachments"
+        }
+      }
+    },
+    "type": "documents"
+  }
+}

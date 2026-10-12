@@ -1,0 +1,65 @@
+{
+  "data": {
+    "attributes": {
+      "address1": null,
+      "address2": null,
+      "agencyId": "ED",
+      "category": "Institutional and Loan Servicers",
+      "city": null,
+      "comment": "In keeping with the spirit of the responsible lending limits under OBBB, I recommend that &ldquo;adverse credit history&quot; include student loan repayment history (payment of principal) when the student owes more than the new limits and was built up over a more than 6-year period when applying for a Plus loan.   If for example a student today owes more than $157,500 that has built up over more than a 6-year period, across multiple institutions and/or degrees, with little to no record of any principal payments, that should be considered adverse credit  (non-payment over such an extended period is just as adverse as a delinquency or charge off). In most cases such borrowers have avoided default simply through back-to-back forbearances, consolidations, multiple enrollments and/or negatively amortizing IDR plans, but this does not demonstrate the ability to repay their existing loans, let alone a brand new one. <br/><br/>This will not prevent legacy students with a modest amount of loans, or those with continued enrollment in a recent program from finishing their current program but would prevent those who owe substantial amounts stemming multiple degrees over many years from piling on more loans they are unlikely to pay.  This makes the distinction between those who for example are on their first path towards finishing an MD from those who are working on their 5th or 6th online master&rsquo;s degree that doesn&rsquo;t add any employment value.<br/>",
+      "commentOn": "09000064b92c637f",
+      "commentOnDocumentId": "ED-2026-FSA-0760-0001",
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ED-2026-FSA-0760",
+      "documentType": "Public Submission",
+      "duplicateComments": 0,
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": null,
+      "firstName": "Anonymous",
+      "govAgency": null,
+      "govAgencyType": null,
+      "lastName": "Anonymous",
+      "legacyId": null,
+      "modifyDate": "2026-05-20T17:12:19Z",
+      "objectId": "09000064b92d7c97",
+      "openForComment": false,
+      "organization": null,
+      "originalDocumentId": null,
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-05-20T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-05-14T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": "Comment(s)",
+      "title": "Comment on FR Doc # 2026-07827",
+      "trackingNbr": "mp5-tcxc-j9ad",
+      "withdrawn": false,
+      "zip": null
+    },
+    "id": "ED-2026-FSA-0760-0002",
+    "links": {
+      "self": "https://api.regulations.gov/v4/comments/ED-2026-FSA-0760-0002"
+    },
+    "relationships": {
+      "attachments": {
+        "links": {
+          "related": "https://api.regulations.gov/v4/comments/ED-2026-FSA-0760-0002/attachments",
+          "self": "https://api.regulations.gov/v4/comments/ED-2026-FSA-0760-0002/relationships/attachments"
+        }
+      }
+    },
+    "type": "comments"
+  }
+}
