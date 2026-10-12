@@ -6,3 +6,6 @@ eyecite==2.7.8
 magentic[anthropic]==0.41.1
 pydantic>=2,<3
 pyyaml>=6,<7
+google-genai==2.29.0
+anthropic==1.13.0
+openai==3.28.0

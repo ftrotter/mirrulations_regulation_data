@@ -203,6 +203,86 @@ Use JSON output for scripts, monitoring, or CI:
   --json
 ```
 
+### Full-context Stage 4 with Gemini
+
+Stage 4 can submit independent reference batches against one explicitly cached,
+complete regulatory action using the official Google GenAI SDK. The default
+model is `gemini-3.1-pro-preview`, the premium Pro model currently available to
+new Gemini API accounts. It supports the target's long context, explicit
+caching, and structured output. Because this is a preview model, each run
+records the requested model and provider-returned model version.
+
+Install the pinned dependencies and set `GEMINI_API_KEY` in the process
+environment or an ignored credential file. Never commit the key. Start with one
+bounded smoke-test batch:
+
+```shell
+.venv/bin/python scripts/gemini_reference_linker.py \
+  --markdown-db data/markdown_db \
+  --maximum-api-calls 1 \
+  --batch-size 5 \
+  --maximum-concurrency 1 \
+  --dotenv .env
+```
+
+After reviewing the generated records, run all unresolved references:
+
+```shell
+.venv/bin/python scripts/gemini_reference_linker.py \
+  --markdown-db data/markdown_db \
+  --batch-size 10 \
+  --maximum-concurrency 3 \
+  --dotenv .env
+```
+
+The command is resumable. Valid records produced by the same model and target
+context hash are reused. Results are written to
+`metadata/reference_links/` and `stage004_backward_reference_links/`. Sidecars
+include the three relationship classes, primary and supporting targets,
+open-question IDs, normalized token/cache usage, latency, response IDs, and
+model version. The explicit Gemini cache is deleted after each run unless
+`--retain-cache` is supplied.
+
+Use the pipeline-status command to verify downloaded Stage 4 coverage:
+
+```shell
+.venv/bin/python scripts/pipeline_status.py --markdown-db data/markdown_db
+```
+
+### Cross-provider premium Stage 4 benchmarks
+
+Run Gemini, Claude, and OpenAI against the same canonical full target and strict
+response schema with the isolated premium linker. Current defaults are
+`gemini-3.1-pro-preview`, `claude-opus-5-5`, and `gpt-6-astra`:
+
+```shell
+.venv/bin/python scripts/premium_reference_linker.py \
+  --provider anthropic \
+  --markdown-db data/markdown_db \
+  --maximum-api-calls 1 \
+  --batch-size 5 \
+  --maximum-concurrency 1 \
+  --dotenv .env
+
+.venv/bin/python scripts/premium_reference_linker.py \
+  --provider openai \
+  --markdown-db data/markdown_db \
+  --maximum-api-calls 1 \
+  --batch-size 5 \
+  --maximum-concurrency 1 \
+  --dotenv .env
+```
+
+Benchmark outputs do not overwrite the selected production Stage 4 projection.
+They are stored by provider, model, and target-context hash beneath
+`metadata/reference_link_benchmarks/`. Every successful batch is atomically
+checkpointed before another batch must finish, so interrupted paid runs resume
+without losing completed results. Gemini uses a named explicit cache, Claude
+uses an explicit ephemeral prefix breakpoint, and OpenAI uses an explicit
+prefix breakpoint and stable cache key. Provider usage records preserve cache
+creation/write tokens, cache-read tokens, output tokens, and latency when the
+API exposes them.
+
 By default, known PID files are checked in `/tmp`. Override that location when
 pipeline processes use another runtime directory:
 
