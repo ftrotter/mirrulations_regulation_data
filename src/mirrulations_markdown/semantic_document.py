@@ -6,7 +6,7 @@ import re
 
 
 SEMANTIC_TYPES = (
-    "section", "paragraph", "list-item", "quotation", "label", "table"
+    "section", "paragraph", "list", "quotation", "label", "table"
 )
 HEADING_PATTERN = re.compile(
     r"^(?:[IVXLCDM]+\.|[A-Z]\.|\d+(?:\.\d+)*\.?)\s+\S+", re.IGNORECASE
@@ -35,6 +35,8 @@ class _SemanticHTMLParser(HTMLParser):
         self.current_row = []
         self.current_cell = []
         self.in_table = False
+        self.in_preformatted = False
+        self.preformatted_buffer = []
 
     def _flush(self, *, type_hint=None):
         text = re.sub(r"[ \t]+", " ", "".join(self.buffer)).strip()
@@ -45,7 +47,13 @@ class _SemanticHTMLParser(HTMLParser):
 
     def handle_starttag(self, tag, _attributes):
         tag = tag.lower()
-        if tag == "br":
+        if tag == "pre":
+            self._flush()
+            self.in_preformatted = True
+            self.preformatted_buffer = []
+        elif self.in_preformatted:
+            return
+        elif tag == "br":
             self._flush()
         elif tag in {"p", "div", "section", "address"}:
             self._flush()
@@ -68,7 +76,17 @@ class _SemanticHTMLParser(HTMLParser):
 
     def handle_endtag(self, tag):
         tag = tag.lower()
-        if tag in {"p", "div", "section", "address", "li", "blockquote"} or tag.startswith("h"):
+        if tag == "pre" and self.in_preformatted:
+            preformatted_text = "".join(self.preformatted_buffer)
+            for paragraph in re.split(r"\n[ \t]*\n+", preformatted_text):
+                normalized_paragraph = re.sub(r"\s+", " ", paragraph).strip()
+                if normalized_paragraph:
+                    self.units.append({"text": normalized_paragraph, "type_hint": None})
+            self.preformatted_buffer = []
+            self.in_preformatted = False
+        elif self.in_preformatted:
+            return
+        elif tag in {"p", "div", "section", "address", "li", "blockquote"} or tag.startswith("h"):
             self._flush()
         elif tag in {"td", "th"} and self.in_table:
             self.current_row.append(re.sub(r"\s+", " ", "".join(self.current_cell)).strip())
@@ -82,7 +100,9 @@ class _SemanticHTMLParser(HTMLParser):
             self.table_rows = []
 
     def handle_data(self, data):
-        if self.in_table and self.current_cell is not None:
+        if self.in_preformatted:
+            self.preformatted_buffer.append(data)
+        elif self.in_table and self.current_cell is not None:
             self.current_cell.append(data)
         else:
             parts = re.split(r"\n[ \t]*\n+", data)
@@ -101,6 +121,8 @@ def _classify_unit(*, unit):
     hint = unit.get("type_hint")
     if hint == "table":
         return "table", text
+    if hint == "list-item":
+        return "list-item", text
     if hint in SEMANTIC_TYPES:
         return hint, text
     if text.startswith(("•", "▪", "●", "- ", "* ")):
@@ -116,8 +138,35 @@ def assign_semantic_ids(*, units):
     counters = {block_type: 0 for block_type in SEMANTIC_TYPES}
     blocks = []
     parent_section_id = None
-    for order, unit in enumerate(units, start=1):
+    classified_units = []
+    for unit in units:
         block_type, text = _classify_unit(unit=unit)
+        if text in {"￿", "\uffff", "�"}:
+            continue
+        classified_units.append((block_type, text, unit))
+    grouped_units = []
+    index = 0
+    while index < len(classified_units):
+        block_type, text, unit = classified_units[index]
+        if block_type != "list-item":
+            grouped_units.append((block_type, text, unit))
+            index += 1
+            continue
+        items = []
+        list_metadata = []
+        while index < len(classified_units):
+            item_type, item_text, item_unit = classified_units[index]
+            if item_type != "list-item":
+                break
+            if item_text:
+                items.append(item_text)
+                list_metadata.append(item_unit)
+            index += 1
+        grouped_units.append((
+            "list", "\n".join(f"- {item}" for item in items),
+            {"items": items, "item_units": list_metadata},
+        ))
+    for order, (block_type, text, unit) in enumerate(grouped_units, start=1):
         counters[block_type] += 1
         block_id = f"{block_type}-{counters[block_type]:04d}"
         block = {
@@ -134,6 +183,24 @@ def assign_semantic_ids(*, units):
             block["heading_level"] = 2
         if block_type == "table":
             block["rows"] = unit["rows"]
+        if block_type == "list":
+            block["items"] = unit["items"]
+            item_metadata = [
+                item_unit.get("alignment_metadata", {})
+                for item_unit in unit.get("item_units", [])
+            ]
+            for start_key, end_key in (
+                ("source_start", "source_end"),
+                ("page_start", "page_end"),
+            ):
+                starts = [metadata[start_key] for metadata in item_metadata if metadata.get(start_key) is not None]
+                ends = [metadata[end_key] for metadata in item_metadata if metadata.get(end_key) is not None]
+                if starts:
+                    block[start_key] = min(starts)
+                if ends:
+                    block[end_key] = max(ends)
+        else:
+            block.update(unit.get("alignment_metadata", {}))
         blocks.append(block)
     return blocks
 
@@ -166,8 +233,6 @@ def aligned_to_semantic_blocks(*, aligned_blocks):
             unit["rows"] = aligned_block["rows"]
         units.append(unit)
     blocks = assign_semantic_ids(units=units)
-    for block, unit in zip(blocks, units):
-        block.update(unit["alignment_metadata"])
     return blocks
 
 
@@ -186,8 +251,8 @@ def render_semantic_markdown(*, blocks, text_renderer=None):
         rendered.append("")
         if block["block_type"] == "section":
             rendered.append(f"## {text}")
-        elif block["block_type"] == "list-item":
-            rendered.append(f"- {text}")
+        elif block["block_type"] == "list":
+            rendered.extend(f"- {item}" for item in block.get("items", []))
         elif block["block_type"] == "quotation":
             rendered.append(f"> {text}")
         elif block["block_type"] == "label":

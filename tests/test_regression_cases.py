@@ -34,7 +34,7 @@ class RegressionCaseManifestTest(unittest.TestCase):
                     all(
                         block["plain_text"].strip()
                         for block in blocks
-                        if block["block_type"] == "list-item"
+                        if block["block_type"] == "list"
                     )
                 )
                 self.assertNotIn("\n- \n", markdown)

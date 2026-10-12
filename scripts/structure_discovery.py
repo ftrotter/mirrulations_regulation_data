@@ -15,7 +15,9 @@ sys.path.insert(0, str(REPOSITORY_ROOT / "src"))
 from mirrulations_markdown.structure_configuration import (  # noqa: E402
     load_structure_configuration,
 )
-from mirrulations_markdown.structure_pipeline import StructureDiscoveryPipeline  # noqa: E402
+from mirrulations_markdown.contextual_structure_pipeline import (  # noqa: E402
+    ContextualStructureDiscoveryPipeline,
+)
 
 
 def main():
@@ -24,12 +26,20 @@ def main():
     parser.add_argument("--configuration", required=True)
     parser.add_argument("--document-limit", type=int)
     parser.add_argument("--source-object-key")
+    parser.add_argument("--source-object-keys-json")
     parser.add_argument("--source-object-prefix")
     parser.add_argument("--maximum-api-calls", type=int, default=1)
     parser.add_argument(
         "--requests-per-second", type=float, default=1.0,
         help="Positive float; 0.5 means one request every two seconds.",
     )
+    parser.add_argument(
+        "--maximum-concurrency", type=int, default=1,
+        help="Maximum number of simultaneous paid LLM requests.",
+    )
+    parser.add_argument("--maximum-owned-blocks", type=int, default=20)
+    parser.add_argument("--maximum-segment-characters", type=int, default=20000)
+    parser.add_argument("--unstructured-owned-blocks", type=int, default=10)
     parser.add_argument("--dotenv", help="Ignored local credential file to load.")
     arguments = parser.parse_args()
     try:
@@ -37,6 +47,8 @@ def main():
             raise ValueError("--maximum-api-calls must be at least 1")
         if arguments.requests_per_second <= 0:
             raise ValueError("--requests-per-second must be greater than zero")
+        if arguments.maximum_concurrency < 1:
+            raise ValueError("--maximum-concurrency must be at least 1")
         if arguments.dotenv:
             dotenv_path = Path(arguments.dotenv).expanduser().resolve()
             if not dotenv_path.is_file():
@@ -47,47 +59,52 @@ def main():
         )
         def print_progress(event):
             event_name = event["event"]
-            if event_name == "document_started":
+            if event_name == "segment_started":
                 print(
-                    f"Document {event['document_number']} started: "
-                    f"{event['source_object_key']} ({event['block_count']} blocks)",
-                    flush=True,
-                )
-            elif event_name == "api_call_started":
-                print(
-                    f"  API call {event['api_call_number']} started for "
-                    f"{event['block_id']} at {event['requests_per_second']} req/s",
-                    flush=True,
-                )
-            elif event_name == "api_call_completed":
-                print(
-                    f"  Completed {event['block_id']} "
-                    f"({event['completed_tasks']} tasks, {event['api_calls']} calls)",
-                    flush=True,
-                )
-            elif event_name == "block_reused":
-                print(f"  Reused {event['block_id']} from cache", flush=True)
-            elif event_name == "document_excluded":
-                print(
-                    f"  Excluded: {event['exclusion_reason']}",
+                    f"Segment call {event['api_calls']} started: "
+                    f"{event['source_object_key']} / {event['segment_id']} "
+                    f"({event['owned_block_count']} owned blocks)",
                     flush=True,
                 )
             elif event_name == "document_completed":
                 print(
-                    f"Document {event['document_number']} complete: "
-                    f"{event['api_calls']} calls, {event['reused_tasks']} reused, "
-                    f"{event['failed_task_count']} failures",
+                    f"Document complete: {event['source_object_key']} "
+                    f"({event['api_calls']} calls, "
+                    f"{event['failed_task_count']} failures)",
                     flush=True,
                 )
 
-        result = StructureDiscoveryPipeline.run(
+        selected_source_keys = (
+            [arguments.source_object_key] if arguments.source_object_key else []
+        )
+        if arguments.source_object_keys_json:
+            selected_source_keys.extend(json.loads(
+                Path(arguments.source_object_keys_json).expanduser().resolve().read_text(
+                    encoding="utf-8"
+                )
+            ))
+        if arguments.source_object_prefix:
+            blocks_root = (
+                Path(arguments.markdown_db).expanduser().resolve()
+                / "metadata" / "blocks"
+            )
+            selected_source_keys.extend(
+                __import__("json").loads(path.read_text())["asset"]["source_object_key"]
+                for path in blocks_root.glob("*.json")
+                if __import__("json").loads(path.read_text())["asset"]["source_object_key"].startswith(
+                    arguments.source_object_prefix
+                )
+            )
+        result = ContextualStructureDiscoveryPipeline.run(
             markdown_db_path=Path(arguments.markdown_db).expanduser().resolve(),
             configuration=configuration,
-            document_limit=arguments.document_limit,
-            source_object_key=arguments.source_object_key,
-            source_object_prefix=arguments.source_object_prefix,
+            source_object_keys=selected_source_keys,
             maximum_api_calls=arguments.maximum_api_calls,
             requests_per_second=arguments.requests_per_second,
+            maximum_concurrency=arguments.maximum_concurrency,
+            maximum_owned_blocks=arguments.maximum_owned_blocks,
+            maximum_segment_characters=arguments.maximum_segment_characters,
+            unstructured_owned_blocks=arguments.unstructured_owned_blocks,
             progress_callback=print_progress,
         )
     except ValueError as error:

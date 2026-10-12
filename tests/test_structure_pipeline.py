@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+import threading
+import time
 import unittest
 from unittest import mock
 
@@ -22,6 +24,7 @@ from mirrulations_markdown.structure_pipeline import (  # noqa: E402
     StructureDiscoveryPipeline,
     document_eligibility,
     is_attachment_placeholder,
+    reference_detection_eligible,
 )
 
 
@@ -36,6 +39,28 @@ def _configuration(*, max_pages=50, summary_mode="deep"):
 
 
 class EligibilityTest(unittest.TestCase):
+    def test_excludes_administrative_blocks_from_reference_detection(self):
+        for text in (
+            "Attention: Docket ID: CMS-2026-1255",
+            "Reference: Section III.E of CMS-0062-P",
+            "RE: Comments on the Proposed Rule CMS-0062-P",
+            "Dear Administrator:",
+            "Respectfully submitted,",
+        ):
+            with self.subTest(text=text):
+                self.assertFalse(reference_detection_eligible(block={
+                    "block_type": "paragraph", "plain_text": text,
+                }))
+
+    def test_keeps_substantive_provision_response_eligible(self):
+        self.assertTrue(reference_detection_eligible(block={
+            "block_type": "paragraph",
+            "plain_text": (
+                "The proposed seven-day decision deadline is too long for "
+                "urgent biologic medications."
+            ),
+        }))
+
     def test_identifies_attachment_only_placeholder_variants(self):
         for text in (
             "See attached",
@@ -473,6 +498,54 @@ class StructurePipelineTest(unittest.TestCase):
             self.assertEqual(
                 2,
                 sum(event["event"] == "api_call_completed" for event in events),
+            )
+
+    def test_bounded_concurrency_overlaps_calls_and_preserves_annotation_order(self):
+        active_calls = 0
+        maximum_active_calls = 0
+        lock = threading.Lock()
+
+        async def concurrent_caller(**_kwargs):
+            nonlocal active_calls, maximum_active_calls
+            with lock:
+                active_calls += 1
+                maximum_active_calls = max(maximum_active_calls, active_calls)
+            await __import__("asyncio").sleep(0.05)
+            with lock:
+                active_calls -= 1
+            return PassageEnrichment(
+                summary="This is a complete summary.", backward_references=[]
+            )
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            markdown_db_path, *_rest = self._create_corpus(
+                root_path=Path(temporary_directory)
+            )
+            block_path = next((markdown_db_path / "metadata/blocks").glob("*.json"))
+            record = json.loads(block_path.read_text(encoding="utf-8"))
+            for number in range(2, 5):
+                record["blocks"].append({
+                    "block_id": f"paragraph-{number:04d}",
+                    "block_type": "paragraph", "plain_text": f"Passage {number}.",
+                    "heading_context": [],
+                })
+            block_path.write_text(json.dumps(record), encoding="utf-8")
+            status = StructureDiscoveryPipeline.run(
+                markdown_db_path=markdown_db_path,
+                configuration=_configuration(), passage_caller=concurrent_caller,
+                requests_per_second=1000, maximum_concurrency=2,
+            )
+            self.assertEqual(4, status["api_calls"])
+            self.assertEqual(2, maximum_active_calls)
+            sidecar = next(
+                (markdown_db_path / "metadata/structure_discovery/annotations").glob("*.json")
+            )
+            block_ids = [
+                annotation["block_id"]
+                for annotation in json.loads(sidecar.read_text())["annotations"]
+            ]
+            self.assertEqual(
+                [f"paragraph-{number:04d}" for number in range(1, 5)], block_ids
             )
 
     def test_rejects_nonpositive_request_rate(self):

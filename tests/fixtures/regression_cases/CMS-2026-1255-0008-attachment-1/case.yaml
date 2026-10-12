@@ -30,7 +30,7 @@ expected:
   - \x00
   - <a id="p-
   required_patterns:
-  - <a id="list-item-0001"></a>
+  - <a id="list-0001"></a>
   - Step therapy sequences documented in published coverage policies that are inconsistently
     enforced in practice, with some insurers approving requests that bypass stated requirements
     while denying others that appear to satisfy them.

@@ -2,7 +2,7 @@
 
 import re
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 SUPPORTED_PROVIDERS = ("openai", "anthropic", "google")
@@ -104,6 +104,69 @@ class PassageEnrichment(BaseModel):
         if normalized_value.count(".") + normalized_value.count("!") + normalized_value.count("?") < 1:
             raise ValueError("structure_models.py Error: summary must be a complete sentence")
         return normalized_value
+
+
+class SegmentBlockEnrichment(BaseModel):
+    """Reference findings for one owned block inside a contextual segment."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    block_id: str = Field(min_length=1)
+    backward_references: list[BackwardReference] = Field(default_factory=list)
+
+
+class SegmentEnrichment(BaseModel):
+    """Strict response for one coherent document segment."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    section_summary: str | None = None
+    block_results: list[SegmentBlockEnrichment]
+
+    @field_validator("section_summary")
+    @classmethod
+    def validate_optional_summary(cls, value):
+        if value is None:
+            return value
+        normalized_value = value.strip()
+        if normalized_value.count(".") + normalized_value.count("!") + normalized_value.count("?") < 1:
+            raise ValueError(
+                "structure_models.py Error: section summary must be a complete sentence"
+            )
+        return normalized_value
+
+
+class ReferenceLinkAssessment(BaseModel):
+    """Strict assessment of retrieved regulatory-action candidate blocks."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    target_block_ids: list[str] = Field(default_factory=list)
+    confidence: str
+    rationale: str = Field(min_length=1)
+
+    @field_validator("confidence")
+    @classmethod
+    def validate_confidence(cls, value):
+        normalized_value = value.strip().lower()
+        if normalized_value not in {"high", "medium", "low", "no-match"}:
+            raise ValueError(
+                "structure_models.py Error: linker confidence must be high, "
+                "medium, low, or no-match"
+            )
+        return normalized_value
+
+    @model_validator(mode="after")
+    def validate_match_consistency(self):
+        if not self.target_block_ids and self.confidence != "no-match":
+            raise ValueError(
+                "structure_models.py Error: empty linker targets require no-match confidence"
+            )
+        if self.target_block_ids and self.confidence == "no-match":
+            raise ValueError(
+                "structure_models.py Error: selected linker targets cannot use no-match confidence"
+            )
+        return self
 
 class DocumentEligibility(BaseModel):
     model_config = ConfigDict(extra="forbid")

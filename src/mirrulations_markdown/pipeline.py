@@ -418,6 +418,12 @@ class MarkdownPipeline:
             blocks = html_to_semantic_blocks(html_text=comment_html)
             for block in blocks:
                 block["normalization"] = normalization
+        elif asset["source_suffix"] in {".htm", ".html"}:
+            blocks = html_to_semantic_blocks(
+                html_text=source_path.read_text(encoding="utf-8", errors="replace")
+            )
+            for block in blocks:
+                block["normalization"] = normalization
         elif pairing and pairing["status"] in {"available-docx", "available-pdf"}:
             canonical_text = source_path.read_text(encoding="utf-8", errors="replace")
             structural_path = source_root / pairing["structural_source_object_key"]

@@ -7,5 +7,5 @@ reference_model:
 summary_mode: sections
 max_comment_pages: 50
 characters_per_estimated_page: 3000
-summary_prompt_version: 2
-reference_prompt_version: 3
+summary_prompt_version: 3
+reference_prompt_version: 5

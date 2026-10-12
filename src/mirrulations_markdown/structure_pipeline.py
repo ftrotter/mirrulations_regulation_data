@@ -1,6 +1,7 @@
 """Stage 3 summaries and backward-reference descriptions."""
 
 import asyncio
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 import json
 import math
@@ -20,6 +21,19 @@ ATTACHMENT_PLACEHOLDER_PATTERN = re.compile(
     r"^(?:please\s+)?see\s+(?:the\s+)?attached\b.{0,190}$",
     re.IGNORECASE,
 )
+ADMINISTRATIVE_REFERENCE_PATTERN = re.compile(
+    r"^(?:"
+    r"attention\s*:|"
+    r"docket(?:\s+id)?\s*:|"
+    r"re\s*:|"
+    r"reference\s*:|"
+    r"subject\s*:|"
+    r"dear\s+(?:administrator|secretary|sir|madam|to whom)|"
+    r"respectfully(?:\s+submitted)?\s*,?$|"
+    r"sincerely\s*,?$"
+    r")",
+    re.IGNORECASE,
+)
 
 
 def is_attachment_placeholder(*, text):
@@ -27,6 +41,16 @@ def is_attachment_placeholder(*, text):
     if len(normalized_text) > 220:
         return False
     return bool(ATTACHMENT_PLACEHOLDER_PATTERN.fullmatch(normalized_text))
+
+
+def reference_detection_eligible(*, block):
+    """Exclude administrative text that cannot identify a substantive provision."""
+    if block["block_type"] not in {"paragraph", "list", "quotation", "table"}:
+        return False
+    normalized_text = re.sub(r"\s+", " ", block["plain_text"]).strip()
+    if not normalized_text or ADMINISTRATIVE_REFERENCE_PATTERN.match(normalized_text):
+        return False
+    return True
 
 
 def _submission_id(*, source_object_key):
@@ -93,6 +117,58 @@ def _task_hash(*, source_hash, block, configuration_hash, task_type):
     return hashlib.sha256(identity.encode("utf-8")).hexdigest()
 
 
+def _call_and_build_annotation(
+    *, caller, configuration, asset, block, index, has_heading,
+    target_registry, allowed_targets_by_key, reference_check_requested,
+    summary_requested, task_hash
+):
+    result = asyncio.run(caller(
+        model_spec=configuration.summary_model,
+        document_type=asset.get("selection_reason", "document"),
+        heading_context=" / ".join(block.get("heading_context", [])),
+        passage_id=block["block_id"], source_text=block["plain_text"],
+        allowed_targets=target_registry,
+    ))
+    structured_references = []
+    if reference_check_requested:
+        for reference in result.backward_references:
+            if reference.target_key not in allowed_targets_by_key:
+                raise ValueError(
+                    "structure_pipeline.py Error: model returned unknown target key "
+                    f"{reference.target_key!r}"
+                )
+            structured_references.append({
+                "source_block_id": block["block_id"],
+                "target_key": reference.target_key,
+                "target": allowed_targets_by_key[reference.target_key],
+                "search_description": reference.search_description,
+            })
+    return {
+        "block_id": block["block_id"], "task_hash": task_hash,
+        "summary_task_hash": _task_hash(
+            source_hash=asset["source_sha256"], block=block,
+            configuration_hash=f"summary-prompt-{configuration.summary_prompt_version}",
+            task_type="summary",
+        ),
+        "reference_task_hash": _task_hash(
+            source_hash=asset["source_sha256"], block=block,
+            configuration_hash=(
+                f"reference-prompt-{configuration.reference_prompt_version}|"
+                + json.dumps(target_registry, sort_keys=True)
+            ), task_type="targeted-reference",
+        ),
+        "task_status": "complete", "summary": result.summary,
+        "backward_references": structured_references,
+        "reference_check_requested": reference_check_requested,
+        "render_summary": summary_requested,
+        "placement": (
+            "before-block"
+            if configuration.summary_mode == "sections" and not has_heading and index == 0
+            else "after-block"
+        ),
+    }
+
+
 def _render_stage_3(*, stage_2_text, annotations, eligibility, configuration):
     status = "complete" if eligibility.eligible else eligibility.exclusion_reason
     status_block = (
@@ -111,7 +187,7 @@ def _render_stage_3(*, stage_2_text, annotations, eligibility, configuration):
         return rendered
     annotation_by_block = {item["block_id"]: item for item in annotations}
     anchor_pattern = re.compile(
-        r'<a id="(?P<block_id>(?:section|paragraph|list-item|quotation|label|table)-\d{4})"></a>'
+        r'<a id="(?P<block_id>(?:section|paragraph|list|quotation|label|table)-\d{4})"></a>'
     )
     matches = list(anchor_pattern.finditer(rendered))
     for match in reversed(matches):
@@ -149,11 +225,15 @@ class StructureDiscoveryPipeline:
         *, markdown_db_path, configuration, passage_caller=None,
         document_limit=None, source_object_key=None, maximum_api_calls=None,
         requests_per_second=1.0, progress_callback=None, sleeper=None,
-        clock=None, source_object_prefix=None,
+        clock=None, source_object_prefix=None, maximum_concurrency=1,
     ):
         if requests_per_second <= 0:
             raise ValueError(
                 "structure_pipeline.py Error: requests_per_second must be greater than zero"
+            )
+        if maximum_concurrency < 1:
+            raise ValueError(
+                "structure_pipeline.py Error: maximum_concurrency must be at least one"
             )
         caller = passage_caller or MagenticPassageCaller.call
         if passage_caller is None:
@@ -254,10 +334,13 @@ class StructureDiscoveryPipeline:
                 allowed_targets_by_key = {
                     target["target_key"]: target for target in target_registry
                 }
+                pending_tasks = []
+                block_order = {
+                    block["block_id"]: index
+                    for index, block in enumerate(block_record["blocks"])
+                }
                 for index, block in enumerate(block_record["blocks"]):
-                    reference_check_requested = block["block_type"] in {
-                        "paragraph", "list-item", "quotation", "table"
-                    }
+                    reference_check_requested = reference_detection_eligible(block=block)
                     summary_requested = (
                         configuration.summary_mode == "deep"
                         or block["block_type"] == "section"
@@ -293,88 +376,73 @@ class StructureDiscoveryPipeline:
                             ),
                         })
                         break
-                    try:
+                    pending_tasks.append({
+                        "index": index, "block": block, "task_hash": task_hash,
+                        "reference_check_requested": reference_check_requested,
+                        "summary_requested": summary_requested,
+                    })
+                futures = {}
+                with ThreadPoolExecutor(max_workers=maximum_concurrency) as executor:
+                    for task in pending_tasks:
+                        if maximum_api_calls is not None and api_calls >= maximum_api_calls:
+                            failed_tasks.append({
+                                "source_object_key": asset["source_object_key"],
+                                "block_id": task["block"]["block_id"],
+                                "error": (
+                                    "structure_pipeline.py Error: API call budget exhausted "
+                                    f"at {maximum_api_calls} calls"
+                                ),
+                            })
+                            continue
                         if last_request_at is not None:
                             elapsed_since_request = selected_clock() - last_request_at
                             required_interval = 1.0 / requests_per_second
                             if elapsed_since_request < required_interval:
                                 selected_sleeper(required_interval - elapsed_since_request)
+                        api_calls += 1
+                        last_request_at = selected_clock()
                         if progress_callback:
                             progress_callback({
                                 "event": "api_call_started",
                                 "source_object_key": asset["source_object_key"],
-                                "block_id": block["block_id"],
-                                "api_call_number": api_calls + 1,
+                                "block_id": task["block"]["block_id"],
+                                "api_call_number": api_calls,
                                 "requests_per_second": requests_per_second,
                             })
-                        api_calls += 1
-                        last_request_at = selected_clock()
-                        result = asyncio.run(caller(
-                            model_spec=configuration.summary_model,
-                            document_type=asset.get("selection_reason", "document"),
-                            heading_context=" / ".join(block.get("heading_context", [])),
-                            passage_id=block["block_id"], source_text=block["plain_text"],
-                            allowed_targets=target_registry,
-                        ))
-                        structured_references = []
-                        if reference_check_requested:
-                            for reference in result.backward_references:
-                                if reference.target_key not in allowed_targets_by_key:
-                                    raise ValueError(
-                                        "structure_pipeline.py Error: model returned "
-                                        f"unknown target key {reference.target_key!r}"
-                                    )
-                                structured_references.append({
-                                    "source_block_id": block["block_id"],
-                                    "target_key": reference.target_key,
-                                    "target": allowed_targets_by_key[reference.target_key],
-                                    "search_description": reference.search_description,
+                        future = executor.submit(
+                            _call_and_build_annotation,
+                            caller=caller, configuration=configuration, asset=asset,
+                            block=task["block"], index=task["index"],
+                            has_heading=has_heading, target_registry=target_registry,
+                            allowed_targets_by_key=allowed_targets_by_key,
+                            reference_check_requested=task["reference_check_requested"],
+                            summary_requested=task["summary_requested"],
+                            task_hash=task["task_hash"],
+                        )
+                        futures[future] = task["block"]
+                    for future in as_completed(futures):
+                        block = futures[future]
+                        try:
+                            annotations.append(future.result())
+                            completed_tasks += 1
+                            if progress_callback:
+                                progress_callback({
+                                    "event": "api_call_completed",
+                                    "source_object_key": asset["source_object_key"],
+                                    "block_id": block["block_id"],
+                                    "completed_tasks": completed_tasks,
+                                    "api_calls": api_calls,
                                 })
-                        annotation = {
-                            "block_id": block["block_id"], "task_hash": task_hash,
-                            "summary_task_hash": _task_hash(
-                                source_hash=asset["source_sha256"], block=block,
-                                configuration_hash=(
-                                    f"summary-prompt-{configuration.summary_prompt_version}"
-                                ), task_type="summary",
-                            ),
-                            "reference_task_hash": _task_hash(
-                                source_hash=asset["source_sha256"], block=block,
-                                configuration_hash=(
-                                    f"reference-prompt-{configuration.reference_prompt_version}|"
-                                    + json.dumps(target_registry, sort_keys=True)
-                                ), task_type="targeted-reference",
-                            ),
-                            "task_status": "complete", "summary": result.summary,
-                            "backward_references": structured_references,
-                            "reference_check_requested": reference_check_requested,
-                            "render_summary": summary_requested,
-                            "placement": (
-                                "before-block"
-                                if configuration.summary_mode == "sections"
-                                and not has_heading and index == 0
-                                else "after-block"
-                            ),
-                        }
-                        annotations.append(annotation)
-                        completed_tasks += 1
-                        if progress_callback:
-                            progress_callback({
-                                "event": "api_call_completed",
+                        except Exception as error:
+                            failed_tasks.append({
                                 "source_object_key": asset["source_object_key"],
                                 "block_id": block["block_id"],
-                                "completed_tasks": completed_tasks,
-                                "api_calls": api_calls,
+                                "error": (
+                                    "structure_pipeline.py Error: model call failed "
+                                    f"validation with {type(error).__name__}"
+                                ),
                             })
-                    except Exception as error:
-                        failed_tasks.append({
-                            "source_object_key": asset["source_object_key"],
-                            "block_id": block["block_id"],
-                            "error": (
-                                "structure_pipeline.py Error: model call failed "
-                                f"validation with {type(error).__name__}"
-                            ),
-                        })
+                annotations.sort(key=lambda item: block_order[item["block_id"]])
             else:
                 excluded_documents += 1
                 annotations = []
