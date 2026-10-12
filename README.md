@@ -2,6 +2,11 @@
 A repository with instructions for accessing data from the mirrulations project. 
 Tries to stay up to date with mirrulations directory structures.
 
+See
+[`RegulationsGovRegulatoryProcessMetadata.md`](RegulationsGovRegulatoryProcessMetadata.md)
+for the evidence-based guide to Regulations.gov dockets, documents, comments,
+regulatory stages, supporting artifacts, and System of Records Notices.
+
 ## S3 Access
 The Mirrulations project publishes its results at the following S3 Bucket. 
 

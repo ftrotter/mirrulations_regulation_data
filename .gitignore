@@ -1,7 +1,10 @@
 
 
 # Downloaded source records and generated corpus artifacts
-/data/
+/data/*
+!/data/regulations_gov_research/
+/data/regulations_gov_research/*
+!/data/regulations_gov_research/evidence_summary.json
 
 # typical stuff and configuration files
 .DS_Store
