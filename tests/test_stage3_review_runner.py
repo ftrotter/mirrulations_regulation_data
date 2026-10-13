@@ -38,6 +38,25 @@ def _record(*, source_object_key, role):
 
 
 class Stage3ReviewRunnerTest(unittest.TestCase):
+    def test_provider_error_details_preserve_actionable_billing_message(self):
+        class ProviderError(Exception):
+            status_code = 402
+            body = [{"error": {
+                "code": 402,
+                "status": "RESOURCE_EXHAUSTED",
+                "message": (
+                    "Credits depleted. Manage billing at "
+                    "https://ai.studio/projects"
+                ),
+                "internal_request": "must not be persisted",
+            }}]
+
+        details = Stage3ReviewRunner._provider_error_details(error=ProviderError())
+        self.assertEqual(402, details["http_status"])
+        self.assertEqual("RESOURCE_EXHAUSTED", details["status"])
+        self.assertIn("https://ai.studio/projects", details["message"])
+        self.assertNotIn("internal_request", details)
+
     def test_selection_is_deterministic_and_includes_every_role(self):
         records = [
             *[
@@ -51,7 +70,8 @@ class Stage3ReviewRunnerTest(unittest.TestCase):
                 )
                 for number in range(7)
             ],
-            _record(source_object_key="documents/rule.html", role="regulatory_document"),
+            _record(source_object_key="documents/rule-1.html", role="regulatory_document"),
+            _record(source_object_key="documents/rule-2.html", role="regulatory_document"),
         ]
         _eligible, first = Stage3ReviewRunner.select_cohort(
             block_records=records, configuration=_configuration(), sample_fraction=0.20
@@ -65,8 +85,34 @@ class Stage3ReviewRunnerTest(unittest.TestCase):
         self.assertEqual(first_keys, second_keys)
         self.assertEqual(4, len(first))
         self.assertEqual(
+            {"documents/rule-1.html", "documents/rule-2.html"},
+            {
+                record["asset"]["source_object_key"] for record in first
+                if record["document_metadata"]["logical_document_role"]
+                == "regulatory_document"
+            },
+        )
+        self.assertEqual(
             {"form_comment", "comment_attachment", "regulatory_document"},
             {record["document_metadata"]["logical_document_role"] for record in first},
+        )
+
+        excluded_nonregulatory_keys = {
+            record["asset"]["source_object_key"] for record in first
+            if record["document_metadata"]["logical_document_role"]
+            != "regulatory_document"
+        }
+        _eligible, continuation = Stage3ReviewRunner.select_cohort(
+            block_records=records, configuration=_configuration(), sample_fraction=0.20,
+            excluded_nonregulatory_source_keys=excluded_nonregulatory_keys,
+        )
+        continuation_nonregulatory_keys = {
+            record["asset"]["source_object_key"] for record in continuation
+            if record["document_metadata"]["logical_document_role"]
+            != "regulatory_document"
+        }
+        self.assertTrue(
+            excluded_nonregulatory_keys.isdisjoint(continuation_nonregulatory_keys)
         )
 
     def test_preflight_failure_writes_report_before_stage_three_changes(self):
@@ -106,6 +152,18 @@ class Stage3ReviewRunnerTest(unittest.TestCase):
             )
             self.assertEqual("failed", report["status"])
             self.assertFalse((markdown_db / "metadata/structure_discovery").exists())
+
+    def test_full_sample_includes_excluded_records_for_sidecar_refresh(self):
+        records = [
+            _record(source_object_key="documents/rule.html", role="regulatory_document"),
+            _record(source_object_key="comments/comment.json", role="form_comment"),
+        ]
+        records[1]["blocks"][0]["plain_text"] = "x" * 200000
+        eligible, selected = Stage3ReviewRunner.select_cohort(
+            block_records=records, configuration=_configuration(), sample_fraction=1.0
+        )
+        self.assertEqual(1, len(eligible))
+        self.assertEqual(1, len(selected))
 
 
 if __name__ == "__main__":

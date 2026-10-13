@@ -7,6 +7,7 @@ import json
 import math
 from pathlib import Path
 import re
+from datetime import datetime, timezone
 
 from .llm_backend import BackendFactory, MagenticLinkAssessor
 from .pipeline import STAGE_2, _write_json, _write_text
@@ -133,7 +134,8 @@ class ReferenceLinkerPipeline:
     @staticmethod
     def run(
         *, markdown_db_path, model_spec, assessor=None, source_object_keys=None,
-        maximum_api_calls=None, candidate_limit=12, progress_callback=None
+        maximum_api_calls=None, candidate_limit=12, progress_callback=None,
+        modified_after=None,
     ):
         selected_assessor = assessor or MagenticLinkAssessor.call
         if assessor is None:
@@ -152,6 +154,12 @@ class ReferenceLinkerPipeline:
         completed_documents = 0
         selected_keys = set(source_object_keys or [])
         for annotation_path in sorted(annotation_root.glob("*.json")):
+            if modified_after is not None:
+                modification_time = datetime.fromtimestamp(
+                    annotation_path.stat().st_mtime, tz=timezone.utc
+                )
+                if modification_time <= modified_after:
+                    continue
             stage_3_record = json.loads(annotation_path.read_text(encoding="utf-8"))
             asset = stage_3_record["asset"]
             if selected_keys and asset["source_object_key"] not in selected_keys:

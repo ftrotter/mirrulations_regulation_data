@@ -107,7 +107,11 @@ class ContextualStructureDiscoveryPipeline:
             (path, json.loads(path.read_text(encoding="utf-8")))
             for path in (metadata_root / "blocks").glob("*.json")
         ]
-        block_records.sort(key=lambda item: item[1]["asset"]["source_object_key"])
+        block_records.sort(key=lambda item: (
+            0 if item[1].get("document_metadata", {}).get("logical_document_role")
+            == "regulatory_document" else 1,
+            item[1]["asset"]["source_object_key"],
+        ))
         selected_keys = set(source_object_keys or [])
         attachment_submissions = {
             identifier for _path, record in block_records

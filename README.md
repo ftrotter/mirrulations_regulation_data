@@ -187,6 +187,28 @@ artifact is modified. The runner exits unsuccessfully when calls fail,
 immutable inputs change, target registries are stale, or owned blocks are
 missing from the selected cohort.
 
+For a managed background run with local status and readable logs:
+
+```shell
+.venv/bin/python scripts/stage3_review.py start --sample-fraction 0.10
+.venv/bin/python scripts/stage3_review.py status
+.venv/bin/python scripts/stage3_review.py wait
+```
+
+Run state and `status.log` files live under the Git-ignored
+`.local/pipeline_runs/stage3_review/` directory. A full overnight run can finish
+Stage 3 and then start Stage 4 only after Stage 3 validates successfully:
+
+```shell
+.venv/bin/python scripts/stage3_review.py start \
+  --sample-fraction 1.0 \
+  --continue-with-stage4
+```
+
+Every eligible regulatory-action document is selected and visited before
+comments. Completed segment hashes are reused. Full-run reports are written to
+`metadata/stage3_full/`, leaving sampled-review manifests intact.
+
 ### Pipeline status
 
 Use the pipeline status command as the standard way to answer questions such as

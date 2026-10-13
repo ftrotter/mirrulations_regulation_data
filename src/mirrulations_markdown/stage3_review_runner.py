@@ -24,6 +24,27 @@ class Stage3ReviewRunner:
         )
 
     @staticmethod
+    def _provider_error_details(*, error):
+        """Return actionable allowlisted provider fields without raw request data."""
+        status_code = getattr(error, "status_code", None)
+        body = getattr(error, "body", None)
+        provider_error = None
+        if isinstance(body, dict):
+            provider_error = body.get("error", body)
+        elif isinstance(body, list) and body and isinstance(body[0], dict):
+            provider_error = body[0].get("error", body[0])
+        if not isinstance(provider_error, dict):
+            return None
+        details = {
+            key: provider_error[key]
+            for key in ("code", "status", "message")
+            if isinstance(provider_error.get(key), (str, int))
+        }
+        if status_code is not None:
+            details["http_status"] = status_code
+        return details or None
+
+    @staticmethod
     def _load_block_records(*, markdown_db_path):
         records = [
             json.loads(path.read_text(encoding="utf-8"))
@@ -91,7 +112,10 @@ class Stage3ReviewRunner:
         return role_counts
 
     @staticmethod
-    def select_cohort(*, block_records, configuration, sample_fraction):
+    def select_cohort(
+        *, block_records, configuration, sample_fraction,
+        excluded_nonregulatory_source_keys=None,
+    ):
         if not 0 < sample_fraction <= 1:
             raise ValueError(
                 "stage3_review_runner.py Error: sample fraction must be greater than "
@@ -100,17 +124,34 @@ class Stage3ReviewRunner:
         eligible_records = Stage3ReviewRunner._eligible_records(
             block_records=block_records, configuration=configuration
         )
+        regulatory_records = [
+            record for record in eligible_records
+            if record.get("document_metadata", {}).get("logical_document_role")
+            == "regulatory_document"
+        ]
+        sample_count = max(1, round(len(eligible_records) * sample_fraction))
+        if len(regulatory_records) > sample_count:
+            raise ValueError(
+                "stage3_review_runner.py Error: sample is too small to include every "
+                "eligible regulatory action"
+            )
+        nonregulatory_records = [
+            record for record in eligible_records
+            if record not in regulatory_records
+            and record["asset"]["source_object_key"]
+            not in set(excluded_nonregulatory_source_keys or [])
+        ]
         records_by_role = defaultdict(list)
-        for record in eligible_records:
+        for record in nonregulatory_records:
             role = record.get("document_metadata", {}).get(
                 "logical_document_role", "role-not-recorded"
             )
             records_by_role[role].append(record)
-        sample_count = max(1, round(len(eligible_records) * sample_fraction))
         role_counts = Stage3ReviewRunner._allocate_role_counts(
-            records_by_role=records_by_role, sample_count=sample_count
+            records_by_role=records_by_role,
+            sample_count=sample_count - len(regulatory_records),
         )
-        selected_records = []
+        selected_records = list(regulatory_records)
         for role, records in sorted(records_by_role.items()):
             ordered_records = sorted(
                 records,
@@ -195,6 +236,7 @@ class Stage3ReviewRunner:
         maximum_concurrency=1, maximum_owned_blocks=20,
         maximum_segment_characters=20000, unstructured_owned_blocks=10,
         segment_caller=MagenticSegmentCaller.call, progress_callback=None,
+        excluded_nonregulatory_source_keys=None,
     ):
         block_records = Stage3ReviewRunner._load_block_records(
             markdown_db_path=markdown_db_path
@@ -203,10 +245,19 @@ class Stage3ReviewRunner:
             block_records=block_records,
             configuration=configuration,
             sample_fraction=sample_fraction,
+            excluded_nonregulatory_source_keys=excluded_nonregulatory_source_keys,
         )
         selected_keys = [
             record["asset"]["source_object_key"] for record in selected_records
         ]
+        # A full run also refreshes excluded-document sidecars. These documents
+        # require no model calls, but their current eligibility and target
+        # registries are necessary for corpus-wide Stage 3 completion.
+        pipeline_source_keys = list(selected_keys)
+        if sample_fraction == 1 and not excluded_nonregulatory_source_keys:
+            pipeline_source_keys = [
+                record["asset"]["source_object_key"] for record in block_records
+            ]
         expected_segment_calls = sum(
             len(build_analysis_segments(
                 blocks=record.get("blocks", []),
@@ -257,7 +308,7 @@ class Stage3ReviewRunner:
             pipeline_result = ContextualStructureDiscoveryPipeline.run(
                 markdown_db_path=markdown_db_path,
                 configuration=configuration,
-                source_object_keys=selected_keys,
+                source_object_keys=pipeline_source_keys,
                 maximum_api_calls=effective_api_budget,
                 requests_per_second=requests_per_second,
                 maximum_concurrency=maximum_concurrency,
@@ -270,10 +321,16 @@ class Stage3ReviewRunner:
             report["pipeline_result"] = pipeline_result
         except Exception as error:
             report["status"] = "failed"
+            provider_error = Stage3ReviewRunner._provider_error_details(error=error)
             report["error"] = (
                 "stage3_review_runner.py Error: review run failed with "
                 f"{type(error).__name__}"
             )
+            if provider_error:
+                report["provider_error"] = provider_error
+                report["error"] += ": " + str(provider_error.get(
+                    "message", "provider request failed"
+                ))
             Stage3ReviewRunner._write_json(
                 output_path=output_directory / "report.json", value=report
             )

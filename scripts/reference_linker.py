@@ -2,6 +2,7 @@
 """Link Stage 3 comment references to exact regulatory-action blocks."""
 
 import argparse
+from datetime import datetime, timezone
 import json
 from pathlib import Path
 import sys
@@ -27,12 +28,28 @@ def main():
     parser.add_argument("--maximum-api-calls", type=int)
     parser.add_argument("--candidate-limit", type=int, default=12)
     parser.add_argument("--dotenv")
+    parser.add_argument(
+        "--modified-after",
+        help="Only process Stage 3 sidecars modified after this ISO 8601 timestamp.",
+    )
     arguments = parser.parse_args()
     try:
         if arguments.maximum_api_calls is not None and arguments.maximum_api_calls < 1:
             raise ValueError("--maximum-api-calls must be at least 1")
         if arguments.candidate_limit < 1:
             raise ValueError("--candidate-limit must be at least 1")
+        modified_after = None
+        if arguments.modified_after:
+            timestamp = arguments.modified_after.replace("Z", "+00:00")
+            try:
+                modified_after = datetime.fromisoformat(timestamp)
+            except ValueError as error:
+                raise ValueError(
+                    "--modified-after must be an ISO 8601 timestamp"
+                ) from error
+            if modified_after.tzinfo is None:
+                raise ValueError("--modified-after must include a timezone")
+            modified_after = modified_after.astimezone(timezone.utc)
         if arguments.dotenv:
             load_dotenv(
                 dotenv_path=Path(arguments.dotenv).expanduser().resolve(),
@@ -51,6 +68,7 @@ def main():
             source_object_keys=source_object_keys,
             maximum_api_calls=arguments.maximum_api_calls,
             candidate_limit=arguments.candidate_limit,
+            modified_after=modified_after,
             progress_callback=lambda event: print(
                 f"Linked {event['source_object_key']} ({event['api_calls']} calls)",
                 flush=True,

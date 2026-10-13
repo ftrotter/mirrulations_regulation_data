@@ -1,6 +1,7 @@
 """Tests for exact regulatory-action block linking."""
 
 import json
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import sys
 import tempfile
@@ -104,6 +105,27 @@ class ReferenceLinkerTest(unittest.TestCase):
             self.assertEqual(1, len(calls))
             output = (markdown_db / STAGE_4 / "comments/COMMENT-1.md").read_text()
             self.assertIn("#paragraph-0002", output)
+
+    def test_modified_after_filters_older_stage_three_sidecars(self):
+        calls = []
+
+        async def assessor(**_kwargs):
+            calls.append(True)
+            return ReferenceLinkAssessment(
+                target_block_ids=[], confidence="no-match", rationale="No exact match."
+            )
+
+        with tempfile.TemporaryDirectory() as directory:
+            markdown_db = self._corpus(root_path=Path(directory))
+            future_cutoff = datetime.now(timezone.utc) + timedelta(minutes=1)
+            result = ReferenceLinkerPipeline.run(
+                markdown_db_path=markdown_db,
+                model_spec=ModelSpec(provider="openai", model="test"),
+                assessor=assessor,
+                modified_after=future_cutoff,
+            )
+            self.assertEqual(0, result["completed_documents"])
+            self.assertEqual([], calls)
 
     def test_rejects_invented_target_block(self):
         async def assessor(**_kwargs):

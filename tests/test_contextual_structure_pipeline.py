@@ -19,6 +19,52 @@ from mirrulations_markdown.structure_models import (  # noqa: E402
 
 
 class ContextualStructurePipelineTest(unittest.TestCase):
+    def test_regulatory_documents_are_processed_before_comments(self):
+        calls = []
+
+        async def caller(**kwargs):
+            calls.append(kwargs["document_type"])
+            return SegmentEnrichment(
+                section_summary=None,
+                block_results=[
+                    SegmentBlockEnrichment(block_id=kwargs["owned_block_ids"][0])
+                ],
+            )
+
+        with tempfile.TemporaryDirectory() as directory:
+            markdown_db = Path(directory) / "markdown"
+            for name, source_key, role, reason in (
+                ("comment", "a-comment.json", "form_comment", "comment"),
+                ("rule", "z-rule.html", "regulatory_document", "regulation"),
+            ):
+                asset = {
+                    "source_object_key": source_key, "source_sha256": name,
+                    "markdown_path": f"{name}.md", "selection_reason": reason,
+                }
+                block_root = markdown_db / "metadata/blocks"
+                block_root.mkdir(parents=True, exist_ok=True)
+                block_root.joinpath(f"{name}.json").write_text(json.dumps({
+                    "asset": asset,
+                    "document_metadata": {"logical_document_role": role},
+                    "blocks": [{
+                        "block_id": "paragraph-0001", "block_type": "paragraph",
+                        "order": 1, "plain_text": "Substantive text.",
+                    }],
+                    "target_registry": [],
+                }))
+                stage_2 = markdown_db / STAGE_2 / asset["markdown_path"]
+                stage_2.parent.mkdir(parents=True, exist_ok=True)
+                stage_2.write_text("source")
+            model = ModelSpec(provider="openai", model="test")
+            ContextualStructureDiscoveryPipeline.run(
+                markdown_db_path=markdown_db,
+                configuration=StructureConfiguration(
+                    summary_model=model, reference_model=model,
+                ),
+                segment_caller=caller,
+            )
+            self.assertEqual(["regulation", "comment"], calls)
+
     def test_segment_hash_changes_with_target_semantics(self):
         common = {
             "source_hash": "source", "segment": {"segment_id": "one"},
