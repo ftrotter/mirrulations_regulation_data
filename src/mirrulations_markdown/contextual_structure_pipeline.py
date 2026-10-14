@@ -148,6 +148,7 @@ class ContextualStructureDiscoveryPipeline:
                     existing_by_segment.setdefault(annotation["segment_task_hash"], []).append(annotation)
             annotations = []
             document_failed_tasks = []
+            failed_segments = []
             if eligibility.eligible:
                 segments = build_analysis_segments(
                     blocks=record["blocks"], maximum_owned_blocks=maximum_owned_blocks,
@@ -181,6 +182,7 @@ class ContextualStructureDiscoveryPipeline:
                             }
                             failed_tasks.append(failure)
                             document_failed_tasks.append(failure)
+                            failed_segments.append((segment, failure["error"]))
                             continue
                         if last_request_at is not None:
                             wait = 1.0 / requests_per_second - (time.monotonic() - last_request_at)
@@ -220,10 +222,30 @@ class ContextualStructureDiscoveryPipeline:
                             }
                             failed_tasks.append(failure)
                             document_failed_tasks.append(failure)
-            if document_failed_tasks:
-                # Never replace prior valid annotations with partial or empty
-                # output. The caller receives explicit failures and can retry.
-                continue
+                            failed_segments.append((segment, failure["error"]))
+                for failed_segment, error_message in failed_segments:
+                    for block_id in failed_segment["owned_block_ids"]:
+                        annotations.append({
+                            "block_id": block_id,
+                            "task_status": "problematic",
+                            "summary": None,
+                            "backward_references": [],
+                            "reference_check_requested": False,
+                            "render_summary": False,
+                            "placement": "after-block",
+                            "error": error_message,
+                        })
+                    if failed_segment.get("section_block_id"):
+                        annotations.append({
+                            "block_id": failed_segment["section_block_id"],
+                            "task_status": "problematic",
+                            "summary": None,
+                            "backward_references": [],
+                            "reference_check_requested": False,
+                            "render_summary": False,
+                            "placement": "after-block",
+                            "error": error_message,
+                        })
             block_order = {block["block_id"]: index for index, block in enumerate(record["blocks"])}
             annotations.sort(key=lambda item: block_order[item["block_id"]])
             _write_json(output_path=sidecar_path, value={

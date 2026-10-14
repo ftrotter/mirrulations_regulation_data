@@ -38,6 +38,36 @@ def _record(*, source_object_key, role):
 
 
 class Stage3ReviewRunnerTest(unittest.TestCase):
+    def test_determines_status_at_problem_tolerance(self):
+        self.assertEqual(
+            "complete",
+            Stage3ReviewRunner._determine_status(
+                failed_segments=0, completion_percent=100.0,
+                structurally_valid=True,
+            ),
+        )
+        self.assertEqual(
+            "complete-with-problems",
+            Stage3ReviewRunner._determine_status(
+                failed_segments=50, completion_percent=98.0,
+                structurally_valid=True,
+            ),
+        )
+        self.assertEqual(
+            "partial",
+            Stage3ReviewRunner._determine_status(
+                failed_segments=50, completion_percent=90.0,
+                structurally_valid=True,
+            ),
+        )
+        self.assertEqual(
+            "partial",
+            Stage3ReviewRunner._determine_status(
+                failed_segments=0, completion_percent=100.0,
+                structurally_valid=False,
+            ),
+        )
+
     def test_provider_error_details_preserve_actionable_billing_message(self):
         class ProviderError(Exception):
             status_code = 402

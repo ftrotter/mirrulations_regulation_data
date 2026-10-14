@@ -2,11 +2,13 @@
 
 import asyncio
 from collections import Counter
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 import json
 import math
 from pathlib import Path
 import re
+import time
 from datetime import datetime, timezone
 
 from .llm_backend import BackendFactory, MagenticLinkAssessor
@@ -95,6 +97,55 @@ def _link_hash(*, source_hash, source_block_id, target_key, search_description):
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
+def _assess_reference(
+    *, assessor, model_spec, markdown_db_path, document_id, target_record,
+    source_block_text, reference, link_hash, candidates,
+):
+    retryable_statuses = {429, 500, 502, 503}
+    assessment = None
+    for attempt in range(5):
+        try:
+            assessment = asyncio.run(assessor(
+                model_spec=model_spec,
+                source_text=source_block_text,
+                search_description=reference["search_description"],
+                candidate_blocks=candidates,
+            ))
+            break
+        except Exception as error:
+            status_code = getattr(error, "status_code", None)
+            if status_code not in retryable_statuses or attempt == 4:
+                raise
+            time.sleep(2 ** attempt)
+    candidate_by_id = {item["block_id"]: item for item in candidates}
+    invented = set(assessment.target_block_ids) - set(candidate_by_id)
+    if invented:
+        raise ValueError(
+            "reference_linker.py Error: assessor returned non-candidate "
+            + ", ".join(sorted(invented))
+        )
+    targets = [{
+        "target_document_id": document_id,
+        "target_block_id": block_id,
+        "retrieval_score": candidate_by_id[block_id]["retrieval_score"],
+        "stage_2_path": str(
+            markdown_db_path / STAGE_2 / target_record["asset"]["markdown_path"]
+        ),
+    } for block_id in assessment.target_block_ids]
+    status = "linked" if targets else "no-match"
+    return {
+        "link_hash": link_hash,
+        "status": status,
+        "source_block_id": reference["source_block_id"],
+        "target_key": reference["target_key"],
+        "search_description": reference["search_description"],
+        "confidence": assessment.confidence,
+        "rationale": assessment.rationale,
+        "candidate_block_ids": list(candidate_by_id),
+        "targets": targets,
+    }
+
+
 def _render_stage_4(*, stage_3_text, links, source_markdown_path):
     rendered = stage_3_text
     links_by_source = {}
@@ -135,8 +186,12 @@ class ReferenceLinkerPipeline:
     def run(
         *, markdown_db_path, model_spec, assessor=None, source_object_keys=None,
         maximum_api_calls=None, candidate_limit=12, progress_callback=None,
-        modified_after=None,
+        modified_after=None, maximum_concurrency=1, requests_per_second=1.0,
     ):
+        if requests_per_second <= 0 or maximum_concurrency < 1:
+            raise ValueError(
+                "reference_linker.py Error: rate and concurrency must be positive"
+            )
         selected_assessor = assessor or MagenticLinkAssessor.call
         if assessor is None:
             BackendFactory.verify_credentials(model_specs=[model_spec])
@@ -153,6 +208,7 @@ class ReferenceLinkerPipeline:
         failed_references = []
         completed_documents = 0
         selected_keys = set(source_object_keys or [])
+        last_request_at = None
         for annotation_path in sorted(annotation_root.glob("*.json")):
             if modified_after is not None:
                 modification_time = datetime.fromtimestamp(
@@ -177,8 +233,10 @@ class ReferenceLinkerPipeline:
                         link_sidecar_path.read_text(encoding="utf-8")
                     ).get("links", [])
                     if link.get("status") in {"linked", "no-match"}
+                    and "link_hash" in link
                 }
-            links = []
+            ordered = []
+            pending = []
             for annotation in stage_3_record.get("annotations", []):
                 for reference in annotation.get("backward_references", []):
                     link_hash = _link_hash(
@@ -189,12 +247,7 @@ class ReferenceLinkerPipeline:
                     )
                     document_id = reference["target"]["document_ids"][0]
                     if link_hash in existing_links:
-                        existing_link = existing_links[link_hash]
-                        links.append(existing_link)
-                        if existing_link["status"] == "linked":
-                            linked_references += 1
-                        else:
-                            no_match_references += 1
+                        ordered.append({"existing": existing_links[link_hash]})
                         continue
                     _target_path, target_record = _target_record(
                         block_records=block_records, document_id=document_id
@@ -204,59 +257,100 @@ class ReferenceLinkerPipeline:
                         target_blocks=target_record["blocks"],
                         candidate_limit=candidate_limit,
                     )
+                    work = {
+                        "link_hash": link_hash,
+                        "reference": reference,
+                        "document_id": document_id,
+                        "target_record": target_record,
+                        "candidates": candidates,
+                        "source_text": source_blocks[reference["source_block_id"]]["plain_text"],
+                    }
+                    ordered.append({"existing": None, "work": work})
+                    pending.append(work)
+            results_by_hash = {}
+            futures = {}
+            with ThreadPoolExecutor(max_workers=maximum_concurrency) as executor:
+                for work in pending:
                     if maximum_api_calls is not None and api_calls >= maximum_api_calls:
+                        error_message = (
+                            "reference_linker.py Error: API call budget exhausted"
+                        )
                         failed_references.append({
-                            "link_hash": link_hash,
-                            "error": "reference_linker.py Error: API call budget exhausted",
-                        })
-                        continue
-                    try:
-                        api_calls += 1
-                        assessment = asyncio.run(selected_assessor(
-                            model_spec=model_spec,
-                            source_text=source_blocks[reference["source_block_id"]]["plain_text"],
-                            search_description=reference["search_description"],
-                            candidate_blocks=candidates,
-                        ))
-                        candidate_by_id = {item["block_id"]: item for item in candidates}
-                        invented = set(assessment.target_block_ids) - set(candidate_by_id)
-                        if invented:
-                            raise ValueError(
-                                "reference_linker.py Error: assessor returned non-candidate "
-                                + ", ".join(sorted(invented))
-                            )
-                        targets = [{
-                            "target_document_id": document_id,
-                            "target_block_id": block_id,
-                            "retrieval_score": candidate_by_id[block_id]["retrieval_score"],
-                            "stage_2_path": str(
-                                markdown_db_path / STAGE_2 /
-                                target_record["asset"]["markdown_path"]
-                            ),
-                        } for block_id in assessment.target_block_ids]
-                        status = "linked" if targets else "no-match"
-                        links.append({
-                            "link_hash": link_hash,
-                            "status": status,
-                            "source_block_id": reference["source_block_id"],
-                            "target_key": reference["target_key"],
-                            "search_description": reference["search_description"],
-                            "confidence": assessment.confidence,
-                            "rationale": assessment.rationale,
-                            "candidate_block_ids": list(candidate_by_id),
-                            "targets": targets,
-                        })
-                        if status == "linked":
-                            linked_references += 1
-                        else:
-                            no_match_references += 1
-                    except Exception as error:
-                        failed_references.append({
-                            "link_hash": link_hash,
+                            "link_hash": work["link_hash"],
                             "source_object_key": asset["source_object_key"],
-                            "source_block_id": reference["source_block_id"],
-                            "error": f"reference_linker.py Error: {type(error).__name__}",
+                            "source_block_id": work["reference"]["source_block_id"],
+                            "error": error_message,
                         })
+                        results_by_hash[work["link_hash"]] = {
+                            "link_hash": work["link_hash"],
+                            "status": "problematic",
+                            "source_block_id": work["reference"]["source_block_id"],
+                            "target_key": work["reference"]["target_key"],
+                            "search_description": work["reference"]["search_description"],
+                            "confidence": None,
+                            "rationale": error_message,
+                            "candidate_block_ids": [],
+                            "targets": [],
+                        }
+                        continue
+                    if last_request_at is not None:
+                        wait = 1.0 / requests_per_second - (time.monotonic() - last_request_at)
+                        if wait > 0:
+                            time.sleep(wait)
+                    api_calls += 1
+                    last_request_at = time.monotonic()
+                    future = executor.submit(
+                        _assess_reference,
+                        assessor=selected_assessor, model_spec=model_spec,
+                        markdown_db_path=markdown_db_path,
+                        document_id=work["document_id"],
+                        target_record=work["target_record"],
+                        source_block_text=work["source_text"],
+                        reference=work["reference"],
+                        link_hash=work["link_hash"],
+                        candidates=work["candidates"],
+                    )
+                    futures[future] = work
+                for future in as_completed(futures):
+                    work = futures[future]
+                    try:
+                        results_by_hash[work["link_hash"]] = future.result()
+                    except Exception as error:
+                        status_code = getattr(error, "status_code", None)
+                        suffix = f":{status_code}" if status_code is not None else ""
+                        error_message = (
+                            f"reference_linker.py Error: {type(error).__name__}{suffix}"
+                        )
+                        failed_references.append({
+                            "link_hash": work["link_hash"],
+                            "source_object_key": asset["source_object_key"],
+                            "source_block_id": work["reference"]["source_block_id"],
+                            "error": error_message,
+                        })
+                        results_by_hash[work["link_hash"]] = {
+                            "link_hash": work["link_hash"],
+                            "status": "problematic",
+                            "source_block_id": work["reference"]["source_block_id"],
+                            "target_key": work["reference"]["target_key"],
+                            "search_description": work["reference"]["search_description"],
+                            "confidence": None,
+                            "rationale": error_message,
+                            "candidate_block_ids": [],
+                            "targets": [],
+                        }
+            links = []
+            for item in ordered:
+                if item["existing"] is not None:
+                    link_record = item["existing"]
+                else:
+                    link_record = results_by_hash.get(item["work"]["link_hash"])
+                if link_record is None:
+                    continue
+                links.append(link_record)
+                if link_record["status"] == "linked":
+                    linked_references += 1
+                else:
+                    no_match_references += 1
             _write_json(
                 output_path=link_sidecar_path,
                 value={"schema_version": 1, "asset": asset, "links": links},

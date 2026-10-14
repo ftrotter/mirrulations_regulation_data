@@ -99,6 +99,20 @@ class LocalRunManager:
     @staticmethod
     def print_status(*, status):
         print(f"Status: {status['status']}")
+        if status.get("stage"):
+            stage4_documents = status.get("stage4_documents")
+            stage_text = f"Stage {status['stage']}"
+            if status["stage"] == "4" and stage4_documents is not None:
+                stage_text += f" ({stage4_documents} documents linked)"
+            print(stage_text)
+        if status.get("percent_complete") is not None and status.get("expected_segments"):
+            print(
+                f"Progress: {status['percent_complete']}% "
+                f"({status.get('segments_started', 0)}/"
+                f"{status.get('expected_segments')} segments)"
+            )
+        elif status.get("segments_started") is not None:
+            print(f"Segments started: {status['segments_started']}")
         if status.get("pid"):
             print(f"PID: {status['pid']}")
         if status.get("log_path"):

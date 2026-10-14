@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
+import re
 import sys
 
 from dotenv import load_dotenv
@@ -33,6 +34,8 @@ ENVIRONMENT_SETTINGS = {
     "maximum_owned_blocks": "STAGE3_REVIEW_MAXIMUM_OWNED_BLOCKS",
     "maximum_segment_characters": "STAGE3_REVIEW_MAXIMUM_SEGMENT_CHARACTERS",
     "unstructured_owned_blocks": "STAGE3_REVIEW_UNSTRUCTURED_OWNED_BLOCKS",
+    "stage4_maximum_concurrency": "STAGE4_REVIEW_MAXIMUM_CONCURRENCY",
+    "stage4_requests_per_second": "STAGE4_REVIEW_REQUESTS_PER_SECOND",
 }
 
 
@@ -88,6 +91,79 @@ def _repository_path(*, setting_name):
 
 def _run_root():
     return REPOSITORY_ROOT / ".local" / "pipeline_runs" / "stage3_review"
+
+
+def _resolve_output_directory(
+    *, sample_fraction, continue_after_current_cohort, configured_output_directory,
+):
+    if sample_fraction == 1 and not continue_after_current_cohort:
+        return configured_output_directory.parent / "stage3_full"
+    if continue_after_current_cohort:
+        percentage_label = str(sample_fraction * 100).rstrip("0").rstrip(".")
+        return configured_output_directory.parent / (
+            f"stage3_quality_review_{percentage_label}pct_continuation"
+        )
+    return configured_output_directory
+
+
+def _parse_command_flags(*, command):
+    sample_fraction = 1.0
+    continue_after_current_cohort = False
+    if "--sample-fraction" in command:
+        sample_fraction = float(command[command.index("--sample-fraction") + 1])
+    continue_after_current_cohort = "--continue-after-current-cohort" in command
+    return sample_fraction, continue_after_current_cohort
+
+
+def _compute_progress(*, status):
+    """Approximate percent complete from the run log and its manifest."""
+    log_path = Path(status.get("log_path", ""))
+    lines = (
+        log_path.read_text(encoding="utf-8").splitlines()
+        if log_path.is_file() else []
+    )
+    segments_started = 0
+    for line in lines:
+        match = re.match(r"^Segment (\d+):", line)
+        if match:
+            segments_started = int(match.group(1))
+    stage4_documents = sum(
+        1 for line in lines if line.startswith("Stage 4 document:")
+    )
+    in_stage4 = any(
+        "Stage 3 complete; starting Stage 4" in line for line in lines
+    )
+    sample_fraction, continue_after_current_cohort = _parse_command_flags(
+        command=status.get("command", []),
+    )
+    expected_segments = 0
+    try:
+        environment_path = REPOSITORY_ROOT / ".env"
+        if environment_path.is_file():
+            load_dotenv(dotenv_path=environment_path, override=False)
+        configured_output_directory = _repository_path(setting_name="output_directory")
+        output_directory = _resolve_output_directory(
+            sample_fraction=sample_fraction,
+            continue_after_current_cohort=continue_after_current_cohort,
+            configured_output_directory=configured_output_directory,
+        )
+        manifest_path = output_directory / "manifest.json"
+        if manifest_path.is_file():
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            expected_segments = manifest.get("expected_segment_calls", 0)
+    except (OSError, ValueError, KeyError):
+        expected_segments = 0
+    percent_complete = (
+        round(min(100.0, segments_started / expected_segments * 100), 1)
+        if expected_segments else 0.0
+    )
+    return {
+        "stage": "4" if in_stage4 else "3",
+        "segments_started": segments_started,
+        "expected_segments": expected_segments,
+        "percent_complete": percent_complete,
+        "stage4_documents": stage4_documents,
+    }
 
 
 def _run_review(
@@ -150,9 +226,16 @@ def _run_review(
         excluded_nonregulatory_source_keys=excluded_keys,
     )
     if continue_with_stage4:
-        if report["status"] != "complete":
+        if report["status"] not in {"complete", "complete-with-problems"}:
             raise ValueError(
                 "Stage 4 was not started because Stage 3 did not complete"
+            )
+        if report["status"] == "complete-with-problems":
+            print(
+                f"Stage 3 complete with "
+                f"{report.get('problematic_segment_count', 0)} problematic segments; "
+                "proceeding to Stage 4",
+                flush=True,
             )
         print(
             "Stage 3 complete; starting Stage 4 for sidecars modified after "
@@ -166,6 +249,12 @@ def _run_review(
             markdown_db_path=_repository_path(setting_name="markdown_db"),
             model_spec=configuration.reference_model,
             modified_after=stage3_started_at,
+            maximum_concurrency=_environment_integer(
+                setting_name="stage4_maximum_concurrency"
+            ),
+            requests_per_second=_environment_float(
+                setting_name="stage4_requests_per_second"
+            ),
             progress_callback=lambda event: print(
                 f"Stage 4 document: {event['source_object_key']} "
                 f"({event['api_calls']} calls)",
@@ -174,9 +263,10 @@ def _run_review(
         )
         report["stage4_result"] = stage4_result
         if stage4_result["failed_reference_count"]:
-            raise ValueError(
-                "Stage 4 completed with failed references: "
-                f"{stage4_result['failed_reference_count']}"
+            print(
+                f"Stage 4 completed with "
+                f"{stage4_result['failed_reference_count']} problematic references",
+                flush=True,
             )
     return report
 
@@ -198,10 +288,14 @@ def main():
     arguments = parser.parse_args()
     try:
         if arguments.command == "status":
-            LocalRunManager.print_status(status=LocalRunManager.status(run_root=_run_root()))
+            status = LocalRunManager.status(run_root=_run_root())
+            status.update(_compute_progress(status=status))
+            LocalRunManager.print_status(status=status)
             return
         if arguments.command == "wait":
-            LocalRunManager.print_status(status=LocalRunManager.wait(run_root=_run_root()))
+            status = LocalRunManager.wait(run_root=_run_root())
+            status.update(_compute_progress(status=status))
+            LocalRunManager.print_status(status=status)
             return
         if arguments.command == "start":
             status = LocalRunManager.start(
@@ -234,7 +328,7 @@ def main():
     except ValueError as error:
         parser.exit(1, f"stage3_review.py Error: {error}\n")
     print(json.dumps(report, indent=2, sort_keys=True))
-    if report["status"] != "complete":
+    if report["status"] not in {"complete", "complete-with-problems"}:
         parser.exit(1, "stage3_review.py Error: review run is incomplete\n")
 
 

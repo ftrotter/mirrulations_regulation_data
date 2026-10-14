@@ -226,8 +226,15 @@ class ContextualStructurePipelineTest(unittest.TestCase):
                 segment_caller=failing_caller,
             )
             self.assertEqual(1, result["failed_task_count"])
-            self.assertEqual(0, result["completed_documents"])
-            self.assertEqual(original, json.loads(sidecar.read_text()))
+            self.assertEqual(1, result["completed_documents"])
+            written = json.loads(sidecar.read_text())
+            problematic = [
+                item for item in written["annotations"]
+                if item.get("task_status") == "problematic"
+            ]
+            self.assertEqual(1, len(problematic))
+            self.assertEqual("paragraph-0001", problematic[0]["block_id"])
+            self.assertIn("RuntimeError", problematic[0]["error"])
 
             budget_result = ContextualStructureDiscoveryPipeline.run(
                 markdown_db_path=markdown_db,
@@ -239,8 +246,7 @@ class ContextualStructurePipelineTest(unittest.TestCase):
             )
             self.assertEqual(1, budget_result["failed_task_count"])
             self.assertIn("budget exhausted", budget_result["failed_tasks"][0]["error"])
-            self.assertEqual(0, budget_result["completed_documents"])
-            self.assertEqual(original, json.loads(sidecar.read_text()))
+            self.assertEqual(1, budget_result["completed_documents"])
 
 
 if __name__ == "__main__":

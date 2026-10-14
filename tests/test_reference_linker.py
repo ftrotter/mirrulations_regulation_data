@@ -147,6 +147,50 @@ class ReferenceLinkerTest(unittest.TestCase):
                 target_block_ids=[], confidence="medium", rationale="No exact candidate."
             )
 
+    def test_failed_reference_is_marked_problematic(self):
+        async def assessor(**_kwargs):
+            raise RuntimeError("provider unavailable")
+
+        with tempfile.TemporaryDirectory() as directory:
+            markdown_db = self._corpus(root_path=Path(directory))
+            result = ReferenceLinkerPipeline.run(
+                markdown_db_path=markdown_db,
+                model_spec=ModelSpec(provider="openai", model="test"),
+                assessor=assessor,
+            )
+            self.assertEqual(1, result["failed_reference_count"])
+            sidecar = json.loads(
+                (markdown_db / "metadata/reference_links/source.json").read_text()
+            )
+            problematic = [
+                link for link in sidecar["links"] if link["status"] == "problematic"
+            ]
+            self.assertEqual(1, len(problematic))
+            self.assertIn("RuntimeError", problematic[0]["rationale"])
+
+    def test_skips_foreign_schema_links_without_link_hash(self):
+        async def assessor(**_kwargs):
+            return ReferenceLinkAssessment(
+                target_block_ids=["paragraph-0002"], confidence="high",
+                rationale="The block states the exact decision timeframe.",
+            )
+
+        with tempfile.TemporaryDirectory() as directory:
+            markdown_db = self._corpus(root_path=Path(directory))
+            link_root = markdown_db / "metadata/reference_links"
+            link_root.mkdir(parents=True, exist_ok=True)
+            (link_root / "source.json").write_text(json.dumps({
+                "links": [{"status": "linked", "reference_id": "foreign"}],
+            }))
+            result = ReferenceLinkerPipeline.run(
+                markdown_db_path=markdown_db,
+                model_spec=ModelSpec(provider="openai", model="test"),
+                assessor=assessor,
+            )
+            self.assertEqual(0, result["failed_reference_count"])
+            sidecar = json.loads((link_root / "source.json").read_text())
+            self.assertTrue(all("link_hash" in link for link in sidecar["links"]))
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

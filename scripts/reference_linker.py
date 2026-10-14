@@ -27,6 +27,8 @@ def main():
     parser.add_argument("--source-object-keys-json")
     parser.add_argument("--maximum-api-calls", type=int)
     parser.add_argument("--candidate-limit", type=int, default=12)
+    parser.add_argument("--maximum-concurrency", type=int, default=1)
+    parser.add_argument("--requests-per-second", type=float, default=1.0)
     parser.add_argument("--dotenv")
     parser.add_argument(
         "--modified-after",
@@ -38,6 +40,10 @@ def main():
             raise ValueError("--maximum-api-calls must be at least 1")
         if arguments.candidate_limit < 1:
             raise ValueError("--candidate-limit must be at least 1")
+        if arguments.maximum_concurrency < 1:
+            raise ValueError("--maximum-concurrency must be at least 1")
+        if arguments.requests_per_second <= 0:
+            raise ValueError("--requests-per-second must be greater than zero")
         modified_after = None
         if arguments.modified_after:
             timestamp = arguments.modified_after.replace("Z", "+00:00")
@@ -69,6 +75,8 @@ def main():
             maximum_api_calls=arguments.maximum_api_calls,
             candidate_limit=arguments.candidate_limit,
             modified_after=modified_after,
+            maximum_concurrency=arguments.maximum_concurrency,
+            requests_per_second=arguments.requests_per_second,
             progress_callback=lambda event: print(
                 f"Linked {event['source_object_key']} ({event['api_calls']} calls)",
                 flush=True,
@@ -77,8 +85,6 @@ def main():
     except (OSError, ValueError, json.JSONDecodeError) as error:
         parser.exit(1, f"reference_linker.py Error: {error}\n")
     print(json.dumps(result, indent=2))
-    if result["failed_reference_count"]:
-        parser.exit(1, "reference_linker.py Error: requested work is incomplete\n")
 
 
 if __name__ == "__main__":

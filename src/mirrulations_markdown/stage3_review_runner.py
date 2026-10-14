@@ -230,6 +230,17 @@ class Stage3ReviewRunner:
         }
 
     @staticmethod
+    def _determine_status(
+        *, failed_segments, completion_percent, structurally_valid,
+        problem_tolerance_percent=95.0,
+    ):
+        if structurally_valid and failed_segments == 0:
+            return "complete"
+        if structurally_valid and completion_percent >= problem_tolerance_percent:
+            return "complete-with-problems"
+        return "partial"
+
+    @staticmethod
     def run(
         *, markdown_db_path, source_root, configuration, output_directory,
         sample_fraction=0.10, maximum_api_calls=None, requests_per_second=1.0,
@@ -344,11 +355,32 @@ class Stage3ReviewRunner:
         cohort_validation = Stage3ReviewRunner._cohort_validation(
             markdown_db_path=markdown_db_path, selected_records=selected_records
         )
-        report.update({
-            "status": "complete" if not pipeline_result["failed_task_count"]
-            and not changed_trees
+        total_segments = expected_segment_calls
+        failed_segments = pipeline_result["failed_task_count"]
+        successful_segments = max(0, total_segments - failed_segments)
+        completion_percent = (
+            round(successful_segments / total_segments * 100, 2)
+            if total_segments else 100.0
+        )
+        problem_tolerance_percent = 95.0
+        structurally_valid = (
+            not changed_trees
             and not cohort_validation["missing_owned_blocks"]
-            and not cohort_validation["stale_target_registries"] else "partial",
+            and not cohort_validation["stale_target_registries"]
+        )
+        status = Stage3ReviewRunner._determine_status(
+            failed_segments=failed_segments,
+            completion_percent=completion_percent,
+            structurally_valid=structurally_valid,
+            problem_tolerance_percent=problem_tolerance_percent,
+        )
+        report.update({
+            "status": status,
+            "completion_percent": completion_percent,
+            "successful_segments": successful_segments,
+            "total_segments": total_segments,
+            "problematic_segment_count": failed_segments,
+            "problem_tolerance_percent": problem_tolerance_percent,
             "immutable_tree_hashes_before": before_hashes,
             "immutable_tree_hashes_after": after_hashes,
             "changed_immutable_trees": changed_trees,

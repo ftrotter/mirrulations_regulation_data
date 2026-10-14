@@ -207,6 +207,10 @@ def _render_stage_3(*, stage_2_text, annotations, eligibility, configuration):
         )
         block_end = next_match.start() if next_match else len(rendered)
         visible_parts = []
+        if annotation.get("task_status") == "problematic":
+            visible_parts.append(
+                f"> **Analysis unavailable:** {annotation.get('error', 'segment failed')}"
+            )
         if annotation["render_summary"]:
             visible_parts.append(f"> **In brief:** {annotation['summary']}")
         for reference in annotation["backward_references"]:
