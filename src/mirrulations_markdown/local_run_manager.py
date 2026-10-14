@@ -13,6 +13,7 @@ class LocalRunManager:
     """Manage one named local pipeline process without shell orchestration."""
 
     _local_processes = {}
+    RUN_DIRECTORY_ENVIRONMENT_VARIABLE = "MIRRULATIONS_LOCAL_RUN_DIRECTORY"
 
     @staticmethod
     def _read_json(*, path):
@@ -61,6 +62,10 @@ class LocalRunManager:
                 stdout=log_file,
                 stderr=subprocess.STDOUT,
                 start_new_session=True,
+                env={
+                    **os.environ,
+                    LocalRunManager.RUN_DIRECTORY_ENVIRONMENT_VARIABLE: str(run_directory),
+                },
             )
             LocalRunManager._local_processes[process.pid] = process
         status = {
@@ -80,11 +85,51 @@ class LocalRunManager:
         running = LocalRunManager._is_running(pid=latest["pid"])
         log_path = Path(latest["log_path"])
         lines = log_path.read_text(encoding="utf-8").splitlines() if log_path.is_file() else []
+        attention = LocalRunManager._read_json(
+            path=Path(latest["run_directory"]) / "attention_required.json"
+        )
         return {
             **latest,
             "status": "running" if running else "finished",
             "last_log_line": lines[-1] if lines else None,
+            "attention_required": attention,
         }
+
+    @staticmethod
+    def signal_attention(*, category, message, action_url=None):
+        """Persist and announce a human-action requirement for a managed run."""
+        run_directory_value = os.getenv(
+            LocalRunManager.RUN_DIRECTORY_ENVIRONMENT_VARIABLE, ""
+        ).strip()
+        signal = {
+            "category": category,
+            "message": message,
+            "action_url": action_url,
+            "created_at": datetime.now(timezone.utc).isoformat(),
+        }
+        if run_directory_value:
+            run_directory = Path(run_directory_value)
+            LocalRunManager._write_json(
+                path=run_directory / "attention_required.json", value=signal,
+            )
+            with (run_directory / "status.log").open("a", encoding="utf-8") as log_file:
+                log_file.write(f"ATTENTION REQUIRED [{category}]: {message}\n")
+                if action_url:
+                    log_file.write(f"Action: {action_url}\n")
+        if sys.platform == "darwin":
+            notification_message = message.replace('"', "'")[:180]
+            try:
+                subprocess.run(
+                    [
+                        "osascript", "-e",
+                        f'display notification "{notification_message}" '
+                        'with title "Mirrulations pipeline needs attention" sound name "Basso"',
+                    ],
+                    check=False, capture_output=True, text=True, timeout=10,
+                )
+            except (OSError, subprocess.SubprocessError):
+                pass
+        return signal
 
     @staticmethod
     def wait(*, run_root, poll_seconds=2):
@@ -98,6 +143,12 @@ class LocalRunManager:
 
     @staticmethod
     def print_status(*, status):
+        attention = status.get("attention_required")
+        if attention:
+            print("\aATTENTION REQUIRED")
+            print(f"Reason: {attention['message']}")
+            if attention.get("action_url"):
+                print(f"Action: {attention['action_url']}")
         print(f"Status: {status['status']}")
         if status.get("stage"):
             stage4_documents = status.get("stage4_documents")

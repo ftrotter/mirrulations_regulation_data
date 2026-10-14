@@ -350,6 +350,31 @@ prefix breakpoint and stable cache key. Provider usage records preserve cache
 creation/write tokens, cache-read tokens, output tokens, and latency when the
 API exposes them.
 
+### Independent Stage 4 quality review
+
+Use OpenAI to grade a deterministic sample of the production Stage 4 outcomes,
+avoiding use of Gemini to grade Gemini. The default sample contains 40 linked
+results and 10 no-match results:
+
+```shell
+.venv/bin/python scripts/stage4_quality_review.py start \
+  --linked-count 40 \
+  --no-match-count 10
+.venv/bin/python scripts/stage4_quality_review.py status
+.venv/bin/python scripts/stage4_quality_review.py wait
+```
+
+The Python runner launches and tracks the process, prevents duplicate runs, writes
+human-readable logs beneath the Git-ignored `.local/pipeline_runs/` directory,
+and reports checkpoint counts and percent complete. Provider budget exhaustion
+creates a durable `attention_required.json`, writes an `ATTENTION REQUIRED` log
+entry, sounds the terminal bell when status is viewed, and sends a local macOS
+desktop notification with the provider billing URL. It loads stable paths and the
+OpenAI model from `.env`, checkpoints each judgment, and resumes without paying
+for completed reviews. Production Stage 4 files are never modified. Results are
+written as a frozen manifest, individual JSON judgments, `report.json`, and a
+human-readable `report.md` beneath `STAGE4_QUALITY_REVIEW_OUTPUT_DIRECTORY`.
+
 By default, known PID files are checked in `/tmp`. Override that location when
 pipeline processes use another runtime directory:
 
