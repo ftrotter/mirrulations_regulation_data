@@ -1,17 +1,12 @@
-# Mirrulations Structure: Corrected Guide
+# Mirrulations Structure
 
-This is the concise, corrected guide to the Mirrulations S3/on-disk layout and
-the Regulations.gov JSON stored within it.
-
-The byte-identical upstream document remains
-[`MirrulationsStructureUpstream.md`](MirrulationsStructureUpstream.md), pinned to
-commit `9442a69de02b39588b5c15fd8c2656f27a8b99fc` with SHA-256
-`5599ca5becb78697396e26a7236d009d5e0cd4458cef826c5b79613c94f69980`.
+This guide describes the Mirrulations S3 and on-disk layout and the
+Regulations.gov JSON stored within it.
 
 ## Mental model
 
 ```text
-Regulations.gov resources → Mirrulations raw mirror → derived files → Markdown DB
+Regulations.gov resources → Mirrulations raw mirror → derived files
 ```
 
 - **Raw**: downloaded API JSON, HTML/HTM, or attachments.
@@ -161,7 +156,7 @@ GET /comments?filter[commentOnId]=<document.attributes.objectId>
 The search expects the opaque `objectId`, not the public document ID.
 
 | Identifier | Scope |
-|---|---|
+| --- | --- |
 | Docket ID | Regulations.gov container |
 | Document/comment ID | Public API resource |
 | `objectId` | Opaque API join/search identity |
@@ -198,14 +193,5 @@ carry the state only in the title.
 
 Use the full object key and content hash when provenance matters.
 
-## Next reading
-
-| Need | Read |
-|---|---|
-| Exact upstream text | [`MirrulationsStructureUpstream.md`](MirrulationsStructureUpstream.md) |
-| Regulatory artifacts | [`RegulationsGovRegulatoryProcessMetadata.md`](RegulationsGovRegulatoryProcessMetadata.md) |
-| API examples | [`examples/regulation_gov_results/`](examples/regulation_gov_results/) |
-| Markdown stages | [`RichDocumentStructure.md`](RichDocumentStructure.md) |
-
 Raw Mirrulations files are immutable input. Repairs and analyses belong in a
-derived namespace or the separate Markdown database.
+derived namespace.
