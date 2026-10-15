@@ -262,6 +262,22 @@ class TopicPipelineTest(unittest.TestCase):
             ):
                 self.assertTrue((output_root / name).is_file(), name)
 
+            graph_bundle = json.loads(
+                (output_root / "graph_bundle.json").read_text(encoding="utf-8")
+            )
+            overview_relationships = [
+                relationship for relationship in graph_bundle["relationships"]
+                if relationship["relationship_type"] == "DISCUSSES_TOPIC"
+            ]
+            self.assertTrue(overview_relationships)
+            self.assertTrue(all(
+                relationship["source_label"] == "Document"
+                and relationship["target_label"] == "Topic"
+                and relationship["properties"]["matched_block_count"] >= 1
+                and relationship["properties"]["maximum_score"] >= 0.5
+                for relationship in overview_relationships
+            ))
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

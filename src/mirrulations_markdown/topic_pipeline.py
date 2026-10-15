@@ -582,6 +582,7 @@ def render_topic_enriched_stage(
 def build_graph_bundle(*, corpus, topics, assignments, issues, run_id, markdown_db_path):
     nodes = []
     relationships = []
+    comment_document_by_block_key = {}
     docket_ids = sorted({doc["docket_id"] for doc in corpus["documents"] if doc["docket_id"]})
     for docket_id in docket_ids:
         nodes.append(GraphNode(label="Docket", stable_id=docket_id))
@@ -616,6 +617,8 @@ def build_graph_bundle(*, corpus, topics, assignments, issues, run_id, markdown_
         ))
         for block in document["blocks"]:
             block_key = f"{document['document_version_id']}:{block['block_id']}"
+            if document["role"] in {"form_comment", "comment_attachment"}:
+                comment_document_by_block_key[block_key] = document_key
             authoritative_block = corpus["block_by_key"][block_key]
             nodes.append(GraphNode(
                 label="Block", stable_id=block_key,
@@ -649,6 +652,26 @@ def build_graph_bundle(*, corpus, topics, assignments, issues, run_id, markdown_
                 "assignment_id": assignment["assignment_id"],
                 "score": assignment["score"], "review_status": "accepted",
             },
+        ))
+    document_topic_summaries = {}
+    for assignment in assignments:
+        document_key = comment_document_by_block_key.get(assignment["block_key"])
+        if document_key is None:
+            continue
+        summary_key = (document_key, assignment["topic_id"])
+        summary = document_topic_summaries.setdefault(summary_key, {
+            "matched_block_count": 0,
+            "maximum_score": assignment["score"],
+        })
+        summary["matched_block_count"] += 1
+        summary["maximum_score"] = max(
+            summary["maximum_score"], assignment["score"]
+        )
+    for (document_key, topic_id), summary in sorted(document_topic_summaries.items()):
+        relationships.append(GraphRelationship(
+            relationship_type="DISCUSSES_TOPIC", source_label="Document",
+            source_id=document_key, target_label="Topic", target_id=topic_id,
+            properties=summary,
         ))
     regulatory_document = corpus["regulatory_documents"][0]
     for issue in issues:
