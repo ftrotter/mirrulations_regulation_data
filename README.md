@@ -1,6 +1,50 @@
 # Mirrulations Regulation Data
-A repository with instructions for accessing data from the mirrulations project. 
-Tries to stay up to date with mirrulations directory structures.
+
+This repository turns bounded portions of the public
+[Mirrulations](https://github.com/MoravianUniversity/mirrulations) corpus into
+an auditable Markdown database. The ETL recovers document structure, annotates
+citations and backward references, extracts regulatory issues, models public
+comment topics, and produces a deterministic graph bundle for Neo4j.
+
+Files and JSON sidecars under `data/markdown_db/` are the source of truth for
+pipeline results. Rendered views and the local Neo4j database are rebuildable
+projections.
+
+## Quick start
+
+The full processing order is:
+
+1. Download and verify a bounded Mirrulations docket.
+2. Create Stage 1 semantic Markdown and Stage 2 citation enrichment.
+3. Run Stage 3 structure discovery and Stage 4 exact-reference linking.
+4. Extract regulatory issues with LangExtract and model comment topics with
+   CorEx.
+5. Render Stage 5 topic-enriched Markdown, browse it locally, and optionally
+   import its deterministic graph bundle into Neo4j.
+
+Create the Python environment and a local configuration file:
+
+```shell
+python3 -m venv .venv
+.venv/bin/python -m pip install --upgrade pip
+.venv/bin/python -m pip install -r requirements.txt
+cp example.env .env
+```
+
+Python 3 and `rclone` are required. Docker with Compose is optional and is used
+only for Neo4j. Edit the ignored `.env`, but never commit it. At minimum,
+configure separate, non-overlapping roots:
+
+```dotenv
+MIRRULATIONS_DESTINATION_PATH=/absolute/path/to/mirrulations-source
+MARKDOWN_DB_PATH=./data/markdown_db
+RCLONE_CONFIG_FILE=/absolute/path/to/rclone.config
+```
+
+Set only the credentials needed by the selected stages: `OPENAI_API_KEY`,
+`ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, or `REGULATIONS_GOV_API_KEY`. Production
+topic extraction accepts `LANGEXTRACT_API_KEY` or `GEMINI_API_KEY`. Never put
+credentials in versioned YAML files. The pipeline never edits `.env`.
 
 ## Permanent documentation
 
@@ -90,6 +134,9 @@ Readable output is stored in immutable numbered projections:
 data/markdown_db/
   stage001_initial_markdown_mirror/
   stage002_addition_of_citations/
+  stage003_structure_discovery/
+  stage004_backward_reference_links/
+  stage005_topic_enrichment/
   metadata/
 ```
 
@@ -110,31 +157,42 @@ override the official reference title or generated document name. Reruns retain
 those edits. Citation reverse lookup headings and links use the edited value
 when present and otherwise use the official/generated value.
 
-## Local Neo4j graph
+## Local browsers and Neo4j graph
 
-The file-backed graph projection uses a local Neo4j Docker container. Set a
-local `NEO4J_PASSWORD` without committing it, then start Neo4j:
+The file-backed graph projection uses a local Neo4j Docker container. Files
+remain authoritative; Neo4j is disposable and rebuildable. Set a local
+`NEO4J_PASSWORD` without committing it. If the default ports conflict with
+other services, choose alternate host ports before starting Neo4j:
 
 ```shell
+export NEO4J_PASSWORD='choose-a-local-password'
+export NEO4J_BROWSER_PORT=17474
+export NEO4J_BOLT_PORT=17687
+export NEO4J_URI=bolt://127.0.0.1:17687
 docker compose up -d neo4j
+docker compose ps
 ```
 
 Validate a generated graph bundle before import:
 
 ```shell
 .venv/bin/python scripts/neo4j_graph.py validate \
-  --bundle data/markdown_db/metadata/graph/graph_bundle.json
+  --bundle data/markdown_db/metadata/topic_graph/graph_bundle.json
 ```
 
 Import the validated bundle idempotently:
 
 ```shell
 .venv/bin/python scripts/neo4j_graph.py import \
-  --bundle data/markdown_db/metadata/graph/graph_bundle.json
+  --uri bolt://127.0.0.1:17687 \
+  --bundle data/markdown_db/metadata/topic_graph/graph_bundle.json
 ```
 
-Neo4j Browser is available at `http://127.0.0.1:7474` by default. Comment graph
-records retain the identifiers needed to link to the existing comment browser
+Neo4j Browser is available at <http://127.0.0.1:7474> by default, or at
+<http://127.0.0.1:17474> with the alternate port above. `NEO4J_URI`,
+`NEO4J_USER`, and `NEO4J_PASSWORD` provide importer defaults. Deterministic node
+and relationship keys make repeated imports idempotent. Comment graph records
+retain the identifiers needed to link to the existing comment browser
 submission, representation, stage, and block-anchor detail pages. Start that
 browser separately with:
 
@@ -143,8 +201,10 @@ browser separately with:
   --markdown-db data/markdown_db
 ```
 
-Files remain authoritative; the Docker volume is only a persistent local
-projection and may be rebuilt from a validated graph bundle.
+Open <http://127.0.0.1:8765/comments/>. The browser automatically selects Stage
+5 when present. Keep `COMMENT_BROWSER_BASE_URL` aligned with the browser address
+before graph generation. To discard only this Compose project's graph volume,
+run `docker compose down -v`; this permanently removes the local projection.
 
 ### Topic extraction and graph generation
 
@@ -154,8 +214,13 @@ For production regulatory extraction, set `LANGEXTRACT_API_KEY` or
 
 ```shell
 .venv/bin/python scripts/topic_pipeline.py \
+  --markdown-db data/markdown_db \
   --extraction-mode langextract \
-  --output-root data/markdown_db/metadata/topic_graph
+  --output-root data/markdown_db/metadata/topic_graph \
+  --model gemini-3.8-flash \
+  --topic-count 20 \
+  --assignment-threshold 0.9 \
+  --maximum-topics-per-block 3
 ```
 
 The command fails before extraction when no credential is available; it never
@@ -174,7 +239,11 @@ comment blocks:
 Outputs are written beneath `metadata/topic_graph/` and include the run
 manifest, regulatory issues, topic candidates, accepted assignments, maintained
 Markdown views, and the deterministic `graph_bundle.json`. Import that bundle
-with `scripts/neo4j_graph.py` as shown above.
+with `scripts/neo4j_graph.py` as shown above. LangExtract writes the atomic
+`langextract_checkpoint.json`, so an interrupted extraction resumes without
+repeating completed calls. CorEx fits topics across all eligible comment blocks,
+tracks exact duplicates, and caps accepted assignments per block. Topic-enriched
+documents are rendered under `stage005_topic_enrichment/`.
 
 ## Structure discovery
 
@@ -430,16 +499,17 @@ results and 10 no-match results:
 .venv/bin/python scripts/stage4_quality_review.py wait
 ```
 
-The Python runner launches and tracks the process, prevents duplicate runs, writes
-human-readable logs beneath the Git-ignored `.local/pipeline_runs/` directory,
-and reports checkpoint counts and percent complete. Provider budget exhaustion
-creates a durable `attention_required.json`, writes an `ATTENTION REQUIRED` log
-entry, sounds the terminal bell when status is viewed, and sends a local macOS
-desktop notification with the provider billing URL. It loads stable paths and the
-OpenAI model from `.env`, checkpoints each judgment, and resumes without paying
-for completed reviews. Production Stage 4 files are never modified. Results are
-written as a frozen manifest, individual JSON judgments, `report.json`, and a
-human-readable `report.md` beneath `STAGE4_QUALITY_REVIEW_OUTPUT_DIRECTORY`.
+The Python runner launches and tracks the process, prevents duplicate runs,
+writes human-readable logs beneath the Git-ignored `.local/pipeline_runs/`
+directory, and reports checkpoint counts and percent complete. Provider budget
+exhaustion creates a durable `attention_required.json`, writes an
+`ATTENTION REQUIRED` log entry, sounds the terminal bell when status is viewed,
+and sends a local macOS desktop notification with the provider billing URL. It
+loads stable paths and the OpenAI model from `.env`, checkpoints each judgment,
+and resumes without paying for completed reviews. Production Stage 4 files are
+never modified. Results are written as a frozen manifest, individual JSON
+judgments, `report.json`, and a human-readable `report.md` beneath
+`STAGE4_QUALITY_REVIEW_OUTPUT_DIRECTORY`.
 
 By default, known PID files are checked in `/tmp`. Override that location when
 pipeline processes use another runtime directory:
@@ -452,6 +522,46 @@ pipeline processes use another runtime directory:
 PID state is supplementary operational information. Generated files and
 sidecars—not PID files or logs—determine whether a stage is complete.
 
+## Authoritative artifacts and restart behavior
+
+The numbered Markdown directories are immutable projections: every enrichment
+stage reads the preceding stage and writes a new directory. Machine-readable
+sidecars and manifests under `metadata/` are authoritative for completeness,
+review state, hashes, and graph generation. Logs and PID files are operational
+signals only.
+
+The ETL is designed for repeatable execution:
+
+- Stage 3 reuses completed segment hashes.
+- Stage 4 and its quality review checkpoint each accepted result.
+- LangExtract atomically checkpoints completed regulatory passages.
+- Topic and graph outputs are regenerated deterministically from file-backed
+  inputs.
+- Neo4j uses deterministic keys and may be rebuilt from `graph_bundle.json`.
+
+API-call limits, provider budget exhaustion, failed records, stale registries,
+missing block coverage, and incomplete checkpoints are surfaced as explicit
+failure or attention-required states rather than silently treated as complete.
+
+## Tests and validation
+
+Run the local test suite:
+
+```shell
+.venv/bin/python -m unittest discover -s tests -v
+```
+
+Validate a generated corpus against its source mirror:
+
+```shell
+.venv/bin/python scripts/validate_markdown_corpus.py \
+  --source-root /absolute/path/to/mirrulations-source \
+  --markdown-db data/markdown_db
+```
+
+Live network tests are opt-in. For example,
+`MIRRULATIONS_LIVE_CORNELL_TEST=1` enables the bounded Cornell title request.
+Before committing documentation or code changes, also run `git diff --check`.
 
 ## Data License
 
