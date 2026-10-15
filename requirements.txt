@@ -9,3 +9,8 @@ pyyaml>=6,<7
 google-genai==2.29.0
 anthropic==1.13.0
 openai==3.28.0
+neo4j>=6,<7
+langextract==1.7.1
+corextopic==1.1
+scipy>=1.15,<2
+scikit-learn>=1.6,<2

@@ -13,11 +13,13 @@ from .reference_linker import STAGE_4
 from .structure_pipeline import STAGE_3
 
 
+STAGE_5 = "stage005_topic_enrichment"
 STAGES = (
     (1, STAGE_1),
     (2, STAGE_2),
     (3, STAGE_3),
     (4, STAGE_4),
+    (5, STAGE_5),
 )
 VALID_STAGE_NUMBERS = {number for number, _directory in STAGES}
 RECORD_ID_PATTERN = re.compile(r"[A-Z]+-\d{4}-\d+-\d+")

@@ -110,6 +110,72 @@ override the official reference title or generated document name. Reruns retain
 those edits. Citation reverse lookup headings and links use the edited value
 when present and otherwise use the official/generated value.
 
+## Local Neo4j graph
+
+The file-backed graph projection uses a local Neo4j Docker container. Set a
+local `NEO4J_PASSWORD` without committing it, then start Neo4j:
+
+```shell
+docker compose up -d neo4j
+```
+
+Validate a generated graph bundle before import:
+
+```shell
+.venv/bin/python scripts/neo4j_graph.py validate \
+  --bundle data/markdown_db/metadata/graph/graph_bundle.json
+```
+
+Import the validated bundle idempotently:
+
+```shell
+.venv/bin/python scripts/neo4j_graph.py import \
+  --bundle data/markdown_db/metadata/graph/graph_bundle.json
+```
+
+Neo4j Browser is available at `http://127.0.0.1:7474` by default. Comment graph
+records retain the identifiers needed to link to the existing comment browser
+submission, representation, stage, and block-anchor detail pages. Start that
+browser separately with:
+
+```shell
+.venv/bin/python scripts/comment_browser.py start \
+  --markdown-db data/markdown_db
+```
+
+Files remain authoritative; the Docker volume is only a persistent local
+projection and may be rebuilt from a validated graph bundle.
+
+### Topic extraction and graph generation
+
+Install the pinned LangExtract and CorEx dependencies from `requirements.txt`.
+For production regulatory extraction, set `LANGEXTRACT_API_KEY` or
+`GEMINI_API_KEY` in the process environment or local ignored `.env`, then run:
+
+```shell
+.venv/bin/python scripts/topic_pipeline.py \
+  --extraction-mode langextract \
+  --output-root data/markdown_db/metadata/topic_graph
+```
+
+The command fails before extraction when no credential is available; it never
+silently substitutes generated regulatory issues. For offline development, the
+explicit `rule-based` mode uses proposed-rule section headings as transparent
+agency topic anchors while still fitting the real CorEx model over all eligible
+comment blocks:
+
+```shell
+.venv/bin/python scripts/topic_pipeline.py \
+  --extraction-mode rule-based \
+  --topic-count 20 \
+  --assignment-threshold 0.9
+```
+
+Outputs are written beneath `metadata/topic_graph/` and include the run
+manifest, regulatory issues, topic candidates, accepted assignments, maintained
+Markdown views, and the deterministic `graph_bundle.json`. Import that bundle
+with `scripts/neo4j_graph.py` as shown above.
+
 ## Structure discovery
 
 Stage 3 reads immutable Stage 2 Markdown and writes summaries and backward
